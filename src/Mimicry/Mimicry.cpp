@@ -290,6 +290,8 @@ int main(int argc, char** argv)
 
 	glui->add_button_to_panel(modelViewPanel, "Reset view", RESET, control);
 	glui->add_checkbox_to_panel(modelViewPanel, "Update model", &updateModel);
+    glui->add_checkbox_to_panel(modelViewPanel, "Outline", &System::showOutline);
+	glui->add_checkbox_to_panel(modelViewPanel, "View Cells", &System::showCells);
 
     ctlTranslateXY->set_speed(0.1);
     ctlTranslateZ->set_speed(0.1);

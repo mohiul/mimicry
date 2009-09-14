@@ -78,3 +78,13 @@ const int System::REPRODUCTION_AGE_LIMIT = 100;
  * Time interval to wait before a \a Prey starts reproducing again.
  */
 const int System::REPRODUCTION_INTERVAL = 200;
+
+/**
+ * Display outline in the model window when non-zero.
+ */
+int System::showOutline = 0;
+
+/**
+ * Display all individual cells of the model
+ */
+int System::showCells = 0;
