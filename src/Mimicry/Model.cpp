@@ -148,6 +148,7 @@ bool Model::init()
 
 				//Creating fewer Predators than Prey. One in every 5 Cell (approx...)
 				if(noOfAgentsToCreate % 5 == 0)
+				//if(noOfAgentsToCreate == 100)
 				{
 					//Create random genome for Predators.
 					Genome<PREDATOR_GENE_SIZE> genome;
@@ -172,17 +173,19 @@ bool Model::init()
  */
 void Model::draw()
 {
-	glColor3fv(WHITE);
-	glPushMatrix();
-	glutWireCube(System::WORLD_SIZE);
-	glPopMatrix();
+	if(System::showOutline)
+	{
+		glColor3fv(WHITE);
+		glutWireCube(System::WORLD_SIZE);
+	}
 
 	for(int i = 0; i < ISIZE; i++)
 		for(int j = 0; j < ISIZE; j++)
 			for(int k = 0; k < ISIZE; k++)
 			{
 				//Draw the outline of the cells
-				//cells[i][j][k].draw();
+				if(System::showCells)
+					cells[i][j][k].draw();
 
 				//Draw the agents
 				std::list<Agent*> agentList = cells[i][j][k].getAgentList();

@@ -60,6 +60,9 @@ public:
 	static const int	PREDATOR_ATTACK_AGE;
 	static const int	REPRODUCTION_AGE_LIMIT;
 	static const int	REPRODUCTION_INTERVAL;
+
+	static int showOutline;
+	static int showCells;
 };
 
 #endif
