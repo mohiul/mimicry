@@ -1,0 +1,108 @@
+/**
+ * \file Genome.h
+ */
+
+#ifndef GENOME_H
+#define GENOME_H
+
+#include "System.h"
+#include "randutil.h"
+
+#include <iostream>
+
+/**
+ * An instance of \a Genome containing binary genes for each agent.
+ */
+template<int SIZE>
+class Genome
+{
+private:
+	/**
+	 * int array containing binary gene. 
+	 */
+	int gene[SIZE];
+
+public:
+	Genome();
+	int get(int index);
+	void set(int index, int value);
+	Genome<SIZE> crossOver(Genome<SIZE>* _genome);
+	void mutate();
+};
+
+/**
+ * Construct a \a Genome. Initialize all gene to zero.
+ */
+template<int SIZE>
+Genome<SIZE>::Genome()
+{
+	for(int i = 0; i < SIZE; i++)
+		gene[i] = 0;
+}
+
+/**
+ * Get an individual gene from \a Genome
+ * \return value of a single gene.
+ * \param index of the gene to get.
+ */
+template<int SIZE>
+inline int Genome<SIZE>::get(int index)
+{ 
+	return gene[index];
+}
+
+/**
+ * Set value of an individual gene.
+ * \param index index of the gene to set.
+ * \param value of the gene to set.
+ */
+template<int SIZE>
+inline void Genome<SIZE>::set(int index, int value)
+{
+	gene[index] = value;
+}
+
+/**
+ * Function to perform Crossover operation with another \a Genome.
+ * Finds a random index inside the genome and attaches two parts from each to create a new one. 
+ * \param _genome pointer to another \a Agent 's genome to perform Crossover operation.
+ */
+template<int SIZE>
+Genome<SIZE> Genome<SIZE>::crossOver(Genome<SIZE> *_genome)
+{
+	Genome<SIZE> newGenome;
+	int rand = randomInteger(SIZE);
+	for(int i = 0; i < SIZE; i++)
+		if(i < rand)
+			newGenome.set( i, gene[i]);
+		else
+			newGenome.set( i, _genome->get(i));
+	return newGenome;
+}
+
+/**
+ * Function to perform Mutation operation on this \a Genome.
+ * Finds a random index inside the genome and flips it. 
+ */
+template<int SIZE>
+void Genome<SIZE>::mutate()
+{
+	int rand = randomInteger(SIZE);
+	if(gene[rand])
+		gene[rand] = 0;
+	else
+		gene[rand] = 1;
+}
+
+/**
+ * Print the \a Genome in output stream.
+ */
+template<int SIZE>
+std::ostream & operator<<(std::ostream & os, Genome<SIZE> g)
+{
+	for(int i = 0; i < SIZE; i++)
+		os << g.get(i);
+	return os;
+}
+
+#endif GENOME_H
