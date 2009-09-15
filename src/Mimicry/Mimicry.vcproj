@@ -44,7 +44,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="D:\boost_1_38_0"
+				AdditionalIncludeDirectories="&quot;$(InputDir)\..\..\libs\glut\include&quot;;&quot;$(InputDir)\..\..\libs\boost_1_38\&quot;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -65,8 +65,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
+				AdditionalDependencies="glut32.lib glui32.lib"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="&quot;D:\Program Files\boost\boost_1_38\lib&quot;"
+				AdditionalLibraryDirectories="&quot;$(InputDir)\..\..\libs\glut\lib&quot;"
 				GenerateDebugInformation="true"
 				SubSystem="1"
 				TargetMachine="1"
