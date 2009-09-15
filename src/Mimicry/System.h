@@ -47,7 +47,6 @@ public:
 	static const double WORLD_SIZE;
 	static const double HALF_WORLD_SIZE;
 	static const double CELL_SIZE;
-	static const int	PREY_SIZE;
 	static const int	TOTAL_NUMBER_OF_CELLS;
 	static const double FORCE_FACTOR;
 	static const double DT;
@@ -61,6 +60,7 @@ public:
 	static const int	REPRODUCTION_AGE_LIMIT;
 	static const int	REPRODUCTION_INTERVAL;
 
+	static int PREY_SIZE;
 	static int showOutline;
 	static int showCells;
 };

@@ -45,11 +45,6 @@ const double System::FRICTION = 5;
 const double System::WORK_FACTOR = 1;
 
 /**
- * Size of \a Prey species in the model.
- */
-const int System::PREY_SIZE = 3;
-
-/**
  * Minimum number of patterns that need to be stored in Predator memory before starting recognition.
  */
 const int System::MIN_MEMORY_SIZE = 5;
@@ -78,6 +73,11 @@ const int System::REPRODUCTION_AGE_LIMIT = 100;
  * Time interval to wait before a \a Prey starts reproducing again.
  */
 const int System::REPRODUCTION_INTERVAL = 200;
+
+/**
+ * Size of \a Prey species in the model.
+ */
+int System::PREY_SIZE = 1;
 
 /**
  * Display outline in the model window when non-zero.
