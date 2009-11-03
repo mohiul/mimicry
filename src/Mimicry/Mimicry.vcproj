@@ -217,6 +217,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Report.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\System.cpp"
 				>
 			</File>
@@ -264,6 +268,10 @@
 			</File>
 			<File
 				RelativePath=".\randutil.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Report.h"
 				>
 			</File>
 			<File
