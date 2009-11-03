@@ -1,2 +1,2 @@
-#include "Report.h"
+#include "ReportGenerator.h"
 
