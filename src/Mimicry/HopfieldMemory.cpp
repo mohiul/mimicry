@@ -114,8 +114,8 @@ Memory *HopfieldMemory::recognize(CAPattern* pattern)
 			break;
 		itr++;
 	}
-	//std::cout << "Later Y: " << std::endl;
-	//printInputPattern(Y);
+	std::cout << "Later Y: " << std::endl;
+	printInputPattern(Y);
 	return searchMemory(&Y);
 }
 

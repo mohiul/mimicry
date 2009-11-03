@@ -77,7 +77,7 @@ const int System::REPRODUCTION_INTERVAL = 200;
 /**
  * Size of \a Prey species in the model.
  */
-int System::PREY_SIZE = 1;
+int System::PREY_SIZE = 3;
 
 /**
  * Display outline in the model window when non-zero.
