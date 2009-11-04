@@ -74,6 +74,8 @@ const int System::REPRODUCTION_AGE_LIMIT = 100;
  */
 const int System::REPRODUCTION_INTERVAL = 200;
 
+const int System::MIMICRY_RING_HAMMING_DIST = PATTERN_SIZE * PATTERN_SIZE * 0.1;
+
 /**
  * Size of \a Prey species in the model.
  */

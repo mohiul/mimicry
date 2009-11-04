@@ -217,7 +217,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Report.cpp"
+				RelativePath=".\ReportGenerator.cpp"
 				>
 			</File>
 			<File
@@ -271,7 +271,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Report.h"
+				RelativePath=".\ReportGenerator.h"
 				>
 			</File>
 			<File
