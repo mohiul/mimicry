@@ -60,6 +60,8 @@ public:
 	static const int	REPRODUCTION_AGE_LIMIT;
 	static const int	REPRODUCTION_INTERVAL;
 
+	static const int	MIMICRY_RING_HAMMING_DIST;
+
 	static int PREY_SIZE;
 	static int showOutline;
 	static int showCells;
