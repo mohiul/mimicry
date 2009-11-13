@@ -45,14 +45,52 @@ const double System::FRICTION = 5;
 const double System::WORK_FACTOR = 1;
 
 /**
+ * Size of \a Prey species in the model.
+ */
+int System::PREY_SIZE = 2;
+
+/**
+ * Mimminum age for \a Prey species to start reproduction.
+ */
+const int System::REPRODUCTION_AGE_LIMIT = 100;
+
+/**
+ * Time interval to wait before a \a Prey starts reproducing again.
+ */
+const int System::REPRODUCTION_INTERVAL = 800;
+
+/**
+ * Maximum age upto which prey species will survie in the environment.
+ */
+const int System::PREY_DEMISE_AGE = 2000;
+
+/**
+ * Probability of the number of new born \a Prey species mutating 
+ * to a random new pattern
+ */
+const float System::PATTERN_MUTATION_RATE = 0.1;
+
+/**
+ * Probability of the number of new born \a Prey species with a 
+ * mutating genome excluding the pattern genome
+ */
+const float	System::GENOME_MUTATION_RATE = 0.3;
+
+/**
+ * Hamming distance between two patterns for which they are considred in
+ * the same Mimicry ring.
+ */
+const int System::MIMICRY_RING_HAMMING_DIST = PATTERN_SIZE * PATTERN_SIZE * 0.1;
+
+/**
  * Minimum number of patterns that need to be stored in Predator memory before starting recognition.
  */
-const int System::MIN_MEMORY_SIZE = 5;
+const int System::MIN_MEMORY_SIZE = 2;
 
 /**
  * Maximum number of patterns stored in Hopfield Memory
  */
-const int System::MAX_MEMORY_SIZE = 10;
+const int System::MAX_MEMORY_SIZE = 15;
 
 /**
  * Maximum number of iterations in Hopfield Memory recognition process.
@@ -65,21 +103,9 @@ const int System::HOPFIELD_MAX_ITERATION = 20;
 const int System::PREDATOR_ATTACK_AGE = 500;
 
 /**
- * Mimminum age for \a Prey species to start reproduction.
+ * Time interval to wait before a \a Predator starts attacking again.
  */
-const int System::REPRODUCTION_AGE_LIMIT = 100;
-
-/**
- * Time interval to wait before a \a Prey starts reproducing again.
- */
-const int System::REPRODUCTION_INTERVAL = 200;
-
-const int System::MIMICRY_RING_HAMMING_DIST = PATTERN_SIZE * PATTERN_SIZE * 0.1;
-
-/**
- * Size of \a Prey species in the model.
- */
-int System::PREY_SIZE = 3;
+const int System::PREDATOR_ATTACK_INTERVAL = 100;
 
 /**
  * Display outline in the model window when non-zero.

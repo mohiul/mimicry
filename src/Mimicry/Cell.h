@@ -32,6 +32,7 @@ public:
 	formal::Vector getPos(){return position;}
 	Cell * & getNeighbour(int i);
 	void draw();
+	std::list<Cell*> getSortedNeighbours(Agent::AGENT_TYPE agentType);
 private:
 	/**
 	 * Population of \a Agents inside this \a Cell.
@@ -62,6 +63,18 @@ private:
 	 * Array containing pointer to all neighbouring cells.
 	 */
 	Cell* neighbours[NUM_CELL_NEIGHBOURS];
+
+	struct SortByPreyFunctor
+	{
+	  bool operator()( Cell* a, Cell* b )
+	  { return a->getPop(Agent::PREY) > b->getPop(Agent::PREY); }
+	};
+
+	struct SortByPredatorFunctor
+	{
+	  bool operator()( Cell* a, Cell* b )
+	  { return a->getPop(Agent::PREDATOR) > b->getPop(Agent::PREDATOR); }
+	};
 };
 
 /**
@@ -147,4 +160,4 @@ inline Cell *NeighbourhoodScanner::get()
    return pc->getNeighbour(index);
 }
 
-#endif CELL_H
+#endif

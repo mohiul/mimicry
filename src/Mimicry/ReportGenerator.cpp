@@ -1,8 +1,10 @@
 #include "ReportGenerator.h"
 
-void ReportGenerator::generateMimicryRingReport(Cell ***cells)
-{
+#include <iostream>
+#include <iomanip>
 
+void ReportGenerator::generateMimicryRingReport(Cell cells[][ISIZE][ISIZE])
+{
 	for(int i = 0; i < ISIZE; i++)
 		for(int j = 0; j < ISIZE; j++)
 			for(int k = 0; k < ISIZE; k++)
@@ -16,24 +18,38 @@ void ReportGenerator::generateMimicryRingReport(Cell ***cells)
 						&& agent->getAgentType() == Agent::PREY)
 					{
 						Prey* prey = static_cast<Prey*>(agent);
+						bool ringFound = false;
 						for (std::list<Ring>::iterator ringIter = rings.begin(); 
 							ringIter != rings.end(); ringIter++)
 						{
-							bool ringFound = false;
-							if (calculateHammingDistance((*ringIter).pattern, prey->pattern) 
+							if (calculateHammingDistance(ringIter->pattern, prey->pattern) 
 								<= System::MIMICRY_RING_HAMMING_DIST)
 							{
-								(*ringIter).noOfPatterns++;
+								ringIter->noOfPatterns++;
+								if(prey->isPalatable())
+									ringIter->palatable++;
+								else
+									ringIter->unpalatable++;
 								ringFound = true;
 							}
-							//No ring found for the Prey species. So create new ring.
-							if(!ringFound)
+						}
+						//No ring found for the Prey species. So create new ring.
+						if(!ringFound)
+						{
+							Ring ring;
+							ring.pattern = prey->pattern;
+							ring.noOfPatterns = 1;
+							if(prey->isPalatable())
 							{
-								Ring ring;
-								ring.pattern = prey->pattern;
-								ring.noOfPatterns = 1;
-								rings.push_back(ring);
+								ring.palatable = 1;
+								ring.unpalatable = 0;
+							} else {
+								ring.palatable = 0;
+								ring.unpalatable = 1;
 							}
+
+							rings.push_back(ring);
+							rings.sort(Functor());
 						}
 					}
 					agentIter++;
@@ -48,5 +64,18 @@ int ReportGenerator::calculateHammingDistance(CAPattern pattern1, CAPattern patt
 		for (int l = 0; l < PATTERN_SIZE; l++)
 			if(pattern1.get(w, l) != pattern2.get(w, l))
 				distance++;
-	return 0;
+	return distance;
+}
+
+void ReportGenerator::printMimicryRingReport()
+{
+	std::cout << "Rings.size(): " << rings.size() << std::endl;
+	for (std::list<Ring>::iterator ringIter = rings.begin(); 
+		ringIter != rings.end(); ringIter++)
+	{
+		std::cout << "Rule: " << std::setw(4) << (*ringIter).pattern.getCARule() 
+			<< " -> " << std::setw(4) << (*ringIter).noOfPatterns
+			<< " palatable: " << std::setw(4) << (*ringIter).palatable
+			<< " unpalatable: " << std::setw(4) << (*ringIter).unpalatable << std::endl;
+	}
 }

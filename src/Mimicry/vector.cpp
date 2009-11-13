@@ -51,7 +51,7 @@ Vector Vector::normalize()
 std::ostream & operator<<(std::ostream & os, formal::Vector v)
 {
    int width = os.width();
-   os <<
+   os << std::setprecision(3) <<
 	  std::setw(0) << '(' <<
       std::setw(width) << v[0] << ',' <<
       std::setw(width) << v[1] << ',' <<

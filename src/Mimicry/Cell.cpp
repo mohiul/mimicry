@@ -43,19 +43,33 @@ void Cell::insert(Agent *pa)
 void Cell::remove(Agent *pa)
 {
 	std::list<Agent*>::iterator agentIter = agentList.begin();
+	bool found = false;
 	while( agentIter != agentList.end() ) {
-		if(*agentIter == pa)
+		if(*agentIter == pa && (*agentIter)->getState() == Agent::ALIVE)
 		{
 			agentList.erase(agentIter);
+			found = true;
 			break;
 		}
 		agentIter++;
 	}
-	population--;
-	if (pa->getAgentType() == Agent::PREY)
-		preyPopulation--;
-	if (pa->getAgentType() == Agent::PREDATOR)
-		predatorPopulation--;
+	if(found)
+	{
+		assert((population -1) < 0);
+		population--;
+		if (pa->getAgentType() == Agent::PREY)
+		{
+			assert((preyPopulation -1) < 0);
+			preyPopulation--;
+			//if (preyPopulation < 0)
+			//	std::cout << "Alert!!! 2 Prey Population: " << preyPopulation << std::endl;
+		}
+		if (pa->getAgentType() == Agent::PREDATOR)
+		{
+			assert((predatorPopulation -1) < 0);
+			predatorPopulation--;
+		}
+	}
 }
 
 /**
@@ -63,7 +77,10 @@ void Cell::remove(Agent *pa)
  */
 void Cell::draw()
 {
-	glColor3f(255, 255, 255);
+	if(position[0] == position[1] && position[1] == position[2])
+		glColor3f(255, 255, 255);
+	else
+		glColor3f(0, 0, 0);
 	glPushMatrix();
 	glTranslatef(position[0], position[1], position[2]);
 	glutWireCube(System::CELL_SIZE);
@@ -74,15 +91,27 @@ void Cell::draw()
  * Get current population of a specific agent type.
  * \param agentType Type of the Agent.
  */
+
 int Cell::getPop(Agent::AGENT_TYPE agentType)
 {
 	int pop = 0;
-	if(agentType == Agent::PREDATOR)
-		pop = predatorPopulation;
-	else if(agentType == Agent::PREY)
-		pop = preyPopulation;
+	for(std::list<Agent*>::iterator agentIter = agentList.begin(); 
+		agentIter != agentList.end(); agentIter++)
+		if((*agentIter)->getState() == Agent::ALIVE 
+			&& (*agentIter)->getAgentType() == agentType)
+			pop++;
 	return pop;
 }
+
+//int Cell::getPop(Agent::AGENT_TYPE agentType)
+//{
+//	unsigned int pop = 0;
+//	if(agentType == Agent::PREY)
+//		pop = preyPopulation;
+//	else if(agentType == Agent::PREDATOR)
+//		pop = predatorPopulation;
+//	return pop;
+//}
 
 /**
  * Reduce population count of a specific type of agent.
@@ -91,9 +120,33 @@ int Cell::getPop(Agent::AGENT_TYPE agentType)
 void Cell::reducePop(Agent::AGENT_TYPE agentType)
 {
 	if(agentType == Agent::PREDATOR)
+	{
+		assert((predatorPopulation -1) < 0);
 		predatorPopulation--;
+	}
 	else if(agentType == Agent::PREY)
+	{
+		assert((preyPopulation -1) < 0);
 		preyPopulation--;
+		if (preyPopulation < 0)
+			std::cout << "Alert!!! 1 Prey Population: " << preyPopulation << std::endl;
+	}
+	assert((population -1) < 0);
 	population--;
 
+}
+
+std::list<Cell*> Cell::getSortedNeighbours(Agent::AGENT_TYPE agentType)
+{
+	std::list<Cell*> sortedCells;
+	NeighbourhoodScanner ns(this);
+
+	for (ns.start(); ns.more(); ns.next())
+		sortedCells.push_back(ns.get());
+
+	if (agentType == Agent::PREY)
+		sortedCells.sort(SortByPreyFunctor());
+	else if(agentType == Agent::PREDATOR)
+		sortedCells.sort(SortByPredatorFunctor());
+	return sortedCells;
 }
