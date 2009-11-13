@@ -6,10 +6,12 @@
 #include "System.h"
 #include "Event.h"
 #include "randutil.h"
+#include "ReportGenerator.h"
 
 #include <iostream>
 #include <list>
 #include <bitset>
+#include <cmath>
 #include "GL/glut.h"
 
 // OpenGL colours
@@ -125,6 +127,7 @@ bool Model::init()
 				Genome<PREY_GENE_SIZE> genome;
 				std::bitset<PATTERN_GENE_SIZE> *bs;
 				if(noOfAgentsToCreate < 110)
+				//if(noOfAgentsToCreate < 14)
 				{
 					bs = new std::bitset<PATTERN_GENE_SIZE>(30);
 					genome.set(8, 0);
@@ -140,22 +143,26 @@ bool Model::init()
 				for(int g = 0; g < PATTERN_GENE_SIZE; g++)
 					genome.set(g, (*bs)[PATTERN_GENE_SIZE - 1 - g]);
 
-				std::bitset<7> bs1(randomInteger(128));
+				std::bitset<7> bs1(randomInteger(pow(2.0, 7)));
 				for(int g = 0; g < 7; g++)
 					genome.set(10 + g, bs1[7 - 1 - g]);
 
-				cells[i][j][k].insert(new Prey(this, &cells[i][j][k], cellToPos(i,j,k), genome));
+				//std::cout << "Genome: " << genome << std::endl;
+				
+				//if(noOfAgentsToCreate == 100)
+					cells[i][j][k].insert(new Prey(this, &cells[i][j][k], cellToPos(i,j,k), genome));
 
 				//Creating fewer Predators than Prey. One in every 5 Cell (approx...)
-				if(noOfAgentsToCreate % 5 == 0)
+				if(noOfAgentsToCreate % 10 == 0)
 				//if(noOfAgentsToCreate == 100)
 				{
 					//Create random genome for Predators.
 					Genome<PREDATOR_GENE_SIZE> genome;
-					std::bitset<PREDATOR_GENE_SIZE> bs(randomInteger(2^PREDATOR_GENE_SIZE));
+					std::bitset<PREDATOR_GENE_SIZE> bs(randomInteger(pow(2.0, PREDATOR_GENE_SIZE)));
 					for(int g = 0; g < PREDATOR_GENE_SIZE; g++)
 						genome.set(g, bs[PREDATOR_GENE_SIZE - 1 - g]);
 
+					//std::cout << " predator gene: " << genome << std::endl;
 					cells[i][j][k].insert(new Predator(this, &cells[i][j][k], cellToPos(i,j,k), genome));
 				}
 				noOfAgentsToCreate++;
@@ -247,7 +254,17 @@ void Model::step()
 
 	if(simTime % 100 == 0)
 		std::cout << "Prey Population: " << preyPopulation << std::endl;
+
+	if(simTime % 500 == 0)
+	{
+		ReportGenerator report;
+		report.generateMimicryRingReport(cells);
+		report.printMimicryRingReport();
+		std::cout << "Sim time: " << simTime << std::endl;
+	}
+
 	simTime++;
+	//std::cout << std::endl << "simTime: " << simTime << std::endl;
 }
 
 /**

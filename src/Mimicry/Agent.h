@@ -106,7 +106,7 @@ public:
 	void move();
 	void reproduce(Agent* agent);
 	AGENT_TYPE getAgentType();
-	void mobilityBehavior();
+	void mobilityBhvrGeneIndx0to5();
 	void findPreyToAttack();
 	void attack(Prey* prey);
 	void attemptToKill(Prey* prey);
@@ -125,6 +125,12 @@ private:
 	 * predator has interacted with. 
 	 */
 	HopfieldMemory* memory;
+
+	/**
+	 * Contains last simulation time when this \a Predator attacked. 
+	 * Used to create a time interval between two consecutive attack by same Predator.
+	 */
+	long lastAttackTime;
 };
 
 /**
@@ -162,10 +168,8 @@ public:
 	void makeTexturedImage();
 	//Palatability genes
 	void geneIndex8to9();
-	//Mobility genes attraction towards crowds of prey
-	void geneIndex10to12();
-	//Mobility genes repulsion from predator
-	void geneIndex13to15();
+	//Mobility genes attraction towards crowds of prey and repulsion from predator
+	void geneIndex10to15();
 	//Reproduction gene
 	void geneIndex16();
 	bool isPalatable();
@@ -275,4 +279,4 @@ inline bool Prey::isCapableToReproduce()
 	return capableToReproduce; 
 }
 
-#endif AGENT_H
+#endif

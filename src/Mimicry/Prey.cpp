@@ -3,6 +3,8 @@
  */
 
 #include <iostream>
+#include <iomanip>
+#include <list>
 #include "Agent.h"
 #include "Model.h"
 #include "randutil.h"
@@ -88,12 +90,14 @@ void Prey::step()
 {
 	age++;
 	force = formal::Vector(0, 0, 0);
-	geneIndex10to12();
-	geneIndex13to15();
+	geneIndex10to15();
 	if(age >= System::REPRODUCTION_AGE_LIMIT 
 		&& ( lastReproductionTime + System::REPRODUCTION_INTERVAL ) < model->getSimTime())
 		geneIndex16();
-	move();
+	if(age > System::PREY_DEMISE_AGE)
+		kill();
+	else
+		move();
 }
 
 /**
@@ -150,64 +154,52 @@ void Prey::geneIndex8to9()
 }
 
 /**
- * Perform action based on the gene index 10 to 12. These are mobility
- * genes. Three bits are used to calculate the force with which \a Prey
- * species try to move towards the neighbourhood cell which contains 
- * more highest number of Prey.
+ * Perform action based on the gene index 10 to 15. These are mobility
+ * genes. These six bits are used to calculate the force with which \a Prey
+ * species try to move towards any neighbourhood cell. The algorithm sorts
+ * all neighbouring cell descending to the number of prey species. Then it 
+ * selects the cell which contains the highest number of prey with zero predator.
+ * If all the neighbouring cells contain predators, then the algorithm sorts the
+ * neighbouring cells descending to the number of predators and chooses the one
+ * which contains the least.
  */
-void Prey::geneIndex10to12()
-{
-	int forceMagnitude = genome.get(10)*1 + genome.get(11)*2 + genome.get(12)*3;
-	int maxAgents = 0;
-	Cell *best = cell;
-	NeighbourhoodScanner ns(cell);
-	for (ns.start(); ns.more(); ns.next())
-	{
-		Cell *neighbour = ns.get();
-		int pop = neighbour->getPop(Agent::PREY);
-		if (maxAgents < pop)
-		{
-			maxAgents = pop;
-			best = neighbour;
-		}
-	}
-	if (best != cell)
-		addForce(forceMagnitude * offset(cell, best));
-	else if(best == cell && best->getPop(Agent::PREY) == 1)
-		addForce((forceMagnitude + 5) * offset(cell, cell->getNeighbour(randomInteger(NUM_CELL_NEIGHBOURS))));
-}
 
-/**
- * Perform action based on the gene index 13 to 15. These are mobility
- * genes. Three bits are used to calculate the force with which \a Prey
- * species try to move towards the neighbourhood cell which contains 
- * the least number of Predators.
- */
-void Prey::geneIndex13to15()
+void Prey::geneIndex10to15()
 {
-	int forceMagnitude = genome.get(13)*2 + genome.get(14)*3 + genome.get(15)*4;
-	int minPredators = cell->getPop(Agent::PREDATOR);
+	int forceMagnitude = genome.get(10)*1 + genome.get(11)*2 + genome.get(12)*3
+		+ genome.get(13)*4 + genome.get(14)*5 + genome.get(15)*6;
+	
 	Cell *best = cell;
-	NeighbourhoodScanner ns(cell);
-	for (ns.start(); ns.more(); ns.next())
-	{
-		Cell *neighbour = ns.get();
-		int pop = neighbour->getPop(Agent::PREDATOR);
-		if (minPredators > pop)
+
+	std::list<Cell*> sortedNeighbours = cell->getSortedNeighbours(Agent::PREY);
+
+	bool cellFound = false;
+	
+	for (std::list<Cell*>::iterator cellIter = sortedNeighbours.begin();
+		cellIter != sortedNeighbours.end(); cellIter++)
+		if((*cellIter)->getPop(Agent::PREDATOR) == 0)
 		{
-			minPredators = pop;
-			best = neighbour;
+			best = (*cellIter);
+			cellFound = true;
+			break;
 		}
+
+	if(!cellFound)
+	{
+		sortedNeighbours = cell->getSortedNeighbours(Agent::PREDATOR);
+		best = *--sortedNeighbours.end();
 	}
+
 	if (best != cell)
-		addForce(forceMagnitude * offset(cell, best));
+		addForce(forceMagnitude * offset(best, cell));
 }
 
 /**
  * Perform action based on the gene index 16. These are reproduction
  * genes. If this gene is enabled, Prey species are capable to 
  * reproduce. Prey chooses another random Prey within its cell
- * for reproduction.
+ * for reproduction. The random selected Prey has to have similar
+ * pattern to be able to reproduce.
  */
 void Prey::geneIndex16()
 {
@@ -222,7 +214,8 @@ void Prey::geneIndex16()
 			if((*agentIter) != this && (*agentIter)->getState() == Agent::ALIVE 
 				&& (*agentIter)->getAgentType() == Agent::PREY
 				&& preyCount++ == rand
-				&& ((Prey*)*agentIter)->pattern == this->pattern)
+				&& ((Prey*)*agentIter)->pattern == this->pattern
+				&& ((Prey*)*agentIter)->isPalatable() == this->isPalatable())
 					reproduce(*agentIter);
 	}
 }
@@ -239,8 +232,16 @@ void Prey::reproduce(Agent* agent)
 	Prey* prey = static_cast<Prey*>(agent);
 	if(prey->isCapableToReproduce())
 	{
-		Genome<PREY_GENE_SIZE> newGenome = genome.crossOver(prey->getGenome());
-		newGenome.mutate();
+		//Genome<PREY_GENE_SIZE> newGenome = genome.crossOver(prey->getGenome());
+		//newGenome.mutate();
+		Genome<PREY_GENE_SIZE> newGenome = genome.crossOverExceptPatternGene(prey->getGenome());
+
+		if(System::GENOME_MUTATION_RATE * 100 > randomInteger(100))
+			newGenome.mutateExceptPatternGene();
+
+		if(System::PATTERN_MUTATION_RATE * 100 > randomInteger(100))
+			newGenome.mutatePatternGene();
+
 		Cell* randomNeighbour = cell->getNeighbour(randomInteger(NUM_CELL_NEIGHBOURS));
 		cell->insert(new Prey(model, randomNeighbour, randomNeighbour->getPos(), newGenome));
 		this->lastReproductionTime = model->getSimTime();

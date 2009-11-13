@@ -27,10 +27,12 @@ const int X_GAP = 50;
 const int Y_GAP = 50;
 
 /** Initial width of model window (pixels). */
-const int W_MODEL = 500;
+//const int W_MODEL = 500;
+const int W_MODEL = 700;
 
 /** Initial height of model window (pixels). */
-const int H_MODEL = 500;
+//const int H_MODEL = 500;
+const int H_MODEL = 700;
 
 /** Initial position of left edge of window model (pixels). */
 const int X_MODEL = X_GAP;

@@ -30,6 +30,7 @@ Predator::Predator(Model* _model,
 	age = 0;
 	state = Agent::ALIVE;
 	memory = new HopfieldMemory(PATTERN_SIZE, PATTERN_SIZE);
+	lastAttackTime = 0;
 }
 
 /**
@@ -55,8 +56,11 @@ void Predator::step()
 {
 	age++;
 	force = formal::Vector(0, 0, 0);
-	mobilityBehavior();
-	findPreyToAttack();
+	mobilityBhvrGeneIndx0to5();
+	if(age >= System::PREDATOR_ATTACK_AGE
+		&& ( lastAttackTime + System::PREDATOR_ATTACK_INTERVAL ) < model->getSimTime())
+		findPreyToAttack();
+
 	move();
 }
 
@@ -70,47 +74,75 @@ void Predator::step()
  */
 void Predator::move()
 {
+	//std::cout << "force: " << force << std::endl;
+	//std::cout << "velocity: " << velocity << std::endl;
     formal::Vector acceleration = System::FORCE_FACTOR * force - System::FRICTION * velocity;
+	//std::cout << "acceleration: " << acceleration << std::endl;
     velocity += System::DT * acceleration;
+	//std::cout << "new velocity: " << velocity << std::endl;
     formal::Vector deltaPos = System::DT * velocity;
+	//std::cout << "deltaPos: " << deltaPos << std::endl;
+	//std::cout << "position: " << position << std::endl;
 	position += deltaPos;
+	//std::cout << "new position: " << position << std::endl;
 	model->checkPosition(position);
 }
 
 /**
  * Movement behavior of a \a Predator calculated from its \a Genome.
- * The genome for this species is 4 bits which is calculated in decimal 
- * format from binary to determine the magnitude of force at which it
+ * The genome for this species is 4 bits which is converted from binary 
+ * to decimal to determine the magnitude of force at which it
  * will move towards the maximum crowd of \a Prey present within its
- * neighbourhood. 
+ * neighbourhood. If no prey is present in the nieghbourhood then 
+ * this force is active in trying to keep predators distributed
+ * all over the cells. A predator chooses the neighbourhood cell which 
+ * contains the least number of predators and when the neighbourhood
+ * contains zero predators, it would select any one of them randomly.
  */
-void Predator::mobilityBehavior()
+
+void Predator::mobilityBhvrGeneIndx0to5()
 {
-	int forceMagnitude = genome.get(3)*4 + genome.get(2)*3 
-		+ genome.get(1)*2 + genome.get(0)*1;
-	int maxAgents = 0;
+	int forceMagnitude = genome.get(0)*1 + genome.get(1)*2 + genome.get(2)*3
+		+ genome.get(3)*4;
+	
 	Cell *best = cell;
-	NeighbourhoodScanner ns(cell);
-	for (ns.start(); ns.more(); ns.next())
+
+	std::list<Cell*> sortedNeighbours = cell->getSortedNeighbours(Agent::PREY);
+
+	//if(model->getSimTime() % 500 == 0)
+	//{
+	//	std::cout << "Cell: ";
+	//	for (std::list<Cell*>::iterator cellIter = sortedNeighbours.begin();
+	//		cellIter != sortedNeighbours.end(); cellIter++)
+	//		std::cout << " " << (*cellIter)->getPop(Agent::PREY);
+	//	std::cout << std::endl;
+	//}
+
+	if((*sortedNeighbours.begin())->getPop(Agent::PREY) > 0)
 	{
-		Cell *neighbour = ns.get();
-		int pop = neighbour->getPop(Agent::PREY);
-		if (maxAgents < pop)
-		{
-			maxAgents = pop;
-			best = neighbour;
-		}
+		best = *sortedNeighbours.begin();
+	} else {
+		sortedNeighbours = cell->getSortedNeighbours(Agent::PREDATOR);
+
+		std::list<Cell*> zeroPopNeighbours;
+		for (std::list<Cell*>::iterator cellIter = sortedNeighbours.begin();
+			cellIter != sortedNeighbours.end(); cellIter++)
+			if((*cellIter)->getPop(Agent::PREDATOR) == 0)
+				zeroPopNeighbours.push_back(*cellIter);
+
+		int randCell = randomInteger(zeroPopNeighbours.size());
+
+		int indx = 0;
+		for (std::list<Cell*>::iterator cellIter = zeroPopNeighbours.begin();
+			cellIter != zeroPopNeighbours.end(); cellIter++)
+			if(indx++ == randCell)
+			{
+				best = *cellIter;
+				break;
+			}
 	}
 	if (best != cell)
-		addForce(forceMagnitude * offset(cell, best));
-	/**
-	 * \todo The following condition is for continuous predator movement, 
-	 * If no \a Prey is present in its neighbourhood \a Predator 
-	 * will choose a random neighbour cell and move towards it.
-	 * Currently under test. 
-	 */
-	//else if(best == cell && best->getPop(Agent::PREY) == 0)
-	//	addForce((forceMagnitude + 5) * offset(cell, cell->getNeighbour(randomInteger(NUM_CELL_NEIGHBOURS))));
+		addForce(forceMagnitude * offset(best, cell));
 }
 
 /**
@@ -119,21 +151,21 @@ void Predator::mobilityBehavior()
  */
 void Predator::findPreyToAttack()
 {
-	if(age >= System::PREDATOR_ATTACK_AGE)
+	int preyPop = cell->getPop(Agent::PREY);
+	if(preyPop >= 1)
 	{
-		int preyPop = cell->getPop(Agent::PREY);
-		if(preyPop >= 1)
-		{
-			int rand = randomInteger(preyPop);
-			std::list<Agent*> agentList = cell->getAgentList();
-			int preyCount = 0;
-			for(std::list<Agent*>::iterator agentIter = agentList.begin();
-				agentIter != agentList.end(); agentIter++)
-				if((*agentIter)->getState() == Agent::ALIVE 
-					&& (*agentIter)->getAgentType() == Agent::PREY
-					&& preyCount++ == rand)
-						attack(static_cast<Prey*>(*agentIter));
-		}
+		int rand = randomInteger(preyPop);
+		std::list<Agent*> agentList = cell->getAgentList();
+		int preyCount = 0;
+		for(std::list<Agent*>::iterator agentIter = agentList.begin();
+			agentIter != agentList.end(); agentIter++)
+			if((*agentIter)->getState() == Agent::ALIVE 
+				&& (*agentIter)->getAgentType() == Agent::PREY
+				&& preyCount++ == rand)
+			{
+					attack(static_cast<Prey*>(*agentIter));
+					this->lastAttackTime = model->getSimTime();
+			}
 	}
 }
 

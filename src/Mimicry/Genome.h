@@ -27,7 +27,10 @@ public:
 	int get(int index);
 	void set(int index, int value);
 	Genome<SIZE> crossOver(Genome<SIZE>* _genome);
+	Genome<SIZE> crossOverExceptPatternGene(Genome<SIZE>* _genome);
 	void mutate();
+	void mutateExceptPatternGene();
+	void mutatePatternGene();
 };
 
 /**
@@ -73,7 +76,26 @@ Genome<SIZE> Genome<SIZE>::crossOver(Genome<SIZE> *_genome)
 	Genome<SIZE> newGenome;
 	int rand = randomInteger(SIZE);
 	for(int i = 0; i < SIZE; i++)
-		if(i < rand)
+		if(i <= rand)
+			newGenome.set( i, gene[i]);
+		else
+			newGenome.set( i, _genome->get(i));
+	return newGenome;
+}
+
+/**
+ * Function to perform Crossover operation with another \a Genome.
+ * Subtract the pattern genome and finds a random index inside the rest,
+ * and attaches two parts from each to create a new one. 
+ * \param _genome pointer to another \a Agent 's genome to perform Crossover operation.
+ */
+template<int SIZE>
+Genome<SIZE> Genome<SIZE>::crossOverExceptPatternGene(Genome<SIZE> *_genome)
+{
+	Genome<SIZE> newGenome;
+	int rand = randomInteger(SIZE - PATTERN_GENE_SIZE) + PATTERN_GENE_SIZE;
+	for(int i = 0; i < SIZE; i++)
+		if(i <= rand)
 			newGenome.set( i, gene[i]);
 		else
 			newGenome.set( i, _genome->get(i));
@@ -95,6 +117,35 @@ void Genome<SIZE>::mutate()
 }
 
 /**
+ * Function to perform Mutation operation on this \a Genome 
+ * except the pattern gene.
+ * Finds a random index inside the genome and flips it. 
+ */
+template<int SIZE>
+void Genome<SIZE>::mutateExceptPatternGene()
+{
+	int rand = randomInteger(SIZE - PATTERN_GENE_SIZE) + PATTERN_GENE_SIZE;
+	if(gene[rand])
+		gene[rand] = 0;
+	else
+		gene[rand] = 1;
+}
+
+/**
+ * Function to perform Mutation operation on the pattern \a Genome.
+ * Finds a random index inside the pattern genome and flips it. 
+ */
+template<int SIZE>
+void Genome<SIZE>::mutatePatternGene()
+{
+	int rand = randomInteger(PATTERN_GENE_SIZE);
+	if(gene[rand])
+		gene[rand] = 0;
+	else
+		gene[rand] = 1;
+}
+
+/**
  * Print the \a Genome in output stream.
  */
 template<int SIZE>
@@ -105,4 +156,4 @@ std::ostream & operator<<(std::ostream & os, Genome<SIZE> g)
 	return os;
 }
 
-#endif GENOME_H
+#endif

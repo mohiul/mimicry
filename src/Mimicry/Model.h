@@ -42,4 +42,4 @@ inline long Model::getSimTime()
 	return simTime; 
 }
 
-#endif MODEL_H
+#endif

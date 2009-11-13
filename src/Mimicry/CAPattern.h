@@ -22,6 +22,7 @@ using namespace boost::numeric::ublas;
 class CAPattern
 {
 private:
+	int CARule;
 	/**
 	 * Integer array containg 2D binary pattern. Generated from Cellular Automata.
 	 */
@@ -37,9 +38,17 @@ public:
 	void set(int i, int j, int value);
 	int get(int i, int j);
 	void generatePattern(Genome<PREY_GENE_SIZE>* genome);
+	void setCARule(Genome<PREY_GENE_SIZE>* genome);
+	int getCARule();
 	vector<int>* serialize();
 	bool operator==(CAPattern &_pattern);
+	void printPattern();
 };
+
+inline int CAPattern::getCARule()
+{
+	return CARule;
+}
 
 /**
  * Inline function used to find bitwise equality of two \a CAPattern object.
@@ -59,4 +68,6 @@ inline bool CAPattern::operator==(CAPattern &_pattern)
    return equal;
 }
 
-#endif CA_PATTERN_H
+std::ostream & operator<<(std::ostream & os, CAPattern pattern);
+
+#endif

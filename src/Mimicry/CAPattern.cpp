@@ -4,6 +4,7 @@
 
 #include "CAPattern.h"
 #include <iostream>
+#include <bitset>
 
 /**
  * Construct a \a CAPattern, and initialize the 2D binary pattern with zeros.
@@ -98,6 +99,18 @@ void CAPattern::generatePattern(Genome<PREY_GENE_SIZE>* genome)
 				pattern[i][j] = genome->get(7);
 			}
 		}
+	
+	setCARule(genome);
+}
+
+void CAPattern::setCARule(Genome<PREY_GENE_SIZE>* genome)
+{
+	std::bitset<PATTERN_GENE_SIZE> bs;
+
+	for (int i = 0; i < PATTERN_GENE_SIZE; i++)
+		bs[PATTERN_GENE_SIZE - 1 - i] = genome->get(i);
+
+	CARule = bs.to_ulong();
 }
 
 /**
@@ -112,4 +125,15 @@ vector<int>* CAPattern::serialize()
 		for (int l = 0; l < PATTERN_SIZE; l++)
 			(*serializedPattern)(w * PATTERN_SIZE + l) = 2*pattern[w][l] - 1;
 	return serializedPattern;
+}
+
+std::ostream & operator<<(std::ostream & os, CAPattern pattern)
+{
+	for (int l = 0; l < PATTERN_SIZE; l++)
+	{
+		for (int w = 0; w < PATTERN_SIZE; w++)
+			os << pattern.get(l, w);
+		os << std::endl;
+	}
+   return os;
 }
