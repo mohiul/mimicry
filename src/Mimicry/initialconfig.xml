@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <agents>
+    <prey>
+      <rule>110</rule>
+      <location from="1" to="110" />
+      <population>110</population>
+      <palatability>true</palatability>
+    </prey>
+    <prey>
+      <rule>30</rule>
+      <location from="111" to="216" />
+      <population>105</population>
+      <palatability>false</palatability>
+    </prey>
+    <predator>
+      <location from="110" to="150" />
+      <population>40</population>
+    </predator>
+  </agents>
+</root>
