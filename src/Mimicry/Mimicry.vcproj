@@ -143,7 +143,7 @@
 				Name="VCLinkerTool"
 				AdditionalDependencies="glut32.lib glui32.lib tinyxml.lib"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="&quot;$(InputDir)\..\..\libs\tinyXML&quot;;&quot;$(InputDir)\..\..\libs\glut\lib&quot;"
+				AdditionalLibraryDirectories="&quot;$(InputDir)\..\..\libs\tinyXML\lib&quot;;&quot;$(InputDir)\..\..\libs\glut\lib&quot;"
 				GenerateDebugInformation="true"
 				SubSystem="1"
 				OptimizeReferences="2"
