@@ -20,6 +20,9 @@ const double DEGTORAD = PI / 180;
 /** ID of model window. */
 int modelWindow;
 
+/** ID of statistics window. */
+int statsWindow;
+
 /** Horizontal space between windows and screen boundary (pixels). */
 const int X_GAP = 50;
 
@@ -40,17 +43,38 @@ const int X_MODEL = X_GAP;
 /** Initial position of top edge of model window (pixels). */
 const int Y_MODEL = Y_GAP;
 
+/** Initial width of statistics window (pixels). */
+const int W_STATS = 600;
+
+/** Initial height of statistics window (pixels). */
+const int H_STATS =400;
+
+/** Initial position of left edge of statistics window (pixels). */
+const int X_STATS = X_MODEL + X_GAP + W_MODEL;
+
+/** Initial position of top edge of statistics window (pixels). */
+const int Y_STATS = Y_GAP;
+
 /** Initial position of left edge of control window (pixels). */
 const int X_GLUI = X_MODEL + W_MODEL + 50;
 
 /** Initial position of top edge of control window (pixels). */
 const int Y_GLUI = Y_MODEL;
 
+/** Maximum X coordinates for statistics window. */
+const GLdouble X_MAX_STATS = 10;
+
 /** Current width of model window (pixels). */
 int wModel = W_MODEL;
 
 /** Current height of model window (pixels). */
 int hModel = H_MODEL;
+
+/** Current width of statistics window (pixels). */
+int wStats = W_STATS;
+
+/** Current height of statistics window (pixels). */
+int hStats = H_STATS;
 
 /** Range of real coordinates (positive and negative) of the universe. */
 const GLfloat MODEL_SIZE = 10;
@@ -101,6 +125,11 @@ float gluiRotation[16] =
 * The model view is being updated.
 */
 int updateModel = true;
+
+/**
+* The statistics view is being updated.
+*/
+int updateStats = true;
 
 /** The 'Start' control is enabled. */
 bool startEnabled = true;
@@ -163,11 +192,47 @@ void reshapeModel (int w, int h) {
     setProjection();
 }
 
+// Statistics Window
+
+/**
+* Display the statistics window.
+*/
+//void displayStats (void)
+//{
+//    if (updateStats)
+//    {
+//        glClear(GL_COLOR_BUFFER_BIT);
+//        glMatrixMode(GL_MODELVIEW);
+//        glLoadIdentity();
+//        glDisable(GL_DEPTH_TEST);
+//        model.stats();
+//        glutSwapBuffers();
+//    }
+//}
+
+/**
+* Reshape the statistics window in response to a user action.
+*/
+//void reshapeStats (int w, int h) {
+//    glViewport(0, 0, w, h);
+//    wStats = w;
+//    hStats = h;
+//    glMatrixMode(GL_PROJECTION);
+//    glLoadIdentity();
+//    GLdouble yMax = (X_MAX_STATS * h) / w;
+//    gluOrtho2D(-X_MAX_STATS, X_MAX_STATS, -yMax, yMax);
+//    model.setStatsWindow(w, h, X_MAX_STATS, yMax);
+//    glutPostRedisplay();
+//}
+
 void idle()
 {
 	model.step();
 	glutSetWindow(modelWindow);
 	glutPostRedisplay();
+    //glutSetWindow(statsWindow);
+    //glutPostRedisplay();
+
 }
 /** Termination */
 void stopSim()
@@ -246,6 +311,8 @@ int main(int argc, char** argv)
 	/* standard GLUT initialization */
 
 	glutInit(&argc,argv);
+
+    // Set up model Window
 	glutInitDisplayMode (GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH); /* default, not needed */
     glutInitWindowSize(W_MODEL, H_MODEL);
     glutInitWindowPosition(X_MODEL, Y_MODEL);
@@ -255,6 +322,16 @@ int main(int argc, char** argv)
 	glutReshapeFunc(reshapeModel);
 	glutSetWindow(modelWindow);
 	glutIdleFunc(0);
+
+    // Set up statistics Window
+    //glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
+    //glutInitWindowSize(W_STATS, H_STATS);
+    //glutInitWindowPosition(X_STATS, Y_STATS);
+    //statsWindow = glutCreateWindow("Statistics");
+    //glClearColor(0, 0, 0, 1);
+    //glutDisplayFunc(displayStats);
+    //glutReshapeFunc(reshapeStats);
+
 	glutKeyboardFunc(keyboard);
 
     // GLUI initialization
@@ -292,7 +369,9 @@ int main(int argc, char** argv)
 
 	glui->add_button_to_panel(modelViewPanel, "Reset view", RESET, control);
 	glui->add_checkbox_to_panel(modelViewPanel, "Update model", &updateModel);
-    glui->add_checkbox_to_panel(modelViewPanel, "Outline", &System::showOutline);
+    glui->add_checkbox_to_panel(modelViewPanel, "Update statistics", &updateStats);
+
+	glui->add_checkbox_to_panel(modelViewPanel, "Outline", &System::showOutline);
 	glui->add_checkbox_to_panel(modelViewPanel, "View Cells", &System::showCells);
 
     ctlTranslateXY->set_speed(0.1);

@@ -153,7 +153,7 @@ bool Model::init()
 					cells[i][j][k].insert(new Prey(this, &cells[i][j][k], cellToPos(i,j,k), genome));
 
 				//Creating fewer Predators than Prey. One in every 5 Cell (approx...)
-				if(noOfAgentsToCreate % 10 == 0)
+				if(noOfAgentsToCreate % 20 == 0)
 				//if(noOfAgentsToCreate == 100)
 				{
 					//Create random genome for Predators.
@@ -204,6 +204,11 @@ void Model::draw()
 					agentIter++;
 				}
 			}
+}
+
+void Model::stats()
+{
+
 }
 
 /**
@@ -287,4 +292,15 @@ void Model::checkPosition(formal::Vector & pos)
    CheckCoordinate(pos[0]);
    CheckCoordinate(pos[1]);
    CheckCoordinate(pos[2]);
+}
+
+/**
+ * Set size parameters for Statistics window.
+ */
+void Model::setStatsWindow(int newWidth, int newHeight, GLdouble newXRange, GLdouble newYRange)
+{
+   width = newWidth;
+   height = newHeight;
+   xRange = newXRange;
+   yRange = newYRange;
 }
