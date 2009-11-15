@@ -77,10 +77,7 @@ void Cell::remove(Agent *pa)
  */
 void Cell::draw()
 {
-	if(position[0] == position[1] && position[1] == position[2])
-		glColor3f(255, 255, 255);
-	else
-		glColor3f(0, 0, 0);
+	glColor3f(255, 255, 255);
 	glPushMatrix();
 	glTranslatef(position[0], position[1], position[2]);
 	glutWireCube(System::CELL_SIZE);
