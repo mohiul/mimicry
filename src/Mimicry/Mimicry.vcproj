@@ -193,6 +193,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\ConfigReader.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\event.cpp"
 				>
 			</File>
@@ -248,6 +252,10 @@
 			</File>
 			<File
 				RelativePath=".\Cell.h"
+				>
+			</File>
+			<File
+				RelativePath=".\ConfigReader.h"
 				>
 			</File>
 			<File

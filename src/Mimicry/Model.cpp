@@ -7,6 +7,7 @@
 #include "Event.h"
 #include "randutil.h"
 #include "ReportGenerator.h"
+#include "ConfigReader.h"
 
 #include <iostream>
 #include <list>
@@ -101,7 +102,10 @@ int mod(int index)
  * Initialize model by creating new \n Agents.
  */
 bool Model::init()
-{
+{	
+	ConfigReader reader("C:\\home\\moh_i\\Projects\\mimicry\\src\\Mimicry\\initialconfig.xml");
+	reader.readConfigFile();
+
 	int noOfAgentsToCreate = 0;
 	int rule30 = 0;
 	int rule110 = 0;
