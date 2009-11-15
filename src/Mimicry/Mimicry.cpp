@@ -197,41 +197,41 @@ void reshapeModel (int w, int h) {
 /**
 * Display the statistics window.
 */
-//void displayStats (void)
-//{
-//    if (updateStats)
-//    {
-//        glClear(GL_COLOR_BUFFER_BIT);
-//        glMatrixMode(GL_MODELVIEW);
-//        glLoadIdentity();
-//        glDisable(GL_DEPTH_TEST);
-//        model.stats();
-//        glutSwapBuffers();
-//    }
-//}
+void displayStats (void)
+{
+    if (updateStats)
+    {
+        glClear(GL_COLOR_BUFFER_BIT);
+        glMatrixMode(GL_MODELVIEW);
+        glLoadIdentity();
+        glDisable(GL_DEPTH_TEST);
+        model.stats();
+        glutSwapBuffers();
+    }
+}
 
 /**
 * Reshape the statistics window in response to a user action.
 */
-//void reshapeStats (int w, int h) {
-//    glViewport(0, 0, w, h);
-//    wStats = w;
-//    hStats = h;
-//    glMatrixMode(GL_PROJECTION);
-//    glLoadIdentity();
-//    GLdouble yMax = (X_MAX_STATS * h) / w;
-//    gluOrtho2D(-X_MAX_STATS, X_MAX_STATS, -yMax, yMax);
-//    model.setStatsWindow(w, h, X_MAX_STATS, yMax);
-//    glutPostRedisplay();
-//}
+void reshapeStats (int w, int h) {
+    glViewport(0, 0, w, h);
+    wStats = w;
+    hStats = h;
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    GLdouble yMax = (X_MAX_STATS * h) / w;
+    gluOrtho2D(-X_MAX_STATS, X_MAX_STATS, -yMax, yMax);
+    model.setStatsWindow(w, h, X_MAX_STATS, yMax);
+    glutPostRedisplay();
+}
 
 void idle()
 {
 	model.step();
 	glutSetWindow(modelWindow);
 	glutPostRedisplay();
-    //glutSetWindow(statsWindow);
-    //glutPostRedisplay();
+    glutSetWindow(statsWindow);
+    glutPostRedisplay();
 
 }
 /** Termination */
@@ -256,18 +256,18 @@ void control(int key)
     case START:
         if (startEnabled)
         {
-            //if (model.init())
-            //{
-                glutSetWindow(modelWindow);
+            glutSetWindow(modelWindow);
+            if (model.init())
+            {
                 glutIdleFunc(idle);
                 startEnabled = false;
                 ctlStart->disable();
                 ctlStop->enable();
                 ctlPause->enable();
-				//std::cout << "Model Initialized!" << std::endl;
-    //        }
-    //        else
-				//std::cout << "Cannot initialize!" << std::endl;
+				std::cout << "Model Initialized!" << std::endl;
+            }
+            else
+				std::cout << "Cannot initialize!" << std::endl;
         }
         break;
 
@@ -320,17 +320,16 @@ int main(int argc, char** argv)
 	glClearColor(0.5, 0.5, 0.5, 1);
 	glutDisplayFunc(displayModel);
 	glutReshapeFunc(reshapeModel);
-	glutSetWindow(modelWindow);
 	glutIdleFunc(0);
 
     // Set up statistics Window
-    //glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
-    //glutInitWindowSize(W_STATS, H_STATS);
-    //glutInitWindowPosition(X_STATS, Y_STATS);
-    //statsWindow = glutCreateWindow("Statistics");
-    //glClearColor(0, 0, 0, 1);
-    //glutDisplayFunc(displayStats);
-    //glutReshapeFunc(reshapeStats);
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
+    glutInitWindowSize(W_STATS, H_STATS);
+    glutInitWindowPosition(X_STATS, Y_STATS);
+    statsWindow = glutCreateWindow("Statistics");
+    glClearColor(0, 0, 0, 1);
+    glutDisplayFunc(displayStats);
+    glutReshapeFunc(reshapeStats);
 
 	glutKeyboardFunc(keyboard);
 
@@ -376,13 +375,6 @@ int main(int argc, char** argv)
 
     ctlTranslateXY->set_speed(0.1);
     ctlTranslateZ->set_speed(0.1);
-	
-	/**	\todo
-	  *	Initialize model. It should be at the event of START button. 
-	  *	But currently facing bug due to textured image generation for Prey species. 
-	  *	Which will be fixed later.
-	  */
-	model.init();
 
 	/* display callback invoked when window opened */
 	glutMainLoop(); /* enter event loop */
