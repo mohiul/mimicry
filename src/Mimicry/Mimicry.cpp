@@ -30,12 +30,12 @@ const int X_GAP = 50;
 const int Y_GAP = 50;
 
 /** Initial width of model window (pixels). */
-//const int W_MODEL = 500;
-const int W_MODEL = 700;
+const int W_MODEL = 500;
+//const int W_MODEL = 700;
 
 /** Initial height of model window (pixels). */
-//const int H_MODEL = 500;
-const int H_MODEL = 700;
+const int H_MODEL = 500;
+//const int H_MODEL = 700;
 
 /** Initial position of left edge of window model (pixels). */
 const int X_MODEL = X_GAP;
@@ -56,10 +56,10 @@ const int X_STATS = X_MODEL + X_GAP + W_MODEL;
 const int Y_STATS = Y_GAP;
 
 /** Initial position of left edge of control window (pixels). */
-const int X_GLUI = X_MODEL + W_MODEL + 50;
+const int X_GLUI = X_STATS;
 
 /** Initial position of top edge of control window (pixels). */
-const int Y_GLUI = Y_MODEL;
+const int Y_GLUI = Y_STATS + H_STATS + 50;
 
 /** Maximum X coordinates for statistics window. */
 const GLdouble X_MAX_STATS = 10;
@@ -227,8 +227,8 @@ void reshapeStats (int w, int h) {
 
 void idle()
 {
-	model.step();
 	glutSetWindow(modelWindow);
+	model.step();
 	glutPostRedisplay();
     glutSetWindow(statsWindow);
     glutPostRedisplay();
