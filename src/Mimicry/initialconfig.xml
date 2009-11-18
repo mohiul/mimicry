@@ -1,21 +1,47 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<root>
+﻿<root>
   <agents>
     <prey>
       <rule>110</rule>
-      <location from="1" to="110" />
-      <population>110</population>
+      <population>54</population>
       <palatability>true</palatability>
+      <location>
+        <from>1</from>
+        <to>54</to>
+      </location>
     </prey>
     <prey>
       <rule>30</rule>
-      <location from="111" to="216" />
-      <population>105</population>
+      <population>54</population>
       <palatability>false</palatability>
+      <location>
+        <from>55</from>
+        <to>108</to>
+      </location>
+    </prey>
+    <prey>
+      <rule>50</rule>
+      <population>54</population>
+      <palatability>true</palatability>
+      <location>
+        <from>109</from>
+        <to>162</to>
+      </location>
+    </prey>
+    <prey>
+      <rule>190</rule>
+      <population>54</population>
+      <palatability>false</palatability>
+      <location>
+        <from>162</from>
+        <to>216</to>
+      </location>
     </prey>
     <predator>
-      <location from="110" to="150" />
       <population>40</population>
+      <location>
+        <from>110</from>
+        <to>150</to>
+      </location>
     </predator>
   </agents>
 </root>
