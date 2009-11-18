@@ -193,15 +193,15 @@
 				>
 			</File>
 			<File
-				RelativePath=".\ConfigReader.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\event.cpp"
 				>
 			</File>
 			<File
 				RelativePath=".\HopfieldMemory.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\InitConfiguration.cpp"
 				>
 			</File>
 			<File
@@ -255,10 +255,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\ConfigReader.h"
-				>
-			</File>
-			<File
 				RelativePath=".\event.h"
 				>
 			</File>
@@ -268,6 +264,10 @@
 			</File>
 			<File
 				RelativePath=".\HopfieldMemory.h"
+				>
+			</File>
+			<File
+				RelativePath=".\InitConfiguration.h"
 				>
 			</File>
 			<File
