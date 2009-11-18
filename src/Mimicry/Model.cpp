@@ -7,7 +7,7 @@
 #include "Event.h"
 #include "randutil.h"
 #include "ReportGenerator.h"
-#include "ConfigReader.h"
+#include "InitConfiguration.h"
 
 #include <iostream>
 #include <list>
@@ -103,17 +103,16 @@ int mod(int index)
  */
 bool Model::init()
 {	
-	ConfigReader reader("C:\\home\\moh_i\\Projects\\mimicry\\src\\Mimicry\\initialconfig.xml");
-	reader.readConfigFile();
+	InitConfiguration initConfig;
+	initConfig.readConfigFile("C:\\home\\moh_i\\Projects\\mimicry\\src\\Mimicry\\initialconfig.xml");
+	//initConfig.printInitConfig();
 
 	int noOfAgentsToCreate = 0;
 	int rule30 = 0;
 	int rule110 = 0;
 	
 	for(int i = 0; i < ISIZE; i++)
-	{
 		for(int j = 0; j < ISIZE; j++)
-		{
 			for(int k = 0; k < ISIZE; k++)
 			{
 				cells[i][j][k] = Cell();
@@ -171,8 +170,7 @@ bool Model::init()
 				}
 				noOfAgentsToCreate++;
 			}
-		}
-	}
+
 	std::cout << "Prey population by CA rule: " << std::endl;	
 	std::cout << "rule30: " << rule30 << " rule110: " << rule110 << std::endl;
 	simTime = 0;
