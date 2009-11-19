@@ -8,6 +8,8 @@
 #include "cell.h"
 #include "model.h"
 
+#include <iostream>
+
 /**
  * Construct a dummy event with all pointers null.
  */
@@ -80,7 +82,7 @@ void Event::act()
       cFrom->insert(pH);  
       break;
    case DEATH:
-      delete pH;
+	  cFrom->getAgentList().remove(pH);
       break;
    }
 }
