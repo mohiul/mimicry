@@ -85,7 +85,7 @@ const int System::MIMICRY_RING_HAMMING_DIST = PATTERN_SIZE * PATTERN_SIZE * 0.1;
 /**
  * Minimum number of patterns that need to be stored in Predator memory before starting recognition.
  */
-const int System::MIN_MEMORY_SIZE = 2;
+const int System::MIN_MEMORY_SIZE = 4;
 
 /**
  * Maximum number of patterns stored in Hopfield Memory

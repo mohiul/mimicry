@@ -13,6 +13,7 @@
 #include <list>
 #include <bitset>
 #include <cmath>
+#include <string>
 #include "GL/glut.h"
 
 // OpenGL colours
@@ -101,15 +102,17 @@ int mod(int index)
 /**
  * Initialize model by creating new \n Agents.
  */
-bool Model::init()
+bool Model::init(std::string configurationFile)
 {	
 	InitConfiguration initConfig;
-	initConfig.readConfigFile("C:\\home\\moh_i\\Projects\\mimicry\\src\\Mimicry\\initialconfig.xml");
 	//initConfig.printInitConfig();
 
-	int noOfAgentsToCreate = 0;
-	int rule30 = 0;
-	int rule110 = 0;
+	if( !initConfig.readConfigFile(configurationFile) )
+		return false;
+
+	//initConfig.printInitConfig();
+
+	int cellIndx = 0;
 	
 	for(int i = 0; i < ISIZE; i++)
 		for(int j = 0; j < ISIZE; j++)
@@ -126,53 +129,29 @@ bool Model::init()
 					  for (int kk = k - 1; kk <= k + 1; kk++)
 						 cells[i][j][k].getNeighbour(n++) = & cells[mod(ii)][mod(jj)][mod(kk)];
 
-				//Creating random genome for \a Prey. One Prey for each \a Cell.
-				Genome<PREY_GENE_SIZE> genome;
-				std::bitset<PATTERN_GENE_SIZE> *bs;
-				if(noOfAgentsToCreate < 110)
-				//if(noOfAgentsToCreate < 14)
+				int rule = initConfig.getPreyConfig(cellIndx)->rule;
+				bool palatability = initConfig.getPreyConfig(cellIndx)->palatability;
+				int preyPop = initConfig.getPreyConfig(cellIndx)->population;
+
+				for(int p = 1; p <= preyPop; p++)
 				{
-					bs = new std::bitset<PATTERN_GENE_SIZE>(30);
-					genome.set(8, 0);
-					genome.set(9, 0);
-					rule30++;
-				} else {
-					bs = new std::bitset<PATTERN_GENE_SIZE>(110);
-					genome.set(8, 1);
-					genome.set(9, 1);
-					rule110++;
+					Genome<PREY_GENE_SIZE> genome(rule, palatability);
+					cells[i][j][k].insert(new Prey(this, &cells[i][j][k], cellToPos(i,j,k), genome));
 				}
 
-				for(int g = 0; g < PATTERN_GENE_SIZE; g++)
-					genome.set(g, (*bs)[PATTERN_GENE_SIZE - 1 - g]);
+				int predatorPop = initConfig.getPredatorConfig(cellIndx)->population;
 
-				std::bitset<7> bs1(randomInteger(pow(2.0, 7)));
-				for(int g = 0; g < 7; g++)
-					genome.set(10 + g, bs1[7 - 1 - g]);
-
-				//std::cout << "Genome: " << genome << std::endl;
-				
-				//if(noOfAgentsToCreate == 100)
-					cells[i][j][k].insert(new Prey(this, &cells[i][j][k], cellToPos(i,j,k), genome));
-
-				//Creating fewer Predators than Prey. One in every 5 Cell (approx...)
-				if(noOfAgentsToCreate % 20 == 0)
-				//if(noOfAgentsToCreate == 100)
+				for(int p = 1; p <= predatorPop; p++)
 				{
-					//Create random genome for Predators.
 					Genome<PREDATOR_GENE_SIZE> genome;
 					std::bitset<PREDATOR_GENE_SIZE> bs(randomInteger(pow(2.0, PREDATOR_GENE_SIZE)));
 					for(int g = 0; g < PREDATOR_GENE_SIZE; g++)
 						genome.set(g, bs[PREDATOR_GENE_SIZE - 1 - g]);
 
-					//std::cout << " predator gene: " << genome << std::endl;
 					cells[i][j][k].insert(new Predator(this, &cells[i][j][k], cellToPos(i,j,k), genome));
 				}
-				noOfAgentsToCreate++;
+				cellIndx++;
 			}
-
-	std::cout << "Prey population by CA rule: " << std::endl;	
-	std::cout << "rule30: " << rule30 << " rule110: " << rule110 << std::endl;
 	simTime = 0;
 	return true;
 }
@@ -219,6 +198,7 @@ void Model::stats()
 void Model::step()
 {
 	int preyPopulation = 0;
+	int predatorPop = 0;
 
 	// Process each agent.
 	moveLast = moveFirst;
@@ -252,6 +232,7 @@ void Model::step()
 					agentIter++;
 				}
 				preyPopulation += cells[i][j][k].getPop(Agent::PREY);
+				predatorPop += cells[i][j][k].getPop(Agent::PREDATOR);
 			}
 			
 	// Process event lists.
@@ -260,7 +241,10 @@ void Model::step()
 	processEvents(deathFirst, deathLast);
 
 	if(simTime % 100 == 0)
-		std::cout << "Prey Population: " << preyPopulation << std::endl;
+	{
+		std::cout << "Population Prey: " << preyPopulation;
+		std::cout << " Predator: " << predatorPop << std::endl;
+	}
 
 	if(simTime % 500 == 0)
 	{

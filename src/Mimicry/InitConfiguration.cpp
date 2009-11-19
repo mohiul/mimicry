@@ -18,16 +18,21 @@ InitConfiguration::InitConfiguration()
 			}
 }
 
-void InitConfiguration::readConfigFile(std::string configFile)
+bool InitConfiguration::readConfigFile(std::string configFile)
 {
 	std::ifstream xmlFile(configFile.c_str(), std::ios_base::in);
+
+	if( !xmlFile ) {
+		std::cerr << "Error opening input file: " << configFile.c_str() << std::endl;
+		return false;
+	}
+
 	std::string xmlStr = "";
 	std::string temp = "";
 
 	while (xmlFile >> temp)
 		xmlStr.append(temp);
 
-	std::cout << "XML->" << xmlStr << "<-XML" << std::endl;
 	xmlFile.close();
 
 	TiXmlDocument doc;
@@ -42,9 +47,9 @@ void InitConfiguration::readConfigFile(std::string configFile)
 			int rule = atoi(child->FirstChildElement("rule")->GetText());
 			int pop = atoi(child->FirstChildElement("population")->GetText());
 
-			std::string palatibilityInfo = std::string(child->FirstChildElement("palatability")->GetText());
+			std::string palatabilityInfo = std::string(child->FirstChildElement("palatability")->GetText());
 			bool palatability = false;
-			if(palatibilityInfo.compare("true"))
+			if(palatabilityInfo.compare("true"))
 				palatability = true;
 
 			TiXmlElement* location = child->FirstChildElement( "location" );
@@ -55,7 +60,7 @@ void InitConfiguration::readConfigFile(std::string configFile)
 			for(int i = 1; i <= pop; i++)
 			{
 				preyConfig[cellIndx]->rule = rule;
-				preyConfig[cellIndx]->palatibility = palatability;
+				preyConfig[cellIndx]->palatability = palatability;
 				preyConfig[cellIndx]->population++;
 
 				if(cellIndx == to)
@@ -63,9 +68,11 @@ void InitConfiguration::readConfigFile(std::string configFile)
 				cellIndx++;
 			}
 		}
+		child = 0;
 		while( child = agents->IterateChildren( "predator", child ) ) {
 			int pop = atoi(child->FirstChildElement("population")->GetText());
-			std::cout << "pop: " << pop << std::endl;
+
+			//std::cout << "pop: " << pop << std::endl;
 
 			TiXmlElement* location = child->FirstChildElement( "location" );
 			int from = atoi(location->FirstChildElement("from")->GetText());
@@ -84,6 +91,7 @@ void InitConfiguration::readConfigFile(std::string configFile)
 	} else {
 		std::cout << "Initial configuration file unformatted!!" << std::endl;
 	}
+	return true;
 }
 
 void InitConfiguration::printInitConfig()
@@ -95,7 +103,7 @@ void InitConfiguration::printInitConfig()
 			{
 				std::cout << "cellIndx: " << cellIndx 
 					<< " rule:" << preyConfig[cellIndx]->rule
-					<< " palatibility:" << preyConfig[cellIndx]->palatibility
+					<< " palatability:" << preyConfig[cellIndx]->palatability
 					<< " pop:"  << preyConfig[cellIndx]->population
 					<< " predator pop:"  << predatorConfig[cellIndx]->population
 					<< std::endl;

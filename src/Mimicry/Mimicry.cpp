@@ -143,6 +143,7 @@ enum
     STOP,
 };
 
+GLUI_EditText *ctlGeneBankName;
 GLUI_Button *ctlStart;
 GLUI_Button *ctlStop;
 GLUI_Button *ctlPause;
@@ -257,17 +258,17 @@ void control(int key)
         if (startEnabled)
         {
             glutSetWindow(modelWindow);
-            if (model.init())
-            {
+			//if (model.init(ctlGeneBankName->get_text()))
+   //         {
                 glutIdleFunc(idle);
                 startEnabled = false;
                 ctlStart->disable();
                 ctlStop->enable();
                 ctlPause->enable();
-				std::cout << "Model Initialized!" << std::endl;
-            }
-            else
-				std::cout << "Cannot initialize!" << std::endl;
+				//std::cout << "Model Initialized!" << std::endl;
+    //        }
+    //        else
+				//std::cout << "Cannot initialize!" << std::endl;
         }
         break;
 
@@ -339,6 +340,11 @@ int main(int argc, char** argv)
     // Initialization panel
     GLUI_Panel *initializationPanel = glui->add_panel("Initialization");
 
+    ctlGeneBankName = glui->add_edittext_to_panel(initializationPanel, "Configuration File", GLUI_EDITTEXT_TEXT);
+    ctlGeneBankName->set_w(150);
+    ctlGeneBankName->enable();
+    ctlGeneBankName->set_text("initialconfig.xml");
+
     ctlStart = glui->add_button_to_panel(initializationPanel, "Start", START, control);
 
     ctlStop = glui->add_button_to_panel(initializationPanel, "Stop", STOP, control);
@@ -375,6 +381,9 @@ int main(int argc, char** argv)
 
     ctlTranslateXY->set_speed(0.1);
     ctlTranslateZ->set_speed(0.1);
+
+	glutSetWindow(modelWindow);
+	model.init(ctlGeneBankName->get_text());
 
 	/* display callback invoked when window opened */
 	glutMainLoop(); /* enter event loop */
