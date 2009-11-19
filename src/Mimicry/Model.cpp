@@ -105,12 +105,8 @@ int mod(int index)
 bool Model::init(std::string configurationFile)
 {	
 	InitConfiguration initConfig;
-	//initConfig.printInitConfig();
-
 	if( !initConfig.readConfigFile(configurationFile) )
 		return false;
-
-	//initConfig.printInitConfig();
 
 	int cellIndx = 0;
 	
@@ -119,7 +115,6 @@ bool Model::init(std::string configurationFile)
 			for(int k = 0; k < ISIZE; k++)
 			{
 				cells[i][j][k] = Cell();
-
 				cells[i][j][k].setPos(cellToPos(i,j,k));
 
 				// Create neighbour array for this cell.
@@ -228,6 +223,9 @@ void Model::step()
 							Event *p = getEvent(moveFirst, moveLast);
 							p->setMove(agent, &cells[i][j][k], cb);
 						}
+					} else if (agent->getState() == Agent::DEAD) {
+						Event *p = getEvent(deathFirst, deathLast);
+						p->setDeath(agent, &cells[i][j][k]);
 					}
 					agentIter++;
 				}
