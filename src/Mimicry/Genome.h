@@ -24,6 +24,7 @@ private:
 
 public:
 	Genome();
+	Genome(int rule, bool palatability);
 	int get(int index);
 	void set(int index, int value);
 	Genome<SIZE> crossOver(Genome<SIZE>* _genome);
@@ -41,6 +42,31 @@ Genome<SIZE>::Genome()
 {
 	for(int i = 0; i < SIZE; i++)
 		gene[i] = 0;
+}
+
+/**
+ * Construct a \a Genome. Initialize all gene to zero.
+ */
+template<int SIZE>
+Genome<SIZE>::Genome(int rule, bool palatability)
+{
+	Genome();
+	if(palatability)
+	{
+		gene[8] = 0;
+		gene[9] = 0;
+	} else {
+		gene[8] = 1;
+		gene[9] = 1;
+	}
+	std::bitset<PATTERN_GENE_SIZE> bs(rule);
+
+	for(int g = 0; g < PATTERN_GENE_SIZE; g++)
+		gene[g] = bs[PATTERN_GENE_SIZE - 1 - g];
+
+	std::bitset<7> bs1(randomInteger((int)pow(2.0, 7)));
+	for(int g = 0; g < 7; g++)
+		gene[10 + g] = bs1[7 - 1 - g];
 }
 
 /**

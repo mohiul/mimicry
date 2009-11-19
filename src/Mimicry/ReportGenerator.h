@@ -22,7 +22,7 @@ public:
 	void printMimicryRingReport();
 private:
 
-	struct Functor
+	struct SortRingFunctor
 	{
 	  bool operator()( const Ring a, const Ring b )
 	  { return a.noOfPatterns > b.noOfPatterns; }

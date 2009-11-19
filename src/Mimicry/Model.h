@@ -19,7 +19,7 @@ class Model
 {
 public:
 	Model();
-	bool init();
+	bool init(std::string configurationFile);
 	void draw();
 	void stats();
 	void step();

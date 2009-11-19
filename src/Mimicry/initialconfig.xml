@@ -2,45 +2,52 @@
   <agents>
     <prey>
       <rule>110</rule>
-      <population>54</population>
+      <population>50</population>
       <palatability>true</palatability>
       <location>
-        <from>1</from>
-        <to>54</to>
+        <from>0</from>
+        <to>53</to>
       </location>
     </prey>
     <prey>
       <rule>30</rule>
-      <population>54</population>
+      <population>50</population>
       <palatability>false</palatability>
       <location>
-        <from>55</from>
-        <to>108</to>
+        <from>54</from>
+        <to>107</to>
       </location>
     </prey>
     <prey>
       <rule>50</rule>
-      <population>54</population>
+      <population>50</population>
       <palatability>true</palatability>
       <location>
-        <from>109</from>
-        <to>162</to>
+        <from>108</from>
+        <to>161</to>
       </location>
     </prey>
     <prey>
       <rule>190</rule>
-      <population>54</population>
+      <population>50</population>
       <palatability>false</palatability>
       <location>
         <from>162</from>
-        <to>216</to>
+        <to>215</to>
       </location>
     </prey>
     <predator>
-      <population>40</population>
+      <population>5</population>
       <location>
-        <from>110</from>
-        <to>150</to>
+        <from>11</from>
+        <to>15</to>
+      </location>
+    </predator>
+    <predator>
+      <population>5</population>
+      <location>
+        <from>111</from>
+        <to>115</to>
       </location>
     </predator>
   </agents>

@@ -15,11 +15,12 @@ struct PreyConfig
 {
 	PreyConfig()
 	{
+		rule = 0;
 		population = 0;
 	}
 	int rule;
 	int population;
-	bool palatibility;
+	bool palatability;
 };
 
 struct PredatorConfig
@@ -38,8 +39,20 @@ private:
 	PredatorConfig* predatorConfig[ISIZE*ISIZE*ISIZE];
 public:
 	InitConfiguration();
-	void readConfigFile(std::string configFile);
+	bool readConfigFile(std::string configFile);
+	PreyConfig* getPreyConfig(int cellIndx);
+	PredatorConfig* getPredatorConfig(int cellIndx);
 	void printInitConfig();
 };
+
+inline PreyConfig* InitConfiguration::getPreyConfig(int cellIndx)
+{
+	return preyConfig[cellIndx];
+}
+
+inline PredatorConfig* InitConfiguration::getPredatorConfig(int cellIndx)
+{
+	return predatorConfig[cellIndx];
+}
 
 #endif

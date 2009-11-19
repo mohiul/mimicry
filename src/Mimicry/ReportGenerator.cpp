@@ -49,7 +49,7 @@ void ReportGenerator::generateMimicryRingReport(Cell cells[][ISIZE][ISIZE])
 							}
 
 							rings.push_back(ring);
-							rings.sort(Functor());
+							rings.sort(SortRingFunctor());
 						}
 					}
 					agentIter++;
