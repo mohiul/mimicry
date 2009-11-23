@@ -44,8 +44,8 @@ const int PREDATOR_GENE_SIZE = 5;
 class System
 {
 public:
-	static const double WORLD_SIZE;
 	static const double HALF_WORLD_SIZE;
+	static const double WORLD_SIZE;
 	static const double CELL_SIZE;
 	static const int	TOTAL_NUMBER_OF_CELLS;
 	static const double FORCE_FACTOR;
@@ -77,9 +77,9 @@ public:
 	static const int	PREDATOR_ATTACK_AGE;
 	static const int	PREDATOR_ATTACK_INTERVAL;
 	static const float	PREDATOR_GENOME_MUTATION_RATE;
-	static const int	PREDATOR_DEMISE_AGE;
 	static const int	PREDATOR_REPRODUCTION_AGE_LIMIT;
 	static const int	PREDATOR_REPRODUCTION_INTERVAL;
+	static const int	PREDATOR_DEMISE_AGE;
 
 	static int showOutline;
 	static int showCells;

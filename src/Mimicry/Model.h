@@ -58,6 +58,10 @@ private:
     */
    GLdouble yRange;
 
+   /**
+    * Instance of the \a ReportGenerator class which will 
+	* generate Mimicry ring report.
+    */
    ReportGenerator report;
 
 };

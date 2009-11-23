@@ -232,8 +232,6 @@ void Prey::reproduce(Agent* agent)
 	Prey* prey = static_cast<Prey*>(agent);
 	if(prey->isCapableToReproduce())
 	{
-		//Genome<PREY_GENE_SIZE> newGenome = genome.crossOver(prey->getGenome());
-		//newGenome.mutate();
 		Genome<PREY_GENE_SIZE> newGenome = genome.crossOverExceptPatternGene(prey->getGenome());
 
 		if(System::PREY_GENOME_MUTATION_RATE * 100 > randomInteger(100))

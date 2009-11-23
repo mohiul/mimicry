@@ -198,6 +198,7 @@ void reshapeModel (int w, int h) {
 /**
 * Display the statistics window.
 */
+/*
 void displayStats (void)
 {
     if (updateStats)
@@ -210,10 +211,12 @@ void displayStats (void)
         glutSwapBuffers();
     }
 }
+*/
 
 /**
 * Reshape the statistics window in response to a user action.
 */
+/*
 void reshapeStats (int w, int h) {
     glViewport(0, 0, w, h);
     wStats = w;
@@ -225,14 +228,15 @@ void reshapeStats (int w, int h) {
     model.setStatsWindow(w, h, X_MAX_STATS, yMax);
     glutPostRedisplay();
 }
+*/
 
 void idle()
 {
 	glutSetWindow(modelWindow);
 	model.step();
 	glutPostRedisplay();
-    glutSetWindow(statsWindow);
-    glutPostRedisplay();
+    //glutSetWindow(statsWindow);
+    //glutPostRedisplay();
 
 }
 /** Termination */
@@ -258,17 +262,17 @@ void control(int key)
         if (startEnabled)
         {
             glutSetWindow(modelWindow);
-			//if (model.init(ctlGeneBankName->get_text()))
-   //         {
+			if (model.init(ctlGeneBankName->get_text()))
+            {
                 glutIdleFunc(idle);
                 startEnabled = false;
                 ctlStart->disable();
                 ctlStop->enable();
                 ctlPause->enable();
-				//std::cout << "Model Initialized!" << std::endl;
-    //        }
-    //        else
-				//std::cout << "Cannot initialize!" << std::endl;
+				std::cout << "Model Initialized!" << std::endl;
+            }
+            else
+				std::cout << "Cannot initialize!" << std::endl;
         }
         break;
 
@@ -324,6 +328,7 @@ int main(int argc, char** argv)
 	glutIdleFunc(0);
 
     // Set up statistics Window
+	/*
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
     glutInitWindowSize(W_STATS, H_STATS);
     glutInitWindowPosition(X_STATS, Y_STATS);
@@ -331,6 +336,7 @@ int main(int argc, char** argv)
     glClearColor(0, 0, 0, 1);
     glutDisplayFunc(displayStats);
     glutReshapeFunc(reshapeStats);
+	*/
 
 	glutKeyboardFunc(keyboard);
 
@@ -381,9 +387,6 @@ int main(int argc, char** argv)
 
     ctlTranslateXY->set_speed(0.1);
     ctlTranslateZ->set_speed(0.1);
-
-	glutSetWindow(modelWindow);
-	model.init(ctlGeneBankName->get_text());
 
 	/* display callback invoked when window opened */
 	glutMainLoop(); /* enter event loop */
