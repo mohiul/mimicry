@@ -6,7 +6,6 @@
 #include "System.h"
 #include "Event.h"
 #include "randutil.h"
-#include "ReportGenerator.h"
 #include "InitConfiguration.h"
 
 #include <iostream>
@@ -57,6 +56,110 @@ Model::Model()
 {
 
 }
+
+/**
+ * Draw a histogram in an OpenGL window.
+ * If the data is positive, the origin is at the left.
+ * If the data is positive and negative, the origin is in the middle.
+ * \param left is minimum X coordinate for enclosing box.
+ * \param right is maximum X coordinate for enclosing box.
+ * \param bottom is minimum Y coordinate for enclosing box.
+ * \param top is maximum Y coordinate for enclosing box.
+ * \param xSpacing gives character spacing for 9x15 characters.
+ * \param ySpacing gives line spacing for 9x15 characters.
+ * \param title describes the data.
+ * \param entries is the number of valid entries in the array \a data.
+ * \param data contains the data to be displayed.
+ * \param intervals is the number of intervals for the histogram.
+ */
+/*
+void drawHistogram(
+      double left, double right, double bottom, double top,
+      double xSpacing, double ySpacing, char *title, int entries,
+      double data[], int intervals)
+{
+   // Find maximum and set scaling factor for counting frequencies.
+   double maxData = data[0];
+   double minData = data[0];
+   double average = 0;
+   int i, h;
+   for (i = 0; i < entries; i++)
+   {
+      average += data[i];
+      if (maxData < data[i])
+         maxData = data[i];
+      if (minData > data[i])
+         minData = data[i];
+   }
+   if (entries > 0)
+      average /= entries;
+   double scale;
+   double offset;
+   if (minData < 0)
+   {
+      double max = -minData > maxData ? -minData : maxData;
+      scale = (intervals - 1) / (2 * max);
+      offset = (intervals - 1) / 2;
+   }
+   else
+   {
+      scale = (intervals - 1) / maxData;
+      offset = 0;
+   }
+   // Count frequencies and note maximum frequency for scaling.
+   const int COLUMNS = 100;
+   assert(intervals <= COLUMNS);
+   int hist[COLUMNS];
+   int maxFrequency = 0;
+   for (h = 0; h < intervals; h++)
+      hist[h] = 0;
+   for (i = 0; i < entries; i++)
+   {
+      int n = int(scale * data[i] + offset);
+      if (0 <= n && n < intervals)
+      {
+         hist[n]++;
+         if (maxFrequency < hist[n])
+            maxFrequency = hist[n];
+      }
+   }
+
+   // Find coordinates and draw bounding box.
+   double xstep = (right - left) / intervals;
+   double colwidth = 0.9 * xstep;
+   double yscale = (top - bottom) / maxFrequency;
+   double x = left;
+   glColor3fv(BLUE);
+   glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+   glRectd(left, bottom, right, top);
+
+   if (entries == 0)
+      return;
+
+   // Draw histogram bars.
+   glColor3fv(YELLOW);
+   glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+   for (h = 0, x = left; h < intervals; h++, x += xstep)
+      glRectd(x, bottom, x + colwidth, bottom + yscale * hist[h]);
+
+   // Write title and maximum values.
+   const int BUFLEN = 600;
+   char buffer[BUFLEN];
+   ostringstream os;
+   os.setf(ios::fixed, ios::floatfield);
+   os.precision(0);
+   glColor3fv(GREEN);
+   os <<
+      title << ": " <<
+      minData << " < " <<
+      average << " < " <<
+      maxData;
+   double midPoint = 0.5 * (left + right);
+   double xPos = midPoint - 0.5 * xSpacing * 20; // os.pcount();
+   double yPos = bottom - ySpacing;
+   showString(xPos, yPos, ySpacing, os.str().c_str());
+}
+*/
 
 /**
  * Convert a coordinate to the corresponding \a Cell index.
@@ -184,7 +287,8 @@ void Model::draw()
 
 void Model::stats()
 {
-
+	//ReportGenerator report;
+	//report.generateMimicryRingReport(cells);
 }
 
 /**
@@ -245,8 +349,7 @@ void Model::step()
 	}
 
 	if(simTime % 500 == 0)
-	{
-		ReportGenerator report;
+	{		
 		report.generateMimicryRingReport(cells);
 		report.printMimicryRingReport();
 		std::cout << "Sim time: " << simTime << std::endl;

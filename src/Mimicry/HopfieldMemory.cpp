@@ -80,8 +80,6 @@ Memory *HopfieldMemory::searchMemory(vector<int>* serializedPattern)
 		memoryIter != memoryList.end(); memoryIter++)
 		if(Utility::checkEquals(*serializedPattern, *(*memoryIter).pattern))
 			foundMemory = &(*memoryIter);
-	//if(foundMemory != 0)
-	//	std::cout << "palatability: " << foundMemory->palatability << std::endl;
 	return foundMemory;
 }
 

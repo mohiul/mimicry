@@ -31,6 +31,12 @@ Predator::Predator(Model* _model,
 	state = Agent::ALIVE;
 	memory = new HopfieldMemory(PATTERN_SIZE, PATTERN_SIZE);
 	lastAttackTime = 0;
+	capableToReproduce = false;
+	lastReproductionTime = 0;
+	state = Agent::ALIVE;
+
+	if(genome.get(4))
+		capableToReproduce = true;
 }
 
 /**
@@ -56,12 +62,19 @@ void Predator::step()
 {
 	age++;
 	force = formal::Vector(0, 0, 0);
-	mobilityBhvrGeneIndx0to5();
+	mobilityBhvrGeneIndx0to3();
 	if(age >= System::PREDATOR_ATTACK_AGE
 		&& ( lastAttackTime + System::PREDATOR_ATTACK_INTERVAL ) < model->getSimTime())
 		findPreyToAttack();
 
-	move();
+	if(age >= System::PREDATOR_REPRODUCTION_AGE_LIMIT 
+		&& ( lastReproductionTime + System::PREDATOR_REPRODUCTION_INTERVAL ) < model->getSimTime())
+		reproductionGeneIndx4();
+
+	if(age > System::PREDATOR_DEMISE_AGE)
+		kill();
+	else
+		move();
 }
 
 /**
@@ -74,17 +87,10 @@ void Predator::step()
  */
 void Predator::move()
 {
-	//std::cout << "force: " << force << std::endl;
-	//std::cout << "velocity: " << velocity << std::endl;
     formal::Vector acceleration = System::FORCE_FACTOR * force - System::FRICTION * velocity;
-	//std::cout << "acceleration: " << acceleration << std::endl;
     velocity += System::DT * acceleration;
-	//std::cout << "new velocity: " << velocity << std::endl;
     formal::Vector deltaPos = System::DT * velocity;
-	//std::cout << "deltaPos: " << deltaPos << std::endl;
-	//std::cout << "position: " << position << std::endl;
 	position += deltaPos;
-	//std::cout << "new position: " << position << std::endl;
 	model->checkPosition(position);
 }
 
@@ -100,7 +106,7 @@ void Predator::move()
  * contains zero predators, it would select any one of them randomly.
  */
 
-void Predator::mobilityBhvrGeneIndx0to5()
+void Predator::mobilityBhvrGeneIndx0to3()
 {
 	int forceMagnitude = genome.get(0)*1 + genome.get(1)*2 + genome.get(2)*3
 		+ genome.get(3)*4;
@@ -180,13 +186,25 @@ void Predator::findPreyToAttack()
  */
 void Predator::attack(Prey* prey)
 {
-	if(memory->getMemorySize() <= System::MIN_MEMORY_SIZE)
+	//std::cout << "memory size: " << memory->getMemorySize() << std::endl;
+	if(memory->getMemorySize() < System::MIN_MEMORY_SIZE)
 		attemptToKill(prey);
 	else
 	{
 		Memory *identifiedMemory = memory->recognize(&prey->pattern);
+
+		//if(identifiedMemory != 0)
+		//{
+		//	std::cout << "palatability: " << identifiedMemory->palatability << std::endl;
+		//	std::cout << "pattern: ";
+		//	memory->printInputPattern(*identifiedMemory->pattern);
+		//}
+
 		if(identifiedMemory == 0 || identifiedMemory->palatability)
+		{
+			//std::cout << "attemptToKill: " << prey << std::endl;
 			attemptToKill(prey);
+		}
 	}
 }
 
@@ -206,6 +224,23 @@ void Predator::attemptToKill(Prey* prey)
 		memory->addPattern(&prey->pattern, prey->isPalatable());
 }
 
+void Predator::reproductionGeneIndx4()
+{
+	int predatorPop = cell->getPop(Agent::PREDATOR);
+	if(capableToReproduce && predatorPop >= 1)
+	{
+		int rand = randomInteger(predatorPop);
+		std::list<Agent*> agentList = cell->getAgentList();
+		int preyCount = 0;
+		for(std::list<Agent*>::iterator agentIter = agentList.begin();
+			agentIter != agentList.end(); agentIter++)
+			if((*agentIter) != this && (*agentIter)->getState() == Agent::ALIVE 
+				&& (*agentIter)->getAgentType() == Agent::PREDATOR
+				&& preyCount++ == rand)
+					reproduce(*agentIter);
+	}
+}
+
 /**
  * Reproduce another \a Predator.
  * \todo Reproduction requires to be implemented and used. 
@@ -215,4 +250,25 @@ void Predator::attemptToKill(Prey* prey)
 void Predator::reproduce(Agent* agent)
 {
 	Predator* predator = static_cast<Predator*>(agent);
+	if(predator->isCapableToReproduce())
+	{
+		Genome<PREDATOR_GENE_SIZE> newGenome = genome.crossOver(predator->getGenome());
+
+		if(System::PREDATOR_GENOME_MUTATION_RATE * 100 > randomInteger(100))
+			newGenome.mutate();
+
+		Cell* randomNeighbour = cell->getNeighbour(randomInteger(NUM_CELL_NEIGHBOURS));
+		cell->insert(new Predator(model, randomNeighbour, randomNeighbour->getPos(), newGenome));
+		this->lastReproductionTime = model->getSimTime();
+		predator->lastReproductionTime = model->getSimTime();
+	}
+}
+
+/**
+ * Kill this \a Predator.
+ */
+void Predator::kill()
+{
+	state = Agent::DEAD;
+	cell->reducePop(Agent::PREDATOR);
 }

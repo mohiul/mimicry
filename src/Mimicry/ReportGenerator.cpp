@@ -5,6 +5,14 @@
 
 void ReportGenerator::generateMimicryRingReport(Cell cells[][ISIZE][ISIZE])
 {
+	for (std::list<Ring>::iterator ringIter = rings.begin(); 
+		ringIter != rings.end(); ringIter++)
+	{
+		(*ringIter).noOfPatterns = 0;
+		(*ringIter).palatable = 0;
+		(*ringIter).unpalatable = 0;
+	}
+
 	for(int i = 0; i < ISIZE; i++)
 		for(int j = 0; j < ISIZE; j++)
 			for(int k = 0; k < ISIZE; k++)
