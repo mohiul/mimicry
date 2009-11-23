@@ -49,10 +49,12 @@ public:
 	virtual void move() = 0;
 	virtual void reproduce(Agent* agent) = 0;
 	virtual AGENT_TYPE getAgentType() = 0;
+	virtual void kill() = 0;
 	void addForce(formal::Vector v);
 	formal::Vector getPosition();
 	void setCell(Cell* _cell);
 	Agent::State getState();
+	bool isCapableToReproduce();
 protected:
    /**
     * The position of the \a Agent. 
@@ -88,6 +90,18 @@ protected:
     * Pointer to the \a Cell of which the \a Agent is currently a part of.
     */
    Cell* cell;
+
+	/**
+	 * Reproduction behavior of the \a Agent.
+	 */
+	bool capableToReproduce;
+
+	/**
+	 * Contains last simulation time when this \a Prey has reproduced. 
+	 * Used to create a time interval between two consecutive reproduction by same Prey. 
+	 */
+	long lastReproductionTime;
+
 };
 
 class Prey;
@@ -104,9 +118,12 @@ public:
 	void draw();
 	void step();
 	void move();
+	void kill();
 	void reproduce(Agent* agent);
+	Genome<PREDATOR_GENE_SIZE>* getGenome();
 	AGENT_TYPE getAgentType();
-	void mobilityBhvrGeneIndx0to5();
+	void mobilityBhvrGeneIndx0to3();
+	void reproductionGeneIndx4();
 	void findPreyToAttack();
 	void attack(Prey* prey);
 	void attemptToKill(Prey* prey);
@@ -162,6 +179,7 @@ public:
 	void draw();
 	void step();
 	void move();
+	void kill();
 	void reproduce(Agent* agent);
 	Genome<PREY_GENE_SIZE>* getGenome();
 	AGENT_TYPE getAgentType();
@@ -173,8 +191,6 @@ public:
 	//Reproduction gene
 	void geneIndex16();
 	bool isPalatable();
-	bool isCapableToReproduce();
-	void kill();
 private:
 
 	/**
@@ -186,18 +202,6 @@ private:
 	 * Palatability behavior of the \a Prey. Determined from Gene index 8 and 9.
 	 */
 	bool palatability;
-
-	/**
-	 * Reproduction behavior of the \a Prey. Determined from Gene index 16.
-	 */
-	bool capableToReproduce;
-
-	/**
-	 * Contains last simulation time when this \a Prey has reproduced. 
-	 * Used to create a time interval between two consecutive reproduction by same Prey. 
-	 */
-	long lastReproductionTime;
-
 };
 
 /**
@@ -256,9 +260,25 @@ inline Agent::AGENT_TYPE Prey::getAgentType()
 }
 
 /**
+ * \return The reproduction capability of this \a Prey.
+ */
+inline bool Agent::isCapableToReproduce()
+{ 
+	return capableToReproduce; 
+}
+
+/**
  * \return Pointer to the \a Genome of this \a Prey.
  */
 inline Genome<PREY_GENE_SIZE>* Prey::getGenome()
+{ 
+	return &genome;
+}
+
+/**
+ * \return Pointer to the \a Genome of this \a Predator.
+ */
+inline Genome<PREDATOR_GENE_SIZE>* Predator::getGenome()
 { 
 	return &genome;
 }
@@ -269,14 +289,6 @@ inline Genome<PREY_GENE_SIZE>* Prey::getGenome()
 inline bool Prey::isPalatable()
 { 
 	return palatability; 
-}
-
-/**
- * \return The reproduction capability of this \a Prey.
- */
-inline bool Prey::isCapableToReproduce()
-{ 
-	return capableToReproduce; 
 }
 
 #endif

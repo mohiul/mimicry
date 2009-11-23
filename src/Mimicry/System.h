@@ -34,7 +34,7 @@ const int PATTERN_SIZE = 16;
 /**
  * This constant determines the number of genes in \a Predator \a Genome.
  */
-const int PREDATOR_GENE_SIZE = 4;
+const int PREDATOR_GENE_SIZE = 5;
 
 /**
  * Class \a System is used only to store the values of
@@ -57,11 +57,11 @@ public:
 	 * \a Prey properties
 	 */
 	static int			PREY_SIZE;
-	static const int	REPRODUCTION_AGE_LIMIT;
-	static const int	REPRODUCTION_INTERVAL;
+	static const int	PREY_REPRODUCTION_AGE_LIMIT;
+	static const int	PREY_REPRODUCTION_INTERVAL;
 	static const int	PREY_DEMISE_AGE;
 	static const float	PATTERN_MUTATION_RATE;
-	static const float	GENOME_MUTATION_RATE;
+	static const float	PREY_GENOME_MUTATION_RATE;
 
 	/**
 	 * \a Mimicry ring properties
@@ -76,7 +76,10 @@ public:
 	static const int	HOPFIELD_MAX_ITERATION;
 	static const int	PREDATOR_ATTACK_AGE;
 	static const int	PREDATOR_ATTACK_INTERVAL;
-
+	static const float	PREDATOR_GENOME_MUTATION_RATE;
+	static const int	PREDATOR_DEMISE_AGE;
+	static const int	PREDATOR_REPRODUCTION_AGE_LIMIT;
+	static const int	PREDATOR_REPRODUCTION_INTERVAL;
 
 	static int showOutline;
 	static int showCells;

@@ -8,6 +8,7 @@
 #include "Cell.h"
 #include "System.h"
 #include "Vector.h"
+#include "ReportGenerator.h"
 
 #include <GL/glut.h>
 
@@ -56,6 +57,8 @@ private:
     * Statistics window Y-coordinate range (zero at centre).
     */
    GLdouble yRange;
+
+   ReportGenerator report;
 
 };
 

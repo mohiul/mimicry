@@ -91,8 +91,8 @@ void Prey::step()
 	age++;
 	force = formal::Vector(0, 0, 0);
 	geneIndex10to15();
-	if(age >= System::REPRODUCTION_AGE_LIMIT 
-		&& ( lastReproductionTime + System::REPRODUCTION_INTERVAL ) < model->getSimTime())
+	if(age >= System::PREY_REPRODUCTION_AGE_LIMIT 
+		&& ( lastReproductionTime + System::PREY_REPRODUCTION_INTERVAL ) < model->getSimTime())
 		geneIndex16();
 	if(age > System::PREY_DEMISE_AGE)
 		kill();
@@ -236,7 +236,7 @@ void Prey::reproduce(Agent* agent)
 		//newGenome.mutate();
 		Genome<PREY_GENE_SIZE> newGenome = genome.crossOverExceptPatternGene(prey->getGenome());
 
-		if(System::GENOME_MUTATION_RATE * 100 > randomInteger(100))
+		if(System::PREY_GENOME_MUTATION_RATE * 100 > randomInteger(100))
 			newGenome.mutateExceptPatternGene();
 
 		if(System::PATTERN_MUTATION_RATE * 100 > randomInteger(100))
