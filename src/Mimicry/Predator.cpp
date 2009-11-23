@@ -115,15 +115,6 @@ void Predator::mobilityBhvrGeneIndx0to3()
 
 	std::list<Cell*> sortedNeighbours = cell->getSortedNeighbours(Agent::PREY);
 
-	//if(model->getSimTime() % 500 == 0)
-	//{
-	//	std::cout << "Cell: ";
-	//	for (std::list<Cell*>::iterator cellIter = sortedNeighbours.begin();
-	//		cellIter != sortedNeighbours.end(); cellIter++)
-	//		std::cout << " " << (*cellIter)->getPop(Agent::PREY);
-	//	std::cout << std::endl;
-	//}
-
 	if((*sortedNeighbours.begin())->getPop(Agent::PREY) > 0)
 	{
 		best = *sortedNeighbours.begin();
@@ -186,25 +177,13 @@ void Predator::findPreyToAttack()
  */
 void Predator::attack(Prey* prey)
 {
-	//std::cout << "memory size: " << memory->getMemorySize() << std::endl;
 	if(memory->getMemorySize() < System::MIN_MEMORY_SIZE)
 		attemptToKill(prey);
 	else
 	{
 		Memory *identifiedMemory = memory->recognize(&prey->pattern);
-
-		//if(identifiedMemory != 0)
-		//{
-		//	std::cout << "palatability: " << identifiedMemory->palatability << std::endl;
-		//	std::cout << "pattern: ";
-		//	memory->printInputPattern(*identifiedMemory->pattern);
-		//}
-
 		if(identifiedMemory == 0 || identifiedMemory->palatability)
-		{
-			//std::cout << "attemptToKill: " << prey << std::endl;
 			attemptToKill(prey);
-		}
 	}
 }
 

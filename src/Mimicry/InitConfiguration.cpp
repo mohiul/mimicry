@@ -1,3 +1,7 @@
+/**
+ * \file InitConfiguration.cpp
+ */
+
 #include "InitConfiguration.h"
 #include "tinyxml.h"
 
@@ -5,6 +9,9 @@
 #include <iostream>
 #include <cstdlib>
 
+/**
+ * Constructor for InitConfiguration class
+ */
 InitConfiguration::InitConfiguration()
 {
 	int cellIndx = 0;
@@ -18,6 +25,11 @@ InitConfiguration::InitConfiguration()
 			}
 }
 
+/**
+ * Read the configuration XML file which contains the initial configuration
+ * of all the species and setup the data structure used to create initial 
+ * configuration.
+ */
 bool InitConfiguration::readConfigFile(std::string configFile)
 {
 	std::ifstream xmlFile(configFile.c_str(), std::ios_base::in);
@@ -72,8 +84,6 @@ bool InitConfiguration::readConfigFile(std::string configFile)
 		while( child = agents->IterateChildren( "predator", child ) ) {
 			int pop = atoi(child->FirstChildElement("population")->GetText());
 
-			//std::cout << "pop: " << pop << std::endl;
-
 			TiXmlElement* location = child->FirstChildElement( "location" );
 			int from = atoi(location->FirstChildElement("from")->GetText());
 			int to = atoi(location->FirstChildElement("to")->GetText());
@@ -94,6 +104,9 @@ bool InitConfiguration::readConfigFile(std::string configFile)
 	return true;
 }
 
+/**
+ * Print the initial configuration of all the species in console.
+ */
 void InitConfiguration::printInitConfig()
 {
 	int cellIndx = 0;

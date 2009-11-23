@@ -125,8 +125,8 @@ void Cell::reducePop(Agent::AGENT_TYPE agentType)
 	{
 		assert((preyPopulation -1) < 0);
 		preyPopulation--;
-		if (preyPopulation < 0)
-			std::cout << "Alert!!! 1 Prey Population: " << preyPopulation << std::endl;
+		//if (preyPopulation < 0)
+		//	std::cout << "Alert!!! 1 Prey Population: " << preyPopulation << std::endl;
 	}
 	assert((population -1) < 0);
 	population--;

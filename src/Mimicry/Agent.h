@@ -97,8 +97,8 @@ protected:
 	bool capableToReproduce;
 
 	/**
-	 * Contains last simulation time when this \a Prey has reproduced. 
-	 * Used to create a time interval between two consecutive reproduction by same Prey. 
+	 * Contains last simulation time when this \a Agent has reproduced. 
+	 * Used to create a time interval between two consecutive reproduction by same Agent.
 	 */
 	long lastReproductionTime;
 

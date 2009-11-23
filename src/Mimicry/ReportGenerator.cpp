@@ -1,10 +1,21 @@
+/**
+ * \file ReportGenerator.cpp
+ */
+
 #include "ReportGenerator.h"
 
 #include <iostream>
 #include <iomanip>
 
+/**
+ * The purpose of this function is to calculate the number 
+ * of Mimicry ring present in the simulation and find 
+ * count of the number of species present in each ring.
+ * \param cells, 3D Array containing all the cells in the \a Model
+ */
 void ReportGenerator::generateMimicryRingReport(Cell cells[][ISIZE][ISIZE])
 {
+	//Initially set all count over the number of prey to zero.
 	for (std::list<Ring>::iterator ringIter = rings.begin(); 
 		ringIter != rings.end(); ringIter++)
 	{
@@ -13,12 +24,14 @@ void ReportGenerator::generateMimicryRingReport(Cell cells[][ISIZE][ISIZE])
 		(*ringIter).unpalatable = 0;
 	}
 
+	//Iterate over all the cells
 	for(int i = 0; i < ISIZE; i++)
 		for(int j = 0; j < ISIZE; j++)
 			for(int k = 0; k < ISIZE; k++)
 			{
 				std::list<Agent*> agentList = cells[i][j][k].getAgentList();
 				std::list<Agent*>::iterator agentIter = agentList.begin();
+				//Iterate over all the agents in each \a Cell
 				while( agentIter != agentList.end() )
 				{
 					Agent* agent = *agentIter;
@@ -30,6 +43,8 @@ void ReportGenerator::generateMimicryRingReport(Cell cells[][ISIZE][ISIZE])
 						for (std::list<Ring>::iterator ringIter = rings.begin(); 
 							ringIter != rings.end(); ringIter++)
 						{
+							//If \a Prey is within close hamming distance with the standard pattern
+							//then incease count.
 							if (calculateHammingDistance(ringIter->pattern, prey->pattern) 
 								<= System::MIMICRY_RING_HAMMING_DIST)
 							{
@@ -55,16 +70,21 @@ void ReportGenerator::generateMimicryRingReport(Cell cells[][ISIZE][ISIZE])
 								ring.palatable = 0;
 								ring.unpalatable = 1;
 							}
-
 							rings.push_back(ring);
-							rings.sort(SortRingFunctor());
 						}
 					}
 					agentIter++;
 				}
 			}
+	//Sort ring count according to number of agents in each ring. Descending order.
+	rings.sort(SortRingFunctor());
 }
 
+/**
+ * Calculate the hamming distance between two patterns.
+ * \param pattern1, CAPattern to calculate distance with.
+ * \param pattern2, other CAPattern to compare distance with.
+ */
 int ReportGenerator::calculateHammingDistance(CAPattern pattern1, CAPattern pattern2)
 {
 	int distance = 0;
@@ -75,6 +95,9 @@ int ReportGenerator::calculateHammingDistance(CAPattern pattern1, CAPattern patt
 	return distance;
 }
 
+/**
+ * Print the list of rings and the number of species in each ring into console
+ */
 void ReportGenerator::printMimicryRingReport()
 {
 	std::cout << "Rings.size(): " << rings.size() << std::endl;
