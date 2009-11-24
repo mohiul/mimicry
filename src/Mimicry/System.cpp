@@ -56,29 +56,29 @@ int System::PREY_SIZE = 2;
 /**
  * Minimum age for \a Prey species to start reproduction.
  */
-const int System::PREY_REPRODUCTION_AGE_LIMIT = 100;
+int System::PREY_REPRODUCTION_AGE_LIMIT = 100;
 
 /**
  * Time interval to wait before a \a Prey starts reproducing again.
  */
-const int System::PREY_REPRODUCTION_INTERVAL = 1000;
+int System::PREY_REPRODUCTION_INTERVAL = 1000;
 
 /**
  * Maximum age upto which \a Prey species will survie in the environment.
  */
-const int System::PREY_DEMISE_AGE = 2000;
+int System::PREY_DEMISE_AGE = 2000;
 
 /**
  * Probability of the number of new born \a Prey species mutating 
  * to a random new pattern
  */
-const float System::PATTERN_MUTATION_RATE = (float)0.00;
+float System::PATTERN_MUTATION_RATE = (float)0.01;
 
 /**
  * Probability of the number of new born \a Prey species with a 
  * mutating genome excluding the pattern genome
  */
-const float	System::PREY_GENOME_MUTATION_RATE = (float)0.3;
+float	System::PREY_GENOME_MUTATION_RATE = (float)0.3;
 
 /**
  * \a Mimicry ring properties
@@ -97,48 +97,48 @@ const int System::MIMICRY_RING_HAMMING_DIST = (int)(PATTERN_SIZE * PATTERN_SIZE 
 /**
  * Minimum number of patterns that need to be stored in Predator memory before starting recognition.
  */
-const int System::MIN_MEMORY_SIZE = 2;
+int System::MIN_MEMORY_SIZE = 2;
 
 /**
  * Maximum number of patterns stored in Hopfield Memory
  */
-const int System::MAX_MEMORY_SIZE = 10;
+int System::MAX_MEMORY_SIZE = 10;
 
 /**
  * Maximum number of iterations in Hopfield Memory recognition process.
  */
-const int System::HOPFIELD_MAX_ITERATION = 20;
+int System::HOPFIELD_MAX_ITERATION = 20;
 
 /**
  * Mimminum age for \a Predators to attack \a Prey species.
  */
-const int System::PREDATOR_ATTACK_AGE = 500;
+int System::PREDATOR_ATTACK_AGE = 500;
 
 /**
  * Time interval to wait before a \a Predator starts attacking again.
  */
-const int System::PREDATOR_ATTACK_INTERVAL = 100;
+int System::PREDATOR_ATTACK_INTERVAL = 100;
 
 /**
  * Probability of the number of new born \a Predator species with a 
  * mutating genome.
  */
-const float System::PREDATOR_GENOME_MUTATION_RATE = (float)0.3;
+float System::PREDATOR_GENOME_MUTATION_RATE = (float)0.3;
 
 /**
  * Mimminum age for \a Predator species to start reproduction.
  */
-const int System::PREDATOR_REPRODUCTION_AGE_LIMIT = 500;
+int System::PREDATOR_REPRODUCTION_AGE_LIMIT = 500;
 
 /**
  * Time interval to wait before a \a Predators start reproducing again.
  */
-const int System::PREDATOR_REPRODUCTION_INTERVAL = 1000;
+int System::PREDATOR_REPRODUCTION_INTERVAL = 1000;
 
 /**
  * Maximum age upto which \a Predator species will survive in the environment.
  */
-const int System::PREDATOR_DEMISE_AGE = 5000;
+int System::PREDATOR_DEMISE_AGE = 5000;
 
 /**
  * Display outline in the model window when non-zero.

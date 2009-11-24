@@ -136,8 +136,20 @@ bool startEnabled = true;
 
 enum
 {
-    ZOOM,
 	START,
+	PREY_SIZE,
+	PREY_REPRODUCTION_AGE_LIMIT,
+	PREY_REPRODUCTION_INTERVAL,
+	PREY_DEMISE_AGE,
+	PATTERN_MUTATION_RATE,
+	PREY_GENOME_MUTATION_RATE,
+	PREDATOR_REPRODUCTION_AGE_LIMIT,
+	PREDATOR_REPRODUCTION_INTERVAL,
+	PREDATOR_DEMISE_AGE,
+	PREDATOR_GENOME_MUTATION_RATE,
+	MIN_MEMORY_SIZE,
+	MAX_MEMORY_SIZE,
+	ZOOM,
     RESET,
     PAUSE,
     STOP,
@@ -276,6 +288,54 @@ void control(int key)
         }
         break;
 
+	case PREY_SIZE:
+		std::cout << "Sim Time = " << model.getSimTime() << ". Prey size changed to " << System::PREY_SIZE << std::endl;
+        break;
+
+	case PREY_REPRODUCTION_AGE_LIMIT:
+		std::cout << "Sim Time = " << model.getSimTime() << ". Prey reproduction age limit changed to " << System::PREY_REPRODUCTION_AGE_LIMIT << std::endl;
+        break;
+
+	case PREY_REPRODUCTION_INTERVAL:
+		std::cout << "Sim Time = " << model.getSimTime() << ". Prey reproduction interval changed to " << System::PREY_REPRODUCTION_INTERVAL << std::endl;
+        break;
+
+	case PREY_DEMISE_AGE:
+		std::cout << "Sim Time = " << model.getSimTime() << ". Prey demise age changed to " << System::PREY_REPRODUCTION_INTERVAL << std::endl;
+        break;
+
+	case PATTERN_MUTATION_RATE:
+		std::cout << "Sim Time = " << model.getSimTime() << ". Pattern mutation rate changed to " << System::PATTERN_MUTATION_RATE << std::endl;
+        break;
+
+	case PREY_GENOME_MUTATION_RATE:
+		std::cout << "Sim Time = " << model.getSimTime() << ". Prey genome mutation rate changed to " << System::PREY_GENOME_MUTATION_RATE << std::endl;
+        break;
+
+	case PREDATOR_REPRODUCTION_AGE_LIMIT:
+		std::cout << "Sim Time = " << model.getSimTime() << ". Predator reproduction age limit changed to " << System::PREDATOR_REPRODUCTION_AGE_LIMIT << std::endl;
+        break;
+
+	case PREDATOR_REPRODUCTION_INTERVAL:
+		std::cout << "Sim Time = " << model.getSimTime() << ". Predator reproduction interval changed to " << System::PREDATOR_REPRODUCTION_INTERVAL << std::endl;
+        break;
+
+	case PREDATOR_DEMISE_AGE:
+		std::cout << "Sim Time = " << model.getSimTime() << ". Predator demise age changed to " << System::PREDATOR_REPRODUCTION_INTERVAL << std::endl;
+        break;
+
+	case PREDATOR_GENOME_MUTATION_RATE:
+		std::cout << "Sim Time = " << model.getSimTime() << ". Predator genome mutation rate changed to " << System::PREDATOR_GENOME_MUTATION_RATE << std::endl;
+        break;
+
+	case MIN_MEMORY_SIZE:
+		std::cout << "Sim Time = " << model.getSimTime() << ". Predator minimum memory changed to " << System::MIN_MEMORY_SIZE << std::endl;
+        break;
+
+	case MAX_MEMORY_SIZE:
+		std::cout << "Sim Time = " << model.getSimTime() << ". Predator maximum memory changed to " << System::MAX_MEMORY_SIZE << std::endl;
+        break;
+
     case ZOOM:
         viewingAngle = (180 / PI) * atan(gluiPosition[2]) + 90;
         setProjection();
@@ -346,17 +406,145 @@ int main(int argc, char** argv)
     // Initialization panel
     GLUI_Panel *initializationPanel = glui->add_panel("Initialization");
 
-    ctlGeneBankName = glui->add_edittext_to_panel(initializationPanel, "Configuration File", GLUI_EDITTEXT_TEXT);
+    ctlGeneBankName = glui->add_edittext_to_panel(initializationPanel, "File Name", GLUI_EDITTEXT_TEXT);
     ctlGeneBankName->set_w(150);
     ctlGeneBankName->enable();
     ctlGeneBankName->set_text("initialconfig.xml");
 
-    ctlStart = glui->add_button_to_panel(initializationPanel, "Start", START, control);
+	glui->add_column_to_panel(initializationPanel, true);
 
+    ctlStart = glui->add_button_to_panel(initializationPanel, "Start", START, control);
     ctlStop = glui->add_button_to_panel(initializationPanel, "Stop", STOP, control);
     ctlStop->disable();
     ctlPause = glui->add_button_to_panel(initializationPanel, "Pause/Continue", PAUSE, control);
     ctlPause->disable();
+
+    // Run-time controls panel
+    GLUI_Panel *runtimePanel = glui->add_panel("Runtime Parameters");
+
+    // Prey Runtime configuration panel
+	GLUI_Panel *preyConfigPanel = glui->add_panel_to_panel(runtimePanel, "Prey Configuration");
+
+    GLUI_Spinner *preySize = glui->add_spinner_to_panel(
+        preyConfigPanel,
+        "Prey Size",
+        GLUI_SPINNER_INT,
+        &System::PREY_SIZE,
+        PREY_SIZE,
+        control);
+    preySize->set_int_limits(1, 5);
+
+	GLUI_Panel *preyReprodConfigPanel = glui->add_panel_to_panel(preyConfigPanel, "Reproduction");
+
+    GLUI_Spinner *preyReproductionAgeLimit = glui->add_spinner_to_panel(
+        preyReprodConfigPanel,
+        "Age Limit",
+        GLUI_SPINNER_INT,
+		&System::PREY_REPRODUCTION_AGE_LIMIT,
+        PREY_REPRODUCTION_AGE_LIMIT,
+        control);
+    preyReproductionAgeLimit->set_int_limits(100, 10000);
+
+    GLUI_Spinner *preyReproductionInterval = glui->add_spinner_to_panel(
+        preyReprodConfigPanel,
+        "Interval",
+        GLUI_SPINNER_INT,
+		&System::PREY_REPRODUCTION_INTERVAL,
+        PREY_REPRODUCTION_INTERVAL,
+        control);
+    preyReproductionInterval->set_int_limits(100, 10000);
+
+    GLUI_Spinner *preyDemiseAge = glui->add_spinner_to_panel(
+        preyConfigPanel,
+        "Demise Age",
+        GLUI_SPINNER_INT,
+		&System::PREY_DEMISE_AGE,
+        PREY_DEMISE_AGE,
+        control);
+    preyDemiseAge->set_int_limits(100, 10000);
+
+    GLUI_Spinner *patternMutationRate = glui->add_spinner_to_panel(
+        preyConfigPanel,
+        "Pattern Mutation Rate",
+        GLUI_SPINNER_FLOAT,
+		&System::PATTERN_MUTATION_RATE,
+        PATTERN_MUTATION_RATE,
+        control);
+    patternMutationRate->set_int_limits(0.01, 1.0);
+
+    GLUI_Spinner *preyGenomeMutationRate = glui->add_spinner_to_panel(
+        preyConfigPanel,
+        "Genome Mutation Rate",
+        GLUI_SPINNER_FLOAT,
+		&System::PREY_GENOME_MUTATION_RATE,
+        PREY_GENOME_MUTATION_RATE,
+        control);
+    preyGenomeMutationRate->set_int_limits(0.01, 1.0);
+
+	glui->add_column_to_panel(runtimePanel, true);
+
+	// Predator Runtime configuration panel
+	GLUI_Panel *predatorConfigPanel = glui->add_panel_to_panel(runtimePanel, "Predator Configuration");
+
+	GLUI_Panel *predatorReprodConfigPanel = glui->add_panel_to_panel(predatorConfigPanel, "Reproduction");
+
+    GLUI_Spinner *predatorReproductionAgeLimit = glui->add_spinner_to_panel(
+        predatorReprodConfigPanel,
+        "Age Limit",
+        GLUI_SPINNER_INT,
+		&System::PREDATOR_REPRODUCTION_AGE_LIMIT,
+        PREDATOR_REPRODUCTION_AGE_LIMIT,
+        control);
+    predatorReproductionAgeLimit->set_int_limits(100, 10000);
+
+    GLUI_Spinner *predatorReproductionInterval = glui->add_spinner_to_panel(
+        predatorReprodConfigPanel,
+        "Interval",
+        GLUI_SPINNER_INT,
+		&System::PREDATOR_REPRODUCTION_INTERVAL,
+        PREDATOR_REPRODUCTION_INTERVAL,
+        control);
+    predatorReproductionInterval->set_int_limits(100, 10000);
+
+    GLUI_Spinner *predatorDemiseAge = glui->add_spinner_to_panel(
+        predatorConfigPanel,
+        "Demise Age",
+        GLUI_SPINNER_INT,
+		&System::PREDATOR_DEMISE_AGE,
+        PREDATOR_DEMISE_AGE,
+        control);
+    predatorDemiseAge->set_int_limits(100, 10000);
+
+    GLUI_Spinner *predatorGenomeMutationRate = glui->add_spinner_to_panel(
+        predatorConfigPanel,
+        "Mutation Rate",
+        GLUI_SPINNER_FLOAT,
+		&System::PREDATOR_GENOME_MUTATION_RATE,
+        PREDATOR_GENOME_MUTATION_RATE,
+        control);
+    predatorGenomeMutationRate->set_int_limits(0.01, 1.0);
+
+	GLUI_Panel *hopfieldNetworkConfg = glui->add_panel_to_panel(predatorConfigPanel, "Memory Configurations");
+
+    GLUI_Spinner *predatorMinMemorySize = glui->add_spinner_to_panel(
+        hopfieldNetworkConfg,
+        "Minimum",
+        GLUI_SPINNER_INT,
+		&System::MIN_MEMORY_SIZE,
+        MIN_MEMORY_SIZE,
+        control);
+    predatorMinMemorySize->set_int_limits(2, 20);
+
+    GLUI_Spinner *predatorMaxMemorySize = glui->add_spinner_to_panel(
+        hopfieldNetworkConfg,
+        "Maximum",
+        GLUI_SPINNER_INT,
+		&System::MAX_MEMORY_SIZE,
+        MAX_MEMORY_SIZE,
+        control);
+    predatorMaxMemorySize->set_int_limits(2, 20);
+
+	glui->add_column(true);
 
     // Model view panel
     GLUI_Panel *modelViewPanel = glui->add_panel("Model view");
@@ -382,8 +570,14 @@ int main(int argc, char** argv)
 	glui->add_checkbox_to_panel(modelViewPanel, "Update model", &updateModel);
     glui->add_checkbox_to_panel(modelViewPanel, "Update statistics", &updateStats);
 
-	glui->add_checkbox_to_panel(modelViewPanel, "Outline", &System::showOutline);
-	glui->add_checkbox_to_panel(modelViewPanel, "View Cells", &System::showCells);
+    // Run-time controls panel
+    GLUI_Panel *controlsPanel = glui->add_panel("Runtime Controls");
+
+    // View Selection panel
+	GLUI_Panel *viewSelectionPanel = glui->add_panel_to_panel(controlsPanel, "View Selection");
+
+	glui->add_checkbox_to_panel(viewSelectionPanel, "Outline", &System::showOutline);
+	glui->add_checkbox_to_panel(viewSelectionPanel, "View Cells", &System::showCells);
 
     ctlTranslateXY->set_speed(0.1);
     ctlTranslateZ->set_speed(0.1);
