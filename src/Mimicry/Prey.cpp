@@ -224,8 +224,10 @@ void Prey::geneIndex16()
  * Reproduce and mutate with another \a Prey.
  * \param agent Prey species with which the reproduction process will take place.
  * If the randomly selected Prey is capable to reproduce, then a crossover
- * and mutation is performed among both its genome and a new Prey is born
- * and added to a randomly choosen neighbourhood cell.
+ * is performed among both its genome with the selected Prey giving birth to a new Prey
+ * and adding it to a randomly choosen neighbourhood cell. Mutation on the new born is
+ * performed separately on the pattern genome and the rest of the genome using two 
+ * different mutation rate.
  */
 void Prey::reproduce(Agent* agent)
 {
