@@ -1,6 +1,6 @@
 ﻿<!--
 This file contains initial configuration information of the 
-agents of Mimicry silumation.
+agents of Mimicry simulation.
 
 <root></root>:
 This is the standard root tag of the XML file.
@@ -34,11 +34,11 @@ of the specific category.
 <location><from>0</from><to>53</to></location>:
 Index location of the category of prey in the model. It can vary
 from 0 to 215 depending on the value of the variable System::ISIZE.
-If ISIZE = 6 then location index can vary upto ISIZE^3-1.
+If ISIZE = 6 then location index can vary from 0 to ISIZE^3-1.
 
 <predator></predator>:
-Similar to the prey tag the predator tag contains location and population
-information. Multiple occurance of this tag is allowed. The population
+Similar to the prey tag the predator tag contains <location> and <population>
+information tag. Multiple occurance of this tag is allowed. The population
 of predator is evenly distributed all over the location mentioned.
 -->
 
