@@ -102,7 +102,7 @@ void Predator::move()
  * neighbourhood. If no prey is present in the nieghbourhood then 
  * this force is active in trying to keep predators distributed
  * all over the cells. A predator chooses the neighbourhood cell which 
- * contains the least number of predators and when the neighbourhood
+ * contains the least number of predators. When the neighbourhood
  * contains zero predators, it would select any one of them randomly.
  */
 
