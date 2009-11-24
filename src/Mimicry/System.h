@@ -56,12 +56,12 @@ public:
 	/**
 	 * \a Prey properties
 	 */
-	static int			PREY_SIZE;
-	static const int	PREY_REPRODUCTION_AGE_LIMIT;
-	static const int	PREY_REPRODUCTION_INTERVAL;
-	static const int	PREY_DEMISE_AGE;
-	static const float	PATTERN_MUTATION_RATE;
-	static const float	PREY_GENOME_MUTATION_RATE;
+	static int		PREY_SIZE;
+	static int		PREY_REPRODUCTION_AGE_LIMIT;
+	static int		PREY_REPRODUCTION_INTERVAL;
+	static int		PREY_DEMISE_AGE;
+	static float	PATTERN_MUTATION_RATE;
+	static float	PREY_GENOME_MUTATION_RATE;
 
 	/**
 	 * \a Mimicry ring properties
@@ -71,15 +71,15 @@ public:
 	/**
 	 * \a Predator properties
 	 */
-	static const int	MIN_MEMORY_SIZE;
-	static const int	MAX_MEMORY_SIZE;
-	static const int	HOPFIELD_MAX_ITERATION;
-	static const int	PREDATOR_ATTACK_AGE;
-	static const int	PREDATOR_ATTACK_INTERVAL;
-	static const float	PREDATOR_GENOME_MUTATION_RATE;
-	static const int	PREDATOR_REPRODUCTION_AGE_LIMIT;
-	static const int	PREDATOR_REPRODUCTION_INTERVAL;
-	static const int	PREDATOR_DEMISE_AGE;
+	static int		MIN_MEMORY_SIZE;
+	static int		MAX_MEMORY_SIZE;
+	static int		HOPFIELD_MAX_ITERATION;
+	static int		PREDATOR_ATTACK_AGE;
+	static int		PREDATOR_ATTACK_INTERVAL;
+	static float	PREDATOR_GENOME_MUTATION_RATE;
+	static int		PREDATOR_REPRODUCTION_AGE_LIMIT;
+	static int		PREDATOR_REPRODUCTION_INTERVAL;
+	static int		PREDATOR_DEMISE_AGE;
 
 	static int showOutline;
 	static int showCells;
