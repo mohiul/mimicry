@@ -1,25 +1,69 @@
-﻿<root>
+﻿<!--
+This file contains initial configuration information of the 
+agents of Mimicry silumation.
+
+<root></root>:
+This is the standard root tag of the XML file.
+
+<agents></agents>:
+This tag contains information regarding the population
+of agents present at the initial stage of the simulation.
+Only one occurance of this tag is allowed.
+
+<prey></prey>:
+Contains information about each category of prey species.
+Multiple occurances of this tag is allowed depending the 
+number of category of prey species to be present in the 
+initial configuration.
+
+<rule></rule>:
+This is the Cellular Automata rule with which the prey
+species will be constructed. Varies from 0 to 255, 
+first 8 bits of the prey genome.
+
+<population></population>:
+Population of prey species of the category specified.
+Can vary from 0 to infinity. Depending of this value the population
+of prey species in each cell will be evenly distributed according to 
+the specified location index.
+
+<palatability></palatability>:
+This tag defines the palatability behavior of the prey species
+of the specific category.
+
+<location><from>0</from><to>53</to></location>:
+Index location of the category of prey in the model. It can vary
+from 0 to 215 depending on the value of the variable System::ISIZE.
+If ISIZE = 6 then location index can vary upto ISIZE^3-1.
+
+<predator></predator>:
+Similar to the prey tag the predator tag contains location and population
+information. Multiple occurance of this tag is allowed. The population
+of predator is evenly distributed all over the location mentioned.
+-->
+
+<root>
   <agents>
     <prey>
       <rule>110</rule>
-      <population>50</population>
+      <population>108</population>
       <palatability>true</palatability>
       <location>
         <from>0</from>
-        <to>53</to>
-      </location>
-    </prey>
-    <prey>
-      <rule>30</rule>
-      <population>50</population>
-      <palatability>false</palatability>
-      <location>
-        <from>54</from>
         <to>107</to>
       </location>
     </prey>
     <prey>
-      <rule>50</rule>
+      <rule>30</rule>
+      <population>108</population>
+      <palatability>false</palatability>
+      <location>
+        <from>108</from>
+        <to>215</to>
+      </location>
+    </prey>
+    <!--<prey>
+      <rule>55</rule>
       <population>50</population>
       <palatability>true</palatability>
       <location>
@@ -35,7 +79,7 @@
         <from>162</from>
         <to>215</to>
       </location>
-    </prey>
+    </prey>-->
     <predator>
       <population>5</population>
       <location>
