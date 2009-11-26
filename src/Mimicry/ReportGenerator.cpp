@@ -19,9 +19,9 @@ void ReportGenerator::generateMimicryRingReport(Cell cells[][ISIZE][ISIZE])
 	for (std::list<Ring>::iterator ringIter = rings.begin(); 
 		ringIter != rings.end(); ringIter++)
 	{
-		(*ringIter).noOfPatterns = 0;
-		(*ringIter).palatable = 0;
-		(*ringIter).unpalatable = 0;
+		ringIter->noOfPatterns = 0;
+		ringIter->palatable = 0;
+		ringIter->unpalatable = 0;
 	}
 
 	//Iterate over all the cells
@@ -78,6 +78,24 @@ void ReportGenerator::generateMimicryRingReport(Cell cells[][ISIZE][ISIZE])
 			}
 	//Sort ring count according to number of agents in each ring. Descending order.
 	rings.sort(SortRingFunctor());
+
+	//Remove rings which has zero number of species.
+	if(rings.size() > 0)
+	{
+		std::list<Ring>::iterator ringIter = rings.end();
+		ringIter--;
+		while(ringIter->noOfPatterns == 0)
+		{
+			rings.pop_back();
+			if(rings.size() > 0)
+			{
+				ringIter = rings.end();
+				ringIter--;
+			}
+			else
+				break;
+		}
+	}
 }
 
 /**
