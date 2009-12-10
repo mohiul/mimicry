@@ -127,16 +127,21 @@ void Predator::mobilityBhvrGeneIndx0to3()
 			if((*cellIter)->getPop(Agent::PREDATOR) == 0)
 				zeroPopNeighbours.push_back(*cellIter);
 
-		int randCell = randomInteger(zeroPopNeighbours.size());
-
-		int indx = 0;
-		for (std::list<Cell*>::iterator cellIter = zeroPopNeighbours.begin();
-			cellIter != zeroPopNeighbours.end(); cellIter++)
-			if(indx++ == randCell)
-			{
-				best = *cellIter;
-				break;
-			}
+		if( zeroPopNeighbours.size() > 0 )
+		{
+			int randCell = randomInteger(zeroPopNeighbours.size());
+			
+			int indx = 0;
+			for (std::list<Cell*>::iterator cellIter = zeroPopNeighbours.begin();
+				cellIter != zeroPopNeighbours.end(); cellIter++)
+				if(indx++ == randCell)
+				{
+					best = *cellIter;
+					break;
+				}
+		} else {
+			best = *--sortedNeighbours.end();
+		}
 	}
 	if (best != cell)
 		addForce(forceMagnitude * offset(best, cell));
