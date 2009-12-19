@@ -6,6 +6,8 @@
 
 #include <iostream>
 #include <iomanip>
+#include <algorithm>
+#include <ctime>
 
 /**
  * The purpose of this function is to calculate the number 
@@ -13,7 +15,7 @@
  * count of the number of species present in each ring.
  * \param cells, 3D Array containing all the cells in the \a Model
  */
-void ReportGenerator::generateMimicryRingReport(Cell cells[][ISIZE][ISIZE])
+void ReportGenerator::generateMimicryRingReport(Cell cells[][ISIZE][ISIZE], long simTime)
 {
 	//Initially set all count over the number of prey to zero.
 	for (std::list<Ring>::iterator ringIter = rings.begin(); 
@@ -67,8 +69,8 @@ void ReportGenerator::generateMimicryRingReport(Cell cells[][ISIZE][ISIZE])
 								ring.palatable = 1;
 								ring.unpalatable = 0;
 							} else {
-								ring.palatable = 0;
 								ring.unpalatable = 1;
+								ring.palatable = 0;
 							}
 							rings.push_back(ring);
 						}
@@ -77,7 +79,7 @@ void ReportGenerator::generateMimicryRingReport(Cell cells[][ISIZE][ISIZE])
 				}
 			}
 	//Sort ring count according to number of agents in each ring. Descending order.
-	rings.sort(SortRingFunctor());
+	rings.sort(SortRingFunctorByPopulation());
 
 	//Remove rings which has zero number of species.
 	if(rings.size() > 0)
@@ -96,6 +98,7 @@ void ReportGenerator::generateMimicryRingReport(Cell cells[][ISIZE][ISIZE])
 				break;
 		}
 	}
+	storeHistory(simTime);
 }
 
 /**
@@ -116,6 +119,72 @@ int ReportGenerator::calculateHammingDistance(CAPattern pattern1, CAPattern patt
 /**
  * Print the list of rings and the number of species in each ring into console
  */
+void ReportGenerator::storeHistory(long simTime)
+{
+	ringHistoryMap[simTime] = rings;
+}
+
+/**
+ * Write information about Mimicry rings in a log file to generate reports.
+ */
+void ReportGenerator::writeMimicryRingReport()
+{	
+	std::map<long, std::map<int, Ring>> tempRingHistoryMap;
+	std::set<int> allPatterns;
+
+	std::map<long, std::list<Ring>>::iterator iter;
+
+	for( iter = ringHistoryMap.begin(); iter != ringHistoryMap.end(); ++iter )
+	{
+		std::list<Ring> ringList = iter->second;
+		std::list<Ring>::iterator ringIter;
+		for (ringIter = ringList.begin(); ringIter != ringList.end(); ringIter++)
+			allPatterns.insert(ringIter->pattern.getCARule());
+	}
+
+	//sort(allPatterns.begin(), allPatterns.end());
+
+	for( iter = ringHistoryMap.begin(); iter != ringHistoryMap.end(); ++iter )
+	{
+		long simTime = iter->first;
+		std::list<Ring> ringList = iter->second;
+		
+		std::map<int, Ring> newRingMap;
+
+		std::set<int>::iterator patternIter;
+		for (patternIter = allPatterns.begin(); patternIter != allPatterns.end(); patternIter++)
+			newRingMap[*patternIter] = Ring();
+
+		std::list<Ring>::iterator ringIter;
+		for (ringIter = ringList.begin(); ringIter != ringList.end(); ringIter++)
+			newRingMap[ringIter->pattern.getCARule()] = *ringIter;
+
+		tempRingHistoryMap[simTime] = newRingMap;
+	}
+
+	std::map<long, std::map<int, Ring>>::iterator tempMapIter;
+
+	createFile();
+	
+	for( tempMapIter = tempRingHistoryMap.begin(); tempMapIter != tempRingHistoryMap.end(); ++tempMapIter )
+	{
+		logfile << tempMapIter->first << " ";
+		std::map<int, Ring> ringMap = tempMapIter->second;
+
+		std::map<int, Ring>::iterator ringMapIter;
+		for(ringMapIter = ringMap.begin(); ringMapIter != ringMap.end(); ++ringMapIter)
+		{
+			logfile << ringMapIter->first << " " << ringMapIter->second.noOfPatterns << " "
+				<< ringMapIter->second.palatable << " " << ringMapIter->second.unpalatable << " ";
+		}
+		logfile << std::endl;
+	}
+	logfile.close();
+}
+
+/**
+ * Print the list of rings and the number of species in each ring into console
+ */
 void ReportGenerator::printMimicryRingReport()
 {
 	std::cout << "Rings.size(): " << rings.size() << std::endl;
@@ -127,4 +196,32 @@ void ReportGenerator::printMimicryRingReport()
 			<< " palatable: " << std::setw(4) << (*ringIter).palatable
 			<< " unpalatable: " << std::setw(4) << (*ringIter).unpalatable << std::endl;
 	}
+}
+
+void ReportGenerator::createFile()
+{
+	time_t lt = time(0);
+	struct tm *ptr = localtime(&lt);
+	int h = ptr->tm_hour;
+	if (ptr->tm_isdst)
+	  h++;
+
+	std::ostringstream os;
+	os.fill('0');
+	os <<
+	  std::setw(4) << ptr->tm_year+1900 <<
+	  std::setw(2) << ptr->tm_mon <<
+	  std::setw(2) << ptr->tm_mday << '.' <<
+	  std::setw(2) << ptr->tm_hour <<
+	  std::setw(2) << ptr->tm_min <<
+	  std::setw(2) << ptr->tm_sec;
+	const char *timeString = os.str().c_str();
+
+	const int BUFLEN = 200;
+	static char bufferLogFile[BUFLEN];
+	strcpy(bufferLogFile, "log.");
+	strcat(bufferLogFile, timeString);
+	strcat(bufferLogFile, ".txt");
+	logFileName = &bufferLogFile[0];
+	logfile.open(logFileName);
 }

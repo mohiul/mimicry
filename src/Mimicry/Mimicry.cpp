@@ -154,6 +154,7 @@ enum
     RESET,
     PAUSE,
     STOP,
+	RING_REPORT
 };
 
 GLUI_EditText *ctlGeneBankName;
@@ -368,12 +369,16 @@ void control(int key)
         }
         paused = !paused;
         break;
+
+    case RING_REPORT:
+        model.ringReport();
+        break;
+
    }
 }
 
 int main(int argc, char** argv)
 {
-
 	/* standard GLUT initialization */
 
 	glutInit(&argc,argv);
@@ -581,6 +586,10 @@ int main(int argc, char** argv)
 
 	glui->add_checkbox_to_panel(viewSelectionPanel, "Outline", &System::showOutline);
 	glui->add_checkbox_to_panel(viewSelectionPanel, "View Cells", &System::showCells);
+
+    // Reports panel
+    GLUI_Panel *reportPanel = glui->add_panel_to_panel(controlsPanel, "Reports");
+    glui->add_button_to_panel(reportPanel, "Rings", RING_REPORT, control);
 
     ctlTranslateXY->set_speed(0.1);
     ctlTranslateZ->set_speed(0.1);
