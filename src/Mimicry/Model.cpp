@@ -247,11 +247,16 @@ void Model::step()
 
 	if(simTime % 500 == 0)
 	{		
-		report.generateMimicryRingReport(cells);
+		report.generateMimicryRingReport(cells, simTime);
 		report.printMimicryRingReport();
 	}
 
 	simTime++;
+}
+
+void Model::ringReport()
+{
+	report.writeMimicryRingReport();
 }
 
 /**

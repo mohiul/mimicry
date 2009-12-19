@@ -10,6 +10,11 @@
 #include "CAPattern.h"
 
 #include <list>
+#include <map>
+#include <set>
+#include <fstream>
+#include <sstream>
+#include <string>
 
 /**
  * A structure that contains information of a single ring.
@@ -22,6 +27,12 @@
  */
 struct Ring
 {
+	Ring()
+	{
+		noOfPatterns = 0;
+		palatable = 0;
+		unpalatable = 0;
+	}
 	CAPattern pattern;
 	int noOfPatterns;
 	int palatable;
@@ -44,19 +55,40 @@ private:
 	std::list<Ring> rings;
 
 	/**
+	 * The list of rings which has similarity with the standard pattern.
+	 */
+	std::map<long, std::list<Ring>> ringHistoryMap;
+
+	char *logFileName;
+	std::ofstream logfile;
+
+	/**
 	 * This structure is used to sort the list of mimicry rings according to their
 	 * number of patterns.
 	 */
-	struct SortRingFunctor
+	struct SortRingFunctorByPopulation
 	{
 	  bool operator()( const Ring a, const Ring b )
 	  { return a.noOfPatterns > b.noOfPatterns; }
 	};
 
+	/**
+	 * This structure is used to sort the list of mimicry rings according to their
+	 * number of patterns.
+	 */
+	//struct SortRingFunctorByPattern
+	//{
+	//  bool operator()( const Ring a, const Ring b )
+	//  { return a.pattern.getCARule() > b.pattern.getCARule(); }
+	//};
+
 	int calculateHammingDistance(CAPattern pattern1, CAPattern pattern2);
 public:
-	void generateMimicryRingReport(Cell cells[][ISIZE][ISIZE]);
+	void generateMimicryRingReport(Cell cells[][ISIZE][ISIZE], long simTime);
+	void storeHistory(long simTime);
 	void printMimicryRingReport();
+	void writeMimicryRingReport();
+	void createFile();
 };
 
 #endif

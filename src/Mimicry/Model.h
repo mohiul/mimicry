@@ -27,6 +27,7 @@ public:
 	void checkPosition(formal::Vector & pos);
 	void setStatsWindow(int newWidth, int newHeight, GLdouble newXRange, GLdouble newYRange);
 	long getSimTime();
+	void ringReport();
 private:
    /**
     * The current simulation time.
