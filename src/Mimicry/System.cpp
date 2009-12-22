@@ -72,13 +72,13 @@ int System::PREY_DEMISE_AGE = 2000;
  * Probability of the number of new born \a Prey species mutating 
  * to a random new pattern
  */
-float System::PATTERN_MUTATION_RATE = (float)0.1;
+float System::PATTERN_MUTATION_RATE = (float)0.01;
 
 /**
  * Probability of the number of new born \a Prey species with a 
  * mutating genome excluding the pattern genome
  */
-float	System::PREY_GENOME_MUTATION_RATE = (float)0.01;
+float	System::PREY_GENOME_MUTATION_RATE = (float)0.5;
 
 /**
  * \a Mimicry ring properties

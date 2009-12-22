@@ -8,6 +8,7 @@
 #include <iomanip>
 #include <algorithm>
 #include <ctime>
+#include <stdlib.h>
 
 /**
  * The purpose of this function is to calculate the number 
@@ -142,8 +143,6 @@ void ReportGenerator::writeMimicryRingReport()
 			allPatterns.insert(ringIter->pattern.getCARule());
 	}
 
-	//sort(allPatterns.begin(), allPatterns.end());
-
 	for( iter = ringHistoryMap.begin(); iter != ringHistoryMap.end(); ++iter )
 	{
 		long simTime = iter->first;
@@ -168,14 +167,16 @@ void ReportGenerator::writeMimicryRingReport()
 	
 	for( tempMapIter = tempRingHistoryMap.begin(); tempMapIter != tempRingHistoryMap.end(); ++tempMapIter )
 	{
-		logfile << tempMapIter->first << " ";
+		logfile << std::setw(5) << tempMapIter->first << " ";
 		std::map<int, Ring> ringMap = tempMapIter->second;
 
 		std::map<int, Ring>::iterator ringMapIter;
 		for(ringMapIter = ringMap.begin(); ringMapIter != ringMap.end(); ++ringMapIter)
 		{
-			logfile << ringMapIter->first << " " << ringMapIter->second.noOfPatterns << " "
-				<< ringMapIter->second.palatable << " " << ringMapIter->second.unpalatable << " ";
+			logfile << std::setw(3) << ringMapIter->first << " " 
+				//<< std::setw(3) << ringMapIter->second.noOfPatterns << " "
+				<< std::setw(3) << ringMapIter->second.palatable << " " 
+				<< std::setw(3) << ringMapIter->second.unpalatable << " ";
 		}
 		logfile << std::endl;
 	}
@@ -208,20 +209,13 @@ void ReportGenerator::createFile()
 
 	std::ostringstream os;
 	os.fill('0');
-	os <<
+	os << "log." <<
 	  std::setw(4) << ptr->tm_year+1900 <<
 	  std::setw(2) << ptr->tm_mon <<
 	  std::setw(2) << ptr->tm_mday << '.' <<
 	  std::setw(2) << ptr->tm_hour <<
 	  std::setw(2) << ptr->tm_min <<
-	  std::setw(2) << ptr->tm_sec;
-	const char *timeString = os.str().c_str();
+	  std::setw(2) << ptr->tm_sec << ".dat";
 
-	const int BUFLEN = 200;
-	static char bufferLogFile[BUFLEN];
-	strcpy(bufferLogFile, "log.");
-	strcat(bufferLogFile, timeString);
-	strcat(bufferLogFile, ".txt");
-	logFileName = &bufferLogFile[0];
-	logfile.open(logFileName);
+	logfile.open(os.str().c_str());
 }
