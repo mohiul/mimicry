@@ -59,7 +59,6 @@ private:
 	 */
 	std::map<long, std::list<Ring>> ringHistoryMap;
 
-	char *logFileName;
 	std::ofstream logfile;
 
 	/**
