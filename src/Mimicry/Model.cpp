@@ -245,7 +245,7 @@ void Model::step()
 				  << " Predator: " << predatorPop << std::endl;
 	}
 
-	//if(simTime % 10 == 0)
+	if(simTime % 10 == 0)
 		report.generateMimicryRingReport(cells, simTime);
 
 	if(simTime % 500 == 0)
