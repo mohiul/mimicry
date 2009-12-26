@@ -131,57 +131,217 @@ void ReportGenerator::storeHistory(long simTime)
 void ReportGenerator::writeMimicryRingReport()
 {	
 	std::map<long, std::map<int, Ring>> tempRingHistoryMap;
-	std::set<int> allPatterns;
+	std::map<int, int> caRuleTotalPopMap;
+	std::multimap<int, int> totalPopCARuleMap;
+	std::set<int> caRuleSet;
+	std::set<int> caRuleToRemoveSet;
 
-	std::map<long, std::list<Ring>>::iterator iter;
+	std::map<long, std::list<Ring>>::iterator ringMapIter;
 
-	for( iter = ringHistoryMap.begin(); iter != ringHistoryMap.end(); ++iter )
+	for(ringMapIter = ringHistoryMap.begin(); 
+		ringMapIter != ringHistoryMap.end(); 
+		ringMapIter++)
 	{
-		std::list<Ring> ringList = iter->second;
-		std::list<Ring>::iterator ringIter;
-		for (ringIter = ringList.begin(); ringIter != ringList.end(); ringIter++)
-			allPatterns.insert(ringIter->pattern.getCARule());
-	}
+		long simTime = ringMapIter->first;
+		std::list<Ring> ringList = ringMapIter->second;
+		std::map<int, Ring> ringPopCAMap;
 
-	for( iter = ringHistoryMap.begin(); iter != ringHistoryMap.end(); ++iter )
-	{
-		long simTime = iter->first;
-		std::list<Ring> ringList = iter->second;
-		
-		std::map<int, Ring> newRingMap;
-
-		std::set<int>::iterator patternIter;
-		for (patternIter = allPatterns.begin(); patternIter != allPatterns.end(); patternIter++)
-			newRingMap[*patternIter] = Ring();
-
-		std::list<Ring>::iterator ringIter;
-		for (ringIter = ringList.begin(); ringIter != ringList.end(); ringIter++)
-			newRingMap[ringIter->pattern.getCARule()] = *ringIter;
-
-		tempRingHistoryMap[simTime] = newRingMap;
+		std::list<Ring>::iterator ringListIter;
+		for(ringListIter = ringList.begin(); 
+			ringListIter != ringList.end(); 
+			ringListIter++)
+		{
+			int caRule = ringListIter->pattern.getCARule();
+			ringPopCAMap[caRule] = *ringListIter;
+			caRuleSet.insert(caRule);
+		}
+		tempRingHistoryMap[simTime] = ringPopCAMap;
 	}
 
 	std::map<long, std::map<int, Ring>>::iterator tempMapIter;
+	for(tempMapIter = tempRingHistoryMap.begin(); 
+		tempMapIter != tempRingHistoryMap.end(); 
+		++tempMapIter )
+	{
+		long simTime = tempMapIter->first;
+		std::map<int, Ring> ringMap = tempMapIter->second;
 
+		std::set<int>::iterator setItr;
+		for(setItr = caRuleSet.begin();
+			setItr != caRuleSet.end();
+			setItr++)
+		{
+			int caRule = *setItr;
+			if( ringMap.find(caRule) == ringMap.end())
+				ringMap[caRule] = Ring();
+		}
+
+		std::map<int, Ring>::iterator mapItr;
+		for(mapItr = ringMap.begin();
+			mapItr != ringMap.end();
+			mapItr++)
+		{
+			int caRule = mapItr->first;
+			if(caRuleTotalPopMap.find(caRule) != caRuleTotalPopMap.end())
+				caRuleTotalPopMap[caRule] += mapItr->second.noOfPatterns;
+			else
+				caRuleTotalPopMap[caRule] = 0;
+		}
+
+		tempRingHistoryMap[simTime] = ringMap;
+	}
+
+	if( caRuleTotalPopMap.size() > System::NUMBER_OF_RINGS_TO_REPORT)
+	{
+		std::map<int, int>::iterator mapItr;
+		for(mapItr = caRuleTotalPopMap.begin();
+			mapItr != caRuleTotalPopMap.end();
+			mapItr++)
+			totalPopCARuleMap.insert(std::make_pair(mapItr->second, mapItr->first));
+
+		int ringsToRemove = caRuleTotalPopMap.size() - System::NUMBER_OF_RINGS_TO_REPORT;
+		
+		std::multimap<int, int>::iterator multiMapItr = totalPopCARuleMap.begin();
+		for(int r = 0; r < ringsToRemove; r++)
+		{
+			caRuleToRemoveSet.insert(multiMapItr->second);
+			multiMapItr++;
+		}
+	}
+
+	//Create log file to write.
 	createFile();
-	
-	for( tempMapIter = tempRingHistoryMap.begin(); tempMapIter != tempRingHistoryMap.end(); ++tempMapIter )
+
+	//Write in the log file.
+	//std::map<long, std::map<int, Ring>>::iterator tempMapIter;
+	for(tempMapIter = tempRingHistoryMap.begin(); 
+		tempMapIter != tempRingHistoryMap.end(); 
+		++tempMapIter )
 	{
 		logfile << std::setw(5) << tempMapIter->first << " ";
 		std::map<int, Ring> ringMap = tempMapIter->second;
 
 		std::map<int, Ring>::iterator ringMapIter;
-		for(ringMapIter = ringMap.begin(); ringMapIter != ringMap.end(); ++ringMapIter)
+		for(ringMapIter = ringMap.begin(); 
+			ringMapIter != ringMap.end(); 
+			++ringMapIter)
 		{
-			logfile << std::setw(3) << ringMapIter->first << " " 
-				//<< std::setw(3) << ringMapIter->second.noOfPatterns << " "
-				<< std::setw(3) << ringMapIter->second.palatable << " " 
-				<< std::setw(3) << ringMapIter->second.unpalatable << " ";
+			if( caRuleToRemoveSet.find(ringMapIter->first) == caRuleToRemoveSet.end() )
+			{
+				logfile << std::setw(3) << ringMapIter->first << " " 
+					//<< std::setw(3) << ringMapIter->second.noOfPatterns << " "
+					<< std::setw(3) << ringMapIter->second.palatable << " " 
+					<< std::setw(3) << ringMapIter->second.unpalatable << " ";
+			}
 		}
 		logfile << std::endl;
 	}
 	logfile.close();
 }
+
+/**
+ * Write information about Mimicry rings in a log file to generate reports.
+ */
+//void ReportGenerator::writeMimicryRingReport()
+//{	
+//	std::map<long, std::map<int, Ring>> tempRingHistoryMap;
+//	std::set<int> allPatterns;
+//	std::map<int, int> ringTotalPopMap;
+//	std::set<int> totalPopSet;
+//
+//	std::map<long, std::list<Ring>>::iterator iter;
+//
+//	//Iterate over existing Ring History Map to find a unique Set of all patterns.
+//	//Also calculate total ring population to find most populated rings.
+//	for( iter = ringHistoryMap.begin(); iter != ringHistoryMap.end(); ++iter )
+//	{
+//		std::list<Ring> ringList = iter->second;
+//		std::list<Ring>::iterator ringIter;
+//		//Iterate over ring list for every instance of time
+//		for (ringIter = ringList.begin(); ringIter != ringList.end(); ringIter++)
+//		{
+//			int rule = ringIter->pattern.getCARule();
+//			allPatterns.insert(ringIter->pattern.getCARule());
+//			
+//			//Calculate total population of each ring
+//			if(ringTotalPopMap.find(rule) != ringTotalPopMap.end())
+//				ringTotalPopMap[rule] += ringIter->noOfPatterns;
+//			else
+//				ringTotalPopMap[rule] = ringIter->noOfPatterns;
+//		}
+//	}
+//
+//	std::cout << "allPatterns.size(): " << allPatterns.size() << std::endl;
+//
+//	//Sort ring according to total population
+//	std::map<int, int>::iterator totPopItr;
+//
+//	for( totPopItr = ringTotalPopMap.begin(); totPopItr != ringTotalPopMap.end(); ++totPopItr )
+//		totalPopSet.insert( totPopItr->second );
+//
+//	int noOfRingsToRemove = totalPopSet.size() - System::NUMBER_OF_RINGS_TO_REPORT;
+//	
+//	std::cout << "noOfRingsToRemove: " << noOfRingsToRemove << std::endl;
+//
+//	if(noOfRingsToRemove > 0)
+//	{
+//		std::set<int>::iterator totPopSetItr = totalPopSet.begin();
+//		for(int i = 0; i < noOfRingsToRemove; i++)
+//		{
+//			for( totPopItr = ringTotalPopMap.begin(); totPopItr != ringTotalPopMap.end(); ++totPopItr )
+//				if(totPopItr->second == *totPopSetItr)
+//				{
+//					allPatterns.erase(totPopItr->first);
+//					break;
+//				}
+//			totPopSetItr++;
+//		}
+//	}
+//
+//	std::cout << "allPatterns.size(): " << allPatterns.size() << std::endl;
+//
+//	//Iterate over existing Ring History Map to create another map which is 
+//	// suitable for writting in the log file.
+//	for( iter = ringHistoryMap.begin(); iter != ringHistoryMap.end(); ++iter )
+//	{
+//		long simTime = iter->first;
+//		std::list<Ring> ringList = iter->second;
+//		
+//		std::map<int, Ring> newRingMap;
+//
+//		std::set<int>::iterator patternIter;
+//		for (patternIter = allPatterns.begin(); patternIter != allPatterns.end(); patternIter++)
+//			newRingMap[*patternIter] = Ring();
+//
+//		std::list<Ring>::iterator ringIter;
+//		for (ringIter = ringList.begin(); ringIter != ringList.end(); ringIter++)
+//			newRingMap[ringIter->pattern.getCARule()] = *ringIter;
+//
+//		tempRingHistoryMap[simTime] = newRingMap;
+//	}
+//
+//	//Create log file to write.
+//	createFile();
+//
+//	//Write in the log file.
+//	std::map<long, std::map<int, Ring>>::iterator tempMapIter;
+//	for( tempMapIter = tempRingHistoryMap.begin(); tempMapIter != tempRingHistoryMap.end(); ++tempMapIter )
+//	{
+//		logfile << std::setw(5) << tempMapIter->first << " ";
+//		std::map<int, Ring> ringMap = tempMapIter->second;
+//
+//		std::map<int, Ring>::iterator ringMapIter;
+//		for(ringMapIter = ringMap.begin(); ringMapIter != ringMap.end(); ++ringMapIter)
+//		{
+//			logfile << std::setw(3) << ringMapIter->first << " " 
+//				//<< std::setw(3) << ringMapIter->second.noOfPatterns << " "
+//				<< std::setw(3) << ringMapIter->second.palatable << " " 
+//				<< std::setw(3) << ringMapIter->second.unpalatable << " ";
+//		}
+//		logfile << std::endl;
+//	}
+//	logfile.close();
+//}
 
 /**
  * Print the list of rings and the number of species in each ring into console

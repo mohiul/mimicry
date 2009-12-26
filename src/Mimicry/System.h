@@ -67,6 +67,7 @@ public:
 	 * \a Mimicry ring properties
 	 */
 	static const int	MIMICRY_RING_HAMMING_DIST;
+	static const int	NUMBER_OF_RINGS_TO_REPORT;
 
 	/**
 	 * \a Predator properties

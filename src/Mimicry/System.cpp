@@ -72,7 +72,7 @@ int System::PREY_DEMISE_AGE = 2000;
  * Probability of the number of new born \a Prey species mutating 
  * to a random new pattern
  */
-float System::PATTERN_MUTATION_RATE = (float)0.01;
+float System::PATTERN_MUTATION_RATE = (float)0.05;
 
 /**
  * Probability of the number of new born \a Prey species with a 
@@ -89,6 +89,11 @@ float	System::PREY_GENOME_MUTATION_RATE = (float)0.5;
  * the same Mimicry ring.
  */
 const int System::MIMICRY_RING_HAMMING_DIST = (int)(PATTERN_SIZE * PATTERN_SIZE * 0.1);
+
+/**
+ * Max number of rings to generate population report
+ */
+const int System::NUMBER_OF_RINGS_TO_REPORT = 8;
 
 /**
  * \a Predator properties
@@ -138,7 +143,7 @@ int System::PREDATOR_REPRODUCTION_INTERVAL = 1000;
 /**
  * Maximum age upto which \a Predator species will survive in the environment.
  */
-int System::PREDATOR_DEMISE_AGE = 5000;
+int System::PREDATOR_DEMISE_AGE = 3500;
 
 /**
  * Display outline in the model window when non-zero.
