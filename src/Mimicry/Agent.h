@@ -76,20 +76,20 @@ protected:
     */
 	formal::Vector force;
 
-   /**
-    * The current velocity of the \a Agent.
-    */
-   formal::Vector velocity;
+	/**
+	* The current velocity of the \a Agent.
+	*/
+	formal::Vector velocity;
 
-   /**
-    * Pointer to the \a Model where the agent exists.
-    */
-   Model* model;
+	/**
+	* Pointer to the \a Model where the agent exists.
+	*/
+	Model* model;
 
-   /**
-    * Pointer to the \a Cell of which the \a Agent is currently a part of.
-    */
-   Cell* cell;
+	/**
+	* Pointer to the \a Cell of which the \a Agent is currently a part of.
+	*/
+	Cell* cell;
 
 	/**
 	 * Reproduction behavior of the \a Agent.
