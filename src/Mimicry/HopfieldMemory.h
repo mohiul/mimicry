@@ -25,6 +25,12 @@ struct Memory
 	{
 		pattern = new vector<int>(_width*_length);
 	}
+
+	~Memory()
+	{
+		delete pattern;
+	}
+
 	vector<int> *pattern;
 	bool palatability;
 };
@@ -61,6 +67,7 @@ private:
 
 public:
 	HopfieldMemory(const int width, const int length);
+	~HopfieldMemory();
 	void calculateWeights();
 	void addPattern(CAPattern* pattern, bool palatability);
 	Memory *searchMemory(vector<int>* pattern);

@@ -16,6 +16,12 @@ HopfieldMemory::HopfieldMemory(const int width,
 	patternLength = length;
 }
 
+HopfieldMemory::~HopfieldMemory()
+{
+	std::cout << "Deleting hopfield memory..." << std::endl;
+	delete weights;
+}
+
 /**
  * \return void
  * Calculate the weight matrix \a weights of Hopfield Netowrk using the patterns stored \a memoryList.

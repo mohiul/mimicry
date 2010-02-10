@@ -39,6 +39,12 @@ Predator::Predator(Model* _model,
 		capableToReproduce = true;
 }
 
+Predator::~Predator()
+{
+	std::cout << "Deleting predators..." << std::endl;
+	delete memory;
+}
+
 /**
  * Draw the Predator as a RED solid cube in the model.
  */
