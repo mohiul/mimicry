@@ -24,6 +24,7 @@ private:
 
 public:
 	Genome();
+	~Genome();
 	Genome(int rule, bool palatability);
 	int get(int index);
 	void set(int index, int value);
@@ -42,6 +43,12 @@ Genome<SIZE>::Genome()
 {
 	for(int i = 0; i < SIZE; i++)
 		gene[i] = 0;
+}
+
+template<int SIZE>
+Genome<SIZE>::~Genome()
+{
+	std::cout << "Deleting Genome..." << std::endl;
 }
 
 /**

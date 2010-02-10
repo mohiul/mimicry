@@ -44,6 +44,7 @@ public:
 		PREDATOR	/**< The Predator type \a Agent. */
 	};
 
+	virtual ~Agent() {}
 	virtual void draw() = 0;
 	virtual void step() = 0;
 	virtual void move() = 0;
@@ -115,6 +116,7 @@ class Predator: public Agent
 public:
 	Predator(Model* _model, Cell* _cell, formal::Vector _position, 
 				   Genome<PREDATOR_GENE_SIZE> _genome);
+	~Predator();
 	void draw();
 	void step();
 	void move();
@@ -176,6 +178,7 @@ public:
 
 	Prey();
 	Prey(Model* _model, Cell* _cell, formal::Vector _position, Genome<PREY_GENE_SIZE> _genome);
+	~Prey();
 	void draw();
 	void step();
 	void move();
