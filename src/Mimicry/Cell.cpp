@@ -47,7 +47,7 @@ void Cell::remove(Agent *pa)
 	while( agentIter != agentList.end() ) {
 		std::list<Agent*>::iterator iter = agentIter;
 		agentIter++;
-		if(*iter == pa && (*iter)->getState() == Agent::ALIVE)
+		if(*iter == pa)
 		{
 			agentList.erase(iter);
 			found = true;
@@ -62,8 +62,6 @@ void Cell::remove(Agent *pa)
 		{
 			assert((preyPopulation -1) < 0);
 			preyPopulation--;
-			//if (preyPopulation < 0)
-			//	std::cout << "Alert!!! 2 Prey Population: " << preyPopulation << std::endl;
 		}
 		if (pa->getAgentType() == Agent::PREDATOR)
 		{

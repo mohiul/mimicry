@@ -48,7 +48,7 @@ Genome<SIZE>::Genome()
 template<int SIZE>
 Genome<SIZE>::~Genome()
 {
-	std::cout << "Deleting Genome..." << std::endl;
+	//std::cout << "Deleting Genome..." << std::endl;
 }
 
 /**

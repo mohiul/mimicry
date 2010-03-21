@@ -59,7 +59,7 @@ Prey::Prey(Model* _model,
 
 Prey::~Prey()
 {
-	std::cout << "Deleting Prey..." << std::endl;
+	cell->remove(this);
 }
 
 /**
