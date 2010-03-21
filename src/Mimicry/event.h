@@ -31,6 +31,7 @@ class Event
 public:
 
    Event();
+   ~Event();
    void setDummy();
    void setMove(Agent *h, Cell *from, Cell *to);
    void setBirth(Agent *pa, Cell *pc);
@@ -65,7 +66,7 @@ private:
    /**
     * Pointer to the next event in the event list.
     */
-   Event *next;
+   //Event *next;
 };
 
 #endif

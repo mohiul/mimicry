@@ -14,8 +14,12 @@
  * Construct a dummy event with all pointers null.
  */
 Event::Event()
-: kind(DUMMY), pH(0), cFrom(0), cTo(0), next(0)
+: kind(DUMMY), pH(0), cFrom(0), cTo(0)
 { }
+
+Event::~Event()
+{
+}
 
 /**
  * Make this \e Event a dummy event.
@@ -23,6 +27,9 @@ Event::Event()
 void Event::setDummy()
 {
    kind = DUMMY;
+   pH = 0;
+   cFrom = 0;
+   cTo = 0;
 }
 
 /**
@@ -82,7 +89,8 @@ void Event::act()
       cFrom->insert(pH);  
       break;
    case DEATH:
-	  cFrom->remove(pH);
+	  //cFrom->remove(pH);
+	  delete pH;
       break;
    }
 }
@@ -129,9 +137,11 @@ void processEvents(std::list<Event*> *eventList)
 {
 	std::list<Event*>::iterator eventIter = eventList->begin();
 	while( eventIter != eventList->end() ) {
-		(*eventIter)->act();
-		(*eventIter)->setDummy();
+		std::list<Event*>::iterator iter = eventIter;
 		eventIter++;
+		(*iter)->act();
+		eventList->erase(iter);
+		delete (*iter);
 	}
 }
 

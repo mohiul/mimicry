@@ -185,11 +185,13 @@ void Model::step()
 						if (ni != i || nj != j || nk != k)
 						{
 							Cell *cb = &cells[ni][nj][nk];
-							Event *p = getEvent(&eventList);
+							Event *p = new Event;
+							eventList.push_back(p);
 							p->setMove(agent, &cells[i][j][k], cb);
 						}
 					} else if (agent->getState() == Agent::DEAD) {
-						Event *p = getEvent(&eventList);
+						Event *p = new Event;
+						eventList.push_back(p);
 						p->setDeath(agent, &cells[i][j][k]);
 					}
 					agentIter++;

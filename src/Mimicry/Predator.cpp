@@ -41,6 +41,7 @@ Predator::Predator(Model* _model,
 
 Predator::~Predator()
 {
+	cell->remove(this);
 	std::cout << "Deleting predators..." << std::endl;
 	delete memory;
 }
