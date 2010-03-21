@@ -6,6 +6,8 @@
 #ifndef EVENT_H
 #define EVENT_H
 
+#include <list>
+
 class Agent;
 class Cell;
 
@@ -14,7 +16,7 @@ class Cell;
  */
 enum EventKind
 {
-   DUMMY,      /**< The state of a new event (overwritten before event is used). */
+   DUMMY,      /**< Event to be assigned a type */
    MOVE,       /**< An agent moves from one cell to another. */
    BIRTH,      /**< An agent is born and is added to the cell. */
    DEATH       /**< An agent dies and is removed from the cell. */
@@ -33,9 +35,10 @@ public:
    void setMove(Agent *h, Cell *from, Cell *to);
    void setBirth(Agent *pa, Cell *pc);
    void setDeath(Agent *h, Cell *place);
+   EventKind getKind() { return kind; }
    void act();
-   friend Event *getEvent(Event *first, Event * & last);
-   friend void processEvents(Event *first, Event *last);
+   friend Event *getEvent(std::list<Event*> *eventlist);
+   friend void processEvents(std::list<Event*> *eventList);
 
 private:
 

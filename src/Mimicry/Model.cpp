@@ -20,36 +20,6 @@ const GLfloat WHITE[]  = { 1, 1, 1 };
 const GLfloat BLACK[]  = { 0, 0, 0 };
 
 /**
- * Pointer to first 'move' event.
- */
-Event *moveFirst = new Event;
-
-/**
- * Pointer to first 'birth' event.
- */
-Event *birthFirst = new Event;
-
-/**
- * Pointer to first 'death' event.
- */
-Event *deathFirst = new Event;
-
-/**
- * Pointer to last 'move' event.
- */
-Event *moveLast;
-
-/**
- * Pointer to last 'birth' event.
- */
-Event *birthLast;
-
-/**
- * Pointer to last 'death' event.
- */
-Event *deathLast;
-
-/**
  * Construct \a Model.
  */
 Model::Model()
@@ -195,11 +165,6 @@ void Model::step()
 	int preyPopulation = 0;
 	int predatorPop = 0;
 
-	// Process each agent.
-	moveLast = moveFirst;
-	birthLast = birthFirst;
-	deathLast = deathFirst;
-
 	for(int i = 0; i < ISIZE; i++)
 		for(int j = 0; j < ISIZE; j++)
 			for(int k = 0; k < ISIZE; k++)
@@ -220,11 +185,11 @@ void Model::step()
 						if (ni != i || nj != j || nk != k)
 						{
 							Cell *cb = &cells[ni][nj][nk];
-							Event *p = getEvent(moveFirst, moveLast);
+							Event *p = getEvent(&eventList);
 							p->setMove(agent, &cells[i][j][k], cb);
 						}
 					} else if (agent->getState() == Agent::DEAD) {
-						Event *p = getEvent(deathFirst, deathLast);
+						Event *p = getEvent(&eventList);
 						p->setDeath(agent, &cells[i][j][k]);
 					}
 					agentIter++;
@@ -234,9 +199,7 @@ void Model::step()
 			}
 			
 	// Process event lists.
-	processEvents(moveFirst, moveLast);
-	processEvents(birthFirst, birthLast);
-	processEvents(deathFirst, deathLast);
+	processEvents(&eventList);
 
 	if(simTime % 100 == 0)
 	{
