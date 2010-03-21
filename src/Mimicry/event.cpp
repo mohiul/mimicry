@@ -89,8 +89,8 @@ void Event::act()
       cFrom->insert(pH);  
       break;
    case DEATH:
-	  //cFrom->remove(pH);
-	  delete pH;
+	  cFrom->remove(pH);
+	  //delete pH;
       break;
    }
 }

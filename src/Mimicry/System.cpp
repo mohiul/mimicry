@@ -138,12 +138,12 @@ int System::PREDATOR_REPRODUCTION_AGE_LIMIT = 500;
 /**
  * Time interval to wait before a \a Predators start reproducing again.
  */
-int System::PREDATOR_REPRODUCTION_INTERVAL = 1000;
+int System::PREDATOR_REPRODUCTION_INTERVAL = 800;
 
 /**
  * Maximum age upto which \a Predator species will survive in the environment.
  */
-int System::PREDATOR_DEMISE_AGE = 3500;
+int System::PREDATOR_DEMISE_AGE = 2000;
 
 /**
  * Display outline in the model window when non-zero.
