@@ -8,6 +8,7 @@
 #include "Cell.h"
 #include "System.h"
 #include "Vector.h"
+#include "Event.h"
 #include "ReportGenerator.h"
 
 #include <GL/glut.h>
@@ -38,6 +39,8 @@ private:
     * Array of \a Cells.
     */
 	Cell cells[ISIZE][ISIZE][ISIZE];
+
+	std::list<Event*> eventList;
 
    /**
     * Statistics window width (pixels).

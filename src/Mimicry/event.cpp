@@ -82,7 +82,7 @@ void Event::act()
       cFrom->insert(pH);  
       break;
    case DEATH:
-	  cFrom->getAgentList().remove(pH);
+	  cFrom->remove(pH);
       break;
    }
 }
@@ -94,18 +94,30 @@ void Event::act()
  * for a while, the list will be long enough and new events will be created
  * only occasionally.
  */
-Event *getEvent(Event *first, Event * & last)
+Event *getEvent(std::list<Event*> *eventList)
 {
-   Event *p;
-   if (last->next == 0)
-   {
-      p = new Event;
-      last->next = p;
-   }
-   else 
-      p = last->next;
-   last = p;
-   return p;
+	Event* eventToReturn;
+	bool foundDummy = false;
+
+	if (eventList->size() > 0) {
+		std::list<Event*>::iterator eventIter = eventList->begin();
+		while( eventIter != eventList->end() ) {
+			if ((*eventIter)->getKind() == DUMMY) {
+				eventToReturn = *eventIter;
+				foundDummy = true;
+				break;
+			}
+			eventIter++;
+		}
+	}
+
+	if (eventList->size() == 0 || !foundDummy)
+	{
+		eventToReturn = new Event;
+		eventList->push_back(eventToReturn);
+	}
+
+	return eventToReturn;
 }
 
 /**
@@ -113,17 +125,13 @@ Event *getEvent(Event *first, Event * & last)
  * \param first is a pointer to the first event in the list.
  * \param last is a pointer to the last event in the list.
  */
-void processEvents(Event *first, Event *last)
+void processEvents(std::list<Event*> *eventList)
 {
-   if (first == last)
-      return;
-   Event *p = first->next;
-   while (true)
-   {
-      p->act();
-      if (p == last)
-         break;
-      p = p->next;
-   }
+	std::list<Event*>::iterator eventIter = eventList->begin();
+	while( eventIter != eventList->end() ) {
+		(*eventIter)->act();
+		(*eventIter)->setDummy();
+		eventIter++;
+	}
 }
 

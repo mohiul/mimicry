@@ -45,13 +45,14 @@ void Cell::remove(Agent *pa)
 	std::list<Agent*>::iterator agentIter = agentList.begin();
 	bool found = false;
 	while( agentIter != agentList.end() ) {
-		if(*agentIter == pa && (*agentIter)->getState() == Agent::ALIVE)
+		std::list<Agent*>::iterator iter = agentIter;
+		agentIter++;
+		if(*iter == pa && (*iter)->getState() == Agent::ALIVE)
 		{
-			agentList.erase(agentIter);
+			agentList.erase(iter);
 			found = true;
 			break;
 		}
-		agentIter++;
 	}
 	if(found)
 	{
