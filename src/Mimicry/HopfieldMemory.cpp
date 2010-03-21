@@ -40,10 +40,7 @@ void HopfieldMemory::calculateWeights()
 	//and add it to the weight matrix.
 	for (std::list<Memory>::iterator memoryIter = memoryList.begin(); 
 		memoryIter != memoryList.end(); memoryIter++)
-	{
-		vector<int> pattern = *(*memoryIter).pattern;
-		*weights += outer_prod(pattern, trans(pattern));
-	}
+		*weights += outer_prod(memoryIter->pattern, trans(memoryIter->pattern));
 
 	//Setting diagonal values to zero
     for (unsigned i = 0; i < weights->size1 (); ++ i)
@@ -65,8 +62,8 @@ void HopfieldMemory::addPattern(CAPattern* pattern, bool palatability)
 	//Check if new pattern exists in memory
 	if(!searchMemory(&newPattern))
 	{
-		Memory memory(PATTERN_SIZE, PATTERN_SIZE);
-		*memory.pattern = newPattern;
+		Memory memory;
+		memory.pattern = newPattern;
 		memory.palatability = palatability;
 		memoryList.push_back(memory);
 		calculateWeights();
@@ -82,10 +79,12 @@ void HopfieldMemory::addPattern(CAPattern* pattern, bool palatability)
 Memory *HopfieldMemory::searchMemory(vector<int>* serializedPattern)
 {
 	Memory *foundMemory = 0;
+
 	for (std::list<Memory>::iterator memoryIter = memoryList.begin();
 		memoryIter != memoryList.end(); memoryIter++)
-		if(Utility::checkEquals(*serializedPattern, *(*memoryIter).pattern))
+		if(Utility::checkEquals(*serializedPattern, memoryIter->pattern))
 			foundMemory = &(*memoryIter);
+
 	return foundMemory;
 }
 
