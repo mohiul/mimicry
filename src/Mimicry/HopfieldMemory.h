@@ -21,17 +21,7 @@ using namespace boost::numeric::ublas;
   */
 struct Memory
 {
-	Memory(int _width, int _length)
-	{
-		pattern = new vector<int>(_width*_length);
-	}
-
-	~Memory()
-	{
-		delete pattern;
-	}
-
-	vector<int> *pattern;
+	vector<int> pattern;
 	bool palatability;
 };
 
