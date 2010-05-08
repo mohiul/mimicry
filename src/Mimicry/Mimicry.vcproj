@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="8.00"
+	Version="9.00"
 	Name="Mimicry"
 	ProjectGUID="{413009F8-9923-4660-AB2D-68859ADC1B31}"
 	RootNamespace="Mimicry"
@@ -10,6 +10,7 @@
 	SccLocalPath="Svn"
 	SccProvider="SubversionScc"
 	Keyword="Win32Proj"
+	TargetFrameworkVersion="131072"
 	>
 	<Platforms>
 		<Platform
@@ -44,7 +45,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;$(InputDir)\..\..\libs\glut\include&quot;;&quot;$(InputDir)\..\..\libs\boost_1_38\&quot;"
+				AdditionalIncludeDirectories="&quot;$(InputDir)\..\..\libs\tinyXML\include&quot;;&quot;$(InputDir)\..\..\libs\glut\include&quot;;&quot;$(InputDir)\..\..\libs\boost_1_38\&quot;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -65,11 +66,13 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="glut32.lib glui32.lib"
+				AdditionalDependencies="glut32.lib glui32.lib tinyxmld.lib"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="&quot;$(InputDir)\..\..\libs\glut\lib&quot;"
+				AdditionalLibraryDirectories="&quot;$(InputDir)\..\..\libs\glut\lib\debug&quot;;&quot;$(InputDir)\..\..\libs\tinyXML\lib&quot;"
 				GenerateDebugInformation="true"
 				SubSystem="1"
+				RandomizedBaseAddress="1"
+				DataExecutionPrevention="0"
 				TargetMachine="1"
 			/>
 			<Tool
@@ -89,9 +92,6 @@
 			/>
 			<Tool
 				Name="VCAppVerifierTool"
-			/>
-			<Tool
-				Name="VCWebDeploymentTool"
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
@@ -148,6 +148,8 @@
 				SubSystem="1"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
+				RandomizedBaseAddress="1"
+				DataExecutionPrevention="0"
 				TargetMachine="1"
 			/>
 			<Tool
@@ -167,9 +169,6 @@
 			/>
 			<Tool
 				Name="VCAppVerifierTool"
-			/>
-			<Tool
-				Name="VCWebDeploymentTool"
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
