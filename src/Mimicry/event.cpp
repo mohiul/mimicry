@@ -141,7 +141,7 @@ void processEvents(std::list<Event*> *eventList)
 		eventIter++;
 		(*iter)->act();
 		eventList->erase(iter);
-		delete (*iter);
+//		delete (*iter);
 	}
 }
 
