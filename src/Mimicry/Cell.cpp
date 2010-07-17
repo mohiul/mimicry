@@ -50,23 +50,8 @@ void Cell::remove(Agent *pa)
 		if(*iter == pa)
 		{
 			agentList.erase(iter);
-			found = true;
+			reducePop(pa->getAgentType());
 			break;
-		}
-	}
-	if(found)
-	{
-		assert((population -1) < 0);
-		population--;
-		if (pa->getAgentType() == Agent::PREY)
-		{
-			assert((preyPopulation -1) < 0);
-			preyPopulation--;
-		}
-		if (pa->getAgentType() == Agent::PREDATOR)
-		{
-			assert((predatorPopulation -1) < 0);
-			predatorPopulation--;
 		}
 	}
 }
@@ -88,26 +73,26 @@ void Cell::draw()
  * \param agentType Type of the Agent.
  */
 
-int Cell::getPop(Agent::AGENT_TYPE agentType)
-{
-	int pop = 0;
-	for(std::list<Agent*>::iterator agentIter = agentList.begin(); 
-		agentIter != agentList.end(); agentIter++)
-		if((*agentIter)->getState() == Agent::ALIVE 
-			&& (*agentIter)->getAgentType() == agentType)
-			pop++;
-	return pop;
-}
-
 //int Cell::getPop(Agent::AGENT_TYPE agentType)
 //{
-//	unsigned int pop = 0;
-//	if(agentType == Agent::PREY)
-//		pop = preyPopulation;
-//	else if(agentType == Agent::PREDATOR)
-//		pop = predatorPopulation;
+//	int pop = 0;
+//	for(std::list<Agent*>::iterator agentIter = agentList.begin(); 
+//		agentIter != agentList.end(); agentIter++)
+//		if((*agentIter)->getState() == Agent::ALIVE 
+//			&& (*agentIter)->getAgentType() == agentType)
+//			pop++;
 //	return pop;
 //}
+
+int Cell::getPop(Agent::AGENT_TYPE agentType)
+{
+	unsigned int pop = 0;
+	if(agentType == Agent::PREY)
+		pop = preyPopulation;
+	else if(agentType == Agent::PREDATOR)
+		pop = predatorPopulation;
+	return pop;
+}
 
 /**
  * Reduce population count of a specific type of agent.
@@ -124,8 +109,8 @@ void Cell::reducePop(Agent::AGENT_TYPE agentType)
 	{
 		assert((preyPopulation -1) < 0);
 		preyPopulation--;
-		//if (preyPopulation < 0)
-		//	std::cout << "Alert!!! 1 Prey Population: " << preyPopulation << std::endl;
+		if (preyPopulation < 0)
+			std::cout << "Alert!!! 1 Prey Population: " << preyPopulation << std::endl;
 	}
 	assert((population -1) < 0);
 	population--;

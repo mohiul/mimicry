@@ -60,6 +60,7 @@ Prey::Prey(Model* _model,
 Prey::~Prey()
 {
 	cell->remove(this);
+	//std::cout << "Deleting prey..." << std::endl;
 }
 
 /**
@@ -260,5 +261,4 @@ void Prey::reproduce(Agent* agent)
 void Prey::kill()
 {
 	state = Agent::DEAD;
-	cell->reducePop(Agent::PREY);
 }

@@ -90,7 +90,8 @@ void Event::act()
       break;
    case DEATH:
 	  cFrom->remove(pH);
-	  //delete pH;
+	  if(pH != 0)
+		delete pH;
       break;
    }
 }
@@ -141,7 +142,8 @@ void processEvents(std::list<Event*> *eventList)
 		eventIter++;
 		(*iter)->act();
 		eventList->erase(iter);
-//		delete (*iter);
+		if((*iter) != 0)
+			delete (*iter);
 	}
 }
 
