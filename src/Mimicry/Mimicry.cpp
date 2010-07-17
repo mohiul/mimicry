@@ -125,7 +125,7 @@ float gluiRotation[16] =
 /**
 * The model view is being updated.
 */
-int updateModel = true;
+int updateModel = false;
 
 /**
 * The statistics view is being updated.

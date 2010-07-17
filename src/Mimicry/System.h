@@ -6,7 +6,7 @@
 #define SYSTEM_H
 
 //Define to stop debug
-#define NDEBUG
+//#define NDEBUG
 
 /**
  * This constant determines the number of \a Cells in the universe.

@@ -42,7 +42,7 @@ Predator::Predator(Model* _model,
 Predator::~Predator()
 {
 	cell->remove(this);
-	std::cout << "Deleting predators..." << std::endl;
+	//std::cout << "Deleting predators..." << std::endl;
 	delete memory;
 }
 
@@ -261,5 +261,4 @@ void Predator::reproduce(Agent* agent)
 void Predator::kill()
 {
 	state = Agent::DEAD;
-	cell->reducePop(Agent::PREDATOR);
 }

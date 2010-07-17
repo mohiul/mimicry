@@ -18,7 +18,7 @@ HopfieldMemory::HopfieldMemory(const int width,
 
 HopfieldMemory::~HopfieldMemory()
 {
-	std::cout << "Deleting hopfield memory..." << std::endl;
+	//std::cout << "Deleting hopfield memory..." << std::endl;
 	delete weights;
 }
 
