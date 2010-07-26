@@ -165,11 +165,6 @@ void Model::step()
 	int preyPopulation = 0;
 	int predatorPop = 0;
 
-	//Compare population size
-	//int preyPopulationByVar = 0;
-	//int predatorPopByVar = 0;
-
-
 	for(int i = 0; i < ISIZE; i++)
 		for(int j = 0; j < ISIZE; j++)
 			for(int k = 0; k < ISIZE; k++)
@@ -203,10 +198,6 @@ void Model::step()
 				}
 				preyPopulation += cells[i][j][k].getPop(Agent::PREY);
 				predatorPop += cells[i][j][k].getPop(Agent::PREDATOR);
-
-				//Compare population size
-				//preyPopulationByVar += cells[i][j][k].getPopByVar(Agent::PREY);
-				//predatorPopByVar += cells[i][j][k].getPopByVar(Agent::PREDATOR);
 			}
 			
 	// Process event lists.
@@ -217,9 +208,6 @@ void Model::step()
 		std::cout << "Sim time: " << simTime 
 				  << ", Population Prey: " << preyPopulation
 				  << " Predator: " << predatorPop << std::endl;
-		//std::cout << "Sim time: " << simTime 
-		//		  << ", Population by var Prey: " << preyPopulation
-		//		  << " Predator: " << predatorPop << std::endl;
 	}
 
 	if(simTime % 10 == 0)

@@ -55,9 +55,14 @@ private:
 	std::list<Ring> rings;
 
 	/**
-	 * The list of rings which has similarity with the standard pattern.
+	 * Simulation time vs. prey ring population map.
 	 */
 	std::map<long, std::list<Ring>> ringHistoryMap;
+
+	/**
+	 * Simulation time vs. predator population map.
+	 */
+	std::map<long, int> predatorPopHistoryMap;
 
 	std::ofstream logfile;
 
@@ -84,7 +89,6 @@ private:
 	int calculateHammingDistance(CAPattern pattern1, CAPattern pattern2);
 public:
 	void generateMimicryRingReport(Cell cells[][ISIZE][ISIZE], long simTime);
-	void storeHistory(long simTime);
 	void printMimicryRingReport();
 	void writeMimicryRingReport();
 	void createFile();

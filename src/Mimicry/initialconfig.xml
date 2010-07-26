@@ -46,51 +46,69 @@ of predator is evenly distributed all over the location mentioned.
   <agents>
     <prey>
       <rule>110</rule>
-      <population>108</population>
+      <population>150</population>
       <palatability>true</palatability>
       <location>
         <from>0</from>
-        <to>107</to>
+        <to>35</to>
       </location>
     </prey>
     <prey>
       <rule>30</rule>
-      <population>108</population>
+      <population>150</population>
       <palatability>false</palatability>
       <location>
-        <from>108</from>
-        <to>215</to>
+        <from>36</from>
+        <to>71</to>
       </location>
     </prey>
-    <!--<prey>
+    <prey>
       <rule>55</rule>
-      <population>50</population>
+      <population>150</population>
       <palatability>true</palatability>
       <location>
-        <from>108</from>
-        <to>161</to>
+        <from>72</from>
+        <to>107</to>
       </location>
     </prey>
     <prey>
       <rule>190</rule>
-      <population>50</population>
+      <population>150</population>
       <palatability>false</palatability>
       <location>
-        <from>162</from>
+        <from>108</from>
+        <to>143</to>
+      </location>
+    </prey>
+    <prey>
+      <rule>57</rule>
+      <population>150</population>
+      <palatability>true</palatability>
+      <location>
+        <from>144</from>
+        <to>179</to>
+      </location>
+    </prey>
+    <prey>
+      <rule>105</rule>
+      <population>150</population>
+      <palatability>false</palatability>
+      <location>
+        <from>180</from>
         <to>215</to>
       </location>
-    </prey>-->
+    </prey>
     <predator>
-      <population>5</population>
+      <population>15</population>
       <location>
         <from>11</from>
-        <to>15</to>
+        <to>25</to>
       </location>
     </predator>
     <predator>
-      <population>5</population>
+      <population>15</population>
       <location>
-        <from>111</from>
+        <from>101</from>
         <to>115</to>
       </location>
     </predator>

@@ -27,6 +27,9 @@ void ReportGenerator::generateMimicryRingReport(Cell cells[][ISIZE][ISIZE], long
 		ringIter->unpalatable = 0;
 	}
 
+	//Initialize predator population.
+	int totalPredatorPop = 0;
+
 	//Iterate over all the cells
 	for(int i = 0; i < ISIZE; i++)
 		for(int j = 0; j < ISIZE; j++)
@@ -78,6 +81,7 @@ void ReportGenerator::generateMimicryRingReport(Cell cells[][ISIZE][ISIZE], long
 					}
 					agentIter++;
 				}
+				totalPredatorPop += cells[i][j][k].getPop(Agent::PREDATOR);
 			}
 	//Sort ring count according to number of agents in each ring. Descending order.
 	rings.sort(SortRingFunctorByPopulation());
@@ -99,7 +103,12 @@ void ReportGenerator::generateMimicryRingReport(Cell cells[][ISIZE][ISIZE], long
 				break;
 		}
 	}
-	storeHistory(simTime);
+
+	//Store Prey history
+	ringHistoryMap[simTime] = rings;
+
+	//Store Predator history
+	predatorPopHistoryMap[simTime] = totalPredatorPop;
 }
 
 /**
@@ -115,14 +124,6 @@ int ReportGenerator::calculateHammingDistance(CAPattern pattern1, CAPattern patt
 			if(pattern1.get(w, l) != pattern2.get(w, l))
 				distance++;
 	return distance;
-}
-
-/**
- * Print the list of rings and the number of species in each ring into console
- */
-void ReportGenerator::storeHistory(long simTime)
-{
-	ringHistoryMap[simTime] = rings;
 }
 
 /**
@@ -231,6 +232,7 @@ void ReportGenerator::writeMimicryRingReport()
 		++tempMapIter )
 	{
 		logfile << std::setw(5) << tempMapIter->first << " ";
+		logfile << std::setw(4) << predatorPopHistoryMap[tempMapIter->first] << " ";
 		std::map<int, Ring> ringMap = tempMapIter->second;
 
 		std::map<int, Ring>::iterator ringMapIter;
@@ -242,9 +244,9 @@ void ReportGenerator::writeMimicryRingReport()
 			if( caRuleToRemoveSet.find(ringMapIter->first) == caRuleToRemoveSet.end() )
 			{
 				logfile << std::setw(3) << ringMapIter->first << " " 
-					//<< std::setw(3) << ringMapIter->second.noOfPatterns << " "
-					<< std::setw(3) << ringMapIter->second.palatable << " " 
-					<< std::setw(3) << ringMapIter->second.unpalatable << " ";
+					//<< std::setw(4) << ringMapIter->second.noOfPatterns << " "
+					<< std::setw(4) << ringMapIter->second.palatable << " " 
+					<< std::setw(4) << ringMapIter->second.unpalatable << " ";
 			}
 		}
 		logfile << std::endl;
