@@ -18,11 +18,11 @@ p0 = plot(T(1:35:timeSize), logs(1:35:timeSize, 2), 'hk');
 %Plot all the 8 rings of prey population both palatable and unpalatable.
 for c = 3:3:size(logs, 2)
     p1 = plot(T, logs(:, c + 1), '-k');
-%    p2 = plot(T(1:50:timeSize), logs(1:50:timeSize, c + 1), markers{i});
-    p2 = plot(T(1:c*3:timeSize), logs(1:c*3:timeSize, c + 1), markers{i});
+    p2 = plot(T(1:50:timeSize), logs(1:50:timeSize, c + 1), markers{i});
+%    p2 = plot(T(1:c*3:timeSize), logs(1:c*3:timeSize, c + 1), markers{i});
     p3 = plot(T, logs(:, c + 2), ':k');
-%    plot(T(1:75:timeSize), logs(1:75:timeSize, c + 2), markers{i});
-    plot(T(1:c*7:timeSize), logs(1:c*7:timeSize, c + 2), markers{i});
+    plot(T(1:75:timeSize), logs(1:75:timeSize, c + 2), markers{i});
+%    plot(T(1:c*7:timeSize), logs(1:c*7:timeSize, c + 2), markers{i});
     plotHandles = [plotHandles p2];
     legends = [legends; strcat( 'CA Rule: ', num2str(logs(1, c)))];
     i = i + 1;
