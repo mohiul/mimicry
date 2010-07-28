@@ -7,5 +7,5 @@ R = rings(:, 2);
 plot(T, R, '-k');
 axis([0 T(size(T, 1)) 0 R(size(R, 1))+2 ]);
 xlabel('Simulation Time');
-ylabel('Ring size');
-title('Mimicry ring size variation');
+ylabel('Number of Rings');
+title('Mimicry number of ring variation');
