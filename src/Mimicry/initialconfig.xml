@@ -44,6 +44,78 @@ of predator is evenly distributed all over the location mentioned.
 
 <root>
   <agents>
+    <!-- One prey species-->
+    <prey>
+      <rule>30</rule>
+      <population>216</population>
+      <palatability>true</palatability>
+      <location>
+        <from>0</from>
+        <to>215</to>
+      </location>
+    </prey>
+    <!-- Two prey species-->
+    <!--
+    <prey>
+      <rule>110</rule>
+      <population>108</population>
+      <palatability>true</palatability>
+      <location>
+        <from>0</from>
+        <to>107</to>
+      </location>
+    </prey>
+    <prey>
+      <rule>30</rule>
+      <population>108</population>
+      <palatability>false</palatability>
+      <location>
+        <from>108</from>
+        <to>215</to>
+      </location>
+    </prey>
+    -->
+    <!-- Four prey species-->
+    <!--
+    <prey>
+      <rule>110</rule>
+      <population>150</population>
+      <palatability>true</palatability>
+      <location>
+        <from>0</from>
+        <to>49</to>
+      </location>
+    </prey>
+    <prey>
+      <rule>30</rule>
+      <population>150</population>
+      <palatability>true</palatability>
+      <location>
+        <from>50</from>
+        <to>99</to>
+      </location>
+    </prey>
+    <prey>
+      <rule>55</rule>
+      <population>150</population>
+      <palatability>false</palatability>
+      <location>
+        <from>100</from>
+        <to>149</to>
+      </location>
+    </prey>
+    <prey>
+      <rule>190</rule>
+      <population>150</population>
+      <palatability>false</palatability>
+      <location>
+        <from>150</from>
+        <to>199</to>
+      </location>
+    </prey>
+    -->
+    <!-- Six prey species -->
+    <!--
     <prey>
       <rule>110</rule>
       <population>150</population>
@@ -98,15 +170,16 @@ of predator is evenly distributed all over the location mentioned.
         <to>215</to>
       </location>
     </prey>
+    -->
     <predator>
-      <population>15</population>
+      <population>4</population>
       <location>
         <from>11</from>
         <to>25</to>
       </location>
     </predator>
     <predator>
-      <population>15</population>
+      <population>4</population>
       <location>
         <from>101</from>
         <to>115</to>
