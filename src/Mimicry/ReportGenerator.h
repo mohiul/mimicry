@@ -60,11 +60,18 @@ private:
 	std::map<long, std::list<Ring>> ringHistoryMap;
 
 	/**
+	 * Simulation time vs. ring size map.
+	 */
+	std::map<long, int> ringSizeHistoryMap;
+
+	/**
 	 * Simulation time vs. predator population map.
 	 */
 	std::map<long, int> predatorPopHistoryMap;
 
 	std::ofstream logfile;
+
+	std::ofstream ringfile;
 
 	/**
 	 * This structure is used to sort the list of mimicry rings according to their
@@ -91,7 +98,7 @@ public:
 	void generateMimicryRingReport(Cell cells[][ISIZE][ISIZE], long simTime);
 	void printMimicryRingReport();
 	void writeMimicryRingReport();
-	void createFile();
+	void createFile(std::string fileName, std::ofstream *ofile);
 };
 
 #endif

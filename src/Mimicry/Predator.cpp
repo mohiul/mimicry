@@ -43,7 +43,8 @@ Predator::~Predator()
 {
 	cell->remove(this);
 	//std::cout << "Deleting predators..." << std::endl;
-	delete memory;
+	if (memory != 0)
+		delete memory;
 }
 
 /**

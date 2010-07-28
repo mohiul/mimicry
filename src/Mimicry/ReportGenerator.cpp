@@ -106,6 +106,8 @@ void ReportGenerator::generateMimicryRingReport(Cell cells[][ISIZE][ISIZE], long
 
 	//Store Prey history
 	ringHistoryMap[simTime] = rings;
+	//Store Ring size history
+	ringSizeHistoryMap[simTime] = rings.size();
 
 	//Store Predator history
 	predatorPopHistoryMap[simTime] = totalPredatorPop;
@@ -223,7 +225,10 @@ void ReportGenerator::writeMimicryRingReport()
 	}
 
 	//Create log file to write.
-	createFile();
+	createFile("..\\..\\report\\logs", &logfile);
+
+	//Create log file to write.
+	createFile("..\\..\\report\\rings", &ringfile);
 
 	//Write in the log file.
 	//std::map<long, std::map<int, Ring>>::iterator tempMapIter;
@@ -231,8 +236,16 @@ void ReportGenerator::writeMimicryRingReport()
 		tempMapIter != tempRingHistoryMap.end(); 
 		++tempMapIter )
 	{
+		//Write simulation time
 		logfile << std::setw(5) << tempMapIter->first << " ";
+		//Write predatory population
 		logfile << std::setw(4) << predatorPopHistoryMap[tempMapIter->first] << " ";
+
+		//Write simulation time in ring size log
+		ringfile << std::setw(5) << tempMapIter->first << " ";
+		//Write ring size in ring size log
+		ringfile << std::setw(3) << ringSizeHistoryMap[tempMapIter->first] << std::endl;
+
 		std::map<int, Ring> ringMap = tempMapIter->second;
 
 		std::map<int, Ring>::iterator ringMapIter;
@@ -251,7 +264,10 @@ void ReportGenerator::writeMimicryRingReport()
 		}
 		logfile << std::endl;
 	}
+	std::cout << "Log file generated " << std::endl;
 	logfile.close();
+	std::cout << "Ring file generated " << std::endl;
+	ringfile.close();
 }
 
 /**
@@ -270,7 +286,7 @@ void ReportGenerator::printMimicryRingReport()
 	}
 }
 
-void ReportGenerator::createFile()
+void ReportGenerator::createFile(std::string fileName, std::ofstream *ofile)
 {
 	time_t lt = time(0);
 	struct tm *ptr = localtime(&lt);
@@ -280,7 +296,7 @@ void ReportGenerator::createFile()
 
 	std::ostringstream os;
 	os.fill('0');
-	os << "log." <<
+	os << fileName << "." <<
 	  std::setw(4) << ptr->tm_year+1900 <<
 	  std::setw(2) << ptr->tm_mon <<
 	  std::setw(2) << ptr->tm_mday << '.' <<
@@ -288,5 +304,5 @@ void ReportGenerator::createFile()
 	  std::setw(2) << ptr->tm_min <<
 	  std::setw(2) << ptr->tm_sec << ".dat";
 
-	logfile.open(os.str().c_str());
+	ofile->open(os.str().c_str());
 }
