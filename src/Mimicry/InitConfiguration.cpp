@@ -61,7 +61,7 @@ bool InitConfiguration::readConfigFile(std::string configFile)
 
 			std::string palatabilityInfo = std::string(child->FirstChildElement("palatability")->GetText());
 			bool palatability = false;
-			if(palatabilityInfo.compare("true"))
+			if(!palatabilityInfo.compare("true"))
 				palatability = true;
 
 			TiXmlElement* location = child->FirstChildElement( "location" );
