@@ -102,7 +102,7 @@ const int System::NUMBER_OF_RINGS_TO_REPORT = 8;
 /**
  * Minimum number of patterns that need to be stored in Predator memory before starting recognition.
  */
-int System::MIN_MEMORY_SIZE = 6;
+int System::MIN_MEMORY_SIZE = 4;
 
 /**
  * Maximum number of patterns stored in Hopfield Memory
