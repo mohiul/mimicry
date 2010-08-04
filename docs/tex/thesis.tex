@@ -1,0 +1,44 @@
+%Preamble
+\documentclass[11pt,oneside,letterpaper]{report}
+
+%Page formatting package
+\usepackage[top=1.0in, bottom=1in, left=1.5in, right=1in]{geometry}
+\linespread{1.6}
+
+%Graphics package
+\usepackage{graphicx}
+\DeclareGraphicsExtensions{.png,.jpg,.pdf}
+
+\usepackage{multirow}
+
+%Preamble ends document begins
+\begin{document}
+\title{Modeling The Evolution of Mimicry}
+\author{Mohiul Islam}
+\date{\today}
+
+\pagenumbering{roman}
+
+\maketitle
+
+\begin{abstract}
+\end{abstract}
+
+\tableofcontents
+\listoffigures
+\listoftables
+
+\input{intro}
+\pagenumbering{arabic}
+\input{review}
+\input{adaptiveColouration}
+\input{mimicry}
+\input{model}
+\input{result}
+\input{application}
+\input{conclusion}
+
+\renewcommand{\bibname}{ References}
+\bibliographystyle{alpha}
+\bibliography{references}
+\end{document}
