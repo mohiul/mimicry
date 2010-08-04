@@ -1,15 +1,23 @@
 %Preamble
 \documentclass[11pt,oneside,letterpaper]{report}
 
+%For hyper referencing
+\usepackage[pdfborder={text},colorlinks={true},linkcolor={black},citecolor={black},urlcolor={black}]{hyperref}
+%In case you use the package hyperref to create a PDF, the links to tables or figures will point to the caption of the table or figure, which is always below the table or figure itself. Therefore the table or figure will not be visible, if it is above the pointer and one has to scroll up in order to see it. If you want the link point to the top of the image you can use the package hypcap with:
+\usepackage[all]{hypcap}
+
 %Page formatting package
 \usepackage[top=1.0in, bottom=1in, left=1.5in, right=1in]{geometry}
-\linespread{1.6}
+%Double spacing
+%\linespread{1.6}
 
 %Graphics package
 \usepackage{graphicx}
 \DeclareGraphicsExtensions{.png,.jpg,.pdf}
-
+%For multirow feature to draw tables
 \usepackage{multirow}
+%For Mathematics
+\usepackage{amsmath}
 
 %Preamble ends document begins
 \begin{document}
