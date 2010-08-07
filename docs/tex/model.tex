@@ -1,13 +1,64 @@
 %Chapter describing the model
 \chapter{Modeling the evolution of mimicry}
 
-\section{Past Work}
+\section{Introduction}
+%Entire section until past work needs to be revised when the model has been fully described.
+The objective of this thesis is to design an agent based artificial life model for simulating the natural process of the evolution of mimicry.
 
-\subsection{Sherratt's Model}
+There are mainly two species of agents. These agents have properties and behavior similar to the \textbf{model}, the \textbf{mimic} and the \textbf{predator} in the evolution of mimicry. We represent evolution of pattern for the model and the mimic with the help of Cellular Automata(CA). Cellular Automata can be easily represented by simple rules, which can be expressed as a binary string. The predator will be equipped with a Hopfield network, to be able to have pattern recognition capability. The process of evolution will of course be running at the genetic level. 
+
+The choice of Hopfield Network memory for a predator can be considered appropriate as the number of patterns which can be recognized by this network is inversely proportional to the accuracy of recall. As more patterns are memorized, Hopfiled network tends to make more errors. This behavior will be appropriate for the simulation of Mullerian mimicry. Mullerian mimicry happens because of limited memory of the predators. Because of this limited memory, multiple inedible butterflies seems to converge to a single ring.
+
+The environment will be designed as three dimensional, while the space will be of toroidal nature. This idea has been taken from the Laws and Life project by Peter Grogono \cite{grogono2003}.
+
+\section{Past Work}
+Various models of mimicry has been simulated and explored. The model by Turner \cite{turner1996} and the mathematical model of Huheey \cite{huheey1988} tend to focus on the selective pressure on prey brought about by the particular learning abilities of the predator, and employ simple Monte Carlo or mathematical approaches.
+
+Sherratt \cite{sherratt2002} provides an innovative perspective on the evolution of warning signals by considering co-evolving predator and prey populations. The model's predators are deterministic, in that they have a fixed behavioral strategy over their lifetime, and cannot learn from experience. For both cryptic and conspicuous prey, each predator has fixed policy of either attacking or avoiding.
+
+The latest work on modeling evolution of warning signals and mimicry with individual based simulation is done by Frank and Noble. Their initial work \cite{franks2002} seems of focus on putting some conditions of mimetic evolution in an individual based model with multiple species preyed upon by a single abstract predator, where the appearance of each prey species can evolve but their palatability is fixed.
+
+On 2003 \cite{franks2003} another model for the origin of mimicry ring has been proposed by Frank and Noble. Accordingly theory suggests that all Mullerian mimics in an ecosystem should converge into one large ring, while this convergence will be encouraged by presence of Batesian mimics. So an evolutionary simulation to observe the above mentioned phenomenon has been presented in this piece of work.
+
+Frank and Noble continue to test the influence on mimicry ring evolution by Batesian mimics in their work on \cite{franks2004}. Usually mathematical models of mimicry has fixed prey coloration and appearances, which enables a comparison of predation rates to demonstrate the level of protection a mimic might be afforded. In this model prey colorations are free to evolve. This phenomenon is used to examine the effect of Batesian mimicry on Mullerian mimics and mimicry rings. 
 
 \subsection{Models by Frank and Noble}
+%Explain more about the first model by Frank and Noble
+The first model by Frank and Noble \cite{franks2002} is where ``multiple species are preyed upon by a single abstract predator; the appearance of each prey species can evolve but their palatability is fixed." Each individual had a single gene: a value representing their external appearance or phenotype. The phenotypes are constrained to a ring of values from 1-20 (where 20 and 1 are neighbors). The distance of one phenotype from another represents their levels of similarity. 
+
+A single abstract predator was modeled with a simple reinforcement learning system. The predator's experience of each phenotype was represented by a score, which would be maintained by probability to consume the next prey species depending on similarity or difference in phenotype. 
+
+The existence of mimetic effect were measured with the initial and final distances between prey species' phenotypes. Three experiments were noted. Firstly, with one palatable and one unpalatable species. For this Batesian mimicry was evolved. For the second experiment, with two unpalatable species, Mullerian mimicry was evolved if the two prey species have some initial resemblance. Experiment 3 was carried out with two unpalatable and one palatable species, where the phenotype of the palatable species moved towards that of one of the unpalatable species, which is in other words Batesian Mimicry.
+
+\paragraph{}
+The second model by Frank and Noble \cite{franks2003} is based on two working hypothesis:
+
+\begin{itemize}
+	\item \textsl{All of the Mullerian mimics in a given ecosystem should eventually converge into one large ring in order to gain maximum protection.}
+	\item \textsl{If the Mullerian mimics do not converge into one large ring, then the presence of Batesian mimics could entice them to do so, by influencing the rings to converge.}
+\end{itemize}
+
+Although there are many mathematical and stochastic models of mimicry in the biological literature, this model gives attention to the evolution of mimicry ring phenomenon from an artificial life perspective.
+
+%\subsubsection{Model Description}
+\paragraph{Prey}
+Similar to the first model this also contains a population of prey species each having an appearance and palatability level. Different species of prey were each assigned a fixed palatability level on a scale between zero and one (least to most palatable), where 0.5 is neutrally palatable. Palatable species have values greater than 0.5, and unpalatable species have values lower than 0.5. Each prey species has used two genes with values compositely representing their external appearance or phenotype. Both of these genes were constrained to values from 1 - 200. The Euclidean distance of one phenotype from another represented their level of similarity.
+
+\paragraph{Predator}
+Similar to Turner's stochastic model \cite{turner_et_al1984},  predators were modeled with a Monte Carlo reinforcement learning system. The predator's experience of each phenotype was represented by an attack probability, which was initialized to ambivalence at 0.5. After eating prey of a particular phenotype, the predator would make a post-attack update of the relevant probability according to the palatability of the prey consumed. The predator would use its experience of different prey appearances to help it decide on whether or not to attack at the next opportunity.
+
+In contrary to the stochastic model \cite{turner_et_al1984},  predators would generalize on the basis of experience. A set of probability formula was used to come up with the current probability to consume a prey species based on its palatability and the previous probability of consumption based on experience using generalization rate and the Euclidean distance between the experienced phenotype and the consumed prey phenotype. 
+
+%Explain the results for the second model by Frank and Noble
+\paragraph{Results}
+According to the first experiment, which started with 20 unpalatable prey species, hypothesis 1 of a single large mimicry ring was not established. Their was existence of multiple mimicry rings of very different frequency. Second experiment was carried out with some palatable species along with the unpalatable once which was able able to reach conditions of Batesian mimicry also with less mimicry rings, were hypothesis 2 borne out. 
+
+\begin{quote}
+\textsl{The presence of Batesian mimics would provide positive selection pressure on mutants and would, therefore, increase the probability that they would evolve an initial resemblance to another unpalatable species. Also, Batesian pressure on mimicry rings has the potential to push one ring into the range of another, helping to bridge a large phenotypic difference between them.}
+\end{quote}
 
 \section{FormAL Framework}
+The FormAL framework is a collection of ideas and concepts taken from \cite{grogono2003} and are used to build a framework for modeling the evolution of mimicry. The framework consists of a 3-D visual environment where agents of the individual based simulation gets complete freedom of movement following a certain pattern.
 
 \subsection{Spatial representation of the environment}
 
@@ -17,11 +68,12 @@
 
 \subsection{Mobility}
 
-\section{Mimics and Model}
+\section{The Prey: Mimics and Models}
 
 \subsection{Pattern representation by Cellular Automata}
 
 \subsection{Species diversity}
+Franks and Noble have used different models to diversify species. In \cite{franks2002} they have used linear difference in number ``constrained to a 'ring' of values  from 1-20 (where 20 and 1 are neighbors)" to distinguish species diversity. Here the distance of one phenotype from another represents their level of similarity. 
 
 \subsection{Genetic representation of palatability}
 The palatability of each prey species is fixed and has been represented with 2 bit of the genome giving it a range of 0 to 3 with four levels of palatability. The combinations are as follows:
@@ -50,10 +102,81 @@ This representation in Table \ref{tab:genetic-representation-palatability} is un
 \section{Predator}
 
 \subsection{Learning}
+The objective of a predator's interaction with the prey is always to consume it. But based on the species of the prey and depending on its palatability, the predator will either be able to consume it or to throw it back to the environment. At this event the predator needs to learn the pattern with which the prey has been represented. The pattern represents palatability of the prey species, at least to the predator. To store this new pattern into memory, each predator is equipped with a Hopfield Network Memory. Every time a new interaction is made by the predator its memory is initialized with all the existing pattern that has already been encountered and the new one. The learning procedure used for this memory will be Hebbian Learning. 
 
 \subsubsection{Hebbian Learning}
+\textit{Hebb's postulate of learning} is the oldest and most famous of all learning rules; it is named in honor of the neuropsychologist Donald Hebb(1949). Hebb's book \textit{The Organization of Behavior} (1949) states the following (p.62):
+
+\begin{quote}
+\textsl{When an axon of cell A is near enough to excite a cell B and repeatedly or persistently takes part in firing it, some growth process or metabolic changes take place in one or both cells such that A's efficiency as one of the cells firing B is increased.}
+\end{quote}
+
+The following \textit{general learning rule} is adopted in neural network studies: \textit{The weight vector} \( \textbf{w}_i = [w_{i1} \> w_{i2} \> ... \> w_{in}]^t \) \textit{increases in proportion to the product of input} \textbf{x} \textit{and learning signal r}. The learning signal r is in general a function of \(\textbf{w}_i,\textbf{x}\), and sometimes of the teacher's signal \(d_i\). Thus we have, 
+
+\begin{equation}
+	r = r(\textbf{w}_i,\textbf{x},d_i)
+%\label{eq:}
+\end{equation}
+
+The increment of the weight vector \(\textbf{w}_i\) produced by the learning step at time t according to the general learning rule is,
+
+\begin{equation}
+	\Delta\textbf{w}_i(t)=cr[\textbf{w}_i(t),\textbf{x}(t),d_i(t)]\textbf{x}(t)
+%\label{eq:}
+\end{equation}
+
+when c is a positive number called the \textit{learning constant} that determines the rate of learning.
+
+For Hebbian learning rule the learning signal is equal simply to the neuron's output. We have
+
+\begin{equation}
+	r \overset{\Delta}{=} f(\textbf{w}_i^t \textbf{x})
+%\label{eq:}
+\end{equation}
+
+
+The increment \(\Delta\textbf{w}_i\) of the weight vector becomes
+
+\begin{equation}
+	\Delta\textbf{w}_i = cf(\textbf{w}_i^t \textbf{x})\textbf{x}
+%\label{eq:}
+\end{equation}
+
+The single weight \( w_{ij} \) is adapted using the following increment:
+
+\begin{equation}
+	\Delta\textit{w}_{ij} = cf(\textbf{w}_i^t \textbf{x})x_j
+%\label{eq:}
+\end{equation}
+
+This can be written briefly as 
+
+\begin{equation}
+	\Delta\textit{w}_{ij} = c o_i x_j, \> for \> j = 1, 2, ..., n
+%\label{eq:}
+\end{equation}
+
+The learning rule requires the weight initialization at small random values around \( \textbf{w}_i = \textbf{0}\) prior to learning. The Hebbian learning rule represents a purely feed-forward, unsupervised learning. The rule implements the interpretation of the classic \textit{Hebb's postulate of learning} stated above. 
+
+The rule states that if the cross product of output and input, or correlation term \(o_ix_j\) is positive, this results in an increase of weight \(w_{ij}\); otherwise the weight decreases. It can be seen that the output is strengthened in turn for each input presented. Therefore, frequent input patterns will have most influence at the neuron's weight vector and will eventually produce the largest output.
+
+Training for Hopfield Network used for predator's memory is done by Hebbian Learning. Initially the weights are all set to zero. Using Hebbian rule, the outer product of the input - output vector pairs are calculated for each pattern. As Hopfield is a feedback network, the output of the network is also the input. The outer vector matrix of all the patterns are summed to come up with the final weight matrix. Each component of the weight matrix \(\textbf{W} = \{w_{ij}\}\) is given by:
+
+\begin{equation}
+w_{ij} = \sum_{p=1}^{P} s_i(p) t_j(p), i \neq j
+%\label{eq:}
+\end{equation}
+
+\[
+w_{ij} = 0, i = j
+\]
+
+where P is the number of patterns. Vectors \textbf{S} and \textbf{T} are respectively, the input and the desired output of the network.
 
 \subsection{Design of Memory with Hopfield Network}
+
+\subsubsection{Input to memory}
+Each prey will contain an evolving cellular automata which will be represented by a binary gene. This two dimensional pattern will be serialized to be available as a one dimensional binary array, which will be taken as input for any predator organism trying to interact with the prey. This binary representation of the pattern will have to be converted to a bipolar representation. Each input pattern will consist of \(\textit{m} \times \textit{n} = \textit{mn}\) components, each component representing one pixel of the pattern (\textit{m} and \textit{n} representing each dimension). The \textit{m} by \textit{n} pattern configuration will be flattened by putting all row vectors in one single row sequentially.
 
 \subsubsection{Hopfield Network}
 
