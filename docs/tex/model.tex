@@ -33,10 +33,10 @@ The existence of mimetic effect were measured with the initial and final distanc
 \paragraph{}
 The second model by Frank and Noble \cite{franks2003} is based on two working hypothesis:
 
-\begin{itemize}
+\begin{enumerate}
 	\item \textsl{All of the Mullerian mimics in a given ecosystem should eventually converge into one large ring in order to gain maximum protection.}
 	\item \textsl{If the Mullerian mimics do not converge into one large ring, then the presence of Batesian mimics could entice them to do so, by influencing the rings to converge.}
-\end{itemize}
+\end{enumerate}
 
 Although there are many mathematical and stochastic models of mimicry in the biological literature, this model gives attention to the evolution of mimicry ring phenomenon from an artificial life perspective.
 
@@ -58,17 +58,119 @@ According to the first experiment, which started with 20 unpalatable prey specie
 \end{quote}
 
 \section{FormAL Framework}
-The FormAL framework is a collection of ideas and concepts taken from \cite{grogono2003} and are used to build a framework for modeling the evolution of mimicry. The framework consists of a 3-D visual environment where agents of the individual based simulation gets complete freedom of movement following a certain pattern.
-
-\subsection{Spatial representation of the environment}
-
-\subsection{3D Visualization}
+The ``FormAL framework" is a collection of ideas and concepts taken from Peter Grogono's FormAL(Formal Artificial Life) project \cite{grogono2003} and are used to build a framework for modeling the evolution of mimicry. The primary goal of the FormAL project was ``\textit{To study the emergence of complexity}". While the principal behind it was ``\textit{not to include a variable in an agent unless the variable is genetically controlled (or, at least, genetically influenced)}". We will see that this principal was not completely established in simulating mimicry as it was not possible to come up with a genetic representation of Hopfield Network which was used as a pattern recognizer for the predator species. 
 
 \subsection{Agents}
+In FormAL, an \textbf{Agent} is a simulated organism. It is designed simply, but with the following qualities:
+
+\begin{itemize}
+	\item It has behaviors to be able to reproduce itself using genetic information.
+	\item Capable of modifying the structure of genome between generations.
+	\item Able to interact with other agents.
+	\item And also to survive and reproduce in a challenging environment.
+\end{itemize}
+
+\subsection{Spatial representation of the environment}
+The framework consists of a three dimensional visual environment where agents of the individual based simulation gets complete freedom of movement defined from their genetic representation. 
+
+\paragraph{Space}
+The space of the environment is a three-dimensional lattice of discrete points. The coordinate of each point in space is of the form \((x,y,z) \in \Sigma^3\), where \(\Sigma\) be the set \(\{0, 1, ..., S-1\}\). \(S\) is a universal constant being a small positive integer, which in this simulation has been kept at 20 (the value of the \(World Size\) parameter in Table \ref{tab:environment-control-parameters}). 
+
+\paragraph{Time}
+Time, being an integer \( (t \geq 0) \), advances in discrete steps in the simulation, where at each step the agents update themselves. 
+
+\paragraph{Cell}
+The entire three dimensional toroidal environment is divided in multiple cells. A cell is a three dimensional cubical section of the hyperspace. Accordingly in Table \ref{tab:environment-control-parameters} \(ISize\) is the parameter that controls the number of cells in the environment. The size of a cell is evaluated from the entire world size. And the total number of cell is calculated as \(ISize^3 = 216\).
+
+\begin{table}[H]
+\centering
+\begin{tabular}{| p{2.2cm} | >{\centering} p{3cm} | p{7.5cm} |}
+	\hline
+		\textbf{Parameter} & \textbf{Value} & \textbf{Description} \\ \hline
+		ISize & 6 & \\ \hline
+		World Size & 20 & \\ \hline
+		Cell Size & \( World Size / ISize \) & \\ \hline
+		Total Number of Cells & \( ISize^3  = 216\) & \\ 
+	\hline
+\end{tabular}
+\caption{Parameters to control the environment.}
+\label{tab:environment-control-parameters}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{cc}
+		\multicolumn{2}{c}{ \includegraphics[scale=0.50]{images/cells-front} } \\
+		\includegraphics[scale=0.40]{images/cells-top} & \includegraphics[scale=0.40]{images/cells-side} \\
+\end{tabular}
+\caption{Three dimensional representation of the environment divided in cells. Presence of different species of agents inside.}
+\label{tab:3-d-environment-images}
+\end{table}
 
 \subsection{Mobility}
+An agents position is calculated once during each step of update in time. The agents \(position\), \(force\), \(acceleration\) and \(velocity\) are all vector components. The \(force\) component is calculated from agent's mobility gene. And it is used to compute agent's \(acceleration\). If the \(force\) and \(velocity\) are both zero, then the agent has no effect in motion. Otherwise, Newton's law is used to obtain the \(acceleration\), which is integrated to obtain the new \(velocity\) and new \(position\).
+
+\begin{algorithm}
+	\caption{Algorithm for updating movement of the Agents}
+	\label{algo:algorithm-movement-agents}
+	\begin{algorithmic}
+		\FOR{each step in time}
+			\STATE $accelaration \gets ForceFactor * force - Friction * velocity$
+			\STATE $velocity \gets DT*accelaration$ \COMMENT{DT is considered as Differential Time Set}
+			\STATE $deltaPos \gets DT*velocity$
+			\STATE $position \gets position + deltaPos$
+		\ENDFOR
+	\end{algorithmic}
+\end{algorithm}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{| p{2.2cm} | >{\centering} p{1.3cm} | p{9cm} |}
+	\hline
+		\textbf{Parameter} & \textbf{Value} & \textbf{Description} \\ \hline
+		Force Factor & 40 & A unit vector is multiplied by this amount before being added to the force vector.\\ \hline
+		Differential Time Step (DT) & 0.01 & The time step used for first-order integration of the motion equations.\\ \hline
+		Friction & 5 & The friction constant used for motion calculations.\\ \hline
+		Work Factor & 1 & \( Work done = WF * force * distance \), where \(WF\) is this constant.\\
+	\hline
+\end{tabular}
+\caption{Parameters to control mobility of agents.}
+\label{tab:mobility-control-parameters}
+\end{table}
+
+Algorithm \ref{algo:algorithm-movement-agents} explains the calculation of mobility of each agent at each time step of the simulation, while Table \ref{tab:mobility-control-parameters} contains the values of the parameters used for this simulation.
 
 \section{The Prey: Mimics and Models}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{| p{2.2cm} | >{\centering} p{1.5cm} | p{9cm} |}
+	\hline
+		\textbf{Parameter} & \textbf{Value} & \textbf{Description} \\ \hline
+		Prey Size & 2 to 5 & Size of the prey species in the 3D FormAL  environment.\\ \hline
+		Reproduction age limit & 100 & Minimum number of iterations or time steps a prey species need to be present in the simulation to get reproduction capability\\ \hline
+		Reproduction interval & 1000 & Number of iterations a prey need to wait before reproducing again.\\ \hline
+		Pattern Mutation Rate & 0.05 & Rate of Mutation of the pattern genome.\\ \hline
+		Genome Mutation Rate & 0.5 & Rate of mutation of the rest of the genome excluding the pattern gene.\\ \hline
+		Demise Age & 2000 & Age at which the prey species will be removed from the environment.\\
+	\hline
+\end{tabular}
+\caption{Parameters to control prey population and visibility.}
+\label{tab:prey-control-parameters}
+\end{table}
+
+\subsection{Genome}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|c|}
+	\hline
+		\textbf{Pattern(8)} & \textbf{Palatability(2)} & \textbf{Mobility(6)} & \textbf{Reproduction(1)} \\ \hline
+		10101101					 	& 							01		 		 & 			110001					&					1						 		 \\ \hline
+\end{tabular}
+\caption{Distribution and purpose of each gene of the 17 bit prey genome.}
+\label{tab:prey-genome}
+\end{table}
 
 \subsection{Pattern representation by Cellular Automata}
 
@@ -82,7 +184,7 @@ The palatability of each prey species is fixed and has been represented with 2 b
 	\centering
 	\begin{tabular}{|c|c|}
 		\hline
-			Gene (Index 8 to 9) &	Palatable \\ \hline
+			\textbf{Gene (Index 8 to 9)} &	\textbf{Palatable} \\ \hline
 			00									& True 			\\ \hline
 			01									& True 			\\ \hline
 			10									& False 		\\ \hline
@@ -101,8 +203,47 @@ This representation in Table \ref{tab:genetic-representation-palatability} is un
 
 \section{Predator}
 
+Predators in the system are designed to provide selection pressure to \textit{models} and \textit{mimics} for the evolution of mimicry. Similar to prey species, they are agents in the FormAL environment capable of mobility and reproduction. In addition to that these agents are equipped with Hopfield Network Memory to be able to learn and recognize patterns of the prey species. Their mobility and reproduction capability is controlled at the genetic level, but their memory is not, as it was not possible to come up with a genetic representation for Hopfield Network. A set of parameters are defined to control predators' population and learning ability in the environment. Details of the parameters are given in Table \ref{tab:predator-control-parameters}.
+
+\subsection{Genome}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|}
+	\hline
+		\textbf{Mobility(4)} & \textbf{Reproduction(1)} \\ \hline
+				 1101					   &					1						 		\\ \hline
+\end{tabular}
+\caption{Distribution and purpose of each gene of the 5 bit predator genome.}
+\label{tab:predator-genome}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{| p{2.2cm} | >{\centering} p{2.2cm} | p{8cm} |}
+	\hline
+		\textbf{Parameter} & \textbf{Value} & \textbf{Description} \\ \hline
+		Minimum Memory Size & 2 to 6 & Minimum number of patterns stored in memory before predators start making intelligent decisions.\\ \hline
+		Maximum Memory Size & 10 & Maximum number of patterns to be stored in memory. Limited to reduce processing time. \\ \hline 
+		Hopfield Maximum Iterations & 20 & Maximum number of iterations for Hopfield Network to recognize a pattern. Usually the network reaches a steady state before that. But this restriction is to avoid infinite loop in case the network never reaches a steady state. \\ \hline
+		Attack Age & 500 & minimum age a predator needs to reach to be able to attack prey species.  \\ \hline
+		Attack Interval & 100 & Interval of time which needs to pass before a predators attacks its next prey. \\ \hline
+		Genome Mutation rate & 0.3 & Mutation rate for the 5 bit genome of the predators representing their mobility and pattern recognition capability. \\ \hline
+		Reproduction Age Limit & 500 & Minimum age a predator needs to reach before engaging in reproduction.\\ \hline
+		Reproduction Interval & 1000 to 3000 & Interval of time a predator needs to pass between two reproduction process.\\ \hline
+		Demise Age & 2000 to 7000 & Age at which a predator is considered as dead.\\
+	\hline
+\end{tabular}
+\caption{Parameters to control predator population and pattern recognition capability.}
+\label{tab:predator-control-parameters}
+\end{table}
+
+\subsection{Interaction with Models and Mimics}
+
+
+
 \subsection{Learning}
-The objective of a predator's interaction with the prey is always to consume it. But based on the species of the prey and depending on its palatability, the predator will either be able to consume it or to throw it back to the environment. At this event the predator needs to learn the pattern with which the prey has been represented. The pattern represents palatability of the prey species, at least to the predator. To store this new pattern into memory, each predator is equipped with a Hopfield Network Memory. Every time a new interaction is made by the predator its memory is initialized with all the existing pattern that has already been encountered and the new one. The learning procedure used for this memory will be Hebbian Learning. 
+The objective of a predator's interaction with the prey is always to consume it. But based on the species of the prey and depending on its palatability, the predator will either be able to consume it or to throw it back to the environment. At this event the predator needs to learn the pattern with which the prey has been represented. The pattern represents palatability of the prey species, at least to the predator. To store this new pattern into memory, each predator is equipped with a Hopfield Network Memory. Every time a new interaction is made by the predator its memory is initialized with all the existing pattern that has already been encountered and the new one. The learning procedure used for this memory is Hebbian Learning. 
 
 \subsubsection{Hebbian Learning}
 \textit{Hebb's postulate of learning} is the oldest and most famous of all learning rules; it is named in honor of the neuropsychologist Donald Hebb(1949). Hebb's book \textit{The Organization of Behavior} (1949) states the following (p.62):
@@ -152,7 +293,7 @@ The single weight \( w_{ij} \) is adapted using the following increment:
 This can be written briefly as 
 
 \begin{equation}
-	\Delta\textit{w}_{ij} = c o_i x_j, \> for \> j = 1, 2, ..., n
+	\Delta\textit{w}_{ij} = c o_i x_j, \> \text{for} \> j = 1, 2, ..., n
 %\label{eq:}
 \end{equation}
 
@@ -175,10 +316,53 @@ where P is the number of patterns. Vectors \textbf{S} and \textbf{T} are respect
 
 \subsection{Design of Memory with Hopfield Network}
 
+\subsubsection{Hopfield Network}
+
+Algorithm for the Hopfield model is described in the following:
+
+\begin{enumerate}
+	\item \textit{Learning.} Let \( \boldsymbol{\xi}_1, \boldsymbol{\xi}_2, ..., \boldsymbol{\xi}_{\mu} \) denote a known set of N-dimensional fundamental memories. Use the outer-product rule (i.e. Hebb's postulate of learning) to compute the synaptic weights of the network as 
+
+	\begin{equation}
+		w_{ji} =
+			\begin{cases}
+				\frac{1}{N} \sum_{\mu=1}^{M}\xi_{\mu,j}\xi_{\mu,i}	& j \neq i \\
+				0																										& j = i 
+			\end{cases}
+	%\label{eq:}
+	\end{equation}
+	
+	where \(w_{ji}\) is the synaptic weight from neuron \(i\) to neuron \(j\). The elements of the vector \( \boldsymbol{\xi}_\mu \) equal \(\pm 1\) (bipolar). Once they are computed, the synaptic weights are kept fixed.
+	
+	\item \textit{Initialization.} Let \( \boldsymbol{\xi}_{probe} \) denote an unknown N-dimensional input vector (probe) presented to the network. The algorithm is initialized by setting
+	\begin{equation}
+		x_j(0) = \xi_{j,probe}, \> j = 1,...,N
+	%\label{eq:}
+	\end{equation}
+	
+	where \( x_j(0) \) is the state of neuron \(j\) at time \(n = 0\) and \( \xi_{j,probe} \) is the \(j\)th element of the probe \( \boldsymbol{\xi}_{probe} \).
+	
+	\item \textit{Iterate Until Convergence.} Update the elements of state vector \( \boldsymbol{x}(n) \) asynchronously (i.e., randomly and once at a time) according to the rule
+	
+	\begin{equation}
+		x_j(n+1)=sgn \Bigg(\sum_{i=1}^{N} w_{ji}x_i(n) \Bigg), \> j = 1,2, ..., N
+	%\label{eq:}
+	\end{equation}
+	
+	Repeat the iteration until the state vector \( \boldsymbol{x} \) remains unchanged.
+	
+	\item \textit{Outputting.} Let \( \boldsymbol{x}_{fixed} \) denote the fixed point (stable state) computed at the end of the step 3, The resulting output vector \( \boldsymbol{y} \) of the network is
+	
+	\begin{equation}
+		\boldsymbol{y} = \boldsymbol{x}_{fixed}
+	\label{eq:}
+	\end{equation}
+	
+	Step 1 is the storage phase, and steps 2 through 4 constitute the retrieval phase.
+\end{enumerate}
+
 \subsubsection{Input to memory}
 Each prey will contain an evolving cellular automata which will be represented by a binary gene. This two dimensional pattern will be serialized to be available as a one dimensional binary array, which will be taken as input for any predator organism trying to interact with the prey. This binary representation of the pattern will have to be converted to a bipolar representation. Each input pattern will consist of \(\textit{m} \times \textit{n} = \textit{mn}\) components, each component representing one pixel of the pattern (\textit{m} and \textit{n} representing each dimension). The \textit{m} by \textit{n} pattern configuration will be flattened by putting all row vectors in one single row sequentially.
-
-\subsubsection{Hopfield Network}
 
 \subsection{Genetic representation of mobility and reproduction capability}
 Each predator in the simulation has a genetic representation. The genome of the predator is represented with a 5 bits binary value. 
@@ -214,5 +398,3 @@ The reproduction process for predators is similar to prey species. As the learni
 There are two control parameters that effect reproduction of predator species in the simulation. The first is the "Reproduction Age Limit". This the minimum age a predator has to reach before starting to involve itself for reproduction. This parameter has been set to 500 iterations during the result and analysis section of the thesis. The second parameter is "Reproduction Interval" which has been varied in the simulation from 1000 to 3000 iteration depending on the population of palatability of the prey species. This is a very important parameter for the simulation as it determines the overall predator population and its rate of increment. Depending on this value we can control the rate of predation on prey species, which on the other hand controls the rate of mimetic behavior of the overall prey population.
 
 When the above two conditions are met, meaning the predator reaches it age for reproduction and also crosses every age interval, it randomly select another predator residing in the same cell. If this random predator is capable to reproduce depending on its 5th gene, then with a random single point crossover and mutation a new predator species in born which also resides on the same cell and initializes with zero memory configuration. Similarly when the new born predator reaches its maturity of reproductive age and if its capable to reproduce then the process iterates itself. 
-
-\subsection{Interaction with Models and Mimics}

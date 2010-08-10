@@ -10,19 +10,24 @@
 \usepackage[top=1.0in, bottom=1in, left=1.5in, right=1in]{geometry}
 %Double spacing
 %\linespread{1.6}
-
 %Graphics package
 \usepackage{graphicx}
 \DeclareGraphicsExtensions{.png,.jpg,.pdf}
 %For multirow feature to draw tables
 \usepackage{multirow}
+%Middle allignment in tables.
+\usepackage{array}
 %For Mathematics
 \usepackage{amsmath}
-\numberwithin{equation}{section}
+\numberwithin{equation}{subsection}
 %Float package used to specify positioning
 \usepackage{float}
 %Depth of upto four in sections.
 %\setcounter{secnumdepth}{3}
+
+\usepackage{algorithmic}
+\usepackage{algorithm}
+\numberwithin{algorithm}{chapter}
 
 %Preamble ends document begins
 \begin{document}
@@ -32,10 +37,10 @@
 
 \pagenumbering{roman}
 
-\maketitle
-
-\begin{abstract}
-\end{abstract}
+%\maketitle
+%
+%\begin{abstract}
+%\end{abstract}
 
 \tableofcontents
 \listoffigures
