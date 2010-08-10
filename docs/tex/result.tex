@@ -3,12 +3,25 @@
 
 \section{Introduction}
 
+\section{Reporting Mimicry Rings}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{| p{2.2cm} | >{\centering} p{2.2cm} | p{8cm} |}
+	\hline
+		\textbf{Parameter} & \textbf{Value} & \textbf{Description} \\ \hline
+		Mimicry Ring Hamming Distance & 10 \% of the Pattern Size & \\ \hline
+		Number of Rings to report & 8 & \\
+	\hline
+\end{tabular}
+\caption{Parameters to Mimicry Ring Report.}
+\label{tab:ring-report-control-parameters}
+\end{table}
+
 \section{Initial configuration with two prey species}
 % Put the table here
 \begin{table}[H]
 \centering
-\caption{Agent configuration of 2 prey species}
-\label{tab:config-table-2-prey}
 \begin{tabular}{|l|l|c|c|l|c|}
   \hline
    														&\multicolumn{3}{|c|}{Prey configuration} 																	
@@ -26,6 +39,8 @@
   \multirow{2}{*}{Memory Configuration} & \multicolumn{3}{|c|}{} 					& Minimum & 2 \\ \cline{5-6}
    																			& \multicolumn{3}{|c|}{} 					& Maximum & 10 \\ \hline  
 \end{tabular}
+\caption{Agent configuration of 2 prey species}
+\label{tab:config-table-2-prey}
 \end{table}
 
 The set of parameters in Table \ref{tab:config-table-2-prey} were carefully selected to be the initial condition for this run of the simulation. This test has been done with two sets of prey species with very different CA pattern and with opposite palatability and equal population. To control reproduction of the prey species their age limit has been set to 100 iterations into the time the species were alive. And the reproduction interval was set to 1000 iterations.
@@ -69,8 +84,6 @@ As it can be observed from Figure \ref{fig:ringSize10k-2Prey} the number of ring
 %CARule table
 \begin{table}[H]
 \centering
-\caption{Difference in prey pattern genotype and phenotype}
-\label{tab:diff-in-pattern}
 \begin{tabular}{|l|c|c|c|}
   \hline
   CA Rule & \(60 \equiv 00111100\) & \(61 \equiv 00111101\) & \(62 \equiv 00111110 \) \\ \hline
@@ -79,6 +92,8 @@ As it can be observed from Figure \ref{fig:ringSize10k-2Prey} the number of ring
   				& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{images/CARule62}}\\
   \hline
 \end{tabular}
+\caption{Difference in prey pattern genotype and phenotype}
+\label{tab:diff-in-pattern}
 \end{table}
 
 All the patterns in Table \ref{tab:diff-in-pattern} have a genetic bit difference of 1. So by a single mutation there can be three different set of phenotype for a child organism from its parent. This is largely the reason for the increased number of Rings created in the simulation. Only the 8 most populous rings have presented in the graph above with population verses simulation time.
@@ -96,8 +111,6 @@ The screen shot in Figure \ref{fig:screenshot-simTime7600-2-prey} is for one ins
 \section{Initial configuration with four prey species}
 \begin{table}[H]
 \centering
-\caption{Agent configuration of 4 prey species}
-\label{tab:config-table-4-prey}
 \begin{tabular}{|l|l|c|c|l|c|}
   \hline
    														&\multicolumn{3}{|c|}{Prey configuration} 																	
@@ -119,6 +132,8 @@ The screen shot in Figure \ref{fig:screenshot-simTime7600-2-prey} is for one ins
   \multirow{2}{*}{Memory Configuration} & \multicolumn{3}{|c|}{} 					& Minimum & 4 \\ \cline{5-6}
    																			& \multicolumn{3}{|c|}{} 					& Maximum & 10 \\ \hline  
 \end{tabular}
+\caption{Agent configuration of 4 prey species}
+\label{tab:config-table-4-prey}
 \end{table}
 
 This run of the simulation has been initialized with four prey species with very different CA pattern configuration. The predator reproduction interval has been increased to 1400, while the minimum memory size has been increased to 4 instead of 2 as the predator is expected to memorize four different species of prey before starting to make intelligent decision about consuming them. 
@@ -150,8 +165,6 @@ By observing the graph in Figure \ref{fig:plot-4-prey} we can see the two rings 
 
 \begin{table}[H]
 \centering
-\caption{Agent configuration of 4 prey species with increased population}
-\label{tab:config-table-4-more-prey}
 \begin{tabular}{|l|l|c|c|l|c|}
   \hline
    														&\multicolumn{3}{|c|}{Prey configuration} 																	
@@ -169,6 +182,8 @@ By observing the graph in Figure \ref{fig:plot-4-prey} we can see the two rings 
   \multirow{2}{*}{Memory Configuration} & \multicolumn{3}{|c|}{} 					& Minimum & 4 \\ \cline{5-6}
    																			& \multicolumn{3}{|c|}{} 					& Maximum & 10 \\ \hline  
 \end{tabular}
+\caption{Agent configuration of 4 prey species with increased population}
+\label{tab:config-table-4-more-prey}
 \end{table}
 
 In this run of the simulation some significant parameters have been updated. One is the initial population of prey species. It has been increased from 50 to 150 for each of the prey species increasing the overall population from 200 to 600. Secondly the number of predator population has been increased from 20 to 30. Thirdly, Predator demise age has been increased from 2500 to 7000 while their reproduction interval has been increased from 1400 to 2500. Increasing predator demise age can have an interesting effect, as the longer a predator is present in a simulation, the longer it will be making intelligent decision in terms of consuming its prey and there will increased selection pressure from the entire population of predators. 
@@ -195,8 +210,6 @@ The total number of rings had much increment in this run compared to the previou
 
 \begin{table}[H]
 \centering
-\caption{Agent configuration of 6 prey species.}
-\label{tab:config-table-6-prey}
 \begin{tabular}{|l|l|c|c|l|c|}
   \hline
    														&\multicolumn{3}{|c|}{Prey configuration} 																	
@@ -221,6 +234,8 @@ The total number of rings had much increment in this run compared to the previou
   \multirow{2}{*}{Memory Configuration} & \multicolumn{3}{|c|}{} 					& Minimum & 6 \\ \cline{5-6}
    																			& \multicolumn{3}{|c|}{} 					& Maximum & 10 \\ \hline  
 \end{tabular}
+\caption{Agent configuration of 6 prey species.}
+\label{tab:config-table-6-prey}
 \end{table}
 
 \begin{figure}[H]
@@ -241,8 +256,6 @@ The total number of rings had much increment in this run compared to the previou
 
 \begin{table}[H]
 \centering
-\caption{Agent configuration of 4 prey species all unpalatable.}
-\label{tab:config-table-4-prey-unpalatable}
 \begin{tabular}{|l|l|c|c|l|c|}
   \hline
    														&\multicolumn{3}{|c|}{Prey configuration} 																	
@@ -263,6 +276,8 @@ The total number of rings had much increment in this run compared to the previou
   \multirow{2}{*}{Memory Configuration} & \multicolumn{3}{|c|}{} 					& Minimum & 4 \\ \cline{5-6}
    																			& \multicolumn{3}{|c|}{} 					& Maximum & 10 \\ \hline  
 \end{tabular}
+\caption{Agent configuration of 4 prey species all unpalatable.}
+\label{tab:config-table-4-prey-unpalatable}
 \end{table}
 
 \begin{figure}[H]
@@ -283,8 +298,6 @@ The total number of rings had much increment in this run compared to the previou
 
 \begin{table}[H]
 \centering
-\caption{Agent configuration of 4 prey species all palatable.}
-\label{tab:config-table-4-prey-palatable}
 \begin{tabular}{|l|l|c|c|l|c|}
   \hline
    														&\multicolumn{3}{|c|}{Prey configuration} 																	
@@ -305,6 +318,8 @@ The total number of rings had much increment in this run compared to the previou
   \multirow{2}{*}{Memory Configuration} & \multicolumn{3}{|c|}{} 					& Minimum & 4 \\ \cline{5-6}
    																			& \multicolumn{3}{|c|}{} 					& Maximum & 10 \\ \hline  
 \end{tabular}
+\caption{Agent configuration of 4 prey species all palatable.}
+\label{tab:config-table-4-prey-palatable}
 \end{table}
 
 \begin{figure}[H]
@@ -327,8 +342,6 @@ The total number of rings had much increment in this run compared to the previou
 
 \begin{table}[H]
 \centering
-\caption{Agent configuration of 1 prey species unpalatable.}
-\label{tab:config-table-1-prey-unpalatable}
 \begin{tabular}{|l|l|c|c|l|c|}
   \hline
    														&\multicolumn{3}{|c|}{Prey configuration} 																	
@@ -344,6 +357,8 @@ The total number of rings had much increment in this run compared to the previou
   \multirow{2}{*}{Memory Configuration} & \multicolumn{3}{|c|}{} 					& Minimum & 2 \\ \cline{5-6}
    																			& \multicolumn{3}{|c|}{} 					& Maximum & 10 \\ \hline  
 \end{tabular}
+\caption{Agent configuration of 1 prey species unpalatable.}
+\label{tab:config-table-1-prey-unpalatable}
 \end{table}
 
 \begin{figure}[H]
@@ -365,8 +380,6 @@ From unpalatable species we see a bunch of rings with majority of unpalatable sp
 \subsection{Palatable}
 \begin{table}[H]
 \centering
-\caption{Agent configuration of 1 prey species palatable.}
-\label{tab:config-table-1-prey-palatable}
 \begin{tabular}{|l|l|c|c|l|c|}
   \hline
    														&\multicolumn{3}{|c|}{Prey configuration} 																	
@@ -382,6 +395,8 @@ From unpalatable species we see a bunch of rings with majority of unpalatable sp
   \multirow{2}{*}{Memory Configuration} & \multicolumn{3}{|c|}{} 					& Minimum & 2 \\ \cline{5-6}
    																			& \multicolumn{3}{|c|}{} 					& Maximum & 10 \\ \hline  
 \end{tabular}
+\caption{Agent configuration of 1 prey species palatable.}
+\label{tab:config-table-1-prey-palatable}
 \end{table}
 
 \begin{figure}[H]
