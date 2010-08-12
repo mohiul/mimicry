@@ -2,16 +2,17 @@
 \chapter{Results and Analysis}
 
 \section{Introduction}
+It is always a challenge to extract and analyze data from an Artificial Life simulation. 
 
-\section{Reporting Mimicry Rings}
+\section{Mimicry Rings Reports}
 
 \begin{table}[H]
 \centering
-\begin{tabular}{| p{2.2cm} | >{\centering} p{2.2cm} | p{8cm} |}
+\begin{tabular}{| p{2.0cm} | >{\centering} p{2.2cm} | p{8cm} |}
 	\hline
 		\textbf{Parameter} & \textbf{Value} & \textbf{Description} \\ \hline
-		Mimicry Ring Hamming Distance & 10 \% of the Pattern Size & \\ \hline
-		Number of Rings to report & 8 & \\
+		Mimicry Ring Hamming Distance & 10 \% of the Pattern Size & If the Hamming distance between the pattern of the model and the mimic is 10 \% the size of the pattern then they are considered within the same ring.\\ \hline
+		Number of Rings to report & 8 & This value is the number of most populous rings that are included in the report.\\
 	\hline
 \end{tabular}
 \caption{Parameters to Mimicry Ring Report.}
@@ -415,9 +416,5 @@ Major difference is the total number of prey population created. For unpalatable
 	\caption{Number of mimicry rings, initialized with 1 prey species palatable.}
 	\label{fig:ringSize8k-1-Prey-p}
 \end{figure}
-
-\section{Effect of difference in predator and prey motion}
-
-\section{Effects of pattern mutation rate}
 
 \section{Conclusion}
