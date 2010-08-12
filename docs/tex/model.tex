@@ -142,7 +142,45 @@ Algorithm \ref{algo:algorithm-movement-agents} explains the calculation of mobil
 
 \section{The Prey: Mimics and Models}
 
+\subsection{Pattern representation by Cellular Automata}
+Only the significant characteristics which are required for a successful model of mimicry is implemented. As for this simulation we are considering heliconius butterfly, the representation of their wing pattern is with the help of cellular automata. So basically every prey organism will contain a genetic representation of cellular automata with which the predator will identify the prey and store its level of palatability in memory.
+
+%More content needs to be added for cellular automata.
+\subsubsection{Cellular Automata}
+
+Cellular automata are computer generated patterns applying very simple rules. First invented by Jon von Neuman and later extended by Stephen Wolfram, this field of study has created a lot of enthusiasm in the evolution of complexity with blocks of simplicity, in this case rules. We choose cellular automata as it can be easily represented with the help of a binary genome and then evolutionary operations on the genomic representation, such as mutation and crossover can easily be applied.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=5]{images/CA_rule30s}
+	\caption{Cellular Automata Rule 30.
+	Image source: \href{http://en.wikipedia.org/wiki/Cellular_automata}{Wikipedia}}
+	\label{fig:cellular-automata-rule-30}
+\end{figure}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{| l | c | c | c | c | c | c | c | c |}
+	  \hline
+	  Current Pattern & 111 & 110 & 101 & 100 & 011 & 010 & 001 & 000 \\ \hline
+	  New state of center cell & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 0 \\
+	  \hline
+	\end{tabular}
+	\caption{Cellular Automata Rule}
+	\label{tab:cellular-automata-rule}
+\end{table}
+
+In generating the pattern of Figure \ref{fig:cellular-automata-rule-30}, the genetic representation would be the 'New state of center cell'. As Figure \ref{fig:cellular-automata-rule-30} is a rule 30 cellular automata, the eight bit binary representation of 30 would be the genetic representation for this pattern. Generation of automata pattern from this binary string can be considered analogous to the complex pathway between the genotype and the phenotype that exists in all living organism.
+
+\subsection{Species diversity}
+Franks and Noble have used different models to diversify species. In \cite{franks2002} they have used linear difference in number ``constrained to a 'ring' of values  from 1-20 (where 20 and 1 are neighbors)" to distinguish species diversity. Here the distance of one phenotype from another represents their level of similarity. 
+
+To use CA as prey pattern, its genome is constructed as an 8 bit binary value with a decimal range between 0 to 255. Each of this 256 values have a unique CA pattern associated with it. When storing this pattern in Hopfield memory we take a linear representation of this 2-D pattern, while to consider similarity between two pattern we evaluate the hamming distance between their linear representation. 
+
+With CA based pattern representation, population of prey species with a specific CA pattern can be grouped as one single species. And by restricting inter species reproduction we can control the diversity of patterns. But there is mutation applied when similar species mate with each other, so new species do born out of generations of existing species. So that is why we have two separate mutation rate while reproducing prey species. One being the ``Pattern Mutation Rate" (default values are mentioned in Table \ref{tab:prey-control-parameters}) with which we control mutation of the first 8 bits of the genome while the ``Genome Mutation Rate" is used to control mutation of rest of the 9 bit genome (Table \ref{tab:prey-genome}).
+
 \subsection{Genome}
+The Genome of the prey species consists of 17 bits as presented in Table \ref{tab:prey-genome}. The first eight bit is the rule, which is used to generate Cellular Automata pattern. The next two bits are used to represent palatability of the organism explained detail in Section \ref{sec:genetic-palatability-representation}. The next six bits is the force with which mobility of the organism is calculated. The 17th bit is used to evaluate reproduction capability of the organism, depending on which the prey species is either capable or not capable to participate in reproduction.
 
 \begin{table}[H]
 \centering
@@ -155,12 +193,8 @@ Algorithm \ref{algo:algorithm-movement-agents} explains the calculation of mobil
 \label{tab:prey-genome}
 \end{table}
 
-\subsection{Pattern representation by Cellular Automata}
-
-\subsection{Species diversity}
-Franks and Noble have used different models to diversify species. In \cite{franks2002} they have used linear difference in number ``constrained to a 'ring' of values  from 1-20 (where 20 and 1 are neighbors)" to distinguish species diversity. Here the distance of one phenotype from another represents their level of similarity. 
-
 \subsection{Genetic representation of palatability}
+\label{sec:genetic-palatability-representation}
 The palatability of each prey species is fixed and has been represented with 2 bit of the genome giving it a range of 0 to 3 with four levels of palatability. The combinations are as follows:
 
 \begin{table}[H]
@@ -178,11 +212,47 @@ The palatability of each prey species is fixed and has been represented with 2 b
 	\label{tab:genetic-representation-palatability}
 \end{table}
 
-This representation in Table \ref{tab:genetic-representation-palatability} is unlike \cite{franks2003} where palatability level has been used on a scale between zero and one (least to most palatable), where 0.5 is neutrally palatable. 
+This representation in Table \ref{tab:genetic-representation-palatability} is unlike Frank and Noble \cite{franks2003} where palatability level has been used on a scale between zero and one (least to most palatable), where 0.5 is neutrally palatable. 
 
-\subsection{Interaction between Mimics and Models}
+\subsection{Interaction between other Prey and Predators}
+The prey have been defined to have many conglomerate behavior in the environment. Prey interaction with other prey species and with predators make the evolution of mimicry possible. Mobility of prey species and their reproduction capability are two important behaviors which result from interaction. 
 
-\subsection{Interaction with predators}
+\subsubsection{Mobility}
+The mobility genes of the prey consist of 6 bits. These six bits are used to calculate the force with which each prey try to move towards any neighborhood cell. The algorithm sorts all neighboring cell descending to the number of prey species. Then it selects the cell which contains the highest number of prey with zero predator. If all the neighboring cells contain predators, then the algorithm sorts the neighboring cells descending on the number of predators and chooses the one which contains the least. Algorithm \ref{algo:algorithm-movement-prey} explains in detail.
+
+\begin{algorithm}[H]
+	\caption{Algorithm for updating position of the Prey species}
+	\label{algo:algorithm-movement-prey}
+	\begin{algorithmic}
+		\FOR{each step in time}
+			\STATE $forceMagnitude \gets convertToDecimal(genome[10-15])$
+			\STATE Get list of neighborhood cells, sorted by population of prey species.
+			\STATE From the sorted cell list choose the one with the least number of predators and most number of prey.
+			\STATE Move towards the selected cell with $forceMagnitude$ unit of force.
+		\ENDFOR
+	\end{algorithmic}
+\end{algorithm}
+
+\subsubsection{Reproduction}
+Every prey species starts reproducing when it reaches the ``Reproductive age limit". If it is capable of reproducing, which is decided based on its 17th bit gene, the prey will randomly select another prey species with similar pattern and palatability from the same cell and mate with it. Now the other prey also needs to be genetically capable of reproduction and needs to reach its age limit. A new genome is created from the existing genome of the two prey by applying single point crossover operation. Mutation is performed separately on the pattern gene and the rest of the genome, with two different rates to control them using the values in Table \ref{tab:prey-control-parameters}. So there is two point mutation for the genome. 
+
+\begin{algorithm}[H]
+	\caption{Algorithm for reproduction of the Prey species}
+	\label{algo:algorithm-reproduction-prey}
+	\begin{algorithmic}
+		\FOR{each step in time}
+			\STATE $capableToReproduce \gets$ true or false depending on the 17th bit of the genome, and maturity on reproduction age.
+			\IF {$capableToReproduce == true$ and $currentCellPopulation > 1$ } 
+				\STATE $anotherPrey \gets$ Select random prey from same cell.
+				\IF {$anotherPrey$ is alive and $capableToReproduce$ and of similar $pattern$ and $palatability$}
+					\STATE Perform genetic cross over and mutation to create new genome.
+					\STATE Create new prey with new genome, and release into environment.
+					\STATE Record reproduction time for both prey.
+				\ENDIF
+			\ENDIF
+		\ENDFOR
+	\end{algorithmic}
+\end{algorithm}
 
 \begin{table}[H]
 \centering
@@ -205,7 +275,146 @@ This representation in Table \ref{tab:genetic-representation-palatability} is un
 
 Predators in the system are designed to provide selection pressure to \textit{models} and \textit{mimics} for the evolution of mimicry. Similar to prey species, they are agents in the FormAL environment capable of mobility and reproduction. In addition to that these agents are equipped with Hopfield Network Memory to be able to learn and recognize patterns of the prey species. Their mobility and reproduction capability is controlled at the genetic level, but their memory is not, as it was not possible to come up with a genetic representation for Hopfield Network. A set of parameters are defined to control predators' population and learning ability in the environment. Details of the parameters are given in Table \ref{tab:predator-control-parameters}.
 
+\subsection{Learning}
+The objective of a predator's interaction with the prey is always to consume it. But based on the species of the prey and depending on its palatability, the predator will either be able to consume it or to throw it back to the environment. At this event the predator needs to learn the pattern with which the prey has been represented. The pattern represents palatability of the prey species, at least to the predator. To store this new pattern into memory, each predator is equipped with a Hopfield Network Memory. Every time a new interaction is made by the predator its memory is initialized with all the existing pattern that has already been encountered and the new one. The learning procedure used for this memory is Hebbian Learning. 
+
+\subsubsection{Hebbian Learning}
+\textit{Hebb's postulate of learning} is the oldest and most famous of all learning rules; it is named in honor of the neuropsychologist Donald Hebb(1949). Hebb's book \textit{The Organization of Behavior} (1949) states the following (p.62):
+
+\begin{quote}
+\textsl{When an axon of cell A is near enough to excite a cell B and repeatedly or persistently takes part in firing it, some growth process or metabolic changes take place in one or both cells such that A's efficiency as one of the cells firing B is increased.}
+\end{quote}
+
+The following \textit{general learning rule} is adopted in neural network studies: \textit{The weight vector} \( \textbf{w}_i = [w_{i1} \> w_{i2} \> ... \> w_{in}]^t \) \textit{increases in proportion to the product of input} \textbf{x} \textit{and learning signal r}. The learning signal r is in general a function of \(\textbf{w}_i,\textbf{x}\), and sometimes of the teacher's signal \(d_i\). Thus we have, 
+\begin{equation}
+	r = r(\textbf{w}_i,\textbf{x},d_i)
+%\label{eq:}
+\end{equation}
+The increment of the weight vector \(\textbf{w}_i\) produced by the learning step at time t according to the general learning rule is,
+\begin{equation}
+	\Delta\textbf{w}_i(t)=cr[\textbf{w}_i(t),\textbf{x}(t),d_i(t)]\textbf{x}(t)
+%\label{eq:}
+\end{equation}
+when c is a positive number called the \textit{learning constant} that determines the rate of learning.
+
+For Hebbian learning rule the learning signal is equal simply to the neuron's output. We have
+\begin{equation}
+	r \overset{\Delta}{=} f(\textbf{w}_i^t \textbf{x})
+%\label{eq:}
+\end{equation}
+The increment \(\Delta\textbf{w}_i\) of the weight vector becomes
+\begin{equation}
+	\Delta\textbf{w}_i = cf(\textbf{w}_i^t \textbf{x})\textbf{x}
+%\label{eq:}
+\end{equation}
+The single weight \( w_{ij} \) is adapted using the following increment:
+\begin{equation}
+	\Delta\textit{w}_{ij} = cf(\textbf{w}_i^t \textbf{x})x_j
+%\label{eq:}
+\end{equation}
+This can be written briefly as 
+\begin{equation}
+	\Delta\textit{w}_{ij} = c o_i x_j, \> \text{for} \> j = 1, 2, ..., n
+%\label{eq:}
+\end{equation}
+The learning rule requires the weight initialization at small random values around \( \textbf{w}_i = \textbf{0}\) prior to learning. The Hebbian learning rule represents a purely feed-forward, unsupervised learning. The rule implements the interpretation of the classic \textit{Hebb's postulate of learning} stated above. 
+
+The rule states that if the cross product of output and input, or correlation term \(o_ix_j\) is positive, this results in an increase of weight \(w_{ij}\); otherwise the weight decreases. It can be seen that the output is strengthened in turn for each input presented. Therefore, frequent input patterns will have most influence at the neuron's weight vector and will eventually produce the largest output.
+
+Training for Hopfield Network used for predator's memory is done by Hebbian Learning. Initially the weights are all set to zero. Using Hebbian rule, the outer product of the input - output vector pairs are calculated for each pattern. As Hopfield is a feedback network, the output of the network is also the input. The outer vector matrix of all the patterns are summed to come up with the final weight matrix. Each component of the weight matrix \(\textbf{W} = \{w_{ij}\}\) is given by:
+\begin{equation}
+w_{ij} = \sum_{p=1}^{P} s_i(p) t_j(p), i \neq j
+%\label{eq:}
+\end{equation}
+\[
+w_{ij} = 0, i = j
+\]
+where P is the number of patterns. Vectors \textbf{S} and \textbf{T} are respectively, the input and the desired output of the network.
+
+\subsection{Design of Memory with Hopfield Network}
+
+\subsubsection{Hopfield Network}
+
+Algorithm for the Hopfield model is described in the following:
+
+\begin{enumerate}
+	\item \textit{Learning.} Let \( \boldsymbol{\xi}_1, \boldsymbol{\xi}_2, ..., \boldsymbol{\xi}_{\mu} \) denote a known set of N-dimensional fundamental memories. Use the outer-product rule (i.e. Hebb's postulate of learning) to compute the synaptic weights of the network as 
+	\begin{equation}
+		w_{ji} =
+			\begin{cases}
+				\frac{1}{N} \sum_{\mu=1}^{M}\xi_{\mu,j}\xi_{\mu,i}	& j \neq i \\
+				0																										& j = i 
+			\end{cases}
+	%\label{eq:}
+	\end{equation}
+	where \(w_{ji}\) is the synaptic weight from neuron \(i\) to neuron \(j\). The elements of the vector \( \boldsymbol{\xi}_\mu \) equal \(\pm 1\) (bipolar). Once they are computed, the synaptic weights are kept fixed.
+	
+	\item \textit{Initialization.} Let \( \boldsymbol{\xi}_{probe} \) denote an unknown N-dimensional input vector (probe) presented to the network. The algorithm is initialized by setting
+	\begin{equation}
+		x_j(0) = \xi_{j,probe}, \> j = 1,...,N
+	%\label{eq:}
+	\end{equation}
+	where \( x_j(0) \) is the state of neuron \(j\) at time \(n = 0\) and \( \xi_{j,probe} \) is the \(j\)th element of the probe \( \boldsymbol{\xi}_{probe} \).
+	
+	\item \textit{Iterate Until Convergence.} Update the elements of state vector \( \boldsymbol{x}(n) \) asynchronously (i.e., randomly and once at a time) according to the rule
+	\begin{equation}
+		x_j(n+1)=sgn \Bigg(\sum_{i=1}^{N} w_{ji}x_i(n) \Bigg), \> j = 1,2, ..., N
+	%\label{eq:}
+	\end{equation}
+	Repeat the iteration until the state vector \( \boldsymbol{x} \) remains unchanged.
+	
+	\item \textit{Outputting.} Let \( \boldsymbol{x}_{fixed} \) denote the fixed point (stable state) computed at the end of the step 3, The resulting output vector \( \boldsymbol{y} \) of the network is
+	\begin{equation}
+		\boldsymbol{y} = \boldsymbol{x}_{fixed}
+	\label{eq:}
+	\end{equation}
+	Step 1 is the storage phase, and steps 2 through 4 constitute the retrieval phase.
+\end{enumerate}
+
+\subsubsection{Input to memory}
+Each prey contains an evolving cellular automata which is represented by a binary gene. This two dimensional pattern is serialized to be available as a one dimensional binary array, which is taken as input for any predator organism trying to interact with the prey. This binary representation of the pattern gets converted to a bipolar representation. Each input pattern will consist of \(\textit{m} \times \textit{n} = \textit{mn}\) components, each component representing one pixel of the pattern (\textit{m} and \textit{n} representing each dimension). The \textit{m} by \textit{n} pattern configuration will be serialized by putting all row vectors in one single row sequentially.
+
+\subsubsection{Predator attack algorithm}
+As soon as a predator reaches its attack age it selects random prey species around its vicinity and starts attacking them. This attack process also involves recognition of prey pattern, which is at the heart of mimicry simulation for this research. Two parameters have been defined to limit predator memorization and recognition process as both of these processes are computationally expensive. The ``Hopfield Minimum Memory Size" (default value in Table \ref{tab:predator-control-parameters}) is the number of memory a predator needs to store before making intelligent decisions about attacking a new prey species. After a predator is born, it start attacking prey without any caution. But after every attack the predator will store its pattern and palatability level inside its memory. As soon as it reaches the minimum memory size, it will start making intelligent decision about attacking the next species. It will try to recognize the pattern and if found palatable, prey will be consumed. Otherwise prey will be thrown back into the environment. If the pattern is not recognized predator will try to consume it and in the process will store its palatability and pattern into memory. 
+
+In this way the predator memory is limited to ``Hopfield Maximum Memory Size". After reaching this memory predator will not store any more new pattern but will try to associate with the existing ones it has already stored. Algorithm \ref{algo:algorithm-attack-prey} and \ref{algo:algorithm-attemptToKill} explains the process in every detail.
+
+\begin{algorithm}
+	\caption{Algorithm for attacking Prey species}
+	\label{algo:algorithm-attack-prey}
+	\begin{algorithmic}
+		\FOR{each step in time}
+			\IF {Predator has reached Minimum attack age}
+				\STATE $preyToAttack \gets$ select random prey species from the same cell.
+				\IF {$currentMemorySize < MinimumMemorySize$}
+					\STATE $attemptToKill(preyToAttack);$ \COMMENT {Function defined in Algorithm \ref{algo:algorithm-attemptToKill}}
+				\ELSE
+					\STATE recognize $preyToAttack$ pattern from memory.
+					\IF {prey is not recognized or prey is palatable}
+						\STATE $attemptToKill(preyToAttack)$
+					\ELSE 
+						\STATE Prey is recognized as unpalatable, so release it back into environment.
+					\ENDIF
+				\ENDIF
+			\ENDIF
+		\ENDFOR
+	\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+	\caption{$attemptToKill(preyToAttack)$}
+	\label{algo:algorithm-attemptToKill}
+	\begin{algorithmic}
+		\STATE Kill $preyToAttack$.
+		\IF {Memory size $< MaxMemorySize$}
+			\STATE Associate $preyToAttack$ pattern and palatability and store into memory.
+			\STATE Recalculate Hopfield Memory Weights using Hebbian Learning outer product rule.
+		\ENDIF
+	\end{algorithmic}	
+\end{algorithm}
+
 \subsection{Genome}
+Each predators has a 5 bit genome as explained in Table \ref{tab:predator-genome}. The first four bit represents its mobility and the magnitude of the force component with which it moves around the environment. The last bit controls reproduction capability of the specific species.
 
 \begin{table}[H]
 \centering
@@ -218,145 +427,21 @@ Predators in the system are designed to provide selection pressure to \textit{mo
 \label{tab:predator-genome}
 \end{table}
 
-\subsection{Interaction with Models and Mimics}
+\subsection{Mobility and reproduction capability}
+Movement behavior of a predator is calculated from its genome. The first 4 bits of the genome are converted from binary to decimal to determine the magnitude of force at which it will move towards the maximum crowd of prey present within its neighborhood. So magnitude of movement of a predator varies within a range of 0-15 units. If no prey is present in the neighborhood then this force is active in trying to keep predators distributed all over the cells. A predator chooses the neighborhood cell which contains the least number of predators. When the neighborhood contains zero predators, it would select any one of them randomly and move towards that cell.
 
-\subsection{Learning}
-The objective of a predator's interaction with the prey is always to consume it. But based on the species of the prey and depending on its palatability, the predator will either be able to consume it or to throw it back to the environment. At this event the predator needs to learn the pattern with which the prey has been represented. The pattern represents palatability of the prey species, at least to the predator. To store this new pattern into memory, each predator is equipped with a Hopfield Network Memory. Every time a new interaction is made by the predator its memory is initialized with all the existing pattern that has already been encountered and the new one. The learning procedure used for this memory is Hebbian Learning. 
-
-\subsubsection{Hebbian Learning}
-\textit{Hebb's postulate of learning} is the oldest and most famous of all learning rules; it is named in honor of the neuropsychologist Donald Hebb(1949). Hebb's book \textit{The Organization of Behavior} (1949) states the following (p.62):
-
-\begin{quote}
-\textsl{When an axon of cell A is near enough to excite a cell B and repeatedly or persistently takes part in firing it, some growth process or metabolic changes take place in one or both cells such that A's efficiency as one of the cells firing B is increased.}
-\end{quote}
-
-The following \textit{general learning rule} is adopted in neural network studies: \textit{The weight vector} \( \textbf{w}_i = [w_{i1} \> w_{i2} \> ... \> w_{in}]^t \) \textit{increases in proportion to the product of input} \textbf{x} \textit{and learning signal r}. The learning signal r is in general a function of \(\textbf{w}_i,\textbf{x}\), and sometimes of the teacher's signal \(d_i\). Thus we have, 
-
-\begin{equation}
-	r = r(\textbf{w}_i,\textbf{x},d_i)
-%\label{eq:}
-\end{equation}
-
-The increment of the weight vector \(\textbf{w}_i\) produced by the learning step at time t according to the general learning rule is,
-
-\begin{equation}
-	\Delta\textbf{w}_i(t)=cr[\textbf{w}_i(t),\textbf{x}(t),d_i(t)]\textbf{x}(t)
-%\label{eq:}
-\end{equation}
-
-when c is a positive number called the \textit{learning constant} that determines the rate of learning.
-
-For Hebbian learning rule the learning signal is equal simply to the neuron's output. We have
-
-\begin{equation}
-	r \overset{\Delta}{=} f(\textbf{w}_i^t \textbf{x})
-%\label{eq:}
-\end{equation}
-
-The increment \(\Delta\textbf{w}_i\) of the weight vector becomes
-
-\begin{equation}
-	\Delta\textbf{w}_i = cf(\textbf{w}_i^t \textbf{x})\textbf{x}
-%\label{eq:}
-\end{equation}
-
-The single weight \( w_{ij} \) is adapted using the following increment:
-
-\begin{equation}
-	\Delta\textit{w}_{ij} = cf(\textbf{w}_i^t \textbf{x})x_j
-%\label{eq:}
-\end{equation}
-
-This can be written briefly as 
-
-\begin{equation}
-	\Delta\textit{w}_{ij} = c o_i x_j, \> \text{for} \> j = 1, 2, ..., n
-%\label{eq:}
-\end{equation}
-
-The learning rule requires the weight initialization at small random values around \( \textbf{w}_i = \textbf{0}\) prior to learning. The Hebbian learning rule represents a purely feed-forward, unsupervised learning. The rule implements the interpretation of the classic \textit{Hebb's postulate of learning} stated above. 
-
-The rule states that if the cross product of output and input, or correlation term \(o_ix_j\) is positive, this results in an increase of weight \(w_{ij}\); otherwise the weight decreases. It can be seen that the output is strengthened in turn for each input presented. Therefore, frequent input patterns will have most influence at the neuron's weight vector and will eventually produce the largest output.
-
-Training for Hopfield Network used for predator's memory is done by Hebbian Learning. Initially the weights are all set to zero. Using Hebbian rule, the outer product of the input - output vector pairs are calculated for each pattern. As Hopfield is a feedback network, the output of the network is also the input. The outer vector matrix of all the patterns are summed to come up with the final weight matrix. Each component of the weight matrix \(\textbf{W} = \{w_{ij}\}\) is given by:
-
-\begin{equation}
-w_{ij} = \sum_{p=1}^{P} s_i(p) t_j(p), i \neq j
-%\label{eq:}
-\end{equation}
-
-\[
-w_{ij} = 0, i = j
-\]
-
-where P is the number of patterns. Vectors \textbf{S} and \textbf{T} are respectively, the input and the desired output of the network.
-
-\subsection{Design of Memory with Hopfield Network}
-
-\subsubsection{Hopfield Network}
-
-Algorithm for the Hopfield model is described in the following:
-
-\begin{enumerate}
-	\item \textit{Learning.} Let \( \boldsymbol{\xi}_1, \boldsymbol{\xi}_2, ..., \boldsymbol{\xi}_{\mu} \) denote a known set of N-dimensional fundamental memories. Use the outer-product rule (i.e. Hebb's postulate of learning) to compute the synaptic weights of the network as 
-
-	\begin{equation}
-		w_{ji} =
-			\begin{cases}
-				\frac{1}{N} \sum_{\mu=1}^{M}\xi_{\mu,j}\xi_{\mu,i}	& j \neq i \\
-				0																										& j = i 
-			\end{cases}
-	%\label{eq:}
-	\end{equation}
-	
-	where \(w_{ji}\) is the synaptic weight from neuron \(i\) to neuron \(j\). The elements of the vector \( \boldsymbol{\xi}_\mu \) equal \(\pm 1\) (bipolar). Once they are computed, the synaptic weights are kept fixed.
-	
-	\item \textit{Initialization.} Let \( \boldsymbol{\xi}_{probe} \) denote an unknown N-dimensional input vector (probe) presented to the network. The algorithm is initialized by setting
-	\begin{equation}
-		x_j(0) = \xi_{j,probe}, \> j = 1,...,N
-	%\label{eq:}
-	\end{equation}
-	
-	where \( x_j(0) \) is the state of neuron \(j\) at time \(n = 0\) and \( \xi_{j,probe} \) is the \(j\)th element of the probe \( \boldsymbol{\xi}_{probe} \).
-	
-	\item \textit{Iterate Until Convergence.} Update the elements of state vector \( \boldsymbol{x}(n) \) asynchronously (i.e., randomly and once at a time) according to the rule
-	
-	\begin{equation}
-		x_j(n+1)=sgn \Bigg(\sum_{i=1}^{N} w_{ji}x_i(n) \Bigg), \> j = 1,2, ..., N
-	%\label{eq:}
-	\end{equation}
-	
-	Repeat the iteration until the state vector \( \boldsymbol{x} \) remains unchanged.
-	
-	\item \textit{Outputting.} Let \( \boldsymbol{x}_{fixed} \) denote the fixed point (stable state) computed at the end of the step 3, The resulting output vector \( \boldsymbol{y} \) of the network is
-	
-	\begin{equation}
-		\boldsymbol{y} = \boldsymbol{x}_{fixed}
-	\label{eq:}
-	\end{equation}
-	
-	Step 1 is the storage phase, and steps 2 through 4 constitute the retrieval phase.
-\end{enumerate}
-
-\subsubsection{Input to memory}
-Each prey will contain an evolving cellular automata which will be represented by a binary gene. This two dimensional pattern will be serialized to be available as a one dimensional binary array, which will be taken as input for any predator organism trying to interact with the prey. This binary representation of the pattern will have to be converted to a bipolar representation. Each input pattern will consist of \(\textit{m} \times \textit{n} = \textit{mn}\) components, each component representing one pixel of the pattern (\textit{m} and \textit{n} representing each dimension). The \textit{m} by \textit{n} pattern configuration will be flattened by putting all row vectors in one single row sequentially.
-
-\subsection{Genetic representation of mobility and reproduction capability}
-Each predator in the simulation has a genetic representation. The genome of the predator is represented with a 5 bits binary value. 
-
-\begin{table}[H]
-	\centering
-	\begin{tabular}{|c|c|c|c|c|}
-		\hline
-			\multicolumn{4}{|c|}{Mobility} &	Reproduction Capability \\ \hline
-			1	& 0 &	1	& 0 								&	1\\
-		\hline
-	\end{tabular}
-	\caption{Genetic representation of Mobility and Reproduction capability}
-	\label{tab:genetic-representation-mobility-reproduction}
-\end{table}
-
-Movement behavior of a Predator calculated from its Genome. The first 4 bits of the genome of this species are converted from binary to decimal to determine the magnitude of force at which it will move towards the maximum crowd of Prey present within its neighborhood. So mobility of a predator varies within a range of 0-15 units. If no prey is present in the neighborhood then this force is active in trying to keep predators distributed all over the cells. A predator chooses the neighborhood cell which contains the least number of predators. When the neighborhood contains zero predators, it would select any one of them randomly and move towards that cell.
+\begin{algorithm}[h]
+	\caption{Algorithm for updating position of the Predator species}
+	\label{algo:algorithm-movement-predator}
+	\begin{algorithmic}
+		\FOR{each step in time}
+			\STATE $forceMagnitude \gets convertToDecimal(genome[0-3])$
+			\STATE Get list of sorted neighborhood cells. Sorted by population of prey species.
+			\STATE From the sorted cell list choose the one with the least number of predators and most number of prey.
+			\STATE Move towards the selected cell with $forceMagnitude$ unit of force.
+		\ENDFOR
+	\end{algorithmic}
+\end{algorithm}
 
 \begin{figure}[H]
 	\centering
@@ -367,12 +452,28 @@ Movement behavior of a Predator calculated from its Genome. The first 4 bits of 
 
 The screen shot in Figure \ref{fig:predators-40} is from the simulation with only 40 predator species. It is presented to show the behavior of predator species in the simulation in absence of any prey species. As it can be observed the predator are distributed all over the cells with a constant mobile behavior to switch to another neighboring cell depending on which ever contains the least number of predator and also most number of prey species. This behavior of predator has been designed to enforce the predatory behavior of this species and also to have increase predator prey interaction in the simulation in terms of one species chasing the other for search of food. 
 
-The  fifth gene of the predator is used to represent their capability of reproduction.  Depending on its binary value a predator in the simulation will or will not be able to reproduce in the simulation. 
-
 \subsection{Reproduction process}
-The reproduction process for predators is similar to prey species. As the learning capability of predators do not have any genetic representation, only the mobility behavior and reproduction capability behavior takes effect in the reproductive process of predator species from one generation to another. 
+The  fifth gene of the predator is used to represent their capability of reproduction.  Depending on its binary value a predator in the simulation will or will not be able to reproduce. The reproduction process for predators is similar to prey species. As the learning capability of predators do not have any genetic representation, only the mobility behavior and reproduction capability takes effect in the reproductive process from one generation to another. 
 
-There are two control parameters that effect reproduction of predator species in the simulation. The first is the "Reproduction Age Limit". This the minimum age a predator has to reach before starting to involve itself for reproduction. This parameter has been set to 500 iterations during the result and analysis section of the thesis. The second parameter is "Reproduction Interval" which has been varied in the simulation from 1000 to 3000 iteration depending on the population of palatability of the prey species. This is a very important parameter for the simulation as it determines the overall predator population and its rate of increment. Depending on this value we can control the rate of predation on prey species, which on the other hand controls the rate of mimetic behavior of the overall prey population.
+There are two control parameters that effect the reproduction of predator species. The first is "Reproduction Age Limit". This is the minimum age a predator has to reach before starting to involve itself for reproduction. This parameter has been set to 500 iterations during the result and analysis section of the thesis. The second parameter is "Reproduction Interval" which has been varied in the simulation from 1000 to 3000 iteration depending on the population of palatable prey species. This is a very important parameter for the simulation as it determines the overall predator population and its rate of increment. Depending on this value we can control the rate of predation on prey species, which on the other hand controls the rate of mimetic behavior of the overall prey population.
+
+\begin{algorithm}[H]
+	\caption{Algorithm for reproduction of the Predator species}
+	\label{algo:algorithm-reproduction-predator}
+	\begin{algorithmic}
+		\FOR{each step in time}
+			\STATE $capableToReproduce \gets$ true or false depending on the 5th bit of the genome, and maturity on reproduction age.
+			\IF {$capableToReproduce == true$ and $currentCellPopulationOfPredators > 1$ } 
+				\STATE $anotherPredator \gets$ Select random predator from same cell.
+				\IF {$anotherPredator$ is alive and $capableToReproduce$ and also reached reproduction maturity age}
+					\STATE Perform genetic cross over and mutation to create new genome.
+					\STATE Create new predator with new genome and zero memory, and release into environment.
+					\STATE Record reproduction time for both predators.
+				\ENDIF
+			\ENDIF
+		\ENDFOR
+	\end{algorithmic}
+\end{algorithm}
 
 When the above two conditions are met, meaning the predator reaches it age for reproduction and also crosses every age interval, it randomly select another predator residing in the same cell. If this random predator is capable to reproduce depending on its 5th gene, then with a random single point crossover and mutation a new predator species in born which also resides on the same cell and initializes with zero memory configuration. Similarly when the new born predator reaches its maturity of reproductive age and if its capable to reproduce then the process iterates itself. 
 
