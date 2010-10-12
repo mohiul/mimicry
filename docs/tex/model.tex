@@ -1,6 +1,10 @@
 %Chapter describing the model
 \chapter{Modeling the evolution of mimicry}
 
+\begin{quotation}
+``Modeling, it should be clear is an art form. It depends on the experience and taste of the modeler. In this it is much like cartooning. The modeler (cartoonist) must decide which features to make salient (exaggerate), and which features to eliminate (avoid), in order to answer the questions (make the political point)" \cite{holland1996}.
+\end{quotation}
+
 \section{Introduction}
 %Entire section until past work needs to be revised when the model has been fully described.
 The objective of this thesis is to design an agent based artificial life model for simulating the natural process of the evolution of mimicry.
@@ -177,7 +181,7 @@ Franks and Noble have used different models to diversify species. In \cite{frank
 
 To use CA as prey pattern, its genome is constructed as an 8 bit binary value with a decimal range between 0 to 255. Each of this 256 values have a unique CA pattern associated with it. When storing this pattern in Hopfield memory we take a linear representation of this 2-D pattern, while to consider similarity between two pattern we evaluate the hamming distance between their linear representation. 
 
-With CA based pattern representation, population of prey species with a specific CA pattern can be grouped as one single species. And by restricting inter species reproduction we can control the diversity of patterns. But there is mutation applied when similar species mate with each other, so new species do born out of generations of existing species. So that is why we have two separate mutation rate while reproducing prey species. One being the ``Pattern Mutation Rate" (default values are mentioned in Table \ref{tab:prey-control-parameters}) with which we control mutation of the first 8 bits of the genome while the ``Genome Mutation Rate" is used to control mutation of rest of the 9 bit genome (Table \ref{tab:prey-genome}).
+With CA based pattern representation, population of prey species with a specific CA pattern can be grouped as one single species. And by restricting inter species reproduction we can control the diversity of patterns. But there is mutation applied when similar species mate with each other, so new species do born out of generations of existing species. So that is why we have two separate mutation rate while reproducing prey species. One being the ``Pattern Mutation Rate" (default values are mentioned in Table \ref{tab:prey-control-parameters}) with which we control mutation of the first 8 bits of the genome while the ``Genome Mutation Rate" is used to control mutation of rest of the 9 bit genome (Table \ref{tab:prey-genome}). Similar efforts of multiple mutation rate at varying location has been used in developing ``The Ecology of Echo" \cite{hraber1997}.
 
 \subsection{Genome}
 The Genome of the prey species consists of 17 bits as presented in Table \ref{tab:prey-genome}. The first eight bit is the rule, which is used to generate Cellular Automata pattern. The next two bits are used to represent palatability of the organism explained detail in Section \ref{sec:genetic-palatability-representation}. The next six bits is the force with which mobility of the organism is calculated. The 17th bit is used to evaluate reproduction capability of the organism, depending on which the prey species is either capable or not capable to participate in reproduction.
