@@ -53,7 +53,7 @@ Prey demise age has been kept to 2000 iterations while predator demise age is se
 
 Initial population of predator species has been set to 10 which is in accordance with the prey population in the simulation. The reason for such low number of predator is, unlike prey species which are consumed by predators, there is no cause for the predator species to die accept their natural cause of death, that is to reach their demise age. So predator population can explode very easily. That is why their population is controlled in a restrictive manner with the help of high reproduction age limit and reproduction age interval.
 
-The memory configuration size for predators are a very interesting parameter. The minimum memory size is directly associated with the number of prey species with which we initiate the simulation. Otherwise evolution of mimicry is not observed. As mentioned earlier the minimum memory size is the number of prey species predator would consume before starting to make decisive consumption of prey species. After the initial birth of a predator and when the minimum attack age is crossed, it starts consuming prey species present in its vicinity without making any judgement. At this point its memory size is zero. As long as the minimum memory size is not reached predators will blindly consume prey species and insert their CA pattern and associated palatability into its Hopfield memory bank. No later than the minimum memory size has been reached, predators will start making intelligent decision about consuming its prey species. When catching a prey if its memory tells that it is palatable, it will consume that prey. Otherwise if memory recognizes it to be unpalatable predator will certainly let it go.
+The memory configuration size for predators are a very interesting parameter. The minimum memory size is directly associated with the number of prey species with which we initiate the simulation. Otherwise evolution of mimicry is not observed. As mentioned in Table \ref{tab:predator-control-parameters} the minimum memory size is the number of prey species predator would consume before starting to make decisive consumption of prey species. After the initial birth of a predator and when the minimum attack age is crossed, it starts consuming prey species present in its vicinity without making any judgement. At this point its memory size is zero. As long as the minimum memory size is not reached predators will blindly consume prey species and insert their CA pattern and associated palatability into its Hopfield memory bank. No later than the minimum memory size has been reached, predators will start making intelligent decision about consuming its prey species. When catching a prey if its memory tells that it is palatable, it will consume that prey. Otherwise if memory recognizes it to be unpalatable predator will certainly let it go.
 
 Now as we know the behaviour of Hopfield memory, a recognition result will always be achieved depending on the similarity of the patterns stored in memory. So when minimum memory size has been reached the predator will always make a decision based on the similarity of the prey pattern previously captured and the patterns stored in memory.
 
@@ -65,7 +65,7 @@ Now as we know the behaviour of Hopfield memory, a recognition result will alway
 	\label{fig:plot-2-prey}
 \end{figure}
 
-The plot in Figure \ref{fig:plot-2-prey} is simulation time verses prey population after running it for over 10000 iterations. With the initial configuration in the above table we can observe that multiple rings of prey population has been created. Two prey species are in a ring if their CA pattern have a hamming distance within 10 bits. Population of palatable species has been represented with line curve while population of unpalatable species has been presented with dotted curve. Different signs of squares, triangles and diamonds have been used to distinguish between species of prey population. The simulation was initiated with two prey species having CA rule of 30 and 110 and being palatable and unpalatable consecutively.
+The plot in Figure \ref{fig:plot-2-prey} is simulation time verses prey population after running it for over 10000 iterations. With the initial configuration in the above table we can observe that multiple rings of prey population has been created. Two prey species are in a ring if their CA pattern have a hamming distance within 10 bits, parameter mentioned in Table \ref{tab:ring-report-control-parameters}. Population of palatable species has been represented with line curve while population of unpalatable species has been presented with dotted curve. Different signs of squares, triangles and diamonds have been used to distinguish between species of prey population. The simulation was initiated with two prey species having CA rule of 30 and 110 and being palatable and unpalatable consecutively.
 
 By closely observing the graph we could see the population of two species have started dropping at around time 500 when the initial predator population reaches this maturity for consuming prey species. At around time 1000 the prey population starts reproducing as the population increases. At around the same time different other species of prey population gets to be born with mutated CA patterns. Over time the population of CA Rule 110 dominates the population as most predators recognizes it as unpalatable. And similarly a population of CA Rule 110 or within the same ring of palatable species starts rising, while at one point overlaps the population of CA Rule 30 (Time: 5000 approx.) which was initially considered as a set of palatable species.
 
@@ -197,7 +197,7 @@ In this run of the simulation some significant parameters have been updated. One
 	\label{fig:plot-4-more-prey}
 \end{figure}
 
-Some very interesting diversity of rings can be observed in the simulation for updating the parameters. The unpalatable rings and their deceptive counterparts(palatable prey with similar pattern) still have their dominance. We can observe CA Rule 55 and 190 are the highest number of population. Interestingly enough CA Rule 110 which started as a palatable prey species has also taken dominance in the population which is the second highest. Both palatable and unpalatable version of CA Rule 110 are present with equal population density.
+Some very interesting diversity of rings can be observed in the simulation for updating these parameters. The unpalatable rings and their deceptive counterparts(palatable prey with similar pattern) still have their dominance. We can observe CA Rule 55 and 190 are the highest number of population. Interestingly enough CA Rule 110 which started as a palatable prey species has also taken dominance in the population which is the second highest. Both palatable and unpalatable version of CA Rule 110 are present with equal population density.
 
 \begin{figure}[H]
 	\centering
@@ -332,7 +332,7 @@ The results according to Figure \ref{fig:plot-4-prey-unp} are expected as it can
 \label{tab:config-table-4-prey-palatable}
 \end{table}
 
-The parameters for this simulation has been set with exactly the same as in the Table \ref{tab:config-table-4-prey-unpalatable} except all the species are palatable at this point. All predator configuration has also been set to the exactly same as before.
+The parameters for this simulation has been set exactly the same as in Table \ref{tab:config-table-4-prey-unpalatable} except all the species are palatable at this point. All predator configuration has also been set to exactly same as before.
 
 \begin{figure}[H]
 	\centering
@@ -341,7 +341,7 @@ The parameters for this simulation has been set with exactly the same as in the 
 	\label{fig:plot-4-prey-p}
 \end{figure}
 
-The results for the configuration in Table \ref{tab:config-table-4-prey-palatable} can be observed in Figure \ref{fig:plot-4-prey-p} where all population of prey species have reached its demise at nearly 7000 iterations. By analyzing details we can see, around simulation time 500 all population of species comes to a steady downfall as at this point initial predator species reaches its age for consumption. Around simulation time 1000 all population of prey species start increasing steadily because they reaches the maturity level of reproduction. At iteration time 2000 a sudden drop of prey population because the initial population of prey have reached its demise age at this point. By this time the population of unpalatable species deceiving the palatable ones start increasing, and slowly around time 7000 and onwards the entire population of prey comes to its demise. Predator population, from the beginning of the simulation has taken a very dominant effect. As all the species are palatable, their consumption and reproduction rate is extremely high and it keeps increasing in a geometric rate.
+The results for the configuration in Table \ref{tab:config-table-4-prey-palatable} can be observed in Figure \ref{fig:plot-4-prey-p} where all population of prey species have reached its demise at nearly 7000 iterations. By analyzing details we can see, around simulation time 500 all population of species comes to a steady downfall as at this point initial predator species reaches its age for consumption. Around simulation time 1000 all population of prey species start increasing steadily because they reaches the maturity level of reproduction. At iteration time 2000 a sudden drop of prey population because the initial population of prey have reached its demise age at this point. By this time the population of unpalatable species deceiving the palatable ones start increasing, and slowly around time 7000 and onwards the entire population of prey comes to its demise. Predator population, from the beginning of the simulation has taken a very dominant effect. As all the species are palatable, predator's consumption and reproduction rate is extremely high and it keeps increasing in a geometric rate.
 
 \begin{figure}[H]
 	\centering
@@ -350,10 +350,10 @@ The results for the configuration in Table \ref{tab:config-table-4-prey-palatabl
 	\label{fig:ringSize8k-4-Prey-p}
 \end{figure}
 
-Observation of mimicry rings also tell us about the results we have seen in the plot of Figure \ref{fig:plot-4-prey-unp}. The number of rings keep increasing but comes to a sudden drop around simulation time 7000 to reach at zero.
+Observation of mimicry rings also tell us about the results we have seen in the plot of Figure \ref{fig:plot-4-prey-unp}. The number of rings keep increasing but comes to a sudden drop around simulation time 7000 it goes to zero.
 
 \section{Initial configuration with single prey species}
-Until now all experiments have been initialized with both palatable and unpalatable species. The following set of experiments have been done with only a single prey species, for both cases of palatable and unpalatable.
+Until now all experiments have been initialized with multiple prey species. The following set of experiments have been done with only a single prey species, for both cases of palatable and unpalatable.
 
 \subsection{Unpalatable}
 \label{subsec:single-prey-unpalatable}
