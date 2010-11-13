@@ -27,6 +27,7 @@ On 2003 \cite{franks2003} another model for the origin of mimicry ring has been 
 Frank and Noble continue to test the influence on mimicry ring evolution by Batesian mimics in their work on \cite{franks2004}. Usually mathematical models of mimicry has fixed prey coloration and appearances, which enables a comparison of predation rates to demonstrate the level of protection a mimic might be afforded. In this model prey colorations are free to evolve. This phenomenon is used to examine the effect of Batesian mimicry on Mullerian mimics and mimicry rings. 
 
 \subsection{Models by Frank and Noble}
+\label{subsec:models-by-frank-and-noble}
 %Explain more about the first model by Frank and Noble
 The \textbf{first} model by Frank and Noble \cite{franks2002} is where ``multiple species are preyed upon by a single abstract predator; the appearance of each prey species can evolve but their palatability is fixed." Each individual had a single gene: a value representing their external appearance or phenotype. The phenotypes are constrained to a ring of values from 1-20 (where 20 and 1 are neighbors). The distance of one phenotype from another represents their levels of similarity. 
 
@@ -183,9 +184,6 @@ To use CA as prey pattern, an agent's genome is constructed as an 8 bit binary v
 
 With CA based pattern representation, population of prey species with a specific CA pattern can be grouped as one single species. And by restricting inter species reproduction we can control the diversity of patterns. But there is mutation applied when similar species mate with each other, so new species do born out of generations of existing species. So that is why we have two separate mutation rate while reproducing prey species. One being the ``Pattern Mutation Rate" (default values are mentioned in Table \ref{tab:prey-control-parameters}) with which we control mutation of the first 8 bits of the genome while the ``Genome Mutation Rate" is used to control mutation of rest of the 9 bit genome (Table \ref{tab:prey-genome}). Similar efforts of multiple mutation rate at varying location has been used in developing ``Echo" as mentioned in \cite{hraber1997}.
 
-%Content needs to be added.....
-\subsection{Reflection of punctuated equilibrium}
-
 \subsection{Genome}
 The Genome of the prey species consists of 17 bits as presented in Table \ref{tab:prey-genome}. The first eight bit is the rule, which is used to generate Cellular Automata pattern. The next two bits are used to represent palatability of the organism explained detail in Section \ref{sec:genetic-palatability-representation}. The next six bits is the magnitude of the force with which mobility of the organism is calculated. The 17th bit is used to evaluate reproduction capability of the organism, depending on which the prey species is either capable or not capable to participate in reproduction.
 
@@ -199,6 +197,10 @@ The Genome of the prey species consists of 17 bits as presented in Table \ref{ta
 \caption{Distribution and purpose of each gene of the 17 bit prey genome.}
 \label{tab:prey-genome}
 \end{table}
+
+\subsection{Reflection of punctuated equilibrium}
+\label{subsec:reflection-of-punctuated-equilibrium}
+Punctuated equilibrium has been defined in section \ref{sec:evolutionary-dynamics-of-mimicry} as the evolutionary process that is more inclined to cladogenesis instead of gradualism. Also Turner \cite{turner1988} emphasizes on punctuated equilibrium to describe the evolution of mimicry instead of phyletic gradualism. The design of the model under discussion also follows Turner's explanation in terms of evolving mimicry. As it can observed new CA patterns evolve from existing ones in prey population just by a single mutation in the pattern gene. Mimics do not follow a gradual process of evolution to look close to models but rather the change happens randomly through a single step mutation. The mutations that are favored, helps the mimics to survive while the unfavored ones fail to persist. It can be observed later in table \ref{tab:diff-in-pattern} how CA patterns of prey species can have vastly different configuration for a unit change in their representative gene. 
 
 \subsection{Genetic representation of palatability}
 \label{sec:genetic-palatability-representation}
