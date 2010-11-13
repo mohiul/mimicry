@@ -28,14 +28,14 @@ Frank and Noble continue to test the influence on mimicry ring evolution by Bate
 
 \subsection{Models by Frank and Noble}
 %Explain more about the first model by Frank and Noble
-The first model by Frank and Noble \cite{franks2002} is where ``multiple species are preyed upon by a single abstract predator; the appearance of each prey species can evolve but their palatability is fixed." Each individual had a single gene: a value representing their external appearance or phenotype. The phenotypes are constrained to a ring of values from 1-20 (where 20 and 1 are neighbors). The distance of one phenotype from another represents their levels of similarity. 
+The \textbf{first} model by Frank and Noble \cite{franks2002} is where ``multiple species are preyed upon by a single abstract predator; the appearance of each prey species can evolve but their palatability is fixed." Each individual had a single gene: a value representing their external appearance or phenotype. The phenotypes are constrained to a ring of values from 1-20 (where 20 and 1 are neighbors). The distance of one phenotype from another represents their levels of similarity. 
 
 A single abstract predator was modeled with a simple reinforcement learning system. The predator's experience of each phenotype was represented by a score, which would be maintained by probability to consume the next prey species depending on similarity or difference in phenotype. 
 
 The existence of mimetic effect were measured with the initial and final distances between prey species' phenotypes. Three experiments were noted. Firstly, with one palatable and one unpalatable species. For this Batesian mimicry was evolved. For the second experiment, with two unpalatable species, Mullerian mimicry was evolved if the two prey species have some initial resemblance. Experiment 3 was carried out with two unpalatable and one palatable species, where the phenotype of the palatable species moved towards that of one of the unpalatable species, which is in other words Batesian Mimicry.
 
 \paragraph{}
-The second model by Frank and Noble \cite{franks2003} is based on two working hypothesis:
+The \textbf{second} model by Frank and Noble \cite{franks2003} is based on two working hypothesis:
 
 \begin{enumerate}
 	\item \textsl{All of the Mullerian mimics in a given ecosystem should eventually converge into one large ring in order to gain maximum protection.}
@@ -286,7 +286,7 @@ Predators in the system are designed to provide selection pressure to \textit{mo
 The objective of a predator's interaction with prey is always to consume it. But based on the prey's pattern and palatability, the predator will either be able to consume it or throw it back to the environment. At this event the predator needs to learn the pattern with which the prey has been represented. The pattern represents palatability of the prey species, at least to the predator. To store this new pattern into memory, each predator is equipped with a Hopfield Network Memory. Every time a new interaction is made by the predator its memory is initialized with all the existing pattern that has already been encountered and the new one. The learning procedure used for this memory is Hebbian Learning. 
 
 \subsubsection{Hebbian Learning}
-\textit{Hebb's postulate of learning} is the oldest and most famous of all learning rules; it is named in honor of the neuropsychologist Donald Hebb(1949). Hebb's book \textit{The Organization of Behavior} (1949) states the following (p.62):
+\textit{Hebb's postulate of learning} is the oldest and most famous of all learning rules; it is named in honor of the neuropsychologist Donald Hebb(1949). Hebb's book \textit{The Organization of Behavior} \cite{hebb1949} states the following:
 
 \begin{quote}
 \textsl{When an axon of cell A is near enough to excite a cell B and repeatedly or persistently takes part in firing it, some growth process or metabolic changes take place in one or both cells such that A's efficiency as one of the cells firing B is increased.}
@@ -458,7 +458,7 @@ Movement behavior of a predator is calculated from its genome. The first 4 bits 
 	\label{fig:predators-40}
 \end{figure}
 
-The screen shot in Figure \ref{fig:predators-40} is from the simulation with only 40 predator species. It is presented to show the behavior of predator species in the simulation in absence of any prey species. As it can be observed the predator are distributed all over the cells with a constant mobile behavior to switch to another neighboring cell depending on which ever contains the least number of predator and also most number of prey species. This behavior of predator has been designed to enforce the predatory behavior of these agents and also to have increase predator prey interaction in the simulation in terms of one agent chasing the other for survival of species. 
+The screen shot in Figure \ref{fig:predators-40} is from the simulation with only 40 predator species. It is presented to show the behavior of predator species in the simulation in absence of any prey species. As it can be observed the predators are distributed all over the cells with a constant mobile behavior to switch to another neighboring cell depending on which ever contains the least number of predator and also most number of prey species. This behavior of predator has been designed to enforce the predatory behavior of these agents and also to have increase predator prey interaction in the simulation in terms of one agent chasing the other for survival of species. 
 
 \subsection{Reproduction process}
 The  fifth gene of the predator is used to represent their capability of reproduction.  Depending on its binary value a predator in the simulation will or will not be able to reproduce. The reproduction process for predators is similar to prey species. As the learning capability of predators do not have any genetic representation, only the mobility behavior and reproduction capability takes effect in the reproductive process from one generation to another. 
@@ -506,4 +506,4 @@ When the above two conditions are met, meaning the predator reaches its age for 
 \end{table}
 
 \section{Conclusion}
-This model has been desinged from a pratical point of view; to come up with efficient results and achive the main objective, \textit{evolution of mimicry}; instead of the past therotical work done on the topic of mimicry. Creation and transformation of different mimicry ring and also the dynamics of it has been integrated to achive interesting results. This model can also be considered as a complex adaptive system similar to Hollands work on ``Echo" \cite{holland1996}. The seven basics of a complex adaptive system which are: Aggregation, Tagging, Nonlinearity, Flow, Diversity, Internal Models and Building blocks are present in this model.
+This model has been designed from a practical point of view; to come up with efficient results and achieve the main objective, \textit{evolution of mimicry}. Creation and transformation of different mimicry ring and also the dynamics of it has been integrated to achieve interesting results. This model can also be considered as a complex adaptive system similar to Hollands work on ``Echo" \cite{holland1996}. The seven basics of a complex adaptive system which are: Aggregation, Tagging, Nonlinearity, Flow, Diversity, Internal Models and Building blocks are present in this model.
