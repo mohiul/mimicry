@@ -13,27 +13,49 @@
 
 \subsection{History}
 
-\paragraph{1948: Turing}
+\paragraph{Turing(1948)}
 Ideas for evolutionary computation initiated from Alan Turing from his 1948 report titled ``Intelligent Machinery" where the expression of ``genetical or evolutionary search"  was used \cite{turing1948}. He suggested a range of ideas for systems which could be said to modify their own programs. 
 
-\paragraph{1962: Bremermann}
+\paragraph{Bremermann(1962)}
 Bremermann was the first to apply the concept of biological evolution to execute computer experiments for solving optimization problems \cite{bremermann1962}. He was the first to consider the problem of minimizing a real-valued fitness function. He selected very simple functions to optimize in order to provide a more tractable analysis of the evolutionary process.
 
-\paragraph{1964: Rechenberg}
+\paragraph{Rechenberg(1964)}
 Rechenberg's contribution is considered mostly in providing Evolutionary Strategies. He invented a highly influential set of optimization method which were successfully applied to challenging problems such as aerodynamic wing design. \cite{rechenberg1973}
 
-\paragraph{1965: L. Fogel, Owens and Walsh}
+\paragraph{L. Fogel, Owens and Walsh (1965)}
 A seminal work that merged the fields of evolutionary computation and computational intelligence was by Fogel, Owens and Walsh in ``Artificial Intelligence through a simulation of evolution" \cite{fogel1966}. In this book, evolutionary process was applied to finite state automata to predict symbol strings generated from Markov processes and non-stationary time series. Evolutionary prediction of such kind was motivated by the concept that prediction is a keystone to intelligent behavior (defined in terms of adaptive behavior, in that the intelligent organism must anticipate events in order to adapt behavior in light of a goal). 
 
-\paragraph{1975: Holland}
+\paragraph{Holland(1975)}
 Perhaps the most significant work in terms of applications in the field of evolutionary computation comes from the inventor of genetic algorithms, John H. Holland. His ground breaking book ``Adaptation in natural and artificial systems" \cite{holland1975} is where he developed \textit{The Schema Theorem} which is the foundation for explanation of the power of Genetic Algorithms.
 
-\paragraph{1992: Koza}
+\paragraph{Koza(1992)}
 Koza's invention is the idea of Genetic Programming, which is an automated method for creating a working computer program from a high level statement of a problem. Starting from a high-level statement of ``what needs to be done" it searches through all possible permutation of steps and finds the optimum solution through evolutionary methods \cite{koza1992}.
 
 Contemporary terminology denotes the fields of \textbf{Evolutionary Strategy}, \textbf{Evolutionary Programming}, \textbf{Genetic Algorithm} and \textbf{Genetic Programming} to be under one umbrella termed as \textbf{Evolutionary Computation} while the algorithms are called \textbf{Evolutionary Algorithms}.
 
 \subsection{Evolutionary Algorithms}
+Algorithms which are inspired by the strategy of \textit{survival of the fittest} from evolutionary biology, and uses different methods to optimize mathematical expressions from a possible pool of population of solutions, can be defined as evolutionary algorithms. There are many different forms of evolutionary algorithms. All of which can be generalized to follow a certain pattern. The mathematical expression, also termed as \textbf{fitness function} is used to evaluate the fitness of each individual of the set of existing solution space. An individual or a solution which provides higher output from the fitness function is considered as more fit to survive in the environment. So given a problem the algorithm initializes the environment with a random set of population or solutions. Then it uses the fitness function to select a better set of solutions from the existing once. After that different operators of \textbf{mutation} and \textbf{recombination} are applied to the selected set of solution to come up with a new generation of solution set or population born from the existing ones. Again the fitness function is applied to the current set of population to come up with a better set and this process iterates until the evaluation from the fitness function is satisfactory to give the best set of solutions.
+
+According to Eiben \cite{eiben2003} this process has two fundamental forces that form the basis of evolutionary systems:
+
+\begin{itemize}
+	\item ``Variation operators (recombination and mutation) creates the necessary diversity and thereby facilitate novelty."
+	\item ``Selection acts as a force pushing quality."
+\end{itemize}
+
+Important components of evolutionary algorithms are
+
+\paragraph{Representation (Individuals or Solution Space)}
+Evolutionary Algorithms(EA) are considered as robust problem solvers as it provides evenly good performance over a wide range of problems. To apply evolutionary algorithm to this wide range the most important part is representation of the solution space. In EA representation is analogous to the complex pathway that exits between \textbf{genotype} and \textbf{phenotype} of a biological organism.
+
+\paragraph{Evaluation Function (Fitness Function)}
+This is the function with which the solution is evaluated. The outcome of applying evolutionary algorithm to the problem depends on this function. It is defined to evaluate each of the solutions of the problem. In biology evaluation function is analogous to the decision of survival of any species in an environment. 
+
+\paragraph{Population}
+The population is the solution set of the problem over which EA will be applied. It is literally analogous to the same meaning in biology. The diversity of the population is very important. If the initial random population of solutions are diverse then there is more possibility of reaching an optimal solution space very quickly, and it also avoids reaching local optimum instead of the global optimum.
+
+\paragraph{Variation operators, recombination and mutation}
+Considering arity (number of object as input) variation operators are divided into two kinds. The mutation operator accepts only one operand. The process of mutation is similar to the way it happens in biology. It is a stochastic process, meaning, its output the child depends on the outcomes of a series of random choices. The operator is responsible for causing a random unbiased change. Mutation has very different roles in different fields of EC, for example in Genetic Programming it is not used at all, while in genetic algorithms it is a very pivotal process as it provides fresh blood to the existing set of solutions. Getting a new mutated child is like stepping into a new solution space outside of the ones which already exist in the parent pool. A recombination operator is responsible for merging two parent genotypes into one or two offspring genotypes. It is also a stochastic process depending on the choice of the parts of the parent individuals. Recombination operators with high arity (using more than two parent) are mathematically possible and easy to implement but does not have any biological equivalent. According to Eiben \cite{eiben2003} ``the principle behind recombination is simple - by mating two individuals with different but desirable features, we can produce an offspring that combines both of those features." It is important that variation operators are defined based on the representation of the problem under consideration. 
 
 \subsection{Evolutionary Strategies}
 
