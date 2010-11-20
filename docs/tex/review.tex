@@ -5,8 +5,6 @@
 ``The theory of evolution by cumulative natural selection is the only theory we know of that is in principle capable of explaining the existence of organized complexity" - Richard Dawkins \cite{dawkins1996}
 \end{quote}
 
-\section{Introduction}
-
 \section{Evolutionary Computation}
 
 ``The fundamental metaphor of evolutionary computing relates this powerful natural evolution to a particular style of problem solving - that of trial and error" - Eiben \cite{eiben2003}
@@ -72,7 +70,7 @@ Genetic Algorithms are one of the most effective strategy used in the field of e
 The key important property of the set of algorithms termed as ``Evolutionary Strategy" is \textbf{self-adaptation} of strategy parameters. The  parameters of Evolutionary Algorithm are included in the chromosomes and they co-evolve with the solution set while running the algorithm. To summarize these set of algorithms, they usually have real-valued vectors, their recombination process is discrete or intermediary, their mutation process uses Gaussian perturbation while parent selection is uniform random. In terms of their attribute feature they are fast and good optimizer for real-valued optimization.
 
 \subsection{Evolutionary Programming}
-
+The primary objective of evolutionary programming was to generate artificial intelligence by simulating evolution as a learning process \cite{fogel1966}. Capability of a system to adapt its behavior to meet some specified goal in the environment was considered as intelligence. Fogel used finite state machines as predictors and evolved them. Usually representation for evolutionary programming is with real-valued vectors. Its parent selection is deterministic, where each parent creates one offspring via mutation. There is no recombination operator for evolutionary programming. Mutation is applied with Gaussian perturbation. While survivor selection is probabilistic. 
 
 \subsection{Genetic Programming}
 Genetic programming is typically applied to machine learning tasks such as prediction and classification. Its attribute feature behaves similar to neural network and usually has huge populations of solution combination. The algorithm itself is a very slow process. These sets of algorithms use non-linear chromosomes such as trees and graphs. Mutation is mostly avoided for genetic programming. Recombination operators work by exchanging subtrees. Mutation if applied will be a random changing process in the tree. Parent selection process is usually fitness proportional while the survivor selection process is usually replacement of generations. From a technical point of view, genetic programming is simply a variant of genetic algorithm working with a different data structure: the chromosomes are trees. 
@@ -84,5 +82,3 @@ Genetic programming is typically applied to machine learning tasks such as predi
 \subsubsection{Echo}
 
 \section{Cellular Automata}
-
-\section{Conclusion}
