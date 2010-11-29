@@ -2,7 +2,7 @@
 \chapter{The Results}
 
 \begin{quote}
-``The most incomprehensible thing about the world is that it is comprehensible." - Albert Einstein
+\textsl{``The most incomprehensible thing about the world is that it is comprehensible." - Albert Einstein}
 \end{quote}
 
 \section{Introduction}
@@ -20,7 +20,7 @@ The mimicry ring reports consists entirely of the population of prey species cat
 		Number of Rings to report & 8 & This value is the number of most populous rings that are included in the report.\\
 	\hline
 \end{tabular}
-\caption{Parameters to Mimicry Ring Report.}
+\caption{Parameters to mimicry ring report.}
 \label{tab:ring-report-control-parameters}
 \end{table}
 
@@ -57,15 +57,15 @@ Prey demise age has been kept to 2000 iterations while predator demise age is se
 
 Initial population of predator species has been set to 10 which is in accordance with the prey population in the simulation. The reason for such low number of predator is, unlike prey species which are consumed by predators, there is no cause for the predator species to die accept their natural cause of death, that is to reach their demise age. So predator population can explode very easily. That is why their population is controlled in a restrictive manner with the help of high reproduction age limit and reproduction age interval.
 
-The memory configuration size for predators are a very interesting parameter. The minimum memory size is directly associated with the number of prey species with which we initiate the simulation. Otherwise evolution of mimicry is not observed. As mentioned in Table \ref{tab:predator-control-parameters} the minimum memory size is the number of prey species predator would consume before starting to make decisive consumption of prey species. After the initial birth of a predator and when the minimum attack age is crossed, it starts consuming prey species present in its vicinity without making any judgement. At this point its memory size is zero. As long as the minimum memory size is not reached predators will blindly consume prey species and insert their CA pattern and associated palatability into its Hopfield memory bank. No later than the minimum memory size has been reached, predators will start making intelligent decision about consuming its prey species. When catching a prey if its memory tells that it is palatable, it will consume that prey. Otherwise if memory recognizes it to be unpalatable predator will certainly let it go.
+The memory configuration size for predators is a very interesting parameter. The minimum memory size is directly associated with the number of prey species with which we initiate the simulation. Otherwise evolution of mimicry is not observed. As mentioned in Table \ref{tab:predator-control-parameters} the minimum memory size is the number of prey species predator would consume before starting to make decisive consumption of prey species. After the initial birth of a predator and when the minimum attack age is crossed, it starts consuming prey species present in its vicinity without making any judgment. At this point its memory size is zero. As long as the minimum memory size is not reached predators will blindly consume prey species and insert their CA pattern and associated palatability into its Hopfield memory bank. No later than the minimum memory size has been reached, predators will start making intelligent decision about consuming its prey species. When catching a prey if its memory tells that it is palatable, it will consume that prey. Otherwise if memory recognizes it to be unpalatable predator will certainly let it go.
 
-Now as we know the behaviour of Hopfield memory, a recognition result will always be achieved depending on the similarity of the patterns stored in memory. So when minimum memory size has been reached the predator will always make a decision based on the similarity of the prey pattern previously captured and the patterns stored in memory.
+Now as we know the behavior of Hopfield memory, a recognition result will always be achieved depending on the similarity of the patterns stored in memory. So when minimum memory size has been reached the predator will always make a decision based on the similarity of the prey pattern previously captured and the patterns stored in memory.
 
 % Put the image
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.50]{images/simTime10k-2Prey}
-	\caption{Population distribution of mimicry rings, initialized with 2 prey species.}
+	\caption[Population distribution of mimicry rings (2 prey species)]{Population distribution of mimicry rings, initialized with 2 prey species.}
 	\label{fig:plot-2-prey}
 \end{figure}
 
@@ -81,7 +81,7 @@ The above configuration in Table \ref{tab:config-table-2-prey} is also the most 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.50]{images/ringSize10k-2Prey}
-	\caption{Number of mimicry rings, initialized with 2 prey species.}
+	\caption[Number of mimicry rings (2 prey species)]{Number of mimicry rings, initialized with 2 prey species.}
 	\label{fig:ringSize10k-2Prey}
 \end{figure}
 
@@ -109,7 +109,7 @@ All the patterns in Table \ref{tab:diff-in-pattern} have a genetic bit differenc
 	\centering
 	\label{fig:screenshot-simTime7600-2-prey}
 	\includegraphics[scale=0.55]{images/simTime7600}
-	\caption{Graphical representation of the model, simulation time: 7600.}
+	\caption[Graphical representation of the model (simulation time: 7600)]{Graphical representation of the model, simulation time: 7600.}
 \end{figure}
 
 The screen shot in Figure \ref{fig:screenshot-simTime7600-2-prey} is for one instance of time of the simulation. The red agents are predators while the black agents with different textured patterns are the prey species. According to their behavior most of the prey species are flocking together in a group while also being chased by the predators, whose sole purpose is to consume prey species. 
@@ -147,7 +147,7 @@ This run of the simulation has been initialized with four prey species with very
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.40]{images/simTime10k-4Prey}
-	\caption{Population distribution of mimicry rings, initialized with 4 prey species.}
+	\caption[Population distribution of mimicry rings (4 prey species)]{Population distribution of mimicry rings, initialized with 4 prey species.}
 	\label{fig:plot-4-prey}
 \end{figure}
 
@@ -156,7 +156,7 @@ By observing the graph in Figure \ref{fig:plot-4-prey} we can see the two rings 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.50]{images/ringSize10k-4Prey}
-	\caption{Number of mimicry rings, initialized with 4 prey species.}
+	\caption[Number of mimicry rings (4 prey species)]{Number of mimicry rings, initialized with 4 prey species.}
 	\label{fig:ringSize10k-4Prey}
 \end{figure}
 
@@ -164,7 +164,7 @@ By observing the graph in Figure \ref{fig:plot-4-prey} we can see the two rings 
 	\centering
 	\label{fig:screenshot-simTime11K-4Prey}
 	\includegraphics[scale=0.55]{images/simTime11K-4Prey}
-	\caption{Graphical representation of the model initialized with 4 prey species, simulation time: 11200.}
+	\caption[Graphical representation of the model (simulation time: 11200)]{Graphical representation of the model initialized with 4 prey species, simulation time: 11200.}
 \end{figure}
 
 \section{Increased initial population with four prey species}
@@ -197,7 +197,7 @@ In this run of the simulation some significant parameters have been updated. One
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.40]{images/simTime9K-4MorePrey}
-	\caption{Population distribution of mimicry rings, initialized with 4 prey species with increased population.}
+	\caption[Population distribution of mimicry rings (4 prey species, increased population)]{Population distribution of mimicry rings, initialized with 4 prey species with increased population.}
 	\label{fig:plot-4-more-prey}
 \end{figure}
 
@@ -206,7 +206,7 @@ Some very interesting diversity of rings can be observed in the simulation for u
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.50]{images/ringSize10k-4MorePrey}
-	\caption{Number of mimicry rings, initialized with 4 prey species with increased population.}
+	\caption[Number of mimicry rings (4 prey species, increased population)]{Number of mimicry rings, initialized with 4 prey species with increased population.}
 	\label{fig:ringSize10k-4MorePrey}
 \end{figure}
 
@@ -248,7 +248,7 @@ To evaluate the simulation at a more complex level we increase the prey populati
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.40]{images/simTime10k-6Prey}
-	\caption{Population distribution of mimicry rings, initialized with 6 prey species.}
+	\caption[Population distribution of mimicry rings (6 prey species)]{Population distribution of mimicry rings, initialized with 6 prey species.}
 	\label{fig:plot-6-prey}
 \end{figure}
 
@@ -257,7 +257,7 @@ With the above set of parameters we can receive the plot of Figure \ref{fig:plot
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.50]{images/ringSize10k-6Prey}
-	\caption{Number of mimicry rings, initialized with 6 prey species.}
+	\caption[Number of mimicry rings (6 prey species)]{Number of mimicry rings, initialized with 6 prey species.}
 	\label{fig:ringSize10k-6-Prey}
 \end{figure}
 
@@ -294,7 +294,7 @@ To further observe the effects of mimicry ring we initialize the simulation with
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.40]{images/simTime-9k-4Prey-unp}
-	\caption{Population distribution of mimicry rings, initialized with 4 prey species all unpalatable.}
+	\caption[Population distribution of mimicry rings(4 prey species all unpalatable)]{Population distribution of mimicry rings, initialized with 4 prey species all unpalatable.}
 	\label{fig:plot-4-prey-unp}
 \end{figure}
 
@@ -303,7 +303,7 @@ The results according to Figure \ref{fig:plot-4-prey-unp} are expected as it can
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.50]{images/ringSize9k-4Prey-unp}
-	\caption{Number of mimicry rings, initialized with 4 prey species all unpalatable.}
+	\caption[Number of mimicry rings (4 prey species all unpalatable)]{Number of mimicry rings, initialized with 4 prey species all unpalatable.}
 	\label{fig:ringSize10k-4-Prey-unp}
 \end{figure}
 
@@ -341,7 +341,7 @@ The parameters for this simulation has been set exactly the same as in Table \re
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.40]{images/simTime-9k-4Prey-p}
-	\caption{Population distribution of mimicry rings, initialized with 4 prey species all palatable.}
+	\caption[Population distribution of mimicry rings (4 prey species all palatable)]{Population distribution of mimicry rings, initialized with 4 prey species all palatable.}
 	\label{fig:plot-4-prey-p}
 \end{figure}
 
@@ -350,7 +350,7 @@ The results for the configuration in Table \ref{tab:config-table-4-prey-palatabl
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.50]{images/ringSize8k-4Prey-p}
-	\caption{Number of mimicry rings, initialized with 4 prey species all palatable.}
+	\caption[Number of mimicry rings (4 prey species all palatable)]{Number of mimicry rings, initialized with 4 prey species all palatable.}
 	\label{fig:ringSize8k-4-Prey-p}
 \end{figure}
 
@@ -388,7 +388,7 @@ This configuration has only one unpalatable species, one in each of the 216 cell
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.40]{images/simTime8k-1-unp}
-	\caption{Population distribution of mimicry rings, initialized with 1 prey species unpalatable.}
+	\caption[Population distribution of mimicry rings (1 prey species unpalatable)]{Population distribution of mimicry rings, initialized with 1 prey species unpalatable.}
 	\label{fig:plot-1-prey-unp}
 \end{figure}
 
@@ -397,7 +397,7 @@ From Figure \ref{fig:plot-1-prey-unp}, it can be observed, the initial set of un
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.50]{images/ringSize8k-1Prey-unp}
-	\caption{Number of mimicry rings, initialized with 1 prey species unpalatable.}
+	\caption[Number of mimicry rings (1 prey species unpalatable)]{Number of mimicry rings, initialized with 1 prey species unpalatable.}
 	\label{fig:ringSize8k-1-Prey-unp}
 \end{figure}
 
@@ -428,7 +428,7 @@ This configuration is set exactly as according to Section \ref{subsec:single-pre
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.40]{images/simTime9k-1-p}
-	\caption{Population distribution of mimicry rings, initialized with 1 prey species palatable.}
+	\caption[Population distribution of mimicry rings (1 prey species palatable)]{Population distribution of mimicry rings, initialized with 1 prey species palatable.}
 	\label{fig:plot-1-prey-p}
 \end{figure}
 
@@ -437,7 +437,7 @@ From the initial palatable population we see a bunch of palatable rings created.
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.50]{images/ringSize8k-1Prey-p}
-	\caption{Number of mimicry rings, initialized with 1 palatable prey species.}
+	\caption[Number of mimicry rings (1 palatable prey species)]{Number of mimicry rings, initialized with 1 palatable prey species.}
 	\label{fig:ringSize8k-1-Prey-p}
 \end{figure}
 

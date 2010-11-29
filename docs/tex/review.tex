@@ -2,17 +2,17 @@
 \chapter{Review}
 
 \begin{quote}
-``The theory of evolution by cumulative natural selection is the only theory we know of that is in principle capable of explaining the existence of organized complexity" - Richard Dawkins \cite{dawkins1996}
+\textsl{``The theory of evolution by cumulative natural selection is the only theory we know of that is in principle capable of explaining the existence of organized complexity" - Richard Dawkins \cite{dawkins1996}}
 \end{quote}
 
 \section{Evolutionary Computation}
 
-``The fundamental metaphor of evolutionary computing relates this powerful natural evolution to a particular style of problem solving - that of trial and error" - Eiben \cite{eiben2003}
+\textsl{``The fundamental metaphor of evolutionary computing relates this powerful natural evolution to a particular style of problem solving - that of trial and error" - Eiben \cite{eiben2003}}
 
 \subsection{History}
 
 \paragraph{Turing(1948)}
-Ideas for evolutionary computation initiated from Alan Turing from his 1948 report titled ``Intelligent Machinery" where the expression of ``genetical or evolutionary search"  was used \cite{turing1948}. He suggested a range of ideas for systems which could be said to modify their own programs. 
+Ideas for evolutionary computation initiated from Alan Turing from his 1948 report titled \textsl{``Intelligent Machinery"} where the expression of \textsl{``genetical or evolutionary search"}  was used \cite{turing1948}. He suggested a range of ideas for systems which could be said to modify their own programs. 
 
 \paragraph{Bremermann(1962)}
 Bremermann was the first to apply the concept of biological evolution to execute computer experiments for solving optimization problems \cite{bremermann1962}. He was the first to consider the problem of minimizing a real-valued fitness function. He selected very simple functions to optimize in order to provide a more tractable analysis of the evolutionary process.
@@ -21,13 +21,13 @@ Bremermann was the first to apply the concept of biological evolution to execute
 Rechenberg's contribution is considered mostly in providing Evolutionary Strategies. He invented a highly influential set of optimization method which were successfully applied to challenging problems such as aerodynamic wing design. \cite{rechenberg1973}
 
 \paragraph{L. Fogel, Owens and Walsh (1965)}
-A seminal work that merged the fields of evolutionary computation and computational intelligence was by Fogel, Owens and Walsh in ``Artificial Intelligence through a simulation of evolution" \cite{fogel1966}. In this book, evolutionary process was applied to finite state automata to predict symbol strings generated from Markov processes and non-stationary time series. Evolutionary prediction of such kind was motivated by the concept that prediction is a keystone to intelligent behavior (defined in terms of adaptive behavior, in that the intelligent organism must anticipate events in order to adapt behavior in light of a goal). 
+A seminal work that merged the fields of evolutionary computation and computational intelligence was by Fogel, Owens and Walsh in \textsl{``Artificial Intelligence through a simulation of evolution"} \cite{fogel1966}. In this book, evolutionary process was applied to finite state automata to predict symbol strings generated from Markov processes and non-stationary time series. Evolutionary prediction of such kind was motivated by the concept that prediction is a keystone to intelligent behavior (defined in terms of adaptive behavior, in that the intelligent organism must anticipate events in order to adapt behavior in light of a goal). 
 
 \paragraph{Holland(1975)}
-Perhaps the most significant work in terms of applications in the field of evolutionary computation comes from the inventor of genetic algorithms, John H. Holland. His ground breaking book ``Adaptation in natural and artificial systems" \cite{holland1975} is where he developed \textit{The Schema Theorem} which is the foundation for explanation of the power of Genetic Algorithms.
+Perhaps the most significant work in terms of applications in the field of evolutionary computation comes from the inventor of genetic algorithms, John H. Holland. His ground breaking book \textsl{``Adaptation in natural and artificial systems"} \cite{holland1975} is where he developed \textit{The Schema Theorem} which is the foundation for explanation of the power of Genetic Algorithms.
 
 \paragraph{Koza(1992)}
-Koza's invention is the idea of Genetic Programming, which is an automated method for creating a working computer program from a high level statement of a problem. Starting from a high-level statement of ``what needs to be done" it searches through all possible permutation of steps and finds the optimum solution through evolutionary methods \cite{koza1992}.
+Koza's invention is the idea of Genetic Programming, which is an automated method for creating a working computer program from a high level statement of a problem. Starting from a high-level statement of \textsl{``what needs to be done"} it searches through all possible permutation of steps and finds the optimum solution through evolutionary methods \cite{koza1992}.
 
 Contemporary terminology denotes the fields of \textbf{Evolutionary Strategy}, \textbf{Evolutionary Programming}, \textbf{Genetic Algorithm} and \textbf{Genetic Programming} to be under one umbrella termed as \textbf{Evolutionary Computation} while the algorithms are called \textbf{Evolutionary Algorithms}.
 
@@ -37,8 +37,8 @@ Algorithms which are inspired by the strategy of \textit{survival of the fittest
 According to Eiben \cite{eiben2003} this process has two fundamental forces that form the basis of evolutionary systems:
 
 \begin{itemize}
-	\item ``Variation operators (recombination and mutation) creates the necessary diversity and thereby facilitate novelty."
-	\item ``Selection acts as a force pushing quality."
+	\item \textsl{``Variation operators (recombination and mutation) creates the necessary diversity and thereby facilitate novelty."}
+	\item \textsl{``Selection acts as a force pushing quality."}
 \end{itemize}
 
 Important components of evolutionary algorithms are
@@ -53,7 +53,7 @@ This is the function with which the solution is evaluated. The outcome of applyi
 The population is the solution set of the problem over which EA will be applied. It is literally analogous to the same meaning in biology. The diversity of the population is very important. If the initial random population of solutions are diverse then there is more possibility of reaching an optimal solution space very quickly, and it also avoids reaching local optimum instead of the global optimum.
 
 \paragraph{Variation operators, recombination and mutation}
-Considering arity (number of object as input) variation operators are divided into two kinds. The mutation operator accepts only one operand. The process of mutation is similar to the way it happens in biology. It is a stochastic process, meaning, its output the child depends on the outcomes of a series of random choices. The operator is responsible for causing a random unbiased change. Mutation has very different roles in different fields of EC, for example in Genetic Programming it is not used at all, while in genetic algorithms it is a very pivotal process as it provides fresh blood to the existing set of solutions. Getting a new mutated child is like stepping into a new solution space outside of the ones which already exist in the parent pool. A recombination operator is responsible for merging two parent genotypes into one or two offspring genotypes. It is also a stochastic process depending on the choice of the parts of the parent individuals. Recombination operators with high arity (using more than two parent) are mathematically possible and easy to implement but does not have any biological equivalent. According to Eiben \cite{eiben2003} ``the principle behind recombination is simple - by mating two individuals with different but desirable features, we can produce an offspring that combines both of those features." It is important that variation operators are defined based on the representation of the problem under consideration. 
+Considering arity (number of object as input) variation operators are divided into two kinds. The mutation operator accepts only one operand. The process of mutation is similar to the way it happens in biology. It is a stochastic process, meaning, its output the child depends on the outcomes of a series of random choices. The operator is responsible for causing a random unbiased change. Mutation has very different roles in different fields of EC, for example in Genetic Programming it is not used at all, while in genetic algorithms it is a very pivotal process as it provides fresh blood to the existing set of solutions. Getting a new mutated child is like stepping into a new solution space outside of the ones which already exist in the parent pool. A recombination operator is responsible for merging two parent genotypes into one or two offspring genotypes. It is also a stochastic process depending on the choice of the parts of the parent individuals. Recombination operators with high arity (using more than two parent) are mathematically possible and easy to implement but does not have any biological equivalent. According to Eiben \cite{eiben2003} \textsl{``the principle behind recombination is simple - by mating two individuals with different but desirable features, we can produce an offspring that combines both of those features."} It is important that variation operators are defined based on the representation of the problem under consideration. 
 
 \subsection{Genetic Algorithm}
 Genetic Algorithms(GA) have the most wide set of applications. It was first conceived by John H. Holland for studying adaptive behavior as in \textit{Adaptation in natural and artificial systems} \cite{holland1975}. They are mainly considered as function optimizers. In general GA have many diverse representation schemes considering the solution set of the problem. Depending on the problem scenario an appropriate representation could be Binary, Grey Code, Integer, Real-Valued, Floating-point or Permutation based. 
@@ -76,15 +76,15 @@ The primary objective of evolutionary programming was to generate artificial int
 Genetic programming is typically applied to machine learning tasks such as prediction and classification. Its attribute feature behaves similar to neural network and usually has huge populations of solution combination. The algorithm itself is a very slow process. These sets of algorithms use non-linear chromosomes such as trees and graphs. Mutation is mostly avoided for genetic programming. Recombination operators work by exchanging subtrees. Mutation if applied will be a random changing process in the tree. Parent selection process is usually fitness proportional while the survivor selection process is usually replacement of generations. From a technical point of view, genetic programming is simply a variant of genetic algorithm working with a different data structure: the chromosomes are trees. 
 
 \section{Artificial Life}
-As Artificial Intelligence is the field of computer science where scientists take concepts from psychology and implement into computer science. In contrast to that in Artificial Life scientist take concepts from Biology specially Evolutionary Biology and genetics and implement into computer science. 
+As Artificial Intelligence is the field of computer science where scientists take concepts from psychology and implement into computer science. In contrast to that in Artificial Life scientist take concepts from Biology, specially Evolutionary Biology and genetics and implement into computer science. 
 
 In defining Artificial Life Christopher G. Langton states the following,
 
 \begin{quote}
-`` `Art' + `Life' = Artificial Life: Life made by Man rather than by Nature. Our technological capabilities have brought us to the point where we are on the verge of creating `living' artifacts. The field of Artificial Life is devoted to studying the scientific, technological, artistic, philosophical, and social implications of such an accomplishment."
+\textsl{`` `Art' + `Life' = Artificial Life: Life made by Man rather than by Nature. Our technological capabilities have brought us to the point where we are on the verge of creating `living' artifacts. The field of Artificial Life is devoted to studying the scientific, technological, artistic, philosophical, and social implications of such an accomplishment." - Christopher G. Langton}
 \end{quote}
 
-\section{History}
+%\section{History}
 
 %\paragraph{Jon Von Neumann}
 
