@@ -57,7 +57,6 @@ of predator is evenly distributed all over the location mentioned.
     </prey>
     -->
     <!-- Two prey species-->
-    <!--
     <prey>
       <rule>110</rule>
       <population>108</population>
@@ -76,13 +75,12 @@ of predator is evenly distributed all over the location mentioned.
         <to>215</to>
       </location>
     </prey>
-    -->
     <!-- Four prey species-->
     <!--
     <prey>
       <rule>110</rule>
       <population>150</population>
-      <palatability>true</palatability>
+      <palatability>false</palatability>
       <location>
         <from>0</from>
         <to>49</to>
@@ -91,7 +89,7 @@ of predator is evenly distributed all over the location mentioned.
     <prey>
       <rule>30</rule>
       <population>150</population>
-      <palatability>true</palatability>
+      <palatability>false</palatability>
       <location>
         <from>50</from>
         <to>99</to>
@@ -100,7 +98,7 @@ of predator is evenly distributed all over the location mentioned.
     <prey>
       <rule>55</rule>
       <population>150</population>
-      <palatability>true</palatability>
+      <palatability>false</palatability>
       <location>
         <from>100</from>
         <to>149</to>
@@ -109,7 +107,7 @@ of predator is evenly distributed all over the location mentioned.
     <prey>
       <rule>190</rule>
       <population>150</population>
-      <palatability>true</palatability>
+      <palatability>false</palatability>
       <location>
         <from>150</from>
         <to>199</to>
@@ -130,7 +128,7 @@ of predator is evenly distributed all over the location mentioned.
     <prey>
       <rule>30</rule>
       <population>150</population>
-      <palatability>false</palatability>
+      <palatability>true</palatability>
       <location>
         <from>36</from>
         <to>71</to>
@@ -139,7 +137,7 @@ of predator is evenly distributed all over the location mentioned.
     <prey>
       <rule>55</rule>
       <population>150</population>
-      <palatability>true</palatability>
+      <palatability>false</palatability>
       <location>
         <from>72</from>
         <to>107</to>
@@ -157,7 +155,7 @@ of predator is evenly distributed all over the location mentioned.
     <prey>
       <rule>57</rule>
       <population>150</population>
-      <palatability>true</palatability>
+      <palatability>false</palatability>
       <location>
         <from>144</from>
         <to>179</to>
@@ -166,7 +164,7 @@ of predator is evenly distributed all over the location mentioned.
     <prey>
       <rule>105</rule>
       <population>150</population>
-      <palatability>false</palatability>
+      <palatability>true</palatability>
       <location>
         <from>180</from>
         <to>215</to>
@@ -174,18 +172,20 @@ of predator is evenly distributed all over the location mentioned.
     </prey>
     -->
     <predator>
-      <population>20</population>
+      <population>10</population>
       <location>
         <from>11</from>
         <to>25</to>
       </location>
     </predator>
+    <!--
     <predator>
-      <population>20</population>
+      <population>15</population>
       <location>
         <from>101</from>
         <to>115</to>
       </location>
     </predator>
+    -->
   </agents>
 </root>
