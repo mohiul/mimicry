@@ -167,7 +167,7 @@ This run of the simulation has been initialized with four prey species with very
 	\label{fig:plot-4-prey}
 \end{figure}
 
-By observing the graph in Figure \ref{fig:plot-4-prey} we can see the two rings of unpalatable species which was put at the initial sate of the simulation has dominated after 10000 iterations. CA rule 55 has taken over all other species while CA 110 is following it (represented with dotted curve). Also the palatable prey species with similar patterns to CA rule 55 and 110 are taking full advantage of their deceiving pattern and increasing their population (represented with line curve). The two unpalatable set of patterns CA Rule 90 and 130 are unable to dominate the population. Different other mimicry rings are present in the simulation as we can observe from the graph of number of rings verses simulation time in Figure \ref{fig:ringSize10k-4Prey}, the total number of rings reached somewhere near 33 while each of them has comparatively low representative population. Batesian mimicry is in full effect in this simulated environment.
+By observing the graph in Figure \ref{fig:plot-4-prey} we can see the two rings of unpalatable species which was put at the initial sate of the simulation has dominated after 10000 iterations. CA rule 55 has taken over all other species while CA 110 is following it (represented with dotted curve). Also the palatable prey species with similar patterns to CA rule 55 and 110 are taking full advantage of their deceiving pattern and increasing their population (represented with line curve). The two palatable set of patterns CA Rule 190 and 30 are unable to dominate the population. Different other mimicry rings are present in the simulation as we can observe from the graph of number of rings verses simulation time in Figure \ref{fig:ringSize10k-4Prey}. The total number of rings reached somewhere near 37 while each of them has comparatively low representative population. Batesian mimicry is in full effect in this simulated environment.
 
 \begin{figure}[H]
 	\centering
@@ -197,7 +197,7 @@ By observing the graph in Figure \ref{fig:plot-4-prey} we can see the two rings 
   					 									& Rule190 (Unpalatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{images/CARule190}}& 150 & \multicolumn{2}{|c|}{}\\ \hline
   \multirow{2}{*}{Reproduction} & Age Limit & \multicolumn{2}{|c|}{100}  & \multicolumn{2}{|c|}{500} \\ \cline{2-6}
   						 									& Interval  & \multicolumn{2}{|c|}{1000} & \multicolumn{2}{|c|}{2500} \\ \hline
-  \multirow{2}{*}{Mutation Rate} & Pattern   & \multicolumn{2}{|c|}{0.05} & \multicolumn{2}{|c|}{\multirow{2}{*}{0.03}} \\ \cline{2-4}
+  \multirow{2}{*}{Mutation Rate} & Pattern   & \multicolumn{2}{|c|}{0.05} & \multicolumn{2}{|c|}{\multirow{2}{*}{0.3}} \\ \cline{2-4}
   						 									 & Genome    & \multicolumn{2}{|c|}{0.5}  & \multicolumn{2}{|c|}{} \\ \hline
   Demise Age	 									 & \multicolumn{3}{|c|}{2000}							& \multicolumn{2}{|c|}{7000} \\ \hline
   Minimum Attack Age						 & \multicolumn{3}{|c|}{} 						    & \multicolumn{2}{|c|}{500} \\ \hline
@@ -212,7 +212,7 @@ In this run of the simulation some significant parameters have been updated. One
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.40]{images/simTime9K-4MorePrey}
+	\includegraphics[scale=0.45]{images/simTime10K-4MorePrey}
 	\caption[Population distribution of mimicry rings (4 prey species, increased population)]{Population distribution of mimicry rings, initialized with 4 prey species with increased population.}
 	\label{fig:plot-4-more-prey}
 \end{figure}
@@ -248,9 +248,9 @@ The total number of rings had much increment in this run compared to the previou
   					 									& Rule105 (Unpalatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{images/CARule105}}& 150 & \multicolumn{2}{|c|}{}\\ \hline
   \multirow{2}{*}{Reproduction} & Age Limit & \multicolumn{2}{|c|}{100}  & \multicolumn{2}{|c|}{500} \\ \cline{2-6}
   						 									& Interval  & \multicolumn{2}{|c|}{1000} & \multicolumn{2}{|c|}{2000} \\ \hline
-  \multirow{2}{*}{Mutation Rate} & Pattern   & \multicolumn{2}{|c|}{0.05} & \multicolumn{2}{|c|}{\multirow{2}{*}{0.03}} \\ \cline{2-4}
+  \multirow{2}{*}{Mutation Rate} & Pattern   & \multicolumn{2}{|c|}{0.05} & \multicolumn{2}{|c|}{\multirow{2}{*}{0.3}} \\ \cline{2-4}
   						 									 & Genome    & \multicolumn{2}{|c|}{0.5}  & \multicolumn{2}{|c|}{} \\ \hline
-  Demise Age	 									 & \multicolumn{3}{|c|}{2000}							& \multicolumn{2}{|c|}{5000} \\ \hline
+  Demise Age	 									 & \multicolumn{3}{|c|}{2000}							& \multicolumn{2}{|c|}{7000} \\ \hline
   Minimum Attack Age						 & \multicolumn{3}{|c|}{} 						    & \multicolumn{2}{|c|}{500} \\ \hline
   \multirow{2}{*}{Memory Configuration} & \multicolumn{3}{|c|}{} 					& Minimum & 6 \\ \cline{5-6}
    																			& \multicolumn{3}{|c|}{} 					& Maximum & 10 \\ \hline  
@@ -263,7 +263,7 @@ To evaluate the simulation at a more complex level we increase the prey populati
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.40]{images/simTime10k-6Prey}
+	\includegraphics[scale=0.45]{images/simTime10k-6Prey}
 	\caption[Population distribution of mimicry rings (6 prey species)]{Population distribution of mimicry rings, initialized with 6 prey species.}
 	\label{fig:plot-6-prey}
 \end{figure}
@@ -286,7 +286,7 @@ With the above set of parameters we can receive the plot of Figure \ref{fig:plot
    														&\multicolumn{3}{|c|}{Prey configuration} 																	
    														& \multicolumn{2}{|c|}{Predator configuration} \\ \hline
   \multirow{4}{*}{Population} & Rule110 (Unpalatable) & \parbox[c]{2.1em}{\includegraphics[scale=0.50]{images/CARule110}} 
-  																									& 150 & \multicolumn{2}{|c|}{\multirow{4}{*}{30}} \\ \cline{2-4}
+  																									& 150 & \multicolumn{2}{|c|}{\multirow{4}{*}{20}} \\ \cline{2-4}
   					 									& Rule30  (Unpalatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{images/CARule30}}  
   					 																				& 150 & \multicolumn{2}{|c|}{}\\ \cline{2-4}
   					 									& Rule55  (Unpalatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{images/CARule55}}    
@@ -309,16 +309,16 @@ To further observe the effects of mimicry ring we initialize the simulation with
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.40]{images/simTime-9k-4Prey-unp}
+	\includegraphics[scale=0.45]{images/simTime8k-4Prey-unp}
 	\caption[Population distribution of mimicry rings(4 prey species all unpalatable)]{Population distribution of mimicry rings, initialized with 4 prey species all unpalatable.}
 	\label{fig:plot-4-prey-unp}
 \end{figure}
 
-The results according to Figure \ref{fig:plot-4-prey-unp} are expected as it can be observed the population of unpalatable species has prevailed. After nearly 9000 iterations we can see unpalatable species CA rule 55 has prevailed with the most population. Its palatable counter part is following this population. Unpalatable CA Rule 110 and its palatable counter part are also following the above. Similarly the other two species are increasing its population with dominance where the palatable population of deceivers are following them. 
+The results according to Figure \ref{fig:plot-4-prey-unp} are expected as it can be observed the population of unpalatable species has prevailed. After nearly 8000 iterations we can see unpalatable species CA rule 55 has prevailed with the most population. Its palatable counter part is following this population. Unpalatable CA Rule 110 and its palatable counter part are also following the above. Similarly the other two species are increasing its population with dominance where the palatable population of deceivers are following them. 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.50]{images/ringSize9k-4Prey-unp}
+	\includegraphics[scale=0.50]{images/ringSize8k-4Prey-unp}
 	\caption[Number of mimicry rings (4 prey species all unpalatable)]{Number of mimicry rings, initialized with 4 prey species all unpalatable.}
 	\label{fig:ringSize10k-4-Prey-unp}
 \end{figure}

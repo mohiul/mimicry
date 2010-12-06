@@ -12,20 +12,20 @@ legends = {};
 %markers = {'<k';'>k';'^k';'vk';'dk';'sk';'*k';'ok';'+k'};
 markers = {'<';'>';'^';'v';'d';'s';'*';'o'};
 grey = [0.5 0.5 0.5];
-pink = [0.5 0 0];
-markerFaceCol = {'y';'m';'c';pink;'g';'b';'w';grey};
+brown = [0.5 0 0];
+markerFaceCol = {'y';'m';'c';brown;'g';'b';'w';grey};
 
 %Plot predator population
-plot(T, logs(:, 2), '-k');
-p0 = plot(T(1:35:timeSize), logs(1:35:timeSize, 2), 'h', 'MarkerEdgeColor','k','MarkerFaceColor','r');
+plot(T, logs(:, 2), '-k', 'LineWidth',1.0);
+p0 = plot(T(1:35:timeSize), logs(1:35:timeSize, 2), 'h', 'MarkerEdgeColor','k','MarkerFaceColor','r', 'MarkerSize',8);
 
 %Plot all the 8 rings of prey population both palatable and unpalatable.
 for c = 3:3:size(logs, 2)
-    p1 = plot(T, logs(:, c + 1), '-k');
-    p2 = plot(T(1:50:timeSize), logs(1:50:timeSize, c + 1), markers{i},'MarkerEdgeColor','k','MarkerFaceColor',markerFaceCol{i});
+    p1 = plot(T, logs(:, c + 1), '-k', 'LineWidth',1.0);
+    p2 = plot(T(1:50:timeSize), logs(1:50:timeSize, c + 1), markers{i},'MarkerEdgeColor','k','MarkerFaceColor',markerFaceCol{i}, 'MarkerSize',8);
 %    p2 = plot(T(1:c*3:timeSize), logs(1:c*3:timeSize, c + 1), markers{i});
-    p3 = plot(T, logs(:, c + 2), ':k');
-    plot(T(1:75:timeSize), logs(1:75:timeSize, c + 2), markers{i},'MarkerEdgeColor','k','MarkerFaceColor',markerFaceCol{i});
+    p3 = plot(T, logs(:, c + 2), ':k', 'LineWidth',1.0);
+    plot(T(1:75:timeSize), logs(1:75:timeSize, c + 2), markers{i},'MarkerEdgeColor','k','MarkerFaceColor',markerFaceCol{i}, 'MarkerSize',8);
 %    plot(T(1:c*7:timeSize), logs(1:c*7:timeSize, c + 2), markers{i});
     plotHandles = [plotHandles p2];
     legends = [legends; strcat( 'CA Rule: ', num2str(logs(1, c)))];
