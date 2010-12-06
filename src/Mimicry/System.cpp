@@ -128,7 +128,7 @@ int System::PREDATOR_ATTACK_INTERVAL = 100;
  * Probability of the number of new born \a Predator species with a 
  * mutating genome.
  */
-float System::PREDATOR_GENOME_MUTATION_RATE = (float)0.03;
+float System::PREDATOR_GENOME_MUTATION_RATE = (float)0.3;
 
 /**
  * Mimminum age for \a Predator species to start reproduction.
@@ -138,12 +138,12 @@ int System::PREDATOR_REPRODUCTION_AGE_LIMIT = 500;
 /**
  * Time interval to wait before a \a Predators start reproducing again.
  */
-int System::PREDATOR_REPRODUCTION_INTERVAL = 1000;
+int System::PREDATOR_REPRODUCTION_INTERVAL = 2500;
 
 /**
  * Maximum age upto which \a Predator species will survive in the environment.
  */
-int System::PREDATOR_DEMISE_AGE = 2400;
+int System::PREDATOR_DEMISE_AGE = 7000;
 
 /**
  * Display outline in the model window when non-zero.
