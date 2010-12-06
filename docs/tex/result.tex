@@ -114,7 +114,7 @@ All the patterns in Table \ref{tab:diff-in-pattern} have a genetic bit differenc
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.40]{images/simTime10k-2Prey-generated-prey}
-	\caption[Population distribution of generated mimicry rings (initialized with 2 prey species)]{Population distribution of generated mimicry rings, initialized with 2 prey species.}
+	\caption[Population distribution of generated mimicry rings (2 prey species)]{Population distribution of generated mimicry rings, initialized with 2 prey species.}
 	\label{fig:plot-2-prey-generated-prey}
 \end{figure}
 
@@ -294,7 +294,7 @@ With the above set of parameters we can receive the plot of Figure \ref{fig:plot
   					 									& Rule190 (Unpalatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{images/CARule190}}& 150 & \multicolumn{2}{|c|}{}\\ \hline
   \multirow{2}{*}{Reproduction} & Age Limit & \multicolumn{2}{|c|}{100}  & \multicolumn{2}{|c|}{500} \\ \cline{2-6}
   						 									& Interval  & \multicolumn{2}{|c|}{1000} & \multicolumn{2}{|c|}{2000} \\ \hline
-  \multirow{2}{*}{Mutation Rate} & Pattern   & \multicolumn{2}{|c|}{0.05} & \multicolumn{2}{|c|}{\multirow{2}{*}{0.03}} \\ \cline{2-4}
+  \multirow{2}{*}{Mutation Rate} & Pattern   & \multicolumn{2}{|c|}{0.05} & \multicolumn{2}{|c|}{\multirow{2}{*}{0.3}} \\ \cline{2-4}
   						 									 & Genome    & \multicolumn{2}{|c|}{0.5}  & \multicolumn{2}{|c|}{} \\ \hline
   Demise Age	 									 & \multicolumn{3}{|c|}{2000}							& \multicolumn{2}{|c|}{5000} \\ \hline
   Minimum Attack Age						 & \multicolumn{3}{|c|}{} 						    & \multicolumn{2}{|c|}{500} \\ \hline
@@ -333,7 +333,7 @@ The results according to Figure \ref{fig:plot-4-prey-unp} are expected as it can
    														&\multicolumn{3}{|c|}{Prey configuration} 																	
    														& \multicolumn{2}{|c|}{Predator configuration} \\ \hline
   \multirow{4}{*}{Population} & Rule110 (Palatable) & \parbox[c]{2.1em}{\includegraphics[scale=0.50]{images/CARule110}} 
-  																									& 150 & \multicolumn{2}{|c|}{\multirow{4}{*}{30}} \\ \cline{2-4}
+  																									& 150 & \multicolumn{2}{|c|}{\multirow{4}{*}{20}} \\ \cline{2-4}
   					 									& Rule30  (Palatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{images/CARule30}}  
   					 																				& 150 & \multicolumn{2}{|c|}{}\\ \cline{2-4}
   					 									& Rule55  (Palatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{images/CARule55}}    
@@ -341,7 +341,7 @@ The results according to Figure \ref{fig:plot-4-prey-unp} are expected as it can
   					 									& Rule190 (Palatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{images/CARule190}}& 150 & \multicolumn{2}{|c|}{}\\ \hline
   \multirow{2}{*}{Reproduction} & Age Limit & \multicolumn{2}{|c|}{100}  & \multicolumn{2}{|c|}{500} \\ \cline{2-6}
   						 									& Interval  & \multicolumn{2}{|c|}{1000} & \multicolumn{2}{|c|}{2000} \\ \hline
-  \multirow{2}{*}{Mutation Rate} & Pattern   & \multicolumn{2}{|c|}{0.05} & \multicolumn{2}{|c|}{\multirow{2}{*}{0.03}} \\ \cline{2-4}
+  \multirow{2}{*}{Mutation Rate} & Pattern   & \multicolumn{2}{|c|}{0.05} & \multicolumn{2}{|c|}{\multirow{2}{*}{0.3}} \\ \cline{2-4}
   						 									 & Genome    & \multicolumn{2}{|c|}{0.5}  & \multicolumn{2}{|c|}{} \\ \hline
   Demise Age	 									 & \multicolumn{3}{|c|}{2000}							& \multicolumn{2}{|c|}{5000} \\ \hline
   Minimum Attack Age						 & \multicolumn{3}{|c|}{} 						    & \multicolumn{2}{|c|}{500} \\ \hline
@@ -356,7 +356,7 @@ The parameters for this simulation has been set exactly the same as in Table \re
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.40]{images/simTime-9k-4Prey-p}
+	\includegraphics[scale=0.40]{images/simTime10k-4Prey-p}
 	\caption[Population distribution of mimicry rings (4 prey species all palatable)]{Population distribution of mimicry rings, initialized with 4 prey species all palatable.}
 	\label{fig:plot-4-prey-p}
 \end{figure}
@@ -365,7 +365,7 @@ The results for the configuration in Table \ref{tab:config-table-4-prey-palatabl
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.50]{images/ringSize8k-4Prey-p}
+	\includegraphics[scale=0.50]{images/ringSize10k-4Prey-p}
 	\caption[Number of mimicry rings (4 prey species all palatable)]{Number of mimicry rings, initialized with 4 prey species all palatable.}
 	\label{fig:ringSize8k-4-Prey-p}
 \end{figure}
@@ -388,7 +388,7 @@ Until now all experiments have been initialized with multiple prey species. The 
   																									& 216 & \multicolumn{2}{|c|}{10} \\ \hline
   \multirow{2}{*}{Reproduction} & Age Limit & \multicolumn{2}{|c|}{100}  & \multicolumn{2}{|c|}{500} \\ \cline{2-6}
   						 									& Interval  & \multicolumn{2}{|c|}{1000} & \multicolumn{2}{|c|}{2500} \\ \hline
-  \multirow{2}{*}{Mutation Rate} & Pattern   & \multicolumn{2}{|c|}{0.05} & \multicolumn{2}{|c|}{\multirow{2}{*}{0.03}} \\ \cline{2-4}
+  \multirow{2}{*}{Mutation Rate} & Pattern   & \multicolumn{2}{|c|}{0.05} & \multicolumn{2}{|c|}{\multirow{2}{*}{0.3}} \\ \cline{2-4}
   						 									 & Genome    & \multicolumn{2}{|c|}{0.5}  & \multicolumn{2}{|c|}{} \\ \hline
   Demise Age	 									 & \multicolumn{3}{|c|}{2000}							& \multicolumn{2}{|c|}{7000} \\ \hline
   Minimum Attack Age						 & \multicolumn{3}{|c|}{} 						    & \multicolumn{2}{|c|}{500} \\ \hline
@@ -403,7 +403,7 @@ This configuration has only one unpalatable species, one in each of the 216 cell
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.40]{images/simTime8k-1-unp}
+	\includegraphics[scale=0.40]{images/simTime8k-1Prey-unp}
 	\caption[Population distribution of mimicry rings (1 prey species unpalatable)]{Population distribution of mimicry rings, initialized with 1 prey species unpalatable.}
 	\label{fig:plot-1-prey-unp}
 \end{figure}
@@ -428,7 +428,7 @@ From Figure \ref{fig:plot-1-prey-unp}, it can be observed, the initial set of un
   																									& 216 & \multicolumn{2}{|c|}{8} \\ \hline
   \multirow{2}{*}{Reproduction} & Age Limit & \multicolumn{2}{|c|}{100}  & \multicolumn{2}{|c|}{500} \\ \cline{2-6}
   						 									& Interval  & \multicolumn{2}{|c|}{1000} & \multicolumn{2}{|c|}{2500} \\ \hline
-  \multirow{2}{*}{Mutation Rate} & Pattern   & \multicolumn{2}{|c|}{0.05} & \multicolumn{2}{|c|}{\multirow{2}{*}{0.03}} \\ \cline{2-4}
+  \multirow{2}{*}{Mutation Rate} & Pattern   & \multicolumn{2}{|c|}{0.05} & \multicolumn{2}{|c|}{\multirow{2}{*}{0.3}} \\ \cline{2-4}
   						 									 & Genome    & \multicolumn{2}{|c|}{0.5}  & \multicolumn{2}{|c|}{} \\ \hline
   Demise Age	 									 & \multicolumn{3}{|c|}{2000}							& \multicolumn{2}{|c|}{7000} \\ \hline
   Minimum Attack Age						 & \multicolumn{3}{|c|}{} 						    & \multicolumn{2}{|c|}{500} \\ \hline
@@ -443,7 +443,7 @@ This configuration is set exactly as according to Section \ref{subsec:single-pre
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.40]{images/simTime9k-1-p}
+	\includegraphics[scale=0.40]{images/simTime10k-1Prey-p}
 	\caption[Population distribution of mimicry rings (1 prey species palatable)]{Population distribution of mimicry rings, initialized with 1 prey species palatable.}
 	\label{fig:plot-1-prey-p}
 \end{figure}
@@ -452,7 +452,7 @@ From the initial palatable population we see a bunch of palatable rings created.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.50]{images/ringSize8k-1Prey-p}
+	\includegraphics[scale=0.50]{images/ringSize10k-1Prey-p}
 	\caption[Number of mimicry rings (1 palatable prey species)]{Number of mimicry rings, initialized with 1 palatable prey species.}
 	\label{fig:ringSize8k-1-Prey-p}
 \end{figure}
