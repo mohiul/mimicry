@@ -523,7 +523,7 @@ int main(int argc, char** argv)
 		&System::MIN_MEMORY_SIZE,
         MIN_MEMORY_SIZE,
         control);
-    predatorMinMemorySize->set_int_limits(2, 20);
+    predatorMinMemorySize->set_int_limits(1, 20);
 
     GLUI_Spinner *predatorMaxMemorySize = glui->add_spinner_to_panel(
         hopfieldNetworkConfg,
