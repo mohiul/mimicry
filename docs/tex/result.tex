@@ -471,10 +471,13 @@ From the initial palatable population we see a bunch of palatable rings created.
 \end{figure}
 
 \section{Analysis of Batesian Mimicry}
+\label{sec:result-batesian-mimicry}
 For all possible initial conditions, Batesian mimicry has taken effect. It can be observed that for every ring of unpalatable species there is an existence of the palatable ring racing to reach the population count of its unpalatable counterpart. Also when the initial population starts with a set of only palatable species we can observe that the total population vanishes within very short period of time (section \ref{sec:init-only-palatable-species}). This effect can be explained with the fact that the palatable population does not have any models to mimic, and it reaches extinction. So from the analysis it can be concluded that the model under discussion has successfully simulated the evolution of Batesian mimicry.
 
 \section{Analysis of Mullerian Mimicry}
+\label{sec:result-mullerian-mimicry}
 Effects of Mullerian mimicry can be observed best for the experiment in section \ref{sec:init-conf-only-unp}. For that case, we initialized the model with 4 rings of unpalatable species with no palatable ones and after nearly 10K iterations, all of the initial unpalatable rings have survived with dominance. The cause of this behavior can be explained by the minimum number of patterns that each predator can store in memory, which was set to four. So this parameter was reduced to one to observe whether it is possible to converge all different unpalatable rings into one large ring, when predators are capable to memorizing only a single pattern. But as it turned out, the phenomena of ``a single large ring" does not occur because different predators recognize different patterns resulting in multiple divergent Mullerian mimicry rings. It can be concluded that our results match with the one from Frank and Noble (section \ref{subsec:models-by-frank-and-noble}), that multiple Mullerian mimics do not converge into one large ring.
 
 \section{Conclusion}
+\label{sec:result-conclusion}
 Analysis of the results tell us that we have successfully been able to simulate the evolution of mimicry. In addition to that, this model provides a more accurate simulation of the fascinating natural process of mimicry rings. Not only does this model simulates mimicry with the initialized population but also it provides possibility of creating diverse new rings and their shift in population. This model also proves the theory of Turner in explaining the evolution of mimicry with punctuated equilibrium (section \ref{subsec:reflection-of-punctuated-equilibrium}) \cite{turner1988}.
