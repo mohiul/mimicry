@@ -102,7 +102,7 @@ const int System::NUMBER_OF_RINGS_TO_REPORT = 8;
 /**
  * Minimum number of patterns that need to be stored in Predator memory before starting recognition.
  */
-int System::MIN_MEMORY_SIZE = 2;
+int System::MIN_MEMORY_SIZE = 1;
 
 /**
  * Maximum number of patterns stored in Hopfield Memory
@@ -138,7 +138,7 @@ int System::PREDATOR_REPRODUCTION_AGE_LIMIT = 500;
 /**
  * Time interval to wait before a \a Predators start reproducing again.
  */
-int System::PREDATOR_REPRODUCTION_INTERVAL = 2500;
+int System::PREDATOR_REPRODUCTION_INTERVAL = 1500;
 
 /**
  * Maximum age upto which \a Predator species will survive in the environment.
