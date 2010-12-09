@@ -38,17 +38,19 @@
 \maketitle
 \pagenumbering{roman}
 
-\addcontentsline{toc}{chapter}{\numberline{}Abstract}
 \input{abstract}
-\addcontentsline{toc}{chapter}{\numberline{}Acknowledgment}
 \input{acknowledgment}
-\setcounter{page}{4}
 
 \tableofcontents
 
-\addcontentsline{toc}{chapter}{\numberline{}List Of Figures}
+\newpage
+\phantomsection \label{listoffig}
+\addcontentsline{toc}{chapter}{\numberline{}List of Figures}
 \listoffigures
-\addcontentsline{toc}{chapter}{\numberline{}List Of Tables}
+
+\newpage
+\phantomsection \label{listoftable}
+\addcontentsline{toc}{chapter}{\numberline{}List of Tables}
 \listoftables
 
 \input{intro}
