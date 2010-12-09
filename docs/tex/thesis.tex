@@ -63,7 +63,10 @@
 \input{application}
 \input{conclusion}
 
-\renewcommand{\bibname}{ References}
+\newpage
+\phantomsection \label{references}
+\addcontentsline{toc}{chapter}{\numberline{}References}
+\renewcommand{\bibname}{References}
 \bibliographystyle{alpha}
 \bibliography{references}
 \end{document}
