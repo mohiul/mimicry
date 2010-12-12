@@ -118,22 +118,44 @@ Echo has been constructed on a certain set of criterion. The following is a shor
 	\item As mathematical analysis provides the surest route to arrive at a valid generalization point, most aspects of the Echo model should be amenable to mathematical analysis. 
 \end{itemize}
 
-In developing Echo using the above set of criterion, a step by step approach has been taken. Among these steps of improvement, the work by Hraber titled ``The Ecology of Echo" \cite{hraber1997} is discussed in the following.
+In developing Echo using the above set of criterion, a step by step approach has been taken. Among these steps of improvement, the work by Hraber titled ``The Ecology of Echo" \cite{hraber1997}, which is more from an ecological perspective is discussed in the following.
 
 \subsubsection{Organization}
-
+As Echo is an agent-based model, it has a collection of agents distributed in a two dimensional site which contains resource. Agents in Echo have freedom and flexibility to move around this environment. These agents are capable of replicating themselves, while also having the capability of making complex interactions. Interactions include combat, trading and mating.
 
 \paragraph{Resources and Sites}
+Resource in a site of Echo is its very foundation. They are represented by letters [a,b,c,d]. Everything is Echo is constructed by combining these letters as strings. These resources are treated much like an `atom' and by combining them as a molecular string agents are constructed. Geographically, Echo is a collection of interconnected sites. Each site contains a fountain which is the source of resource for the agents in Echo. The amount of resource available in each site varies in time. A site with no resource can be compared to a `desert' while another site with increased availability of letters can be water spring or a pond. 
 
 \paragraph{Agents}
-Individual agents in echo
+`Agents have a genome that is roughly analogous to a single chromosome in an haploid species'. An agents \textsl{tag} is an external phenotype of its respective genotype (such as color). Agents have internal conditions or rules of interaction with which are genetically represented and they encode the agents internal preferences, behavioral rules and so forth. So interactions between multiple agents occur based on their conditions (rules for interactions) and tags (appearance), which results in sophisticated interactions between agents such as deception (mimicry, bluffing) and in-transitivities. `The six (external) tag and (internal) condition genes possessed by every agent are the offense tag, defense tag, mating tag, combat condition, trade condition and mating condition'. These genes are used to determine what sort of interaction between agents are will take place and also the outcome of their interaction. 
+
+Agents have two ways of reproduction, one being self replication, while the other is by interaction between a pair of agents. 
 
 \paragraph{Replication}
+The replication process for agents is an asexual reproduction. An agent needs to collect sufficient resource to start the self-replication process. After replication, the newly created agent receives a fraction of its parent's resource. Spontaneous mutation is applied to the gene for a replication process, where different mutation rate is applied to different parts of the gene. 
+
 \paragraph{Interactions}
+Their are diverse interactions between agents consisting of combat, trading and mating. Agents need to be in the same location in site for any interaction to take place. Testing for which interaction to take place is always conducted in the order of combat, trade and mating. 
+
 \paragraph{Combat}
+The interaction of combat is analogous to real world antagonistic behavior, where one agent is killed resulting in the survivor agent to receive all its resource. Depending on each agent's offense and defense tag and the tag prefixes, the winner is decided. A \textsl{combat matrix} is also calculated with the genome of individual agents, which helps in calculating the winner.
+
 \paragraph{Trading}
+When two agents are chosen to interact and they do not engage in combat, they are given the opportunity to trade and mate. Trading and mating are very much a mutual agreement between agents compared to combat, which is more of a destructive process. ``Agents A and B will trade if A's trading condition is a prefix of B's offense tag and vice versa". Trading takes place for excess resources between agents, where excess is defined as the amount which the agent possess above the amount required for a replication process, plus some reserves. The value of the reserve is controlled with the help of a simulation parameter. A deceptive process is introduced here while trading takes place, when an agent might not have excess resource but will still be engaged in trade, as it is not possible for the other agent to know the resource of its opposite interactor. 
+
 \paragraph{Mating}
-\subsubsection{Results}
+Only if two agents find each other suitable, they will engage in the mating process. Suitability is decided on certain conditions based on the mating tag of individual agents. A form of two point crossover takes place to perform the mating action and produce diverse new agents. 
+
+\subsubsection{Discussion of Results}
+The Echo model has good resemblance with natural ecosystem. It has stable patterns of interactions among genetic variants, or tropic networks. I consists different levels of resources along with relative species abundance. Even different cataclysmic events such as meteors, droughts and so fourth are introduced. Also several isolation effects are observed where a number of sites are allowed to evolve independently. In addition to that Echo contains interesting flow of resources. 
+
+Two separate experiments are done with the above simulation to observe whether species abundance pattern can be used to find ecologically plausible behavior in Echo. To make a falsifiable comparison with biological systems, two ecological patterns are considered, each of which has similar quantitative properties in many different ecosystems. The objective is to compare ecosystems - the Preston  curve and the species-area scaling relation. This allowed them to compare Echo diversity patterns with empirical patterns of species abundance. 
+
+Preston's canonical log normal distribution is the most widely accepted formalization of the relative commonness and rarity of species. The species-area scaling relation is also an important ecological pattern. The theory of island biography is predicted on species-are relations. In conservation biology, this relation has been used to predict the effects of different reserve sized on species diversity. Although the species-area relation can be derived from Preston's canonical log-normal distribution, a satisfactory explanation of the processes that regulate this relation has not been advanced. 
+
+Now the question is, does Echo exhibit the robust ecological phenomenon of Preston curve and species area scaling relation?. For Preston's curve plot, the data show that qualitatively the pattern of genome abundances in Echo populations resembles the general patterns found in biological systems, although some differences are observed. But for species area curve some discrepancy was observed between the expected result and the observed values. Several factors were raised for this discrepancy. One was the choice of the simulation parameters. Second being the definition of different species Echo. Agents having different genome is considered as from different species. Another factor being the balance between rates of speciation and extinction of population. 
+
+Finally to answer the above question, it has been concluded that, Echo showed good quantitative agreement with naturally occurring species abundance distributions and species area scaling relations. 
 
 \section{Cellular Automata}
 
