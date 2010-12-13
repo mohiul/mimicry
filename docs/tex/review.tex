@@ -1,15 +1,15 @@
 %Review Chapter
 \chapter{Review}
-
+\label{chapter:review}
 \begin{quote}
 \textsl{``The theory of evolution by cumulative natural selection is the only theory we know of that is in principle capable of explaining the existence of organized complexity" - Richard Dawkins \cite{dawkins1996}}
 \end{quote}
 
 \section{Introduction}
+The intention of this chapter is to discuss the field of Evolutionary Computing and Artificial Life. Both of these field of computer science are inspired by the process of evolution as it happens in nature. The model presented in this thesis is also based on an evolutionary process existing in nature. This thesis is part of the field of Artificial Life, motivated by the work of Echo and other such simulated Complex Adaptive Systems. In addition to the model presented in chapter \ref{chapter:model}, this thesis put some effort in finding application for the evolutionary process of mimicry (chapter \ref{chapter:application}). Similar to evolutionary computation, we intend to apply the deceptive process of mimicry to solve a problem in computer science.
 
 \section{Evolutionary Computation}
-
-\textsl{``The fundamental metaphor of evolutionary computing relates this powerful natural evolution to a particular style of problem solving - that of trial and error" - Eiben \cite{eiben2003}}
+The field of evolutionary computing is the collective name for a range of problem-solving techniques based on principles of biological evolution, such as natural selection and genetic inheritance. 
 
 \subsection{History}
 \label{subsec:evo-comp-history}
@@ -35,7 +35,7 @@ Koza's invention is the idea of Genetic Programming, which is an automated metho
 Contemporary terminology denotes the fields of \textbf{Evolutionary Strategy}, \textbf{Evolutionary Programming}, \textbf{Genetic Algorithm} and \textbf{Genetic Programming} to be under one umbrella termed as \textbf{Evolutionary Computation} while the algorithms are called \textbf{Evolutionary Algorithms}.
 
 \subsection{Evolutionary Algorithms}
-Algorithms which are inspired by the strategy of \textit{survival of the fittest} from evolutionary biology, and uses different methods to optimize mathematical expressions which are used to evaluate a pool of population of solutions over generation, can be defined as evolutionary algorithms. There are many different forms of evolutionary algorithm. All of which can be generalized to follow their pattern from natural selection. The mathematical expression, also termed as \textbf{fitness function} is used to evaluate the fitness of each individual from the set of existing solution space. An individual or a solution which provides higher output from the fitness function is considered as more fit to survive in the environment. So given a problem the algorithm initializes the environment with a random set of population or solutions. Then it uses the fitness function to select a better set of solutions from the existing once. After that different operators of \textbf{mutation} and \textbf{recombination} are applied to the selected set of solution to come up with a new generation of solution set born from the existing ones. Again the fitness function is applied to the current set of population to come up with a better set and this process iterates until the evaluation from the fitness function is satisfactory to give the best set of solutions.
+Algorithms which are inspired by the strategy of \textit{survival of the fittest} from evolutionary biology, and uses different methods to optimize mathematical expressions which are used to evaluate a pool of population of solutions over generation, can be defined as evolutionary algorithms. There are many different forms of evolutionary algorithm. All of which can be generalized to follow their pattern from natural selection. The mathematical expression, also termed as \textbf{fitness function} is used to evaluate the fitness of each individual from the set of existing solution space. An individual or a solution which provides higher output from the fitness function is considered as more fit to survive in the environment. So given a problem the algorithm initializes the environment with a random set of population or solutions. Then it uses the fitness function to select a better set of solutions from the existing ones. After that different operators of \textbf{mutation} and \textbf{recombination} are applied to the selected set of solution to come up with a new generation of solution set, born from the existing ones. Again the fitness function is applied to the current set of population to come up with a better set and this process iterates until the evaluation from the fitness function is satisfactory to give the best set of solutions.
 
 According to Eiben \cite{eiben2003} this process has two fundamental forces that form the basis of evolutionary systems:
 
@@ -79,9 +79,9 @@ The primary objective of evolutionary programming was to generate artificial int
 Genetic programming is typically applied to machine learning tasks such as prediction and classification. Its attribute feature behaves similar to neural network and usually has huge populations of solution combination. The algorithm itself is a very slow process. These sets of algorithms use non-linear chromosomes such as trees and graphs. Mutation is mostly avoided for genetic programming. Recombination operators work by exchanging subtrees. Mutation if applied will be a random changing process in the tree. Parent selection process is usually fitness proportional while the survivor selection process is usually replacement of generations. From a technical point of view, genetic programming is simply a variant of genetic algorithm working with a different data structure: the chromosomes are trees. 
 
 \section{Artificial Life}
-As Artificial Intelligence is the field of computer science where scientists take concepts from psychology and implement into computer science. In contrast to that, in Artificial Life, scientist take concepts from biology, specially evolutionary biology and genetics and implement into computer science. 
+Artificial Intelligence is the field of computer science where scientists take concepts from psychology and implement into computer science. In contrast to that, in Artificial Life, scientist take concepts from biology, specially evolutionary biology and genetics and implement into computer science. 
 
-Christopher G. Langton is considered as one of the founders of the field of Artificial Life. He invented the term in the late 1980's while organizing the first `\textsl{International Conference on the Synthesis and Simulation of Living Systems'} at the Los Alamos National Laboratory in 1987.
+Christopher G. Langton is considered as one of the founders of the field of Artificial Life. He invented the term while organizing the first `\textsl{International Conference on the Synthesis and Simulation of Living Systems'} at the Los Alamos National Laboratory in 1987.
 
 In defining Artificial Life Christopher G. Langton states the following,
 
@@ -89,7 +89,16 @@ In defining Artificial Life Christopher G. Langton states the following,
 \textsl{`` `Art' + `Life' = Artificial Life: Life made by Man rather than by Nature. Our technological capabilities have brought us to the point where we are on the verge of creating `living' artifacts. The field of Artificial Life is devoted to studying the scientific, technological, artistic, philosophical, and social implications of such an accomplishment."}
 \end{quote}
 
-The field of Artificial Life (AL) has been described by Taylor also as a tool for biological inquiry \cite{taylor1993}. While providing a brief survey over different AL models he talks about \textbf{Wetware systems} which work at the molecular level, the \textbf{Software systems} which work at the cellular level and the \textbf{Hardware systems} which works at the organism level.
+Artificial Life (AL) has been described by Taylor also as a tool for biological inquiry \cite{taylor1993}. While providing a brief survey over different AL models he talks about \textbf{Wetware systems} which work at the molecular level, the \textbf{Software systems} which work at the cellular level and the \textbf{Hardware systems} which works at the organism level.
+
+\paragraph{Wetware systems}
+Wetware artificial life systems are the most similar to natural life and indeed are actually derived from natural life. 
+
+\paragraph{Software systems}
+
+
+\paragraph{Hardware systems}
+
 
 %Describe Wetware, Software and Hardware systems of artificial life. 
 
@@ -114,8 +123,8 @@ The following definition of Complex Adaptive System is comprehensive.
 Holland also provides some common kernel of similarities and dissimilarities between different complex adaptive systems in \textsl{Adaptation in Natural and Artificial Systems} \cite{holland1975}:
 
 \begin{enumerate}
-	\item \textsl{``All complex adaptive system involves large number of parts undergoing a kaleidoscopic array of simultaneous non linear interactions."} As the behavior of the whole system is non-linear, the usual mathematical techniques of linear approximation such as, linear regression, normal coordinates, mean field approaches, and the like make little progress in the analysis of complex adaptive systems. As because different interactions between agents are simultaneous, parallel computing is helpful in term of simulating and analyzing these systems. 
-	\item \textsl{``The impact of these systems in human affairs centers on the aggregate behavior, the behavior of the whole."}
+	\item \textsl{``All complex adaptive system involve large number of parts undergoing a kaleidoscopic array of simultaneous non linear interactions."} As the behavior of the whole system is non-linear, the usual mathematical techniques of linear approximation such as, linear regression, normal coordinates, mean field approaches, and the like make little progress in the analysis of complex adaptive systems. As because different interactions between agents are simultaneous, parallel computing is helpful in term of simulating and analyzing these systems. 
+	\item \textsl{``The impact of these systems in human affairs center on the aggregate behavior, the behavior of the whole."}
 	\item \textsl{``The interactions evolve over time, as the parts adapt in an attempt to survive in the environment provided by the other parts."}
 	\item \textsl{``Complex adaptive systems anticipate."}
 \end{enumerate}
