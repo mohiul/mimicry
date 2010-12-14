@@ -79,13 +79,13 @@ In FormAL, an \textbf{Agent} is a simulated organism. It is designed simply, but
 The framework consists of a three dimensional visual environment where agents of the individual based simulation gets complete freedom of movement defined from their genetic representation. 
 
 \paragraph{Space}
-The space of the environment is a three-dimensional lattice of discrete points. The coordinate of each point in space is of the form \((x,y,z) \in \Sigma^3\), where \(\Sigma\) be the set \(\{0, 1, ..., S-1\}\). \(S\) is a universal constant being a small positive integer, which in this simulation has been kept at 20 (the value of the \(World Size\) parameter in Table \ref{tab:environment-control-parameters}). 
+The space of the environment is a three-dimensional lattice of discrete points. The coordinate of each point in space is of the form \((x,y,z) \in \Sigma^3\), where \(\Sigma\) be the set \(\{0, 1, ..., S-1\}\). \(S\) is a universal constant being a small positive integer, which in this simulation has been kept at 20 (the value of the \(World Size\) parameter in table \ref{tab:environment-control-parameters}). 
 
 \paragraph{Time}
 Time, being an integer \( (t \geq 0) \), advances in discrete steps in the simulation, where at each step the agents update themselves. 
 
 \paragraph{Cell}
-The entire three dimensional toroidal environment is divided in multiple cells. A cell is a three dimensional cubical section of the hyperspace. Accordingly in Table \ref{tab:environment-control-parameters} \(ISize\) is the parameter that controls the number of cells in the environment. The size of a cell is evaluated from the entire world size. And the total number of cell is calculated as \(ISize^3 = 216\).
+The entire three dimensional toroidal environment is divided in multiple cells. A cell is a three dimensional cubical section of the hyperspace. Accordingly in table \ref{tab:environment-control-parameters} \(ISize\) is the parameter that controls the number of cells in the environment. The size of a cell is evaluated from the entire world size. And the total number of cell is calculated as \(ISize^3 = 216\).
 
 \begin{table}[H]
 \centering
@@ -143,7 +143,7 @@ An agents position is calculated once during each step of update in time. The ag
 \label{tab:mobility-control-parameters}
 \end{table}
 
-Algorithm \ref{algo:algorithm-movement-agents} explains the calculation of mobility of each agent at each time step of the simulation, while Table \ref{tab:mobility-control-parameters} contains the values of the parameters used to apply to this algorithm.
+Algorithm \ref{algo:algorithm-movement-agents} explains the calculation of mobility of each agent at each time step of the simulation, while table \ref{tab:mobility-control-parameters} contains the values of the parameters used to apply to this algorithm.
 
 \section{The Prey: Mimics and Models}
 
@@ -182,10 +182,10 @@ Franks and Noble have used different models to diversify species. In \cite{frank
 
 To use CA as prey pattern, an agent's genome is constructed as an 8 bit binary value with a decimal range between 0 to 255. Each of this 256 values have a unique CA pattern associated with it. When storing this pattern in Hopfield memory we take a linear representation of this 2-D pattern, while to consider similarity between two pattern we evaluate the hamming distance between their linear representation. 
 
-With CA based pattern representation, population of prey species with a specific CA pattern can be grouped as one single species. And by restricting inter species reproduction we can control the diversity of patterns. But there is mutation applied when similar species mate with each other, so new species do born out of generations of existing species. So that is why we have two separate mutation rate while reproducing prey species. One being the ``Pattern Mutation Rate" (default values are mentioned in Table \ref{tab:prey-control-parameters}) with which we control mutation of the first 8 bits of the genome while the ``Genome Mutation Rate" is used to control mutation of rest of the 9 bit genome (Table \ref{tab:prey-genome}). Similar efforts of multiple mutation rate at varying location has been used in developing ``Echo" as mentioned in section \ref{subsec:echo} \cite{hraber1997}.
+With CA based pattern representation, population of prey species with a specific CA pattern can be grouped as one single species. And by restricting inter species reproduction we can control the diversity of patterns. But there is mutation applied when similar species mate with each other, so new species do born out of generations of existing species. So that is why we have two separate mutation rate while reproducing prey species. One being the ``Pattern Mutation Rate" (default values are mentioned in table \ref{tab:prey-control-parameters}) with which we control mutation of the first 8 bits of the genome while the ``Genome Mutation Rate" is used to control mutation of rest of the 9 bit genome (table \ref{tab:prey-genome}). Similar efforts of multiple mutation rate at varying location has been used in developing ``Echo" as mentioned in section \ref{subsec:echo} \cite{hraber1997}.
 
 \subsection{Genome}
-The Genome of the prey species consists of 17 bits as presented in Table \ref{tab:prey-genome}. The first eight bits is the rule, which is used to generate Cellular Automata pattern. The next two bits are used to represent palatability of the organism explained detail in Section \ref{sec:genetic-palatability-representation}. The next six bits is the magnitude of the force with which mobility of the organism is calculated. The 17th bit is used to evaluate reproduction capability of the organism, depending on which the prey species is either capable or not capable to participate in reproduction.
+The Genome of the prey species consists of 17 bits as presented in table \ref{tab:prey-genome}. The first eight bits is the rule, which is used to generate Cellular Automata pattern. The next two bits are used to represent palatability of the organism explained detail in section \ref{sec:genetic-palatability-representation}. The next six bits is the magnitude of the force with which mobility of the organism is calculated. The 17th bit is used to evaluate reproduction capability of the organism, depending on which the prey species is either capable or not capable to participate in reproduction.
 
 \begin{table}[H]
 \centering
@@ -221,7 +221,7 @@ The palatability of each prey species is fixed and has been represented with 2 b
 	\label{tab:genetic-representation-palatability}
 \end{table}
 
-This representation in Table \ref{tab:genetic-representation-palatability} is unlike Frank and Noble \cite{franks2003} where palatability level has been used on a scale between zero and one (least to most palatable), where 0.5 is neutrally palatable. 
+This representation in table \ref{tab:genetic-representation-palatability} is unlike Frank and Noble \cite{franks2003} where palatability level has been used on a scale between zero and one (least to most palatable), where 0.5 is neutrally palatable. 
 
 \subsection{Interaction between other Prey and Predators}
 The prey have been defined to have many conglomerate behavior in the environment. Prey interaction with other prey species and with predators make the evolution of mimicry possible. Mobility of prey species and their reproduction capability are two important behaviors which result from interaction. 
@@ -243,7 +243,7 @@ The mobility genes of the prey consist of 6 bits. These six bits are used to cal
 \end{algorithm}
 
 \subsubsection{Reproduction}
-Every prey species starts reproducing when it reaches the \textsl{``Reproductive age limit"}. If it is capable of reproducing, which is decided based on its 17th bit gene, the prey will randomly select another prey species with similar pattern and palatability from the same cell and mate with it. Now the other prey also needs to be genetically capable of reproduction and needs to reach its age limit. A new genome is created from the existing genome of the two prey by applying single point crossover operation. Mutation is performed separately on the pattern gene and the rest of the genome, with two different rates to control them using the values in Table \ref{tab:prey-control-parameters}. So there is two point mutation for the genome. 
+Every prey species starts reproducing when it reaches the \textsl{``Reproductive age limit"}. If it is capable of reproducing, which is decided based on its 17th bit gene, the prey will randomly select another prey species with similar pattern and palatability from the same cell and mate with it. Now the other prey also needs to be genetically capable of reproduction and needs to reach its age limit. A new genome is created from the existing genome of the two prey by applying single point crossover operation. Mutation is performed separately on the pattern gene and the rest of the genome, with two different rates to control them using the values in table \ref{tab:prey-control-parameters}. So there is two point mutation for the genome. 
 
 \begin{algorithm}[H]
 	\caption{Algorithm for reproduction of the Prey species}
@@ -282,7 +282,7 @@ Every prey species starts reproducing when it reaches the \textsl{``Reproductive
 
 \section{Predator}
 
-Predators in the system are designed to provide selection pressure to \textit{models} and \textit{mimics} for the evolution of mimicry. Similar to prey species, they are agents in the FormAL environment capable of mobility and reproduction. In addition to it, these agents are equipped with Hopfield Network Memory to be able to learn and recognize patterns of the prey species. Their mobility and reproduction capability is controlled at the genetic level, while their memory is not genetically controlled, as it was not possible to come up with a genetic representation for Hopfield Network. So every new predator species gets to born with zero memory and with no inheritance from parents. A set of parameters are defined to control predators' population and learning ability in the environment. Details of these parameters are given in Table \ref{tab:predator-control-parameters}.
+Predators in the system are designed to provide selection pressure to \textit{models} and \textit{mimics} for the evolution of mimicry. Similar to prey species, they are agents in the FormAL environment capable of mobility and reproduction. In addition to it, these agents are equipped with Hopfield Network Memory to be able to learn and recognize patterns of the prey species. Their mobility and reproduction capability is controlled at the genetic level, while their memory is not genetically controlled, as it was not possible to come up with a genetic representation for Hopfield Network. So every new predator species gets to born with zero memory and with no inheritance from parents. A set of parameters are defined to control predators' population and learning ability in the environment. Details of these parameters are given in table \ref{tab:predator-control-parameters}.
 
 \subsection{Learning}
 The objective of a predator's interaction with prey is always to consume it. But based on the prey's pattern and palatability, the predator will either be able to consume it or throw it back to the environment. At this event the predator needs to learn the pattern with which the prey has been represented. The pattern represents palatability of the prey species, at least to the predator. To store this new pattern into memory, each predator is equipped with a Hopfield Network Memory. Every time a new interaction is made by the predator its memory is initialized with all the existing pattern that has already been encountered and the new one. The learning procedure used for this memory is Hebbian Learning. 
@@ -385,7 +385,7 @@ Algorithm for the Hopfield model is described in the following:
 Each prey contains an evolving cellular automata which is represented by a binary gene. This two dimensional pattern is serialized to be available as a one dimensional binary array, which is taken as input for any predator organism trying to interact with the prey. This binary representation of the pattern gets converted to a bipolar representation. Each input pattern will consist of \(\textit{m} \times \textit{n} = \textit{mn}\) components, each component representing one pixel of the pattern (\textit{m} and \textit{n} representing each dimension). The \textit{m} by \textit{n} pattern configuration will be serialized by putting all row vectors in one single row sequentially.
 
 \subsubsection{Predator attack algorithm}
-As soon as a predator reaches its attack age it selects random prey species around its vicinity and starts attacking them. This attack process also involves recognition of prey pattern, which is at the heart of mimicry simulation for this research. Two parameters have been defined to limit predator memorization and recognition process as both of these processes are computationally expensive. The ``Hopfield Minimum Memory Size" (default value in Table \ref{tab:predator-control-parameters}) is the number of memory a predator needs to store before making intelligent decisions about attacking a new prey species. After a predator is born, it start attacking prey without any caution. But after every attack the predator will store its pattern and palatability level inside its memory. As soon as it reaches the minimum memory size, it will start making intelligent decision about attacking the next species. It will try to recognize the pattern and if found palatable, prey will be consumed. Otherwise prey will be thrown back into the environment. If the pattern is not recognized predator will try to consume it and in the process will store its palatability and pattern into memory. 
+As soon as a predator reaches its attack age it selects random prey species around its vicinity and starts attacking them. This attack process also involves recognition of prey pattern, which is at the heart of mimicry simulation for this research. Two parameters have been defined to limit predator memorization and recognition process as both of these processes are computationally expensive. The ``Hopfield Minimum Memory Size" (default value in table \ref{tab:predator-control-parameters}) is the number of memory a predator needs to store before making intelligent decisions about attacking a new prey species. After a predator is born, it start attacking prey without any caution. But after every attack the predator will store its pattern and palatability level inside its memory. As soon as it reaches the minimum memory size, it will start making intelligent decision about attacking the next species. It will try to recognize the pattern and if found palatable, prey will be consumed. Otherwise prey will be thrown back into the environment. If the pattern is not recognized predator will try to consume it and in the process will store its palatability and pattern into memory. 
 
 In this way the predator memory is limited to \textsl{``Hopfield Maximum Memory Size"}. After reaching this memory predator will not store any more new pattern but will try to associate with the existing ones it has already stored. Algorithm \ref{algo:algorithm-attack-prey} and \ref{algo:algorithm-attemptToKill} explains the process in every detail.
 
@@ -424,7 +424,7 @@ In this way the predator memory is limited to \textsl{``Hopfield Maximum Memory 
 \end{algorithm}
 
 \subsection{Genome}
-Each predator has a 5 bit genome as explained in Table \ref{tab:predator-genome}. The first 4 bits represent its mobility and magnitude of the force component with which it moves around the environment. The last bit controls reproduction capability of each species.
+Each predator has a 5 bit genome as explained in table \ref{tab:predator-genome}. The first 4 bits represent its mobility and magnitude of the force component with which it moves around the environment. The last bit controls reproduction capability of each species.
 
 \begin{table}[H]
 \centering
