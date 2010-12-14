@@ -21,22 +21,22 @@ Various models of mimicry has been simulated and explored. The model by Turner \
 
 Sherratt \cite{sherratt2002} provides an innovative perspective on the evolution of warning signals by considering co-evolving predator and prey populations. The model's predators are deterministic, in that they have a fixed behavioral strategy over their lifetime, and cannot learn from experience. For both cryptic and conspicuous prey, each predator has fixed policy of either attacking or avoiding.
 
-The latest work on modeling evolution of warning signals and mimicry with individual based simulation is done by Frank and Noble. Their initial work \cite{franks2002} seems of focus on putting some conditions of mimetic evolution in an individual based model with multiple species preyed upon by a single abstract predator, where the appearance of each prey species can evolve but their palatability is fixed.
+The latest work on modeling evolution of warning signals and mimicry with individual based simulation is done by Franks and Noble. Their initial work \cite{franks2002} seems of focus on putting some conditions of mimetic evolution in an individual based model with multiple species preyed upon by a single abstract predator, where the appearance of each prey species can evolve but their palatability is fixed.
 
-On 2003 \cite{franks2003} another model for the origin of mimicry ring has been proposed by Frank and Noble. Accordingly theory suggests that all Mullerian mimics in an ecosystem should converge into one large ring, while this convergence will be encouraged by presence of Batesian mimics. So an evolutionary simulation to observe the above mentioned phenomenon has been presented in this piece of work.
+On 2003 \cite{franks2003} another model for the origin of mimicry ring has been proposed by Franks and Noble. Accordingly theory suggests that all Mullerian mimics in an ecosystem should converge into one large ring, while this convergence will be encouraged by presence of Batesian mimics. So an evolutionary simulation to observe the above mentioned phenomenon has been presented in this piece of work.
 
-Frank and Noble continue to test the influence on mimicry ring evolution by Batesian mimics in their work on \cite{franks2004}. Usually mathematical models of mimicry has fixed prey coloration and appearances, which enables a comparison of predation rates to demonstrate the level of protection a mimic might be afforded. In this model prey colorations are free to evolve. This phenomenon is used to examine the effect of Batesian mimicry on Mullerian mimics and mimicry rings. 
+Franks and Noble continue to test the influence on mimicry ring evolution by Batesian mimics in their work on \cite{franks2004}. Usually mathematical models of mimicry has fixed prey coloration and appearances, which enables a comparison of predation rates to demonstrate the level of protection a mimic might be afforded. In this model prey colorations are free to evolve. This phenomenon is used to examine the effect of Batesian mimicry on Mullerian mimics and mimicry rings. 
 
-\subsection{Models by Frank and Noble}
+\subsection{Models by Franks and Noble}
 \label{subsec:models-by-frank-and-noble}
-%Explain more about the first model by Frank and Noble
-The \textbf{first} model by Frank and Noble \cite{franks2002} is where \textsl{``multiple species are preyed upon by a single abstract predator; the appearance of each prey species can evolve but their palatability is fixed"}. Each individual had a single gene: a value representing their external appearance or phenotype. The phenotypes are constrained to a ring of values from 1-20 (where 20 and 1 are neighbors). The distance of one phenotype from another represents their levels of similarity. 
+%Explain more about the first model by Franks and Noble
+The \textbf{first} model by Franks and Noble \cite{franks2002} is where \textsl{``multiple species are preyed upon by a single abstract predator; the appearance of each prey species can evolve but their palatability is fixed"}. Each individual had a single gene: a value representing their external appearance or phenotype. The phenotypes are constrained to a ring of values from 1-20 (where 20 and 1 are neighbors). The distance of one phenotype from another represents their levels of similarity. 
 
 A single abstract predator was modeled with a simple reinforcement learning system. The predator's experience of each phenotype was represented by a score, which would be maintained by probability to consume the next prey species depending on similarity or difference in phenotype. 
 
 The existence of mimetic effect were measured with the initial and final distances between prey species' phenotypes. Three experiments were noted. Firstly, with one palatable and one unpalatable species. For this Batesian mimicry was evolved. For the second experiment, with two unpalatable species, Mullerian mimicry was evolved if the two prey species have some initial resemblance. Experiment 3 was carried out with two unpalatable and one palatable species, where the phenotype of the palatable species moved towards that of one of the unpalatable species, which is in other words Batesian Mimicry.
 
-The \textbf{second} model by Frank and Noble \cite{franks2003} is based on two working hypothesis:
+The \textbf{second} model by Franks and Noble \cite{franks2003} is based on two working hypothesis:
 
 \begin{enumerate}
 	\item \textsl{All of the Mullerian mimics in a given ecosystem should eventually converge into one large ring in order to gain maximum protection.}
@@ -54,7 +54,7 @@ Similar to Turner's stochastic model \cite{turner_et_al1984},  predators were mo
 
 In contrary to the stochastic model \cite{turner_et_al1984},  predators would generalize on the basis of experience. A set of probability formula was used to come up with the current probability to consume a prey species based on its palatability and the previous probability of consumption based on experience using generalization rate and the Euclidean distance between the experienced phenotype and the consumed prey phenotype. 
 
-%Explain the results for the second model by Frank and Noble
+%Explain the results for the second model by Franks and Noble
 \paragraph{Results}
 According to the first experiment, which started with 20 unpalatable prey species, hypothesis 1 of a single large mimicry ring was not established. There was existence of multiple mimicry rings of very different frequency (population). Second experiment was carried out with some palatable species along with the unpalatable ones which was able to reach conditions of Batesian mimicry also with less mimicry rings, where hypothesis 2 borne out. It can be observed that,
 
@@ -178,7 +178,7 @@ Cellular automata are computer generated patterns applying very simple rules. Fi
 In generating the pattern of figure \ref{fig:cellular-automata-rule-30}, the genetic representation would be the `New state of center cell'. As figure \ref{fig:cellular-automata-rule-30} is a rule 30 cellular automata, the eight bit binary representation of 30 would be the genetic representation for this pattern. Generation of automata pattern from this binary string can be considered analogous to the complex pathway between the genotype and the phenotype that exists in all living organism.
 
 \subsection{Species diversity}
-Frank and Noble have used different models to diversify species. In \cite{franks2002} they have used linear difference in number ``constrained to a 'ring' of values  from 1-20 (where 20 and 1 are neighbors)" to distinguish species diversity. Here the distance of one phenotype from another represents their level of similarity. 
+Franks and Noble have used different models to diversify species. In \cite{franks2002} they have used linear difference in number ``constrained to a 'ring' of values  from 1-20 (where 20 and 1 are neighbors)" to distinguish species diversity. Here the distance of one phenotype from another represents their level of similarity. 
 
 To use CA as prey pattern, an agent's genome is constructed as an 8 bit binary value with a decimal range between 0 to 255. Each of this 256 values have a unique CA pattern associated with it. When storing this pattern in Hopfield memory we take a linear representation of this 2-D pattern, while to consider similarity between two pattern we evaluate the hamming distance between their linear representation. 
 
@@ -221,7 +221,7 @@ The palatability of each prey species is fixed and has been represented with 2 b
 	\label{tab:genetic-representation-palatability}
 \end{table}
 
-This representation in table \ref{tab:genetic-representation-palatability} is unlike Frank and Noble \cite{franks2003} where palatability level has been used on a scale between zero and one (least to most palatable), where 0.5 is neutrally palatable. 
+This representation in table \ref{tab:genetic-representation-palatability} is unlike Franks and Noble \cite{franks2003} where palatability level has been used on a scale between zero and one (least to most palatable), where 0.5 is neutrally palatable. 
 
 \subsection{Interaction between other Prey and Predators}
 The prey have been defined to have many conglomerate behavior in the environment. Prey interaction with other prey species and with predators make the evolution of mimicry possible. Mobility of prey species and their reproduction capability are two important behaviors which result from interaction. 
