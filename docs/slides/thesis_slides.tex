@@ -1,54 +1,24 @@
-%% Based on a TeXnicCenter-Template by Gyorgy SZEIDL.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass{beamer}
+\usetheme{Goettingen}
 
-%----------------------------------------------------------
-%
-\documentclass[letterpaper,landscape,titlepage,leqno]{slides}%
-%
-%----------------------------------------------------------
-% This is a sample document for the LaTeX Slides Class
-% Class options
-%       --  Body text point size (normalsize) is 27 (default)
-%           and can not be adjusted to any other value.
-%       --  Paper size:  letterpaper (8.5x11 inch, default)
-%                        a4paper, a5paper, b5paper,
-%                        legalpaper, executivepaper
-%       --  Orientation (portrait is the default):
-%                        landscape
-%       --  Quality:     final(default), draft
-%       --  Title page:  titlepage, notitlepage
-%       --  Columns:     onecolumn (default), [twocolumn is not avalible]
-%       --  Equation numbering (equation numbers on the right is the default)
-%                        leqno (equation numbers on the left)
-%       --  Displayed equations (centered is the default)
-%                    fleqn (flush left)
-%
-%  \documentclass[a4paper,fleqn]{slides}
-%
-%  The slides are separated from each other by the slide
-%  environment, see below:
-%
-\usepackage{amsmath}%
-\usepackage{amsfonts}%
-\usepackage{amssymb}%
-\usepackage{graphicx}
-%------------------------------------------------------------------
-\hfuzz5pt % Don't bother to report overfull boxes < 5pt
-\newtheorem{theorem}{Theorem}
-\newtheorem{corollary}[theorem]{Corollary}
-\newtheorem{definition}[theorem]{Definition}
-\newtheorem{example}[theorem]{Example}
-\newtheorem{exercise}[theorem]{Exercise}
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{proposition}[theorem]{Proposition}
-\pagestyle{plain}
-%%% --------------------------------------------------------------
-\begin{document}
-\title{Modeling the Evolution of Mimicry}
+\title[Modeling the Evolution of Mimicry]{Modeling the Evolution of Mimicry}
 \author{Mohiul Islam}
-\date{\today}
-\maketitle
+\institute{Concordia University}
+\date{January 14, 2011}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\section[Outline]{}
+\frame{\tableofcontents}
+
+\input{introduction}
+\input{review}
 \input{mimicry}
 \input{model}
 \input{result}
+\input{application}
+\input{conclusion}
+
 \end{document}
