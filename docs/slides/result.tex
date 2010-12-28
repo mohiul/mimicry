@@ -3,6 +3,36 @@
 \frame
 {
 	\frametitle{Results}
+
+	\begin{itemize}
+	  \item \textbf{Objective}: Evaluate evolution of mimicry.
+	  \item \textbf{Evaluation process}:
+			\begin{itemize}
+			  \item Calculate number mimicry rings.
+			  \item Calculate size of mimicry rings:
+					\begin{itemize}
+					  \item Population of \textit{palatable} species.
+					  \item Population of \textit{unpalatable} species.
+					\end{itemize}			  
+			\end{itemize}
+		\item \textbf{Report parameters}:
+			\begin{table}
+			\centering
+			\begin{scriptsize}
+			\begin{spacing}{1.5}
+			\begin{tabular}{| l | c |}
+				\hline
+					\textbf{Parameter} & \textbf{Value} \\ \hline
+					Mimicry Ring hamming distance & 10 \% of the Pattern Size \\ \hline
+					Number of Rings to report & 8 \\
+				\hline
+			\end{tabular}
+			\end{spacing}
+			\end{scriptsize}
+			\caption{Parameters to mimicry ring report.}
+			\label{tab:ring-report-control-parameters}
+			\end{table}		
+	\end{itemize}
 }
 
 \subsection{Experiments}
@@ -22,20 +52,20 @@
 	\begin{spacing}{1.5}
 	\begin{tabular}{|l|l|c|c|l|c|}
 	  \hline
-	   														&\multicolumn{3}{|c|}{Prey configuration} 																	
-	   														& \multicolumn{2}{|c|}{Predator configuration} \\ \hline
+	   														&\multicolumn{3}{c|}{Prey configuration} 																	
+	   														& \multicolumn{2}{c|}{Predator configuration} \\ \hline
 	  \multirow{2}{*}{Population} & Rule110 (Palatable) & \parbox[c]{2.1em}{\includegraphics[scale=0.30]{../tex/images/CARule110}} & 108 
-	  														& \multicolumn{2}{|c|}{\multirow{2}{*}{10}} \\ \cline{2-4}
+	  														& \multicolumn{2}{c|}{\multirow{2}{*}{10}} \\ \cline{2-4}
 	  					 									& Rule30 (Unpalatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.30]{../tex/images/CARule30}}  & 108 
-	  					 									& \multicolumn{2}{|c|}{}\\ \hline
-	  \multirow{2}{*}{Reproduction} & Age Limit & \multicolumn{2}{|c|}{100}  & \multicolumn{2}{|c|}{500} \\ \cline{2-6}
-	  						 									& Interval  & \multicolumn{2}{|c|}{1000} & \multicolumn{2}{|c|}{1200} \\ \hline
-	  \multirow{2}{*}{Mutation Rate} & Pattern   & \multicolumn{2}{|c|}{0.05} & \multicolumn{2}{|c|}{\multirow{2}{*}{0.3}} \\ \cline{2-4}
-	  						 									 & Genome    & \multicolumn{2}{|c|}{0.5}  & \multicolumn{2}{|c|}{} \\ \hline
-	  Demise Age	 									 & \multicolumn{3}{|c|}{2000}							& \multicolumn{2}{|c|}{2500} \\ \hline
-	  Minimum Attack Age						 & \multicolumn{3}{|c|}{} 						    & \multicolumn{2}{|c|}{500} \\ \hline
-	  \multirow{2}{*}{Memory Configuration} & \multicolumn{3}{|c|}{} 					& Minimum & 2 \\ \cline{5-6}
-	   																			& \multicolumn{3}{|c|}{} 					& Maximum & 10 \\ \hline  
+	  					 									& \multicolumn{2}{c|}{}\\ \hline
+	  \multirow{2}{*}{Reproduction} & Age Limit & \multicolumn{2}{c|}{100}  & \multicolumn{2}{c|}{500} \\ \cline{2-6}
+	  						 									& Interval  & \multicolumn{2}{c|}{1000} & \multicolumn{2}{c|}{1200} \\ \hline
+	  \multirow{2}{*}{Mutation Rate} & Pattern   & \multicolumn{2}{c|}{0.05} & \multicolumn{2}{c|}{\multirow{2}{*}{0.3}} \\ \cline{2-4}
+	  						 									 & Genome    & \multicolumn{2}{c|}{0.5}  & \multicolumn{2}{c|}{} \\ \hline
+	  Demise Age	 									 & \multicolumn{3}{c|}{2000}							& \multicolumn{2}{c|}{2500} \\ \hline
+	  Minimum Attack Age						 & \multicolumn{3}{c|}{} 						    & \multicolumn{2}{c|}{500} \\ \hline
+	  \multirow{2}{*}{Memory Configuration} & \multicolumn{3}{c|}{} 					& Minimum & 2 \\ \cline{5-6}
+	   																			& \multicolumn{3}{c|}{} 					& Maximum & 10 \\ \hline  
 	\end{tabular}
 	\end{spacing}
 	\end{tiny}
@@ -132,24 +162,24 @@
 	\begin{spacing}{1.5}
 	\begin{tabular}{|l|l|c|c|l|c|}
 	  \hline
-	   														&\multicolumn{3}{|c|}{Prey configuration} 																	
-	   														& \multicolumn{2}{|c|}{Predator configuration} \\ \hline
+	   														&\multicolumn{3}{c|}{Prey configuration} 																	
+	   														& \multicolumn{2}{c|}{Predator configuration} \\ \hline
 	  \multirow{4}{*}{Population} & Rule110 (Unpalatable) & \parbox[c]{2.1em}{\includegraphics[scale=0.30]{../tex/images/CARule110}} 
-	  																										& 50 & \multicolumn{2}{|c|}{\multirow{4}{*}{10}} \\ \cline{2-4}
+	  																										& 50 & \multicolumn{2}{c|}{\multirow{4}{*}{10}} \\ \cline{2-4}
 	  					 									& Rule30 (Palatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.30]{../tex/images/CARule30}}
-	  					 																					& 50 & \multicolumn{2}{|c|}{}\\ \cline{2-4}
+	  					 																					& 50 & \multicolumn{2}{c|}{}\\ \cline{2-4}
 	  					 									& Rule55 (Unpalatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.30]{../tex/images/CARule55}}
-	  					 																					& 50 & \multicolumn{2}{|c|}{}\\ \cline{2-4}
+	  					 																					& 50 & \multicolumn{2}{c|}{}\\ \cline{2-4}
 	  					 									& Rule190 (Palatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.30]{../tex/images/CARule190}}
-	  					 																					& 50 & \multicolumn{2}{|c|}{}\\ \hline
-	  \multirow{2}{*}{Reproduction} & Age Limit & \multicolumn{2}{|c|}{100}  & \multicolumn{2}{|c|}{500} \\ \cline{2-6}
-	  						 									& Interval  & \multicolumn{2}{|c|}{1000} & \multicolumn{2}{|c|}{1400} \\ \hline
-	  \multirow{2}{*}{Mutation Rate} & Pattern   & \multicolumn{2}{|c|}{0.05} & \multicolumn{2}{|c|}{\multirow{2}{*}{0.3}} \\ \cline{2-4}
-	  						 									 & Genome    & \multicolumn{2}{|c|}{0.5}  & \multicolumn{2}{|c|}{} \\ \hline
-	  Demise Age	 									 & \multicolumn{3}{|c|}{2000}							& \multicolumn{2}{|c|}{2500} \\ \hline
-	  Minimum Attack Age						 & \multicolumn{3}{|c|}{} 						    & \multicolumn{2}{|c|}{500} \\ \hline
-	  \multirow{2}{*}{Memory Configuration} & \multicolumn{3}{|c|}{} 					& Minimum & 4 \\ \cline{5-6}
-	   																			& \multicolumn{3}{|c|}{} 					& Maximum & 10 \\ \hline  
+	  					 																					& 50 & \multicolumn{2}{c|}{}\\ \hline
+	  \multirow{2}{*}{Reproduction} & Age Limit & \multicolumn{2}{c|}{100}  & \multicolumn{2}{c|}{500} \\ \cline{2-6}
+	  						 									& Interval  & \multicolumn{2}{c|}{1000} & \multicolumn{2}{c|}{1400} \\ \hline
+	  \multirow{2}{*}{Mutation Rate} & Pattern   & \multicolumn{2}{c|}{0.05} & \multicolumn{2}{c|}{\multirow{2}{*}{0.3}} \\ \cline{2-4}
+	  						 									 & Genome    & \multicolumn{2}{c|}{0.5}  & \multicolumn{2}{c|}{} \\ \hline
+	  Demise Age	 									 & \multicolumn{3}{c|}{2000}							& \multicolumn{2}{c|}{2500} \\ \hline
+	  Minimum Attack Age						 & \multicolumn{3}{c|}{} 						    & \multicolumn{2}{c|}{500} \\ \hline
+	  \multirow{2}{*}{Memory Configuration} & \multicolumn{3}{c|}{} 					& Minimum & 4 \\ \cline{5-6}
+	   																			& \multicolumn{3}{c|}{} 					& Maximum & 10 \\ \hline  
 	\end{tabular}
 	\end{spacing}
 	\end{tiny}
@@ -211,20 +241,20 @@
 	\begin{spacing}{1.5}	
 	\begin{tabular}{|l|l|c|c|l|c|}
 	  \hline
-	   														&\multicolumn{3}{|c|}{Prey configuration} 																	
-	   														& \multicolumn{2}{|c|}{Predator configuration} \\ \hline
-	  \multirow{4}{*}{Population} & Rule110 (Palatable) & \parbox[c]{2.1em}{\includegraphics[scale=0.30]{../tex/images/CARule110}} & \textbf{150} & \multicolumn{2}{|c|}{\multirow{4}{*}{20}} \\ \cline{2-4}
-	  					 									& Rule30 (Palatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.30]{../tex/images/CARule30}}  	 & \textbf{150} & \multicolumn{2}{|c|}{}\\ \cline{2-4}
-	  					 									& Rule55 (Unpalatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.30]{../tex/images/CARule55}}  & \textbf{150} & \multicolumn{2}{|c|}{}\\ \cline{2-4}
-	  					 									& Rule190 (Unpalatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.30]{../tex/images/CARule190}}& \textbf{150} & \multicolumn{2}{|c|}{}\\ \hline
-	  \multirow{2}{*}{Reproduction} & Age Limit & \multicolumn{2}{|c|}{100}  & \multicolumn{2}{|c|}{500} \\ \cline{2-6}
-	  						 									& Interval  & \multicolumn{2}{|c|}{1000} & \multicolumn{2}{|c|}{2500} \\ \hline
-	  \multirow{2}{*}{Mutation Rate} & Pattern   & \multicolumn{2}{|c|}{0.05} & \multicolumn{2}{|c|}{\multirow{2}{*}{0.3}} \\ \cline{2-4}
-	  						 									 & Genome    & \multicolumn{2}{|c|}{0.5}  & \multicolumn{2}{|c|}{} \\ \hline
-	  Demise Age	 									 & \multicolumn{3}{|c|}{2000}							& \multicolumn{2}{|c|}{7000} \\ \hline
-	  Minimum Attack Age						 & \multicolumn{3}{|c|}{} 						    & \multicolumn{2}{|c|}{500} \\ \hline
-	  \multirow{2}{*}{Memory Configuration} & \multicolumn{3}{|c|}{} 					& Minimum & 4 \\ \cline{5-6}
-	   																			& \multicolumn{3}{|c|}{} 					& Maximum & 10 \\ \hline  
+	   														&\multicolumn{3}{c|}{Prey configuration} 																	
+	   														& \multicolumn{2}{c|}{Predator configuration} \\ \hline
+	  \multirow{4}{*}{Population} & Rule110 (Palatable) & \parbox[c]{2.1em}{\includegraphics[scale=0.30]{../tex/images/CARule110}} & \textbf{150} & \multicolumn{2}{c|}{\multirow{4}{*}{20}} \\ \cline{2-4}
+	  					 									& Rule30 (Palatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.30]{../tex/images/CARule30}}  	 & \textbf{150} & \multicolumn{2}{c|}{}\\ \cline{2-4}
+	  					 									& Rule55 (Unpalatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.30]{../tex/images/CARule55}}  & \textbf{150} & \multicolumn{2}{c|}{}\\ \cline{2-4}
+	  					 									& Rule190 (Unpalatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.30]{../tex/images/CARule190}}& \textbf{150} & \multicolumn{2}{c|}{}\\ \hline
+	  \multirow{2}{*}{Reproduction} & Age Limit & \multicolumn{2}{c|}{100}  & \multicolumn{2}{c|}{500} \\ \cline{2-6}
+	  						 									& Interval  & \multicolumn{2}{c|}{1000} & \multicolumn{2}{c|}{2500} \\ \hline
+	  \multirow{2}{*}{Mutation Rate} & Pattern   & \multicolumn{2}{c|}{0.05} & \multicolumn{2}{c|}{\multirow{2}{*}{0.3}} \\ \cline{2-4}
+	  						 									 & Genome    & \multicolumn{2}{c|}{0.5}  & \multicolumn{2}{c|}{} \\ \hline
+	  Demise Age	 									 & \multicolumn{3}{c|}{2000}							& \multicolumn{2}{c|}{7000} \\ \hline
+	  Minimum Attack Age						 & \multicolumn{3}{c|}{} 						    & \multicolumn{2}{c|}{500} \\ \hline
+	  \multirow{2}{*}{Memory Configuration} & \multicolumn{3}{c|}{} 					& Minimum & 4 \\ \cline{5-6}
+	   																			& \multicolumn{3}{c|}{} 					& Maximum & 10 \\ \hline  
 	\end{tabular}
 	\end{spacing}	
 	\end{tiny}
@@ -273,27 +303,27 @@
 	\begin{spacing}{1.5}
 	\begin{tabular}{|l|l|c|c|l|c|}
 	  \hline
-	   														&\multicolumn{3}{|c|}{Prey configuration} 																	
-	   														& \multicolumn{2}{|c|}{Predator configuration} \\ \hline
+	   														&\multicolumn{3}{c|}{Prey configuration} 																	
+	   														& \multicolumn{2}{c|}{Predator configuration} \\ \hline
 	  \multirow{6}{*}{Population} & Rule110 (Palatable) & \parbox[c]{2.1em}{\includegraphics[scale=0.30]{../tex/images/CARule110}} 
-	  																									& 150 & \multicolumn{2}{|c|}{\multirow{6}{*}{30}} \\ \cline{2-4}
+	  																									& 150 & \multicolumn{2}{c|}{\multirow{6}{*}{30}} \\ \cline{2-4}
 	  					 									& Rule30  (Unpalatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.30]{../tex/images/CARule30}}  
-	  					 																				& 150 & \multicolumn{2}{|c|}{}\\ \cline{2-4}
+	  					 																				& 150 & \multicolumn{2}{c|}{}\\ \cline{2-4}
 	  					 									& Rule55  (Palatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.30]{../tex/images/CARule55}}    
-	  					 																				& 150 & \multicolumn{2}{|c|}{}\\ \cline{2-4}
+	  					 																				& 150 & \multicolumn{2}{c|}{}\\ \cline{2-4}
 	  					 									& Rule190 (Unpalatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.30]{../tex/images/CARule190}} 
-	  					 																				& 150 & \multicolumn{2}{|c|}{}\\ \cline{2-4}
+	  					 																				& 150 & \multicolumn{2}{c|}{}\\ \cline{2-4}
 	  					 									& Rule57  (Palatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.30]{../tex/images/CARule57}}    
-	  					 																				& 150 & \multicolumn{2}{|c|}{}\\ \cline{2-4}
-	  					 									& Rule105 (Unpalatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.30]{../tex/images/CARule105}}& 150 & \multicolumn{2}{|c|}{}\\ \hline
-	  \multirow{2}{*}{Reproduction} & Age Limit & \multicolumn{2}{|c|}{100}  & \multicolumn{2}{|c|}{500} \\ \cline{2-6}
-	  						 									& Interval  & \multicolumn{2}{|c|}{1000} & \multicolumn{2}{|c|}{2000} \\ \hline
-	  \multirow{2}{*}{Mutation Rate} & Pattern   & \multicolumn{2}{|c|}{0.05} & \multicolumn{2}{|c|}{\multirow{2}{*}{0.3}} \\ \cline{2-4}
-	  						 									 & Genome    & \multicolumn{2}{|c|}{0.5}  & \multicolumn{2}{|c|}{} \\ \hline
-	  Demise Age	 									 & \multicolumn{3}{|c|}{2000}							& \multicolumn{2}{|c|}{7000} \\ \hline
-	  Minimum Attack Age						 & \multicolumn{3}{|c|}{} 						    & \multicolumn{2}{|c|}{500} \\ \hline
-	  \multirow{2}{*}{Memory Configuration} & \multicolumn{3}{|c|}{} 					& Minimum & 6 \\ \cline{5-6}
-	   																			& \multicolumn{3}{|c|}{} 					& Maximum & 10 \\ \hline  
+	  					 																				& 150 & \multicolumn{2}{c|}{}\\ \cline{2-4}
+	  					 									& Rule105 (Unpalatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.30]{../tex/images/CARule105}}& 150 & \multicolumn{2}{c|}{}\\ \hline
+	  \multirow{2}{*}{Reproduction} & Age Limit & \multicolumn{2}{c|}{100}  & \multicolumn{2}{c|}{500} \\ \cline{2-6}
+	  						 									& Interval  & \multicolumn{2}{c|}{1000} & \multicolumn{2}{c|}{2000} \\ \hline
+	  \multirow{2}{*}{Mutation Rate} & Pattern   & \multicolumn{2}{c|}{0.05} & \multicolumn{2}{c|}{\multirow{2}{*}{0.3}} \\ \cline{2-4}
+	  						 									 & Genome    & \multicolumn{2}{c|}{0.5}  & \multicolumn{2}{c|}{} \\ \hline
+	  Demise Age	 									 & \multicolumn{3}{c|}{2000}							& \multicolumn{2}{c|}{7000} \\ \hline
+	  Minimum Attack Age						 & \multicolumn{3}{c|}{} 						    & \multicolumn{2}{c|}{500} \\ \hline
+	  \multirow{2}{*}{Memory Configuration} & \multicolumn{3}{c|}{} 					& Minimum & 6 \\ \cline{5-6}
+	   																			& \multicolumn{3}{c|}{} 					& Maximum & 10 \\ \hline  
 	\end{tabular}
 	\end{spacing}
 	\end{tiny}
@@ -343,23 +373,23 @@
 	\begin{spacing}{1.5}
 	\begin{tabular}{|l|l|c|c|l|c|}
 	  \hline
-	   														&\multicolumn{3}{|c|}{Prey configuration} 																	
-	   														& \multicolumn{2}{|c|}{Predator configuration} \\ \hline
+	   														&\multicolumn{3}{c|}{Prey configuration} 																	
+	   														& \multicolumn{2}{c|}{Predator configuration} \\ \hline
 	  \multirow{4}{*}{Population} & Rule110 (Unpalatable) & \parbox[c]{2.1em}{\includegraphics[scale=0.30]{../tex/images/CARule110}} 
-	  																									& 150 & \multicolumn{2}{|c|}{\multirow{4}{*}{20}} \\ \cline{2-4}
+	  																									& 150 & \multicolumn{2}{c|}{\multirow{4}{*}{20}} \\ \cline{2-4}
 	  					 									& Rule30  (Unpalatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.30]{../tex/images/CARule30}}  
-	  					 																				& 150 & \multicolumn{2}{|c|}{}\\ \cline{2-4}
+	  					 																				& 150 & \multicolumn{2}{c|}{}\\ \cline{2-4}
 	  					 									& Rule55  (Unpalatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.30]{../tex/images/CARule55}}    
-	  					 																				& 150 & \multicolumn{2}{|c|}{}\\ \cline{2-4}
-	  					 									& Rule190 (Unpalatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.30]{../tex/images/CARule190}}& 150 & \multicolumn{2}{|c|}{}\\ \hline
-	  \multirow{2}{*}{Reproduction} & Age Limit & \multicolumn{2}{|c|}{100}  & \multicolumn{2}{|c|}{500} \\ \cline{2-6}
-	  						 									& Interval  & \multicolumn{2}{|c|}{1000} & \multicolumn{2}{|c|}{2000} \\ \hline
-	  \multirow{2}{*}{Mutation Rate} & Pattern   & \multicolumn{2}{|c|}{0.05} & \multicolumn{2}{|c|}{\multirow{2}{*}{0.3}} \\ \cline{2-4}
-	  						 									 & Genome    & \multicolumn{2}{|c|}{0.5}  & \multicolumn{2}{|c|}{} \\ \hline
-	  Demise Age	 									 & \multicolumn{3}{|c|}{2000}							& \multicolumn{2}{|c|}{5000} \\ \hline
-	  Minimum Attack Age						 & \multicolumn{3}{|c|}{} 						    & \multicolumn{2}{|c|}{500} \\ \hline
-	  \multirow{2}{*}{Memory Configuration} & \multicolumn{3}{|c|}{} 					& Minimum & 4 \\ \cline{5-6}
-	   																			& \multicolumn{3}{|c|}{} 					& Maximum & 10 \\ \hline  
+	  					 																				& 150 & \multicolumn{2}{c|}{}\\ \cline{2-4}
+	  					 									& Rule190 (Unpalatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.30]{../tex/images/CARule190}}& 150 & \multicolumn{2}{c|}{}\\ \hline
+	  \multirow{2}{*}{Reproduction} & Age Limit & \multicolumn{2}{c|}{100}  & \multicolumn{2}{c|}{500} \\ \cline{2-6}
+	  						 									& Interval  & \multicolumn{2}{c|}{1000} & \multicolumn{2}{c|}{2000} \\ \hline
+	  \multirow{2}{*}{Mutation Rate} & Pattern   & \multicolumn{2}{c|}{0.05} & \multicolumn{2}{c|}{\multirow{2}{*}{0.3}} \\ \cline{2-4}
+	  						 									 & Genome    & \multicolumn{2}{c|}{0.5}  & \multicolumn{2}{c|}{} \\ \hline
+	  Demise Age	 									 & \multicolumn{3}{c|}{2000}							& \multicolumn{2}{c|}{5000} \\ \hline
+	  Minimum Attack Age						 & \multicolumn{3}{c|}{} 						    & \multicolumn{2}{c|}{500} \\ \hline
+	  \multirow{2}{*}{Memory Configuration} & \multicolumn{3}{c|}{} 					& Minimum & 4 \\ \cline{5-6}
+	   																			& \multicolumn{3}{c|}{} 					& Maximum & 10 \\ \hline  
 	\end{tabular}
 	\end{spacing}
 	\end{tiny}
@@ -410,23 +440,23 @@
 	\begin{tiny}
 	\begin{tabular}{|l|l|c|c|l|c|}
 	  \hline
-	   														&\multicolumn{3}{|c|}{Prey configuration} 																	
-	   														& \multicolumn{2}{|c|}{Predator configuration} \\ \hline
+	   														&\multicolumn{3}{c|}{Prey configuration} 																	
+	   														& \multicolumn{2}{c|}{Predator configuration} \\ \hline
 	  \multirow{4}{*}{Population} & Rule110 (Palatable) & \parbox[c]{2.1em}{\includegraphics[scale=0.30]{../tex/images/CARule110}} 
-	  																									& 150 & \multicolumn{2}{|c|}{\multirow{4}{*}{20}} \\ \cline{2-4}
+	  																									& 150 & \multicolumn{2}{c|}{\multirow{4}{*}{20}} \\ \cline{2-4}
 	  					 									& Rule30  (Palatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.30]{../tex/images/CARule30}}  
-	  					 																				& 150 & \multicolumn{2}{|c|}{}\\ \cline{2-4}
+	  					 																				& 150 & \multicolumn{2}{c|}{}\\ \cline{2-4}
 	  					 									& Rule55  (Palatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.30]{../tex/images/CARule55}}    
-	  					 																				& 150 & \multicolumn{2}{|c|}{}\\ \cline{2-4}
-	  					 									& Rule190 (Palatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.30]{../tex/images/CARule190}}& 150 & \multicolumn{2}{|c|}{}\\ \hline
-	  \multirow{2}{*}{Reproduction} & Age Limit & \multicolumn{2}{|c|}{100}  & \multicolumn{2}{|c|}{500} \\ \cline{2-6}
-	  						 									& Interval  & \multicolumn{2}{|c|}{1000} & \multicolumn{2}{|c|}{2000} \\ \hline
-	  \multirow{2}{*}{Mutation Rate} & Pattern   & \multicolumn{2}{|c|}{0.05} & \multicolumn{2}{|c|}{\multirow{2}{*}{0.3}} \\ \cline{2-4}
-	  						 									 & Genome    & \multicolumn{2}{|c|}{0.5}  & \multicolumn{2}{|c|}{} \\ \hline
-	  Demise Age	 									 & \multicolumn{3}{|c|}{2000}							& \multicolumn{2}{|c|}{5000} \\ \hline
-	  Minimum Attack Age						 & \multicolumn{3}{|c|}{} 						    & \multicolumn{2}{|c|}{500} \\ \hline
-	  \multirow{2}{*}{Memory Configuration} & \multicolumn{3}{|c|}{} 					& Minimum & 4 \\ \cline{5-6}
-	   																			& \multicolumn{3}{|c|}{} 					& Maximum & 10 \\ \hline  
+	  					 																				& 150 & \multicolumn{2}{c|}{}\\ \cline{2-4}
+	  					 									& Rule190 (Palatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.30]{../tex/images/CARule190}}& 150 & \multicolumn{2}{c|}{}\\ \hline
+	  \multirow{2}{*}{Reproduction} & Age Limit & \multicolumn{2}{c|}{100}  & \multicolumn{2}{c|}{500} \\ \cline{2-6}
+	  						 									& Interval  & \multicolumn{2}{c|}{1000} & \multicolumn{2}{c|}{2000} \\ \hline
+	  \multirow{2}{*}{Mutation Rate} & Pattern   & \multicolumn{2}{c|}{0.05} & \multicolumn{2}{c|}{\multirow{2}{*}{0.3}} \\ \cline{2-4}
+	  						 									 & Genome    & \multicolumn{2}{c|}{0.5}  & \multicolumn{2}{c|}{} \\ \hline
+	  Demise Age	 									 & \multicolumn{3}{c|}{2000}							& \multicolumn{2}{c|}{5000} \\ \hline
+	  Minimum Attack Age						 & \multicolumn{3}{c|}{} 						    & \multicolumn{2}{c|}{500} \\ \hline
+	  \multirow{2}{*}{Memory Configuration} & \multicolumn{3}{c|}{} 					& Minimum & 4 \\ \cline{5-6}
+	   																			& \multicolumn{3}{c|}{} 					& Maximum & 10 \\ \hline  
 	\end{tabular}
 	\end{tiny}
 	\end{spacing}
@@ -477,18 +507,18 @@
 	\begin{spacing}{1.5}
 	\begin{tabular}{|l|l|c|c|l|c|}
 	  \hline
-	   														&\multicolumn{3}{|c|}{Prey configuration} 																	
-	   														& \multicolumn{2}{|c|}{Predator configuration} \\ \hline
+	   														&\multicolumn{3}{c|}{Prey configuration} 																	
+	   														& \multicolumn{2}{c|}{Predator configuration} \\ \hline
 	  Population 									& Rule30 (Unpalatable) & \parbox[c]{2.1em}{\includegraphics[scale=0.30]{../tex/images/CARule30}} 
-	  																									& 216 & \multicolumn{2}{|c|}{10} \\ \hline
-	  \multirow{2}{*}{Reproduction} & Age Limit & \multicolumn{2}{|c|}{100}  & \multicolumn{2}{|c|}{500} \\ \cline{2-6}
-	  						 									& Interval  & \multicolumn{2}{|c|}{1000} & \multicolumn{2}{|c|}{2500} \\ \hline
-	  \multirow{2}{*}{Mutation Rate} & Pattern   & \multicolumn{2}{|c|}{0.05} & \multicolumn{2}{|c|}{\multirow{2}{*}{0.3}} \\ \cline{2-4}
-	  						 									 & Genome    & \multicolumn{2}{|c|}{0.5}  & \multicolumn{2}{|c|}{} \\ \hline
-	  Demise Age	 									 & \multicolumn{3}{|c|}{2000}							& \multicolumn{2}{|c|}{7000} \\ \hline
-	  Minimum Attack Age						 & \multicolumn{3}{|c|}{} 						    & \multicolumn{2}{|c|}{500} \\ \hline
-	  \multirow{2}{*}{Memory Configuration} & \multicolumn{3}{|c|}{} 					& Minimum & 2 \\ \cline{5-6}
-	   																			& \multicolumn{3}{|c|}{} 					& Maximum & 10 \\ \hline  
+	  																									& 216 & \multicolumn{2}{c|}{10} \\ \hline
+	  \multirow{2}{*}{Reproduction} & Age Limit & \multicolumn{2}{c|}{100}  & \multicolumn{2}{c|}{500} \\ \cline{2-6}
+	  						 									& Interval  & \multicolumn{2}{c|}{1000} & \multicolumn{2}{c|}{2500} \\ \hline
+	  \multirow{2}{*}{Mutation Rate} & Pattern   & \multicolumn{2}{c|}{0.05} & \multicolumn{2}{c|}{\multirow{2}{*}{0.3}} \\ \cline{2-4}
+	  						 									 & Genome    & \multicolumn{2}{c|}{0.5}  & \multicolumn{2}{c|}{} \\ \hline
+	  Demise Age	 									 & \multicolumn{3}{c|}{2000}							& \multicolumn{2}{c|}{7000} \\ \hline
+	  Minimum Attack Age						 & \multicolumn{3}{c|}{} 						    & \multicolumn{2}{c|}{500} \\ \hline
+	  \multirow{2}{*}{Memory Configuration} & \multicolumn{3}{c|}{} 					& Minimum & 2 \\ \cline{5-6}
+	   																			& \multicolumn{3}{c|}{} 					& Maximum & 10 \\ \hline  
 	\end{tabular}
 	\end{spacing}
 	\end{tiny}
@@ -526,18 +556,18 @@
 	\begin{spacing}{1.5}
 	\begin{tabular}{|l|l|c|c|l|c|}
 	  \hline
-	   														&\multicolumn{3}{|c|}{Prey configuration} 																	
-	   														& \multicolumn{2}{|c|}{Predator configuration} \\ \hline
+	   														&\multicolumn{3}{c|}{Prey configuration} 																	
+	   														& \multicolumn{2}{c|}{Predator configuration} \\ \hline
 	  Population 									& Rule30 (Palatable) & \parbox[c]{2.1em}{\includegraphics[scale=0.30]{../tex/images/CARule30}} 
-	  																									& 216 & \multicolumn{2}{|c|}{8} \\ \hline
-	  \multirow{2}{*}{Reproduction} & Age Limit & \multicolumn{2}{|c|}{100}  & \multicolumn{2}{|c|}{500} \\ \cline{2-6}
-	  						 									& Interval  & \multicolumn{2}{|c|}{1000} & \multicolumn{2}{|c|}{2500} \\ \hline
-	  \multirow{2}{*}{Mutation Rate} & Pattern   & \multicolumn{2}{|c|}{0.05} & \multicolumn{2}{|c|}{\multirow{2}{*}{0.3}} \\ \cline{2-4}
-	  						 									 & Genome    & \multicolumn{2}{|c|}{0.5}  & \multicolumn{2}{|c|}{} \\ \hline
-	  Demise Age	 									 & \multicolumn{3}{|c|}{2000}							& \multicolumn{2}{|c|}{7000} \\ \hline
-	  Minimum Attack Age						 & \multicolumn{3}{|c|}{} 						    & \multicolumn{2}{|c|}{500} \\ \hline
-	  \multirow{2}{*}{Memory Configuration} & \multicolumn{3}{|c|}{} 					& Minimum & 2 \\ \cline{5-6}
-	   																			& \multicolumn{3}{|c|}{} 					& Maximum & 10 \\ \hline  
+	  																									& 216 & \multicolumn{2}{c|}{8} \\ \hline
+	  \multirow{2}{*}{Reproduction} & Age Limit & \multicolumn{2}{c|}{100}  & \multicolumn{2}{c|}{500} \\ \cline{2-6}
+	  						 									& Interval  & \multicolumn{2}{c|}{1000} & \multicolumn{2}{c|}{2500} \\ \hline
+	  \multirow{2}{*}{Mutation Rate} & Pattern   & \multicolumn{2}{c|}{0.05} & \multicolumn{2}{c|}{\multirow{2}{*}{0.3}} \\ \cline{2-4}
+	  						 									 & Genome    & \multicolumn{2}{c|}{0.5}  & \multicolumn{2}{c|}{} \\ \hline
+	  Demise Age	 									 & \multicolumn{3}{c|}{2000}							& \multicolumn{2}{c|}{7000} \\ \hline
+	  Minimum Attack Age						 & \multicolumn{3}{c|}{} 						    & \multicolumn{2}{c|}{500} \\ \hline
+	  \multirow{2}{*}{Memory Configuration} & \multicolumn{3}{c|}{} 					& Minimum & 2 \\ \cline{5-6}
+	   																			& \multicolumn{3}{c|}{} 					& Maximum & 10 \\ \hline  
 	\end{tabular}
 	\end{spacing}
 	\end{tiny}
