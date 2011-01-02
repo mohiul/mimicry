@@ -4,7 +4,7 @@ Version=2
 
 [SessionInfo]
 ActiveTab=0
-FrameCount=1
+FrameCount=2
 ActiveFrame=0
 
 [Frame0]
@@ -32,7 +32,36 @@ cxCur=964
 cxMin=10
 
 [Frame0_View0,0]
-Cursor.row=153
-Cursor.column=116
-TopSubLine=138
+Cursor.row=254
+Cursor.column=8
+TopSubLine=252
+
+[Frame1]
+Columns=1
+Rows=1
+Flags=0
+ShowCmd=1
+MinPos.x=-1
+MinPos.y=-1
+MaxPos.x=-4
+MaxPos.y=-23
+NormalPos.left=22
+NormalPos.top=22
+NormalPos.right=874
+NormalPos.bottom=349
+Class=CLatexEdit
+Document=..\tex\mimicry.tex
+
+[Frame1_Row0]
+cyCur=280
+cyMin=10
+
+[Frame1_Col0]
+cxCur=824
+cxMin=10
+
+[Frame1_View0,0]
+Cursor.row=87
+Cursor.column=12
+TopSubLine=175
 
