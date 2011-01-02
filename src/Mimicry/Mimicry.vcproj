@@ -5,10 +5,6 @@
 	Name="Mimicry"
 	ProjectGUID="{413009F8-9923-4660-AB2D-68859ADC1B31}"
 	RootNamespace="Mimicry"
-	SccProjectName="Svn"
-	SccAuxPath="Svn"
-	SccLocalPath="Svn"
-	SccProvider="SubversionScc"
 	Keyword="Win32Proj"
 	TargetFrameworkVersion="131072"
 	>
