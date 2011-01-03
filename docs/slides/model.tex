@@ -37,12 +37,12 @@
 	\framesubtitle{Past Work}
 
 	\begin{itemize}
-		\item Turner(1996) and Huheey(1988):
+		\item Turner (1996) and Huheey (1988):
 			\begin{itemize}
 				\item \textbf{Focus:} Selective pressure on prey, by learning ability of predator.
 				\item Predators use simple Monte Carlo learning or mathematical approach.
 			\end{itemize}
-		\item Sherratt(2002):
+		\item Sherratt (2002):
 			\begin{itemize}
 				\item Co-evolving predator and prey population.
 				\item Predators are deterministic, cannot learn from experience.
@@ -50,34 +50,85 @@
 			\end{itemize}
 	\end{itemize}
 }
-
-%-------------------------------
-%More slides on Franks and Noble
-%-------------------------------
 
 \frame
 {
 	\frametitle{Past Work}
-	\framesubtitle{Franks and Noble}
+	\framesubtitle{First Model by Franks and Noble}
 
 	\begin{itemize}
-		\item First Model(2002):
-			\begin{itemize}
-				\item \textbf{Focus:} 
-				\item Predators use simple Monte Carlo learning or mathematical approach.
-			\end{itemize}
-		\item Second Model(2004):
-			\begin{itemize}
-				\item Co-evolving predator and prey population.
-				\item Predators are deterministic, cannot learn from experience.
-				\item Predators attack policy is fixed, either attack or avoid.
-			\end{itemize}
+		\item Multiple species are preyed upon by a single abstract predator.
+		\item Appearance of the prey can evolve.
+		\item Palatability is fixed.
+		\item Each individual has a single gene, value representing external appearance.
+		\item Phenotypes are a ring of value from 1-20 (20 and 1 are neighbors).
+		\item Distance represents similarity.
+		\item Predator uses simple reinforcement learning system.
+		\item Three experiments carried out varying palatability of prey.
+		\item Batesian mimicry was established.
 	\end{itemize}
 }
 
-%-------------------------------
-%More slides on Franks and Noble
-%-------------------------------
+\frame
+{
+	\frametitle{Franks and Noble}
+	\framesubtitle{Second Model: Working hypothesis}
+
+	\begin{enumerate}
+		\item \textsl{All of the Mullerian mimics in a given ecosystem should eventually converge into one large ring in order to gain maximum protection.}
+		\item \textsl{If the Mullerian mimics do not converge into one large ring, then the presence of Batesian mimics could entice them to do so, by influencing the rings to converge.}
+	\end{enumerate}
+}
+
+\frame
+{
+	\frametitle{Franks and Noble}
+	\framesubtitle{Second Model: Prey}
+
+	\begin{itemize}
+		\item Prey population has appearance and palatability.
+		\item Palatability is fixed, using different level from 0 to 1, where 0.5 is neutrally palatable.
+		\item Two genes representing external appearance, using values between 1 to 200.
+		\item Euclidean distance between values represents similarity.
+	\end{itemize}
+}
+
+\frame
+{
+	\frametitle{Franks and Noble}
+	\framesubtitle{Second Model: Predator}
+
+	\begin{itemize}
+		\item Monte Carlo reinforcement learning system.
+		\item Predators use generation on the basis of experience.
+		\item Set of probability formula was used to make decision for consumption of prey, depending on phenotype.
+	\end{itemize}
+}
+
+\frame
+{
+	\frametitle{Franks and Noble}
+	\framesubtitle{Second Model: Result}
+
+	\begin{itemize}
+		\item First Experiment:
+			\begin{itemize}
+				\item 20 unpalatable prey species.
+				\item Hypothesis 1 of a single large ring did was not established.
+				\item Multiple mimicry rings exist with different frequency.
+			\end{itemize}
+		\item Second Experiment:
+			\begin{itemize}
+				\item Some palatable and some unpalatable species.
+				\item Reaches condition of Batesian mimicry. Hypothesis 2 is established.
+				\item \textbf{Observation:}
+					\begin{itemize}
+						\item Batesian mimics provide pressure on mutants.
+						\item Batesian pressure on mimicry rings push one into the range of another.
+					\end{itemize}
+			\end{itemize}
+	\end{itemize}
+}
 
 \subsection{FormAL}
 
