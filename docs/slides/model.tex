@@ -113,15 +113,20 @@
 	\begin{itemize}
 		\item \textbf{Space:}
 			\begin{itemize}
-				\item 
+				\item 3D Lattice of discreet points.
+				\item \((x,y,z) \in \Sigma^3\), where \(\Sigma\) be the set \(\{0, 1, ..., S-1\}\).
+				\item \(S\) is a universal constant, small positive number. Value is 20, \(World Size\) parameter. 
 			\end{itemize}
 		\item \textbf{Time:}
 			\begin{itemize}
-				\item 
+				\item Integer value, increases in discreet steps. 
+				\item Each agent updates itself in each time step.
 			\end{itemize}
 		\item \textbf{Cell:}
 			\begin{itemize}
-				\item 
+				\item Entire environment is divided into multiple cells.
+				\item A 3D cubical section of the hyperspace.
+				\item \(ISize\) parameter kept at 6. Total \(ISize^3 = 216\) cells.
 			\end{itemize}
 	\end{itemize}
 }
@@ -197,7 +202,11 @@
 	\framesubtitle{Agent Mobility}
 	
 	\begin{itemize}
-		\item 
+		\item Position is calculated in each step in time.
+		\item \(position\), \(force\), \(acceleration\) and \(velocity\) are all vector components.
+		\item \(force\) is calculated from the mobility genes.
+		\item Newton's law of motion is used to calculate \(acceleration\) when \(force\) is not zero.
+		\item \(acceleration\) is integrated to obtain velocity and new position.
 	\end{itemize}
 
 }
@@ -211,7 +220,7 @@
 	\centering
 	\begin{scriptsize}
 	\begin{spacing}{1.5}
-	\begin{tabular}{| p{1.3cm} | >{\centering} p{1cm} | p{5cm} |}
+	\begin{tabular}{| p{1.7cm} | >{\centering} p{0.6cm} | p{5cm} |}
 		\hline
 			\textbf{Parameter} & \textbf{Value} & \textbf{Description} \\ \hline
 			Force Factor & 40 & A unit vector is multiplied by this amount before being added to the force vector.\\ \hline
@@ -234,18 +243,55 @@
 {
 	\frametitle{The Prey: Mimics and Models}
 	\framesubtitle{Pattern Representation}
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=3]{../tex/images/CA_rule30s}
+		\caption{Cellular Automata Rule 30.
+		Image source: \href{http://en.wikipedia.org/wiki/Cellular_automata}{Wikipedia}}
+		\label{fig:cellular-automata-rule-30}
+	\end{figure}
+	
+	\begin{table}
+		\centering
+		\begin{scriptsize}
+		\begin{tabular}{| p{2cm} | c | c | c | c | c | c | c | c |}
+		  \hline
+		  Current Pattern & 111 & 110 & 101 & 100 & 011 & 010 & 001 & 000 \\ \hline
+		  New state of center cell & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 0 \\
+		  \hline
+		\end{tabular}
+		\end{scriptsize}		
+		\caption{Cellular Automata rule}
+		\label{tab:cellular-automata-rule}
+	\end{table}
 }
 
 \frame
 {
 	\frametitle{The Prey: Mimics and Models}
 	\framesubtitle{Species Diversity}
+
+	\begin{itemize}
+		\item Agent's pattern genome is 8 bit binary value.
+		\item Decimal range 0 to 255.
+		\item 256 unique CA pattern associated.
+		\item The linear representation of this pattern is stored in Hopfield Network.
+		\item Hamming distance between a pattern's linear representation is used to consider similarity.
+		\item Group of prey with a specific pattern is considered in a single species.
+		\item Inter species reproduction is restricted to control diversity of patterns.
+		\item Using ``Pattern Mutation Rate" we control diversity of new species.
+	\end{itemize}
 }
 
 \frame
 {
 	\frametitle{The Prey: Mimics and Models}
 	\framesubtitle{Genome}
+	
+	\begin{itemize}
+		\item 17 bit prey Genome
+	\end{itemize}
 	
 	\begin{table}[H]
 	\centering
@@ -267,36 +313,59 @@
 {
 	\frametitle{The Prey: Mimics and Models}
 	\framesubtitle{Punctuated Equilibrium}
-}
-
-\frame
-{
-	\frametitle{The Prey: Mimics and Models}
-	\framesubtitle{Palatability: Genomic Representation }
-}
-
-\frame
-{
-	\frametitle{The Prey: Mimics and Models}
-	\framesubtitle{Interaction: other prey}
-}
-
-\frame
-{
-	\frametitle{The Prey: Mimics and Models}
-	\framesubtitle{Interaction: predators}
+	
+	\begin{itemize}
+		\item Punctuated Equilibrium:
+			\begin{itemize}
+				\item inclined to cladogenesis instead of gradualism.
+				\item Turner emphasizes on punctuated equilibrium to explain evolution of mimicry.
+				\item CA pattern evolution is in a single mutation in the pattern genome.
+				\item Change of pattern is not a gradual process but rather an arbitrary discontinuous one.
+			\end{itemize}
+	\end{itemize}
 }
 
 \frame
 {
 	\frametitle{The Prey: Mimics and Models}
 	\framesubtitle{Mobility}
+	
+	\begin{itemize}
+		\item Six bit of the mobility gene is used to calculate the magnitude of force for mobility.
+		\item Direction is decided based on 
+			\begin{itemize}
+				\item Towards collection of maximum prey species in a cell.
+				\item Away from concentration of predators.
+				\item Move towards the selected cell with the magnitude of force calculated.
+			\end{itemize}
+	\end{itemize}
 }
 
 \frame
 {
 	\frametitle{The Prey: Mimics and Models}
 	\framesubtitle{Reproduction}
+	
+	\begin{itemize}
+		\item Reproduction begins at ``Reproductive Age"
+		\item Reproduction capability is decided on 17th bit gene.
+		\item Mate selection is random, but within same cell.
+		\item Mate needs to be
+			\begin{itemize}
+				\item similar species
+				\item genetically capable to reproduce
+				\item reached maturity 
+			\end{itemize}
+		\item Reproduction process:
+			\begin{itemize}
+				\item Single point crossover.
+				\item Two point mutation is applied based different rates.
+					\begin{itemize}
+						\item \textit{Pattern Mutation Rate}
+						\item \textit{Genome Mutation Rate}
+					\end{itemize}
+			\end{itemize}
+	\end{itemize}
 }
 
 \frame
@@ -329,4 +398,108 @@
 \frame
 {
 	\frametitle{The Predator}
+	
+	\begin{itemize}
+		\item Agent in the FormAL environment.
+		\item Provide selection pressure for the evolution of mimicry.
+		\item Each agent equipped with Hopfield Network Memory.
+		\item Mobility and reproduction capability controlled genetically.
+		\item Unable to represent pattern recognition capability with genome.
+		\item New predators are born with zero memory, as memory is not inherited.
+	\end{itemize}
+}
+
+\frame
+{
+	\frametitle{The Predator}
+	\framesubtitle{Learning}
+
+	\begin{itemize}
+		\item Predator's interaction objective with prey is consumption.
+		\item Consumption is based on palatability.
+		\item If unable to consume prey is thrown back into environment.
+		\item At this event prey pattern is stored into predators memory with the associated palatability.
+		\item New pattern learned with Hebbian Learning.
+	\end{itemize}
+}
+
+\frame
+{
+	\frametitle{The Predator}
+	\framesubtitle{Hebbian Learning}
+
+	\begin{itemize}
+		\item Initially all weights are set to zero.
+		\item Use Hebbian rule to calculate outer product of input-output vector pair, for each pair.
+		\item The Outer vector matrix of all the patterns are summed to come up with the final weight matrix.
+	\end{itemize}
+	
+Each component of the weight matrix \(\textbf{W} = \{w_{ij}\}\) is given by:
+\begin{equation}
+w_{ij} = \sum_{p=1}^{P} s_i(p) t_j(p), i \neq j
+%\label{eq:}
+\end{equation}
+\[
+w_{ij} = 0, i = j
+\]
+where P is the number of patterns. Vectors \textbf{S} and \textbf{T} are respectively, the input and the desired output of the network.
+
+}
+
+\frame
+{
+	\frametitle{The Predator}
+	\framesubtitle{Design of Memory}
+}
+
+\frame
+{
+	\frametitle{The Predator}
+	\framesubtitle{Attack Algorithm}
+}
+
+\frame
+{
+	\frametitle{The Predator}
+	\framesubtitle{Genome}
+}
+
+\frame
+{
+	\frametitle{The Predator}
+	\framesubtitle{Mobility}
+}
+
+\frame
+{
+	\frametitle{The Predator}
+	\framesubtitle{Reproduction process}
+}
+
+\frame
+{
+	\frametitle{The Predator}
+	\framesubtitle{Configuration Parameters}
+	
+	\begin{table}
+	\centering
+	\begin{tiny}
+	\begin{tabular}{| p{1.3cm} | >{\centering} p{0.8cm} | p{5cm} |}
+		\hline
+			\textbf{Parameter} & \textbf{Value} & \textbf{Description} \\ \hline
+			Minimum Memory Size & 2 to 6 & Minimum number of patterns stored in memory before predators start making intelligent decisions.\\ \hline
+			Maximum Memory Size & 10 & Maximum number of patterns to be stored in memory. Limited to reduce processing time. \\ \hline 
+			Hopfield Maximum Iterations & 20 & Maximum number of iterations for Hopfield Network to recognize a pattern. Usually the network reaches a steady state before that. But this restriction is to avoid infinite loop in case the network never reaches a steady state. \\ \hline
+			Attack Age & 500 & minimum age a predator needs to reach to be able to attack prey species.  \\ \hline
+			Attack Interval & 100 & Interval of time which needs to pass before a predators attacks its next prey. \\ \hline
+			Genome Mutation rate & 0.3 & Mutation rate for the 5 bit genome of the predators representing their mobility and pattern recognition capability. \\ \hline
+			Reproduction Age Limit & 500 & Minimum age a predator needs to reach before engaging in reproduction.\\ \hline
+			Reproduction Interval & 1000 to 3000 & Interval of time a predator needs to pass between two reproduction process.\\ \hline
+			Demise Age & 2000 to 7000 & Age at which a predator is considered as dead.\\
+		\hline
+	\end{tabular}
+	\end{tiny}
+	\caption{Parameters to control predator population and pattern recognition capability.}
+	\label{tab:predator-control-parameters}
+	\end{table}
 }
