@@ -450,30 +450,92 @@ where P is the number of patterns. Vectors \textbf{S} and \textbf{T} are respect
 {
 	\frametitle{The Predator}
 	\framesubtitle{Design of Memory}
+	
+	\begin{itemize}
+		\item Input to Memory:
+			\begin{itemize}
+				\item Each prey has an evolving CA represented by a binary Genome.
+				\item This 2D pattern is serialized to a 1D binary array.
+				\item Binary representation is converted to bipolar representation.
+			\end{itemize}
+		\item Pattern Recognition with Hopfield Network:
+			\begin{itemize}
+				\item Learning: Apply Hebbian learning to calculate weights.
+				\item Initialization: Input to the network is initialized with value of the input vector.
+				\item Iterate Until Convergence: Each neuron is updated asynchronously with the input of its previous state until convergence.
+				\item Output: Finally a pattern is set as output when the network reaches convergence.
+			\end{itemize}
+	\end{itemize}
 }
 
 \frame
 {
 	\frametitle{The Predator}
 	\framesubtitle{Attack Algorithm}
+	
+	\begin{itemize}
+		\item When agent reaches `Minimum Attack Age' it starts hunting.
+		\item Select a random prey within vicinity (same cell).
+		\item Attack process involves recognition of prey pattern.
+		\item Two parameters to limit pattern memorization and recognition process as both are computationally expensive.
+			\begin{itemize}
+				\item Hopfield Minimum Memory Size (value 2 to 6)
+				\item Hopfield Maximum Memory Size (value 10)
+			\end{itemize}
+		\item New predator attacks without caution. 
+		\item Attacks everyone and in the process store pattern and palatability.
+		\item When memory reaches `Hopfield Minimum Memory Size': intelligent selection.
+	\end{itemize}
 }
 
 \frame
 {
 	\frametitle{The Predator}
 	\framesubtitle{Genome}
+
+	\begin{table}
+	\centering
+	\begin{scriptsize}
+	\begin{spacing}{1.5}
+	\begin{tabular}{|c|c|}
+		\hline
+			\textbf{Mobility(4)} & \textbf{Reproduction(1)} \\ \hline
+					 1101					   &					1						 		\\ \hline
+	\end{tabular}
+	\end{spacing}
+	\end{scriptsize}
+	\caption{Distribution and purpose of each gene of the 5 bit predator genome.}
+	\label{tab:predator-genome}
+	\end{table}
 }
 
 \frame
 {
 	\frametitle{The Predator}
 	\framesubtitle{Mobility}
+	
+	\begin{itemize}
+		\item First 4 bits of the genome calculated to evaluate the magnitude of force of movement.
+		\item Direction is decided based on the number of prey species present in a neighboring cell.
+		\item Move towards the cell with least number of predator and most number of prey.
+		\item This is such that predators are distributed all over the environment.
+		\item Increases agent's predatory behavior.
+	\end{itemize}
 }
 
 \frame
 {
 	\frametitle{The Predator}
 	\framesubtitle{Reproduction process}
+	
+	\begin{itemize}
+		\item Agent reaches reproduction age.
+		\item Agent exceeds reproduction age interval, which is difference in time between two reproduction activity.
+		\item Agent is capable of reproduction depending on 5th gene.
+		\item Select another predator from same cell which satisfy above conditions.
+		\item Perform crossover and mutation to create another predator.
+		\item Predator is initialized with zero memory.
+	\end{itemize}
 }
 
 \frame
