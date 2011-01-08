@@ -4,14 +4,14 @@ Version=2
 
 [SessionInfo]
 ActiveTab=0
-FrameCount=4
-ActiveFrame=3
+FrameCount=3
+ActiveFrame=0
 
 [Frame0]
 Columns=1
 Rows=1
-Flags=0
-ShowCmd=1
+Flags=2
+ShowCmd=3
 MinPos.x=-1
 MinPos.y=-1
 MaxPos.x=-4
@@ -24,17 +24,17 @@ Class=CLatexEdit
 Document=review.tex
 
 [Frame0_Row0]
-cyCur=276
+cyCur=496
 cyMin=10
 
 [Frame0_Col0]
-cxCur=820
+cxCur=1335
 cxMin=10
 
 [Frame0_View0,0]
-Cursor.row=0
-Cursor.column=0
-TopSubLine=0
+Cursor.row=175
+Cursor.column=25
+TopSubLine=158
 
 [Frame1]
 Columns=1
@@ -90,36 +90,7 @@ cxCur=824
 cxMin=10
 
 [Frame2_View0,0]
-Cursor.row=16
-Cursor.column=10
-TopSubLine=0
-
-[Frame3]
-Columns=1
-Rows=1
-Flags=2
-ShowCmd=3
-MinPos.x=-1
-MinPos.y=-1
-MaxPos.x=-4
-MaxPos.y=-23
-NormalPos.left=110
-NormalPos.top=110
-NormalPos.right=962
-NormalPos.bottom=437
-Class=CLatexEdit
-Document=mimicry.tex
-
-[Frame3_Row0]
-cyCur=439
-cyMin=10
-
-[Frame3_Col0]
-cxCur=964
-cxMin=10
-
-[Frame3_View0,0]
-Cursor.row=143
-Cursor.column=28
-TopSubLine=128
+Cursor.row=24
+Cursor.column=0
+TopSubLine=8
 
