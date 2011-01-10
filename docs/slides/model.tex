@@ -40,13 +40,17 @@
 		\item Turner (1996) and Huheey (1988):
 			\begin{itemize}
 				\item \textbf{Focus:} Selective pressure on prey, by learning ability of predator.
-				\item Predators use simple Monte Carlo learning or mathematical approach.
+				\item Predator: Simple Monte Carlo learning or mathematical approach.
 			\end{itemize}
 		\item Sherratt (2002):
 			\begin{itemize}
 				\item Co-evolving predator and prey population.
-				\item Predators are deterministic, cannot learn from experience.
-				\item Predators attack policy is fixed, either attack or avoid.
+				\item Predators:
+				\begin{itemize}
+					\item deterministic
+					\item cannot learn from experience.
+					\item attack policy is fixed, either attack or avoid.
+				\end{itemize}
 			\end{itemize}
 	\end{itemize}
 }
@@ -57,14 +61,21 @@
 	\framesubtitle{First Model by Franks and Noble}
 
 	\begin{itemize}
-		\item Multiple species are preyed upon by a single abstract predator.
-		\item Appearance of the prey can evolve.
-		\item Palatability is fixed.
-		\item Each individual has a single gene, value representing external appearance.
-		\item Phenotypes are a ring of value from 1-20 (20 and 1 are neighbors).
-		\item Distance represents similarity.
-		\item Predator uses simple reinforcement learning system.
-		\item Three experiments carried out varying palatability of prey.
+	\item Prey
+		\begin{itemize}
+			\item Appearance can evolve.
+			\item Palatability is fixed.
+			\item Single gene: value representing external appearance.
+			\item Phenotype: a ring of value from 1-20 (20 and 1 are neighbors).
+			\item Distance represents similarity.
+		\end{itemize}
+	\item Predator
+		\begin{itemize}
+			\item Single abstract predator.
+			\item Simple reinforcement learning system.
+		\end{itemize}
+
+		\item Three experiments, varying palatability of prey.
 		\item Batesian mimicry was established.
 	\end{itemize}
 }
@@ -86,7 +97,7 @@
 	\framesubtitle{Second Model: Prey}
 
 	\begin{itemize}
-		\item Prey population has appearance and palatability.
+		\item Prey: appearance and palatability.
 		\item Palatability is fixed, using different level from 0 to 1, where 0.5 is neutrally palatable.
 		\item Two genes representing external appearance, using values between 1 to 200.
 		\item Euclidean distance between values represents similarity.
@@ -101,7 +112,11 @@
 	\begin{itemize}
 		\item Monte Carlo reinforcement learning system.
 		\item Predators use generation on the basis of experience.
-		\item Set of probability formula was used to make decision for consumption of prey, depending on phenotype.
+		\item Decision for consumption of prey:
+		\begin{itemize}
+			\item Use: set of probability formula.
+			\item Dependence on phenotype.
+		\end{itemize}
 	\end{itemize}
 }
 
@@ -120,7 +135,8 @@
 		\item Second Experiment:
 			\begin{itemize}
 				\item Some palatable and some unpalatable species.
-				\item Reaches condition of Batesian mimicry. Hypothesis 2 is established.
+				\item Reaches condition of Batesian mimicry. 
+				\item Hypothesis 2 is established.
 				\item \textbf{Observation:}
 					\begin{itemize}
 						\item Batesian mimics provide pressure on mutants.
@@ -140,15 +156,15 @@
 		\item Ideas from Peter Grogono's Formal Artificial Life (FormAL) project.
 		\item \textbf{Goal:}		
 			\begin{itemize}
-				\item To study the emergence of complexity.
+				\item Study the emergence of complexity.
 				\item No variable unless genetically controlled or influenced. \textit{Principal not followed for Hopfield Network.}
 			\end{itemize}
 		\item \textbf{Agents:}
 			\begin{itemize}
 				\item Simulated organism.
-				\item Able to reproduce itself using genetic information.
+				\item Reproduce itself using genetic information.
 				\item Capable of modifying structures of genome between generations.
-				\item Able to interact with other agents.
+				\item Interaction with other agents.
 				\item Survive and reproduce in a challenging environment.
 			\end{itemize}
 	\end{itemize}
@@ -160,7 +176,7 @@
 	\frametitle{FormAL Framework}
 	\framesubtitle{Environment}
 	
-	Environment is 3D, where agents get complete freedom of movement defined from genetic representation.
+	Environment is 3D, complete freedom of movement defined from genetic representation.
 	\begin{itemize}
 		\item \textbf{Space:}
 			\begin{itemize}
@@ -254,10 +270,10 @@
 	
 	\begin{itemize}
 		\item Position is calculated in each step in time.
-		\item \(position\), \(force\), \(acceleration\) and \(velocity\) are all vector components.
+		\item Vector components: \(position\), \(force\), \(acceleration\) and \(velocity\).
 		\item \(force\) is calculated from the mobility genes.
-		\item Newton's law of motion is used to calculate \(acceleration\) when \(force\) is not zero.
-		\item \(acceleration\) is integrated to obtain velocity and new position.
+		\item Newton's law of motion, used to calculate \(acceleration\) when \(force\) is not zero.
+		\item \(acceleration\) is integrated to obtain \(velocity\) and new \(position\).
 	\end{itemize}
 
 }
@@ -338,14 +354,13 @@
 	\framesubtitle{Species Diversity}
 
 	\begin{itemize}
-		\item Agent's pattern genome is 8 bit binary value.
-		\item Decimal range 0 to 255.
-		\item 256 unique CA pattern associated.
-		\item The linear representation of this pattern is stored in Hopfield Network.
-		\item Hamming distance between a pattern's linear representation is used to consider similarity.
-		\item Group of prey with a specific pattern is considered in a single species.
-		\item Inter species reproduction is restricted to control diversity of patterns.
-		\item Using ``Pattern Mutation Rate" we control diversity of new species.
+		\item Pattern genome is 8 bit binary. Decimal range 0 to 255.
+		\item 256 unique CA pattern.
+		\item Linear representation of pattern stored in Hopfield Network.
+		\item Pattern similarity: Hamming distance between linear representation.
+		\item Single species: group of prey with a specific pattern.
+		\item Inter species reproduction: restricted to control diversity of patterns.
+		\item ``Pattern Mutation Rate": control diversity of new species.
 	\end{itemize}
 }
 
@@ -383,9 +398,13 @@
 		\item Punctuated Equilibrium:
 			\begin{itemize}
 				\item inclined to cladogenesis instead of gradualism.
-				\item Turner emphasizes on punctuated equilibrium to explain evolution of mimicry.
-				\item CA pattern evolution is in a single mutation in the pattern genome.
-				\item Change of pattern is not a gradual process but rather an arbitrary discontinuous one.
+				\item Turner's emphasis on punctuated equilibrium to explain evolution of mimicry.
+				\item CA pattern evolution: single mutation in the pattern genome.
+				\item Change of pattern: 
+					\begin{itemize}
+						\item not gradual
+						\item arbitrary discontinuous
+					\end{itemize}
 			\end{itemize}
 	\end{itemize}
 }
@@ -396,8 +415,9 @@
 	\framesubtitle{Mobility}
 	
 	\begin{itemize}
-		\item Six bit of the mobility gene is used to calculate the magnitude of force for mobility.
-		\item Direction is decided based on 
+		\item Mobility gene: 6 bits. 
+		\item Use: calculate the magnitude of force for mobility.
+		\item Direction:
 			\begin{itemize}
 				\item Towards collection of maximum prey species in a cell.
 				\item Away from concentration of predators.
@@ -412,8 +432,8 @@
 	\framesubtitle{Reproduction}
 	
 	\begin{itemize}
-		\item Reproduction begins at ``Reproductive Age"
-		\item Reproduction capability is decided on 17th bit gene.
+		\item Begins at ``Reproductive Age"
+		\item Capability is decided on 17th bit gene.
 		\item Mate selection is random, but within same cell.
 		\item Mate needs to be
 			\begin{itemize}
@@ -424,7 +444,7 @@
 		\item Reproduction process:
 			\begin{itemize}
 				\item Single point crossover.
-				\item Two point mutation is applied based different rates.
+				\item Two point mutation: different rates
 					\begin{itemize}
 						\item \textit{Pattern Mutation Rate}
 						\item \textit{Genome Mutation Rate}
@@ -467,7 +487,7 @@
 	\begin{itemize}
 		\item Agent in the FormAL environment.
 		\item Provide selection pressure for the evolution of mimicry.
-		\item Each agent equipped with Hopfield Network Memory.
+		\item Equipped with Hopfield Network Memory.
 		\item Mobility and reproduction capability controlled genetically.
 		\item Unable to represent pattern recognition capability with genome.
 		\item New predators are born with zero memory, as memory is not inherited.
@@ -483,7 +503,7 @@
 		\item Predator's interaction objective with prey is consumption.
 		\item Consumption is based on palatability.
 		\item If unable to consume prey is thrown back into environment.
-		\item At this event prey pattern is stored into predators memory with the associated palatability.
+		\item Store prey pattern into memory with the associated palatability.
 		\item New pattern learned with Hebbian Learning.
 	\end{itemize}
 }
@@ -520,14 +540,14 @@ where P is the number of patterns. Vectors \textbf{S} and \textbf{T} are respect
 		\item Input to Memory:
 			\begin{itemize}
 				\item Each prey has an evolving CA represented by a binary Genome.
-				\item This 2D pattern is serialized to a 1D binary array.
-				\item Binary representation is converted to bipolar representation.
+				\item 2D pattern is serialized to a 1D binary array.
+				\item Binary representation converted to bipolar representation.
 			\end{itemize}
 		\item Pattern Recognition with Hopfield Network:
 			\begin{itemize}
 				\item Learning: Apply Hebbian learning to calculate weights.
-				\item Initialization: Input to the network is initialized with value of the input vector.
-				\item Iterate Until Convergence: Each neuron is updated asynchronously with the input of its previous state until convergence.
+				\item Initialization: Input to network initialized with input vector.
+				\item Iterate Until Convergence: Asynchronous update of each neuron. Input: previous state.
 				\item Output: Finally a pattern is set as output when the network reaches convergence.
 			\end{itemize}
 	\end{itemize}
@@ -539,10 +559,11 @@ where P is the number of patterns. Vectors \textbf{S} and \textbf{T} are respect
 	\framesubtitle{Attack Algorithm}
 	
 	\begin{itemize}
-		\item When agent reaches `Minimum Attack Age' it starts hunting.
+		\item Agent reaches `Minimum Attack Age' it starts hunting.
 		\item Select a random prey within vicinity (same cell).
-		\item Attack process involves recognition of prey pattern.
-		\item Two parameters to limit pattern memorization and recognition process as both are computationally expensive.
+		\item Involves recognition of prey pattern.
+		\item Pattern memorization and recognition process: computationally expensive.
+		\item Two parameters to limit 
 			\begin{itemize}
 				\item Hopfield Minimum Memory Size (value 2 to 6)
 				\item Hopfield Maximum Memory Size (value 10)
@@ -580,10 +601,10 @@ where P is the number of patterns. Vectors \textbf{S} and \textbf{T} are respect
 	\framesubtitle{Mobility}
 	
 	\begin{itemize}
-		\item First 4 bits of the genome calculated to evaluate the magnitude of force of movement.
-		\item Direction is decided based on the number of prey species present in a neighboring cell.
+		\item Magnitude of force of movement: 4 bits of genome.
+		\item Direction: number of prey species present in a neighboring cell.
 		\item Move towards the cell with least number of predator and most number of prey.
-		\item This is such that predators are distributed all over the environment.
+		\item Result: Predators are distributed all over the environment.
 		\item Increases agent's predatory behavior.
 	\end{itemize}
 }
@@ -594,12 +615,12 @@ where P is the number of patterns. Vectors \textbf{S} and \textbf{T} are respect
 	\framesubtitle{Reproduction process}
 	
 	\begin{itemize}
-		\item Agent reaches reproduction age.
-		\item Agent exceeds reproduction age interval, which is difference in time between two reproduction activity.
-		\item Agent is capable of reproduction depending on 5th gene.
-		\item Select another predator from same cell which satisfy above conditions.
-		\item Perform crossover and mutation to create another predator.
-		\item Predator is initialized with zero memory.
+		\item Reproduction age: begins.
+		\item Reproduction age interval: which is difference in time between two reproduction activity.
+		\item Capability: 5th gene.
+		\item Selection: another predator from same cell which satisfy above conditions.
+		\item Perform genome crossover and mutation: create new predator.
+		\item New predator initialized with zero memory.
 	\end{itemize}
 }
 
