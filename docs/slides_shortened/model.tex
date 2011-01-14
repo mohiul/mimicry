@@ -1,0 +1,524 @@
+\section{The Model}
+
+\frame
+{
+	\begin{center}
+		\LARGE The Model: Evolution of Mimicry
+	\end{center}
+}
+
+\frame
+{
+	\frametitle{The Model}
+	\framesubtitle{Evolution of Mimicry}
+	
+	\begin{itemize}
+		\item \textbf{Objective:} Build an \textit{agent based} Artificial Life model for simulating the evolution of mimicry.	
+		\item Two species of agents:
+			\begin{enumerate}
+				\item Prey
+					\begin{itemize}
+						\item Model
+						\item Mimic
+					\end{itemize}
+				\item Predator
+			\end{enumerate}
+		\item Prey pattern representation: Cellular Automata.
+		\item Predator pattern recognition: Hopfield Network.
+		\item Environment: Visual representation, 3D, toroidal.
+	\end{itemize}	
+}
+
+\subsection{Past Work}
+
+\frame
+{
+	\frametitle{The Model}
+	\framesubtitle{Past Work}
+
+	\begin{itemize}
+		\item Turner (1996) and Huheey (1988):
+			\begin{itemize}
+				\item \textbf{Focus:} Selective pressure on prey, by learning ability of predator.
+				\item Predator: Simple Monte Carlo learning or mathematical approach.
+			\end{itemize}
+		\item Sherratt (2002):
+			\begin{itemize}
+				\item Co-evolving predator and prey population.
+				\item Predators:
+				\begin{itemize}
+					\item deterministic
+					\item cannot learn from experience.
+					\item attack policy is fixed, either attack or avoid.
+				\end{itemize}
+			\end{itemize}
+	\end{itemize}
+}
+
+\frame
+{
+	\frametitle{Franks and Noble}
+	\framesubtitle{Working hypothesis}
+
+	\begin{enumerate}
+		\item \textsl{All of the Mullerian mimics in a given ecosystem should eventually converge into one large ring in order to gain maximum protection.}
+		\item \textsl{If the Mullerian mimics do not converge into one large ring, then the presence of Batesian mimics could entice them to do so, by influencing the rings to converge.}
+	\end{enumerate}
+}
+
+\frame
+{
+	\frametitle{Franks and Noble}
+	\framesubtitle{Prey}
+
+	\begin{itemize}
+		\item Prey: appearance and palatability.
+		\item Palatability is fixed, using different level from 0 to 1, where 0.5 is neutrally palatable.
+		\item Two genes representing external appearance, using values between 1 to 200.
+		\item Euclidean distance between values represents similarity.
+	\end{itemize}
+}
+
+\frame
+{
+	\frametitle{Franks and Noble}
+	\framesubtitle{Predator}
+
+	\begin{itemize}
+		\item Monte Carlo reinforcement learning system.
+		\item Predators use generation on the basis of experience.
+		\item Decision for consumption of prey:
+		\begin{itemize}
+			\item Use: set of probability formula.
+			\item Dependence on phenotype.
+		\end{itemize}
+	\end{itemize}
+}
+
+\frame
+{
+	\frametitle{Franks and Noble}
+	\framesubtitle{Result}
+
+	\begin{itemize}
+		\item First Experiment:
+			\begin{itemize}
+				\item 20 unpalatable prey species.
+				\item Hypothesis 1 of a single large ring did was not established.
+				\item Multiple mimicry rings exist with different frequency.
+			\end{itemize}
+		\item Second Experiment:
+			\begin{itemize}
+				\item Some palatable and some unpalatable species.
+				\item Reaches condition of Batesian mimicry. 
+				\item Hypothesis 2 is established.
+				\item \textbf{Observation:}
+					\begin{itemize}
+						\item Batesian mimics provide pressure on mutants.
+						\item Batesian pressure on mimicry rings push one into the range of another.
+					\end{itemize}
+			\end{itemize}
+	\end{itemize}
+}
+
+\subsection{FormAL}
+
+\frame
+{
+	\frametitle{FormAL Framework}
+	
+	\begin{itemize}
+		\item Ideas from Peter Grogono's Formal Artificial Life (FormAL) project.
+		\item \textbf{Goal:}		
+			\begin{itemize}
+				\item Study the emergence of complexity.
+				\item No variable unless genetically controlled or influenced. \textit{Principal not followed for Hopfield Network.}
+			\end{itemize}
+		\item \textbf{Agents:}
+			\begin{itemize}
+				\item Simulated organism.
+				\item Reproduce itself using genetic information.
+				\item Capable of modifying structures of genome between generations.
+				\item Interaction with other agents.
+				\item Survive and reproduce in a challenging environment.
+			\end{itemize}
+	\end{itemize}
+	
+}
+
+\frame
+{
+	\frametitle{FormAL Framework}
+	\framesubtitle{Environment}
+	
+	Environment is 3D, complete freedom of movement defined from genetic representation.
+	\begin{itemize}
+		\item \textbf{Space:}
+			\begin{itemize}
+				\item 3D Lattice of discreet points.
+				\item \((x,y,z) \in \Sigma^3\), where \(\Sigma\) be the set \(\{0, 1, ..., S-1\}\).
+				\item \(S\) is a universal constant, small positive number. Value is 20, \(World Size\) parameter. 
+			\end{itemize}
+		\item \textbf{Time:}
+			\begin{itemize}
+				\item Integer value, increases in discreet steps. 
+				\item Each agent updates itself in each time step.
+			\end{itemize}
+		\item \textbf{Cell:}
+			\begin{itemize}
+				\item Entire environment is divided into multiple cells.
+				\item A 3D cubical section of the hyperspace.
+				\item \(ISize\) parameter kept at 6. Total \(ISize^3 = 216\) cells.
+			\end{itemize}
+	\end{itemize}
+}
+
+\frame
+{
+	\frametitle{FormAL Framework}
+	\framesubtitle{Environment - Visual representation - Front}
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.40]{../tex/images/cells-front}
+		\caption{Three dimensional representation of the environment divided in cells. Presence of different species of agents inside.}
+	\label{tab:3-d-environment-images-1}
+	\end{figure}	
+}
+
+\frame
+{
+	\frametitle{FormAL Framework}
+	\framesubtitle{Agent Mobility}
+	
+	\begin{itemize}
+		\item Position is calculated in each step in time.
+		\item Vector components: \(position\), \(force\), \(acceleration\) and \(velocity\).
+		\item \(force\) is calculated from the mobility genes.
+		\item Newton's law of motion, used to calculate \(acceleration\) when \(force\) is not zero.
+		\item \(acceleration\) is integrated to obtain \(velocity\) and new \(position\).
+	\end{itemize}
+
+}
+
+\subsection{Prey}
+
+\frame
+{
+	\frametitle{The Prey}
+	\framesubtitle{Mimics and Models}
+	
+	\begin{itemize}
+		\item Agent in the FormAL environment.
+		\item Genetic representation of pattern with Cellular Automata.
+		\item Creates diversity of species.
+		\item Pattern evolution is in the process of punctuated equilibrium.
+		\item Mobility and reproduction capability controlled genetically.
+	\end{itemize}
+}
+
+\frame
+{
+	\frametitle{The Prey: Mimics and Models}
+	\framesubtitle{Pattern Representation}
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=3]{../tex/images/CA_rule30s}
+		\caption{Cellular Automata Rule 30.
+		Image source: \href{http://en.wikipedia.org/wiki/Cellular_automata}{Wikipedia}}
+		\label{fig:cellular-automata-rule-30}
+	\end{figure}
+	
+	\begin{table}
+		\centering
+		\begin{scriptsize}
+		\begin{tabular}{| p{2cm} | c | c | c | c | c | c | c | c |}
+		  \hline
+		  Current Pattern & 111 & 110 & 101 & 100 & 011 & 010 & 001 & 000 \\ \hline
+		  New state of center cell & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 0 \\
+		  \hline
+		\end{tabular}
+		\end{scriptsize}		
+		\caption{Cellular Automata rule}
+		\label{tab:cellular-automata-rule}
+	\end{table}
+}
+
+\frame
+{
+	\frametitle{The Prey: Mimics and Models}
+	\framesubtitle{Species Diversity}
+
+	\begin{itemize}
+		\item Pattern genome is 8 bit binary. Decimal range 0 to 255.
+		\item 256 unique CA pattern.
+		\item Linear representation of pattern stored in Hopfield Network.
+		\item Pattern similarity: Hamming distance between linear representation.
+		\item Single species: group of prey with a specific pattern.
+		\item Inter species reproduction: restricted to control diversity of patterns.
+		\item ``Pattern Mutation Rate": control diversity of new species.
+	\end{itemize}
+}
+
+\frame
+{
+	\frametitle{Prey Pattern}
+	\framesubtitle{Genotype vs. Phenotype}
+	
+	\begin{itemize}
+		\item Genetic bit difference of one.
+		\item Vastly different phenotype.
+	\end{itemize}
+	
+	\begin{table}
+	\centering
+	\begin{scriptsize}
+	\begin{tabular}{|l|c|c|c|}
+	  \hline
+	  CA Rule & \(60 \equiv 00111100\) & \(61 \equiv 00111101\) & \(62 \equiv 00111110 \) \\ \hline
+	  Pattern & \parbox[c]{2.1em}{\includegraphics[scale=0.40]{../tex/images/CARule60}} 
+	  				& \parbox[c]{2.1em}{\includegraphics[scale=0.40]{../tex/images/CARule61}} 
+	  				& \parbox[c]{2.1em}{\includegraphics[scale=0.40]{../tex/images/CARule62}}\\
+	  \hline
+	\end{tabular}
+	\end{scriptsize}
+	\caption{Difference in prey pattern genotype and phenotype}
+	\label{tab:diff-in-pattern}
+	\end{table}
+}
+
+\frame
+{
+	\frametitle{The Prey: Mimics and Models}
+	\framesubtitle{Genome}
+	
+	\begin{itemize}
+		\item 17 bit prey Genome
+	\end{itemize}
+	
+	\begin{table}[H]
+	\centering
+	\begin{scriptsize}
+	\begin{spacing}{1.5}
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+			\textbf{Pattern(8)} & \textbf{Palatability(2)} & \textbf{Mobility(6)} & \textbf{Reproduction(1)} \\ \hline
+			10101101					 	& 							01		 		 & 			110001					&					1						 		 \\ \hline
+	\end{tabular}
+	\end{spacing}
+	\end{scriptsize}
+	\caption{Distribution and purpose of each gene of the 17 bit prey genome.}
+	\label{tab:prey-genome}
+	\end{table}
+}
+
+\frame
+{
+	\frametitle{The Prey: Mimics and Models}
+	\framesubtitle{Punctuated Equilibrium}
+	
+	\begin{itemize}
+		\item Punctuated Equilibrium:
+			\begin{itemize}
+				\item inclined to cladogenesis instead of gradualism.
+				\item Turner's emphasis on punctuated equilibrium to explain evolution of mimicry.
+				\item CA pattern evolution: single mutation in the pattern genome.
+				\item Change of pattern: 
+					\begin{itemize}
+						\item not gradual
+						\item arbitrary discontinuous
+					\end{itemize}
+			\end{itemize}
+	\end{itemize}
+}
+
+\frame
+{
+	\frametitle{The Prey: Mimics and Models}
+	\framesubtitle{Mobility}
+	
+	\begin{itemize}
+		\item Mobility gene: 6 bits. 
+		\item Use: calculate the magnitude of force for mobility.
+		\item Direction:
+			\begin{itemize}
+				\item Towards collection of maximum prey species in a cell.
+				\item Away from concentration of predators.
+				\item Move towards the selected cell with the magnitude of force calculated.
+			\end{itemize}
+	\end{itemize}
+}
+
+\frame
+{
+	\frametitle{The Prey: Mimics and Models}
+	\framesubtitle{Reproduction}
+	
+	\begin{itemize}
+		\item Begins at ``Reproductive Age"
+		\item Capability is decided on 17th bit gene.
+		\item Mate selection is random, but within same cell.
+		\item Mate needs to be
+			\begin{itemize}
+				\item similar species
+				\item genetically capable to reproduce
+				\item reached maturity 
+			\end{itemize}
+		\item Reproduction process:
+			\begin{itemize}
+				\item Single point crossover.
+				\item Two point mutation: different rates
+					\begin{itemize}
+						\item \textit{Pattern Mutation Rate}
+						\item \textit{Genome Mutation Rate}
+					\end{itemize}
+			\end{itemize}
+	\end{itemize}
+}
+
+\subsection{Predator}
+
+\frame
+{
+	\frametitle{The Predator}
+	
+	\begin{itemize}
+		\item Agent in the FormAL environment.
+		\item Provide selection pressure for the evolution of mimicry.
+		\item Equipped with Hopfield Network Memory.
+		\item Mobility and reproduction capability controlled genetically.
+		\item Unable to represent pattern recognition capability with genome.
+		\item New predators are born with zero memory, as memory is not inherited.
+	\end{itemize}
+}
+
+\frame
+{
+	\frametitle{The Predator}
+	\framesubtitle{Learning}
+
+	\begin{itemize}
+		\item Predator's interaction objective with prey is consumption.
+		\item Consumption is based on palatability.
+		\item If unable to consume prey is thrown back into environment.
+		\item Store prey pattern into memory with the associated palatability.
+		\item New pattern learned with Hebbian Learning.
+	\end{itemize}
+}
+
+\frame
+{
+	\frametitle{The Predator}
+	\framesubtitle{Hebbian Learning}
+
+	\begin{itemize}
+		\item Initially all weights are set to zero.
+		\item Use Hebbian rule to calculate outer product of input-output vector pair, for each pair.
+		\item The Outer vector matrix of all the patterns are summed to come up with the final weight matrix.
+	\end{itemize}
+	
+Each component of the weight matrix \(\textbf{W} = \{w_{ij}\}\) is given by:
+\begin{equation}
+w_{ij} = \sum_{p=1}^{P} s_i(p) t_j(p), i \neq j
+%\label{eq:}
+\end{equation}
+\[
+w_{ij} = 0, i = j
+\]
+where P is the number of patterns. Vectors \textbf{S} and \textbf{T} are respectively, the input and the desired output of the network.
+
+}
+
+\frame
+{
+	\frametitle{The Predator}
+	\framesubtitle{Design of Memory}
+	
+	\begin{itemize}
+		\item Input to Memory:
+			\begin{itemize}
+				\item Each prey has an evolving CA represented by a binary Genome.
+				\item 2D pattern is serialized to a 1D binary array.
+				\item Binary representation converted to bipolar representation.
+			\end{itemize}
+		\item Pattern Recognition with Hopfield Network:
+			\begin{itemize}
+				\item Learning: Apply Hebbian learning to calculate weights.
+				\item Initialization: Input to network initialized with input vector.
+				\item Iterate Until Convergence: Asynchronous update of each neuron. Input: previous state.
+				\item Output: Finally a pattern is set as output when the network reaches convergence.
+			\end{itemize}
+	\end{itemize}
+}
+
+\frame
+{
+	\frametitle{The Predator}
+	\framesubtitle{Attack Algorithm}
+	
+	\begin{itemize}
+		\item Agent reaches `Minimum Attack Age' it starts hunting.
+		\item Select a random prey within vicinity (same cell).
+		\item Involves recognition of prey pattern.
+		\item Pattern memorization and recognition process: computationally expensive.
+		\item Two parameters to limit 
+			\begin{itemize}
+				\item Hopfield Minimum Memory Size (value 2 to 6)
+				\item Hopfield Maximum Memory Size (value 10)
+			\end{itemize}
+		\item New predator attacks without caution. 
+		\item Attacks everyone and in the process store pattern and palatability.
+		\item When memory reaches `Hopfield Minimum Memory Size': intelligent selection.
+	\end{itemize}
+}
+
+\frame
+{
+	\frametitle{The Predator}
+	\framesubtitle{Genome}
+
+	\begin{table}
+	\centering
+	\begin{scriptsize}
+	\begin{spacing}{1.5}
+	\begin{tabular}{|c|c|}
+		\hline
+			\textbf{Mobility(4)} & \textbf{Reproduction(1)} \\ \hline
+					 1101					   &					1						 		\\ \hline
+	\end{tabular}
+	\end{spacing}
+	\end{scriptsize}
+	\caption{Distribution and purpose of each gene of the 5 bit predator genome.}
+	\label{tab:predator-genome}
+	\end{table}
+}
+
+\frame
+{
+	\frametitle{The Predator}
+	\framesubtitle{Mobility}
+	
+	\begin{itemize}
+		\item Magnitude of force of movement: 4 bits of genome.
+		\item Direction: number of prey species present in a neighboring cell.
+		\item Move towards the cell with least number of predator and most number of prey.
+		\item Result: Predators are distributed all over the environment.
+		\item Increases agent's predatory behavior.
+	\end{itemize}
+}
+
+\frame
+{
+	\frametitle{The Predator}
+	\framesubtitle{Reproduction process}
+	
+	\begin{itemize}
+		\item Reproduction age: begins.
+		\item Reproduction age interval: which is difference in time between two reproduction activity.
+		\item Capability: 5th gene.
+		\item Selection: another predator from same cell which satisfy above conditions.
+		\item Perform genome crossover and mutation: create new predator.
+		\item New predator initialized with zero memory.
+	\end{itemize}
+}
