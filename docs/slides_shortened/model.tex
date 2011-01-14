@@ -397,29 +397,6 @@
 \frame
 {
 	\frametitle{The Predator}
-	\framesubtitle{Hebbian Learning}
-
-	\begin{itemize}
-		\item Initially all weights are set to zero.
-		\item Use Hebbian rule to calculate outer product of input-output vector pair, for each pair.
-		\item The Outer vector matrix of all the patterns are summed to come up with the final weight matrix.
-	\end{itemize}
-	
-Each component of the weight matrix \(\textbf{W} = \{w_{ij}\}\) is given by:
-\begin{equation}
-w_{ij} = \sum_{p=1}^{P} s_i(p) t_j(p), i \neq j
-%\label{eq:}
-\end{equation}
-\[
-w_{ij} = 0, i = j
-\]
-where P is the number of patterns. Vectors \textbf{S} and \textbf{T} are respectively, the input and the desired output of the network.
-
-}
-
-\frame
-{
-	\frametitle{The Predator}
 	\framesubtitle{Design of Memory}
 	
 	\begin{itemize}
