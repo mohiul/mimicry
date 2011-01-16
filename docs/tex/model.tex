@@ -10,7 +10,7 @@
 %Entire section until past work needs to be revised when the model has been fully described.
 The objective of this thesis is to design an agent based artificial life model for simulating the natural process of the evolution of mimicry.
 
-There are mainly two species of agents. These agents have properties and behavior similar to the \textbf{model}, the \textbf{mimic} and the \textbf{predator} in the evolution of mimicry. We represent evolution of pattern for the model and the mimic with the help of Cellular Automata(CA). Cellular Automata can be easily represented by simple rules, which can be expressed as a binary string. The predator will be equipped with a Hopfield network, to be able to have pattern recognition capability. The process of evolution will of course be running at the genetic level. 
+There are mainly two species of agents. These agents have properties and behavior similar to the \textbf{model}, the \textbf{mimic} and the \textbf{predator} in the evolution of mimicry. We represent evolution of pattern for the model and the mimic with the help of Cellular Automata(CA). Cellular Automata can be easily represented by simple rules, which can be expressed as a binary string. The predator will be equipped with a Hopfield network \cite{hopfield1982}, to be able to have pattern recognition capability. The process of evolution will of course be running at the genetic level. 
 
 The choice of Hopfield Network memory for a predator can be considered appropriate as the number of patterns which can be recognized by this network is inversely proportional to the accuracy of recall. As more patterns are memorized, Hopfield network tends to make more errors. This behavior will be appropriate for the simulation of Mullerian mimicry. Mullerian mimicry happens because of limited memory of the predators. Because of this limited memory, multiple inedible butterflies seems to converge to a single ring.
 
@@ -326,7 +326,7 @@ This can be written briefly as
 	\Delta\textit{w}_{ij} = c o_i x_j, \> \text{for} \> j = 1, 2, ..., n
 %\label{eq:}
 \end{equation}
-The learning rule requires the weight initialization at small random values around \( \textbf{w}_i = \textbf{0}\) prior to learning. The Hebbian learning rule represents a purely feed-forward, unsupervised learning. The rule implements the interpretation of the classic \textit{Hebb's postulate of learning} stated above. 
+Here, \(\textbf{o}\) is the output vector. The learning rule requires the weight initialization at small random values around \( \textbf{w}_i = \textbf{0}\) prior to learning. The Hebbian learning rule represents a purely feed-forward, unsupervised learning. The rule implements the interpretation of the classic \textit{Hebb's postulate of learning} stated above. 
 
 The rule states that if the cross product of output and input, or correlation term \(o_ix_j\) is positive, this results in an increase of weight \(w_{ij}\); otherwise the weight decreases. It can be seen that the output is strengthened in turn for each input presented. Therefore, frequent input patterns will have most influence at the neuron's weight vector and will eventually produce the largest output.
 
@@ -485,7 +485,7 @@ There are two control parameters that effect the reproduction of predator specie
 	\end{algorithmic}
 \end{algorithm}
 
-When the above two conditions are met, meaning the predator reaches its age for reproduction and also crosses its age interval, it randomly select another predator residing in the same cell. If this random predator is capable to reproduce depending on its 5th gene, then with a random single point crossover and mutation a new predator species in born which also resides on the same cell and initializes with zero memory configuration. Similarly when the new born predator reaches its maturity of reproductive age and if it is capable of reproduction then the process iterates itself. 
+When the above two conditions are met, meaning the predator reaches its age for reproduction and also crosses its age interval, it randomly select another predator residing in the same cell. If this random predator is capable to reproduce depending on its 5th gene, then with a random single point crossover and mutation a new predator species is born which also resides on the same cell and initializes with zero memory configuration. Similarly when the new born predator reaches its maturity of reproductive age and if it is capable of reproduction then the process iterates itself. 
 
 \begin{table}[h!]
 \centering
