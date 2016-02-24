@@ -244,7 +244,7 @@ Repulsive animals, such as heliconiids are very conspicuously colored. Having th
 \end{quote}
 In general, the animal which is avoided by predator for unpalatable behavior is called the \textbf{model} and the imitating animal is called the \textbf{mimic}.
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{../tex/images/Batesplate_ArM}
 	\caption[Plate from Bates (1862) illustrating Batesian mimicry]{Plate from Bates (1862) illustrating Batesian mimicry between Dismorphia species (top row, third row) and various Ithomiini (Nymphalidae) (second row, bottom row). \cite{bates1862}}
@@ -307,7 +307,7 @@ On this issue Turner states,
 
 \textsl{``According to punctuated equilibrium, therefore, evolution is not more or less both gradual and continual, as has been supposed for most purposes in most post-Darwinian theories. Rather, most morphological change is held to take place within geologically short periods, separated by vastly longer periods of comparative stasis \cite{eldredge1972}. The rapid, large changes all occur during speciation, that is to say during the branching of the evolutionary tree (cladogenesis);" \cite{turner1988}}
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.5]{../tex/images/Punctuated-equilibrium}
 	\caption[Punctuated equilibrium vs. phyletic gradualism]{Punctuated equilibrium, bottom, consists of morphological stability and rare bursts of evolutionary change, while the top explains phyletic gradualism. Image source: \href{http://en.wikipedia.org/wiki/Punctuated_equilibrium}{Wikipedia}}
@@ -460,7 +460,7 @@ An agent's position is calculated once during each step of update in time. The a
 	\end{algorithmic}
 \end{algorithm}
 
-\begin{table}[h]
+\begin{table}[H]
 \centering
 \setlength\tabcolsep{2pt}
 \begin{tabular}{| p{1.5cm} | >{\centering} p{1cm} | p{5cm} |}
@@ -488,7 +488,7 @@ Only the significant characteristics which are required for a successful model o
 
 Cellular automata are computer generated patterns applying very simple rules. First invented by Jon von Neuman and later extended by Stephen Wolfram, this field of study has created a lot of enthusiasm in the evolution of complexity with blocks of simplicity, in this case rules. We choose cellular automata as it can be easily represented with the help of a binary genome and then evolutionary operations on the genomic representation, such as mutation and crossover can easily be applied.
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[scale=5]{../tex/images/CA_rule30s}
 	\caption[Cellular Automata]{Cellular Automata Rule 30.
@@ -496,7 +496,7 @@ Cellular automata are computer generated patterns applying very simple rules. Fi
 	\label{fig:cellular-automata-rule-30}
 \end{figure}
 
-\begin{table}[h]
+\begin{table}[H]
 	\centering
 	\setlength\tabcolsep{2pt}
 	\begin{tabular}{| p{2.2cm} | c | c | c | c | c | c | c | c |}
@@ -522,7 +522,7 @@ With CA based pattern representation, population of prey species with a specific
 \subsubsection{Genome}
 The Genome of the prey species consists of 17 bits as presented in table \ref{tab:prey-genome}. The first eight bits represent the rule, which is used to generate Cellular Automata pattern. The next two bits are used to represent palatability of the organism explained detail in section \ref{subsubsec:genetic-palatability-representation}. The next six bits is the magnitude of the force with which mobility of the organism is calculated. The 17th bit is used to evaluate reproduction capability of the organism, depending on which the prey species is either capable or not capable to participate in reproduction.
 
-\begin{table}[h]
+\begin{table}[H]
 \centering
 \setlength\tabcolsep{2pt}
 \begin{tabular}{|c|c|c|c|}
@@ -565,7 +565,7 @@ The prey have been defined to have many conglomerate behavior in the environment
 \paragraph{Mobility}
 The mobility genes of the prey consist of 6 bits. These six bits are used to calculate the force with which each prey try to move towards any neighborhood cell. The algorithm sorts all neighboring cell descending to the number of prey species. Then it selects the cell which contains the highest number of prey with zero predator. If all the neighboring cells contain predators, then the algorithm sorts the neighboring cells descending on the number of predators and chooses the one which contains the least. Algorithm \ref{algo:algorithm-movement-prey} explains in detail.
 
-\begin{algorithm}[h]
+\begin{algorithm}[H]
 	\caption{Algorithm for updating position of the Prey species}
 	\label{algo:algorithm-movement-prey}
 	\begin{algorithmic}
@@ -804,7 +804,7 @@ The  fifth gene of the predator is used to represent their capability of reprodu
 
 There are two control parameters that effect the reproduction of predator species. The first is \textsl{``Reproduction Age Limit"}. This is the minimum age a predator has to reach before starting to involve itself for reproduction. This parameter has been set to 500 iterations during the result and analysis section of the thesis. The second parameter is \textsl{``Reproduction Interval"} which has been varied in the simulation from 1000 to 3000 iteration depending on the population of palatable prey species. This is a very important parameter for the simulation as it determines the overall predator population and its rate of increment. Depending on this value we can control the rate of predation on prey species, which on the other hand controls the rate of mimetic behavior of the overall prey population.
 
-\begin{algorithm}[h]
+\begin{algorithm}[H]
 	\caption{Algorithm for reproduction of the Predator species}
 	\label{algo:algorithm-reproduction-predator}
 	\begin{algorithmic}
@@ -882,7 +882,7 @@ The mimicry ring reports consist entirely of the population of prey species cate
 \begin{tabular}{| p{2cm} | p{1.5cm} | p{1cm} | p{.5cm} | p{1.5cm} | p{.5cm} |}
   \hline
    														&\multicolumn{3}{c|}{Prey configuration} 																	
-   														& \multicolumn{2}{c|}{\parbox{2cm}{Predator configuration}} \\ \hline
+   														& \multicolumn{2}{c|}{Predator configuration} \\ \hline
   \multirow{2}{*}{Population} & Rule110 (Palatable) & \parbox[c]{2.1em}{\includegraphics[scale=0.50]{../tex/images/CARule110}} & 108 
   														& \multicolumn{2}{c|}{\multirow{2}{*}{10}} \\ \cline{2-4}
   					 									& Rule30 (Unpalatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{../tex/images/CARule30}}  & 108 
@@ -913,7 +913,7 @@ The memory configuration size for predators is a very interesting parameter. The
 Now as we know the behavior of Hopfield memory, a recognition result will always be achieved depending on the similarity of the patterns stored in memory. So when minimum memory size has been reached the predator will always make a decision based on the similarity of the prey pattern currently captured and the patterns stored in memory.
 
 % Put the image
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{../tex/images/simTime10k-2Prey}
 	\caption[Population distribution of mimicry rings (2 prey species, 10k iterations)]{Population distribution of mimicry rings, initialized with 2 prey species, 10k iterations}
@@ -922,7 +922,7 @@ Now as we know the behavior of Hopfield memory, a recognition result will always
 
 The plot in Figure \ref{fig:plot-2-prey} is simulation time verses prey population after running it for 10000 iterations. With the initial configuration in the above table we can observe that multiple rings of prey population have been created. Two prey species are considered to be in a ring if their CA pattern have a Hamming distance within 10 bits. This parameter is mentioned in table \ref{tab:ring-report-control-parameters}. Population of palatable species has been represented with line curve while population of unpalatable species has been presented with dotted curve. Different signs of squares, triangles and diamonds have been used to distinguish between species of prey population. The simulation was initiated with two prey species having CA rule of 30 and 110 and being palatable and unpalatable consecutively.
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{../tex/images/simTime5k-2Prey}
 	\caption[Population distribution of mimicry rings (2 prey species, 5k iterations)]{Population distribution of mimicry rings, initialized with 2 prey species, 5k iterations.}
@@ -934,7 +934,7 @@ The plot of figure \ref{fig:plot-2-prey-5k} is from the same experiment as of fi
 We can observe from the above result that the evolution of mimicry has taken effect. A population of mimics were successfully able to exceed the population of other prey species, and the reason being, avoidance by predators of prey pattern similar to unpalatable ones. We can conclude that Batesian mimicry has taken effect in the simulation.
 
 %Put the number of rings picture:
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{../tex/images/ringSize10k-2Prey}
 	\caption[Number of mimicry rings (2 prey species)]{Number of mimicry rings, initialized with 2 prey species.}
@@ -946,7 +946,6 @@ Observing from figure \ref{fig:ringSize10k-2Prey} the number of rings in this si
 %CARule table
 \begin{table}[h]
 \centering
-\setlength\tabcolsep{2pt}
 \begin{tabular}{|l|c|c|c|}
   \hline
   CA Rule & \(60 \equiv 00111100\) & \(61 \equiv 00111101\) & \(62 \equiv 00111110 \) \\ \hline
@@ -961,7 +960,7 @@ Observing from figure \ref{fig:ringSize10k-2Prey} the number of rings in this si
 
 All the patterns in table \ref{tab:diff-in-pattern} have a genetic bit difference of 1. So by a single mutation there can be three different set of phenotype for a child organism from its parent. This is largely the reason for the increased number of mimicry rings created in the simulation. Only the 8 most populous rings are presented in the graphs with population verses simulation time.
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{../tex/images/simTime10k-2Prey-generated-prey}
 	\caption[Population distribution of generated mimicry rings (2 prey species)]{Population distribution of generated mimicry rings, initialized with 2 prey species.}
@@ -987,7 +986,7 @@ The screen shot in figure \ref{fig:screenshot-simTime7600-2-prey} is for one ins
 \begin{tabular}{| p{2cm} | p{1.5cm} | p{1cm} | p{.5cm} | p{1.5cm} | p{.5cm} |}
   \hline
    														&\multicolumn{3}{c|}{Prey configuration} 																	
-   														& \multicolumn{2}{c|}{\parbox{2cm}{Predator configuration}} \\ \hline
+   														& \multicolumn{2}{c|}{Predator configuration} \\ \hline
   \multirow{4}{*}{Population} & Rule110 (Unpalatable) & \parbox[c]{2.1em}{\includegraphics[scale=0.50]{../tex/images/CARule110}} 
   																										& 50 & \multicolumn{2}{c|}{\multirow{4}{*}{10}} \\ \cline{2-4}
   					 									& Rule30 (Palatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{../tex/images/CARule30}}
@@ -1011,7 +1010,7 @@ The screen shot in figure \ref{fig:screenshot-simTime7600-2-prey} is for one ins
 
 This run of the simulation has been initialized with four prey species with very different CA pattern configuration. The predator reproduction interval has been increased to 1400, while the minimum memory size has been increased to 4 instead of 2 as the predator is expected to memorize four different species of prey before starting to make intelligent decision about consuming them. The rest of the parameters remain the same as from the experiment in section \ref{subsec:init-conf-2prey}.
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{../tex/images/simTime10k-4Prey}
 	\caption[Population distribution of mimicry rings (4 prey species)]{Population distribution of mimicry rings, initialized with 4 prey species.}
@@ -1042,7 +1041,7 @@ By observing the graph in figure \ref{fig:plot-4-prey} we can see the two rings 
 \begin{tabular}{| p{2cm} | p{1.5cm} | p{1cm} | p{.5cm} | p{1.5cm} | p{.5cm} |}
   \hline
    														&\multicolumn{3}{c|}{Prey configuration} 																	
-   														& \multicolumn{2}{c|}{\parbox{2cm}{Predator configuration}} \\ \hline
+   														& \multicolumn{2}{c|}{Predator configuration} \\ \hline
   \multirow{4}{*}{Population} & Rule110 (Palatable) & \parbox[c]{2.1em}{\includegraphics[scale=0.50]{../tex/images/CARule110}} & 150 & \multicolumn{2}{c|}{\multirow{4}{*}{20}} \\ \cline{2-4}
   					 									& Rule30 (Palatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{../tex/images/CARule30}}  	 & 150 & \multicolumn{2}{c|}{}\\ \cline{2-4}
   					 									& Rule55 (Unpalatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{../tex/images/CARule55}}  & 150 & \multicolumn{2}{c|}{}\\ \cline{2-4}
@@ -1062,7 +1061,7 @@ By observing the graph in figure \ref{fig:plot-4-prey} we can see the two rings 
 
 In this run of the simulation some significant parameters have been updated. First one is the initial population of prey species. It has been increased from 50 to 150 for each of the prey species, while increasing the overall population from 200 to 600. Secondly, predator population has been increased from 10 to 20. Thirdly, predator demise age has been increased from 2500 to 7000 while their reproduction interval has been increased from 1400 to 2500. Increasing predator demise age can have an interesting effect, as the longer a predator is present in a simulation, the longer it will be making intelligent decision in terms of consuming its prey and there will be increased selection pressure from the entire population of predators. 
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{../tex/images/simTime10K-4MorePrey}
 	\caption[Population distribution of mimicry rings (4 prey species, increased population)]{Population distribution of mimicry rings, initialized with 4 prey species with increased population.}
@@ -1073,7 +1072,7 @@ Some very interesting diversity of mimicry rings can be observed in the simulati
 
 The total number of rings have increased much in this run compared to the previous one. To summarize the results of this experiment, we can observe, increased diversity of prey population and much more interaction between predator and prey.
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{../tex/images/ringSize10k-4MorePrey}
 	\caption[Number of mimicry rings (4 prey species, increased population)]{Number of mimicry rings, initialized with 4 prey species with increased population.}
@@ -1088,7 +1087,7 @@ The total number of rings have increased much in this run compared to the previo
 \begin{tabular}{| p{2cm} | p{1.5cm} | p{1cm} | p{.5cm} | p{1.5cm} | p{.5cm} |}
   \hline
    														&\multicolumn{3}{c|}{Prey configuration} 																	
-   														& \multicolumn{2}{c|}{\parbox{2cm}{Predator configuration}} \\ \hline
+   														& \multicolumn{2}{c|}{Predator configuration} \\ \hline
   \multirow{6}{*}{Population} & Rule110 (Palatable) & \parbox[c]{2.1em}{\includegraphics[scale=0.50]{../tex/images/CARule110}} 
   																									& 150 & \multicolumn{2}{c|}{\multirow{6}{*}{30}} \\ \cline{2-4}
   					 									& Rule30  (Unpalatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{../tex/images/CARule30}}  
@@ -1115,7 +1114,7 @@ The total number of rings have increased much in this run compared to the previo
 
 To evaluate the simulation at a more complex level we increase the prey population to 900, consisting of 6 different species with very different pattern configuration. To boost predator-prey interaction we also increase the number of predator population to 30. Predator reproduction interval has been set comparatively lower in this simulation to 2000 iterations. As the initial population of prey species is very high, over time we are expecting even larger number of prey species. If predator population does not increase at similar rate there might be a prey population explosion were predator will have no effect on providing selection pressure for the evolution of mimicry. So that is why predator population control parameter has been set to this level. For memory configuration, the minimum number is set to 6, meaning the predator will have to store 6 different prey pattern configuration before starting to make intelligent decision about consuming them. As previously mentioned this number is always set in accordance with the initial number of different prey configuration. 
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{../tex/images/simTime10k-6Prey}
 	\caption[Population distribution of mimicry rings (6 prey species)]{Population distribution of mimicry rings, initialized with 6 prey species.}
@@ -1139,7 +1138,7 @@ With the above set of parameters we receive the plot of figure \ref{fig:plot-6-p
 \begin{tabular}{| p{2cm} | p{1.5cm} | p{1cm} | p{.5cm} | p{1.5cm} | p{.5cm} |}
   \hline
    														&\multicolumn{3}{c|}{Prey configuration} 																	
-   														& \multicolumn{2}{c|}{\parbox{2cm}{Predator configuration}} \\ \hline
+   														& \multicolumn{2}{c|}{Predator configuration} \\ \hline
   \multirow{4}{*}{Population} & Rule110 (Unpalatable) & \parbox[c]{2.1em}{\includegraphics[scale=0.50]{../tex/images/CARule110}} 
   																									& 150 & \multicolumn{2}{c|}{\multirow{4}{*}{20}} \\ \cline{2-4}
   					 									& Rule30  (Unpalatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{../tex/images/CARule30}}  
@@ -1162,7 +1161,7 @@ With the above set of parameters we receive the plot of figure \ref{fig:plot-6-p
 
 To further observe the effects of mimicry ring we initialize the simulation with all unpalatable prey species. After finding different anomalous behavior of predator recognition capability in section \ref{subsec:init-conf-6-prey} for increased number of diverse prey species; for this experiment the initial number of species have been reduced from six to four. As explained earlier the minimum memory configuration is also set to four in accordance to the initial number of prey species. Rest of the parameters remain quite unchanged.
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{../tex/images/simTime8k-4Prey-unp}
 	\caption[Population distribution of mimicry rings(4 prey species all unpalatable)]{Population distribution of mimicry rings, initialized with 4 prey species all unpalatable.}
@@ -1171,7 +1170,7 @@ To further observe the effects of mimicry ring we initialize the simulation with
 
 The results according to figure \ref{fig:plot-4-prey-unp} are much expected. The population of unpalatable species have prevailed. After nearly 8000 iterations we can see unpalatable species of CA rule 55, 110, 30 and 190 have prevailed with the most population. All of their palatable counter parts are also increasing their population deceiving the predators. We observe the effect of the simulation up to 8000 iterations instead of 10000 as the total number of prey species increases at an enormous rate in this simulation within very short period of time. As most of the species are unpalatable, predators mostly do not get the opportunity to consume, causing a much lower prey death rate. 
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{../tex/images/ringSize8k-4Prey-unp}
 	\caption[Number of mimicry rings (4 prey species all unpalatable)]{Number of mimicry rings, initialized with 4 prey species all unpalatable.}
@@ -1180,7 +1179,7 @@ The results according to figure \ref{fig:plot-4-prey-unp} are much expected. The
 
 This experiment is an ideal scenario for observing Mullerian mimicry. As mentioned in section \ref{subsec:mullerian-mimicry}, Mullerian mimicry occurs between multiple species of unpalatable prey population. From the second work of Franks and Noble \cite{franks2003} mentioned in section \ref{subsubsec:models-by-frank-and-noble}, we note that multiple Mullerian mimicry rings are expected to converge into one large ring through the evolutionary process of punctuated equilibrium. But in this experiment as the predator's `Minimum Memory Configuration' is set to four, all predators have the capability to recognize four prey patterns before starting to make intelligent decision of consuming them. By setting `Minimum Memory Configuration' to one, also increasing `Predator Demise Age' to 7000 and decreasing predator's `Reproduction Age Interval' to 1500, we get the following plot. 
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{../tex/images/simTime6k-4Prey-unp-1-mem}
 	\caption[Population distribution of mimicry rings(4 prey, all unpalatable but reduced predator memory)]{Population distribution of mimicry rings, initialized with 4 prey species all unpalatable. Minimum Memory size reduced to one.}
@@ -1198,7 +1197,7 @@ Running the simulation for 6000 iterations there was no sign for all prey popula
 \begin{tabular}{| p{2cm} | p{1.5cm} | p{1cm} | p{.5cm} | p{1.5cm} | p{.5cm} |}
   \hline
    														&\multicolumn{3}{c|}{Prey configuration} 																	
-   														& \multicolumn{2}{c|}{\parbox{2cm}{Predator configuration}} \\ \hline
+   														& \multicolumn{2}{c|}{Predator configuration} \\ \hline
   \multirow{4}{*}{Population} & Rule110 (Palatable) & \parbox[c]{2.1em}{\includegraphics[scale=0.50]{../tex/images/CARule110}} 
   																									& 150 & \multicolumn{2}{c|}{\multirow{4}{*}{20}} \\ \cline{2-4}
   					 									& Rule30  (Palatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{../tex/images/CARule30}}  
@@ -1223,14 +1222,14 @@ The parameters for this simulation has been set exactly the same as in table \re
 
 The results for the configuration in table \ref{tab:config-table-4-prey-palatable} can be observed in figure \ref{fig:plot-4-prey-p} where all population of prey species have reached its demise at nearly 7000 iterations. By analyzing details we can see, around simulation time 500 all population of species come to a steady downfall as at this point initial predator species reach its' age for consumption. Around simulation time 1000 all population of prey species start increasing steadily because they reach their maturity level of reproduction. At iteration time 2000 there is a sudden drop of prey population because the initial population of prey have reached its demise age at this point. By this time the population of unpalatable species mutated from the palatable ones start increasing, and slowly around time 7000 and onwards the entire population of prey come to its demise. Predator population, from the beginning of the simulation has taken a very dominant effect. As all the species are palatable, predator's consumption and reproduction rate is extremely high and it keep increasing in a geometric rate.
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{../tex/images/simTime10k-4Prey-p}
 	\caption[Population distribution of mimicry rings (4 prey species all palatable)]{Population distribution of mimicry rings, initialized with 4 prey species all palatable.}
 	\label{fig:plot-4-prey-p}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{../tex/images/ringSize10k-4Prey-p}
 	\caption[Number of mimicry rings (4 prey species all palatable)]{Number of mimicry rings, initialized with 4 prey species all palatable.}
@@ -1251,7 +1250,7 @@ Until now all experiments have been initialized with multiple prey species. The 
 \begin{tabular}{| p{2cm} | p{1.5cm} | p{1cm} | p{.5cm} | p{1.5cm} | p{.5cm} |}
   \hline
    														&\multicolumn{3}{c|}{Prey configuration} 																	
-   														& \multicolumn{2}{c|}{\parbox{2cm}{Predator configuration}} \\ \hline
+   														& \multicolumn{2}{c|}{Predator configuration} \\ \hline
   Population 									& Rule30 (Unpalatable) & \parbox[c]{2.1em}{\includegraphics[scale=0.50]{../tex/images/CARule30}} 
   																									& 216 & \multicolumn{2}{c|}{10} \\ \hline
   \multirow{2}{*}{Reproduction} & Age Limit & \multicolumn{2}{c|}{100}  & \multicolumn{2}{c|}{500} \\ \cline{2-6}
@@ -1269,7 +1268,7 @@ Until now all experiments have been initialized with multiple prey species. The 
 
 This configuration has only one unpalatable species, one in each of the 216 cells, equally distributed all over the environment. Also have a set of 10 predators. Their minimum memory configuration has been set to 2 as any value below 2 will not help the Hopfield Network Memory to differentiate between two patterns.
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{../tex/images/simTime8k-1Prey-unp}
 	\caption[Population distribution of mimicry rings (1 prey species unpalatable)]{Population distribution of mimicry rings, initialized with 1 prey species unpalatable.}
@@ -1278,7 +1277,7 @@ This configuration has only one unpalatable species, one in each of the 216 cell
 
 From figure \ref{fig:plot-1-prey-unp}, it can be observed, the initial set of unpalatable species is dominant as expected. The palatable population mimicking that set is following it. A bunch of other rings with majority of unpalatable species have been reproduced through mutation. Mainly because the initial population started with a bunch of unpalatable species, so their reproduced generation have similar behavior as well.
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{../tex/images/ringSize8k-1Prey-unp}
 	\caption[Number of mimicry rings (1 prey species unpalatable)]{Number of mimicry rings, initialized with 1 prey species unpalatable.}
@@ -1292,7 +1291,7 @@ From figure \ref{fig:plot-1-prey-unp}, it can be observed, the initial set of un
 \begin{tabular}{| p{2cm} | p{1.5cm} | p{1cm} | p{.5cm} | p{1.5cm} | p{.5cm} |}
   \hline
    														&\multicolumn{3}{c|}{Prey configuration} 																	
-   														& \multicolumn{2}{c|}{\parbox{2cm}{Predator configuration}} \\ \hline
+   														& \multicolumn{2}{c|}{Predator configuration} \\ \hline
   Population 									& Rule30 (Palatable) & \parbox[c]{2.1em}{\includegraphics[scale=0.50]{../tex/images/CARule30}} 
   																									& 216 & \multicolumn{2}{c|}{8} \\ \hline
   \multirow{2}{*}{Reproduction} & Age Limit & \multicolumn{2}{c|}{100}  & \multicolumn{2}{c|}{500} \\ \cline{2-6}
@@ -1310,7 +1309,7 @@ From figure \ref{fig:plot-1-prey-unp}, it can be observed, the initial set of un
 
 This configuration is set exactly as according to section \ref{subsubsec:single-prey-unpalatable} but with a single set of palatable species. The population of predators have been reduced from 10 to 8 to avoid elimination of all prey species as it happened in case of section \ref{subsec:init-only-palatable-species}.
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{../tex/images/simTime10k-1Prey-p}
 	\caption[Population distribution of mimicry rings (1 prey species palatable)]{Population distribution of mimicry rings, initialized with 1 prey species palatable.}
@@ -1319,7 +1318,7 @@ This configuration is set exactly as according to section \ref{subsubsec:single-
 
 From the initial palatable population we see a bunch of palatable rings created. Major difference from section \ref{subsubsec:single-prey-unpalatable} is the total number of prey population created. For the unpalatable species in section \ref{subsubsec:single-prey-unpalatable}, total prey population reach above 12 thousand. But for palatable species total population reach nearly above 5000 prey species, as when the preys are palatable there is more consumption from predators. 
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{../tex/images/ringSize10k-1Prey-p}
 	\caption[Number of mimicry rings (1 palatable prey species)]{Number of mimicry rings, initialized with 1 palatable prey species.}
