@@ -17,11 +17,8 @@
 \usepackage{algorithmic}
 \usepackage{algorithm}
 
-%Reformat current date and time
-\usepackage{datetime}
-
 %For hyper referencing
-\usepackage[pdfborder={text},colorlinks={true},linkcolor={black},citecolor={black},urlcolor={black}]{hyperref}
+\usepackage[colorlinks={true},linkcolor={black},citecolor={black},urlcolor={black}]{hyperref}
 %In case you use the package hyperref to create a PDF, the links to tables or figures will point to the caption of the table or figure, which is always below the table or figure itself. Therefore the table or figure will not be visible, if it is above the pointer and one has to scroll up in order to see it. If you want the link point to the top of the image you can use the package hypcap with:
 \usepackage[all]{hypcap}
 
@@ -56,7 +53,7 @@ Artificial Life is an interdisciplinary study of life and life-like processes th
 %Individual chapter descriptions begins from chapter 2
 Section \ref{section:review} is intended to provide background knowledge upon which this thesis is based. It reviews different fields of science where the concept of evolution has been applied to solve complex computer science problems, and achieved better result than other conventional methods. It also discusses the field of Artificial Life which is an inter disciplinary field of science where scientist take concepts from biology, economics and physics to build complex and adaptive models to emulate nature and its life like behavior.
 
-Section \ref{section:mimicry} discusses an inspiration from the field of evolutionary biology which is the primary purpose of building the model of this thesis. Mimicry is an evolutionary process, which not only provides us with insight into the process of evolution as it happens in nature but also is fascinating to study and learn how nature adapts itself in complicated situation for the survival of its species. In addition, this chapter discusses the different kinds of mimicry such as Batesian and Mullerian, while including how the concept of mimicry ring helps us explain each of these cases. 
+Section \ref{section:mimicry} discusses an inspiration from the field of evolutionary biology which is the primary purpose of building the model of this thesis. Mimicry is an evolutionary process, which not only provides us with insight into the process of evolution as it happens in nature but also is fascinating to study and learn how nature adapts itself in complicated situation for the survival of its species. In addition, this section discusses the different kinds of mimicry such as Batesian and Mullerian, while including how the concept of mimicry ring helps us explain each of these cases. 
 
 Section \ref{section:model} contains description of an agent based artificial life model, which is the primary purpose of this thesis. Inspired by the evolutionary mimetic process we present a model whose purpose is not only to emulate the evolution of mimicry but also to come up with complicated scenario of Batesian and Mullerian mimicry with the help of mimicry ring. This model is based on a FormAL (Formal Artificial Life) framework which is similar to Holland's Echo model but with a slightly different approach. 
 
@@ -70,7 +67,7 @@ Section \ref{section:conclusion} is an effort to bring a conclusion to justify t
 \label{section:review}
 \subsection{Introduction}
 
-This chapter contains a discussion on the field of Evolutionary Computing and Artificial Life. Both of these field of computer science are inspired by the process of evolution as it happens in nature. The model presented in this thesis is also based on an evolutionary process existing in nature. This thesis is part of the field of Artificial Life, motivated by the work of Echo \cite{holland1996} and other such simulated Complex Adaptive Systems. In addition to the model discussed in chapter \ref{section:model}, this thesis also put some effort in finding application for the evolutionary process of mimicry (chapter \ref{section:application}). Similar to evolutionary computation, we intend to apply the deceptive process to solve a problem in computer science.
+This section contains a discussion on the field of Evolutionary Computing and Artificial Life. Both of these field of computer science are inspired by the process of evolution as it happens in nature. The model presented in this thesis is also based on an evolutionary process existing in nature. This thesis is part of the field of Artificial Life, motivated by the work of Echo \cite{holland1996} and other such simulated Complex Adaptive Systems. In addition to the model discussed in section \ref{section:model}, this thesis also put some effort in finding application for the evolutionary process of mimicry (section \ref{section:application}). Similar to evolutionary computation, we intend to apply the deceptive process to solve a problem in computer science.
 
 \subsection{Evolutionary Computation}
 The field of evolutionary computing is the collective name for a range of problem-solving techniques based on principles of biological evolution, such as natural selection and genetic inheritance. 
@@ -156,7 +153,7 @@ In defining Artificial Life Langton states the following,
 \gls{al} has been described by Taylor, also as a tool for biological inquiry \cite{taylor1993}. While providing a brief survey over different AL models he talks about \textsl{Wetware systems} which work at the molecular level, the \textsl{Software systems} which work at the cellular level and the \textsl{Hardware systems} which works at the organism level. \textsl{Wetware} artificial life systems are the most similar to natural life and indeed are actually derived from natural life. Most of the experiments are attempts to direct an artificial evolutionary process toward the production of \gls{rna} molecules with specific catalytic properties. The initial contribution of \textsl{software systems} in artificial life was from John von Neumann when he designed the first artificial-life model (without referring to it as such), the famous self-reproducing, computation-universal cellular automata \cite{neumann1966}. He tried to understand the fundamental properties of living systems, especially self-reproduction and the evolution of complex adaptive structures, by constructing simple formal systems that exhibit those properties. \textsl{Hardware systems} at the organism level can deal with an organism's sensory and nervous system, its body and its environment. Even though an organism's nervous system is usually considered as fantastically complex, the other interesting complex components can be its geometric, mechanical, dynamical or thermal properties. 
 
 \subsubsection{Complex Adaptive System}
-\label{subsec:complex-adaptive-system}
+\label{subsubsec:complex-adaptive-system}
 \gls{cas} are special cases of complex systems. They are complex as they are diverse and made up of multiple interconnected elements and adaptive as they have the capacity to change and learn from experience. Examples of complex adaptive systems include the stock market, social insect and ant colonies, the biosphere and the ecosystem, the brain and the immune system, the cell and the developing embryo, manufacturing businesses and any human social group-based endeavor in a cultural and social system such as political parties or communities. This includes some large-scale online systems, such as collaborative tagging or social bookmarking systems.
 
 The following definition of Complex Adaptive System is comprehensive.
@@ -175,8 +172,8 @@ Holland also provided some common kernel of similarities and dissimilarities bet
 \end{enumerate}
 
 \subsubsection{Echo}
-\label{subsec:echo}
-Echo is a class of simulation model for complex adaptive system, designed primarily for gedanken experiments rather than precise simulations. Echo provides a population of evolving, reproducing agents distributed over a geography, with different inputs of renewable resources at various sites. Each agent has simple capabilities - offense, defense, trading and mate selection - defined by a set of chromosomes. Even though these capabilities are simple and defined simply, they provide a rich set of variations illustrating the four kernel properties of complex adaptive systems described in section \ref{subsec:complex-adaptive-system}.
+\label{subsubsec:echo}
+Echo is a class of simulation model for complex adaptive system, designed primarily for gedanken experiments rather than precise simulations. Echo provides a population of evolving, reproducing agents distributed over a geography, with different inputs of renewable resources at various sites. Each agent has simple capabilities - offense, defense, trading and mate selection - defined by a set of chromosomes. Even though these capabilities are simple and defined simply, they provide a rich set of variations illustrating the four kernel properties of complex adaptive systems described in section \ref{subsubsec:complex-adaptive-system}.
 
 \paragraph{Criteria}
 Echo has been constructed based on a set of criterion. The following is a short summary on it extracted from Holland's \textsl{Hidden Order: How Adaptation Builds Complexity} \cite{holland1996}.
@@ -230,7 +227,7 @@ Now the question is, does Echo exhibit the robust ecological phenomenon of Prest
 Finally to answer the above question, it has been concluded that, Echo showed good quantitative agreement with naturally occurring species abundance distribution and species area scaling relation.
 
 \subsection{Conclusion}
-This chapter discusses evolutionary computation, the field that takes concepts from evolutionary biology to solve and optimize problems in compute science. It also discusses the interdisciplinary field Artificial life where scientist discuss diverse knowledge from biology, economics, physics and use computer science to simulate and analyze life as it is in nature. The discussion of this chapter is expected to provide a base upon which the following chapters will begin construction of the core idea of this thesis.
+This section discusses evolutionary computation, the field that takes concepts from evolutionary biology to solve and optimize problems in compute science. It also discusses the interdisciplinary field Artificial life where scientist discuss diverse knowledge from biology, economics, physics and use computer science to simulate and analyze life as it is in nature. The discussion of this section is expected to provide a base upon which the following sections will begin construction of the core idea of this thesis.
 
 \section{The Inspiration: Mimicry}
 \label{section:mimicry}
@@ -249,7 +246,7 @@ In general, the animal which is avoided by predator for unpalatable behavior is 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=1]{../tex/images/Batesplate_ArM}
+	\includegraphics[width=0.5\textwidth]{../tex/images/Batesplate_ArM}
 	\caption[Plate from Bates (1862) illustrating Batesian mimicry]{Plate from Bates (1862) illustrating Batesian mimicry between Dismorphia species (top row, third row) and various Ithomiini (Nymphalidae) (second row, bottom row). \cite{bates1862}}
 	\label{fig:batesian-butterfly}
 \end{figure}
@@ -289,7 +286,7 @@ According to Huheey \cite{huheey1988} \textsl{``Mullerian mimicry is normally vi
 
 It is worth observing the fact that Mullerian mimicry is not deception, as it is to the predator's advantage to be able to recognize all deterrent and noxious species. Preys resemblance does not have to be close enough to cause misidentification on the part of the predator, but merely similar enough to remind it of a bitter past experience with similar prey. As Huheey continues \textsl{``Thus although there is selection for convergence to perhaps the most common, average pattern, or more likely the one associated with the most deterrence (both from the intensity of the traumatic stimuli and the frequency of predators receiving them), the convergence need not be rapid or precise. Indeed, the resemblance among Mullerian mimics is often not close, and the existence of very close mimics raises doubts that the mimicry is Mullerian."}
 
-\begin{figure}[H]
+\begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.75]{../tex/images/BatesMimButter}
 	\caption[A very well-known example of mimicry, the viceroy butterfly]{A very well-known example of mimicry is the viceroy butterfly (top) which has a pattern very similar to the unpalatable monarch butterfly (bottom). It was considered for a long time that this is an ideal example of Batesian mimicry. But recently Brower discovered that the viceroy is actually just as noxious as the monarch, making this a case of Mullerian mimicry. \cite{brower1991} Image source: \href{http://en.wikipedia.org/wiki/Mullerian_mimicry}{Wikipedia}}
@@ -297,7 +294,7 @@ It is worth observing the fact that Mullerian mimicry is not deception, as it is
 \end{figure}
 
 \subsection{Evolutionary Dynamics of Mimicry}
-\label{sec:evolutionary-dynamics-of-mimicry}
+\label{subsec:evolutionary-dynamics-of-mimicry}
 The dynamics of mimicry has been investigated by Turner \cite{turner1988}, where he states that the evolution of mimicry can be explained best by the process of punctuated equilibrium instead of phyletic gradualism. 
 
 \paragraph{Punctuated Equilibrium}
@@ -366,7 +363,7 @@ On 2003 \cite{franks2003} another model for the origin of mimicry ring has been 
 Franks and Noble continue to test the influence on mimicry ring evolution by Batesian mimics in their work on \cite{franks2004}. Usually mathematical models of mimicry has fixed prey coloration and appearances, which enables a comparison of predation rates to demonstrate the level of protection a mimic might be afforded. In this model prey colorations are free to evolve. This phenomenon is used to examine the effect of Batesian mimicry on Mullerian mimics and mimicry rings. 
 
 \subsubsection{Models by Franks and Noble}
-\label{subsec:models-by-frank-and-noble}
+\label{subsubsec:models-by-frank-and-noble}
 %Explain more about the first model by Franks and Noble
 The \textbf{first} model by Franks and Noble \cite{franks2002} is where \textsl{``multiple species are preyed upon by a single abstract predator; the appearance of each prey species can evolve but their palatability is fixed"}. Each individual had a single gene: a value representing their external appearance or phenotype. The phenotypes are constrained to a ring of values from 1-20 (where 20 and 1 are neighbors). The distance of one phenotype from another represents their levels of similarity. 
 
@@ -425,14 +422,14 @@ Time, being an integer \( (t \geq 0) \), advances in discrete steps in the simul
 \paragraph{Cell}
 The entire three dimensional toroidal environment is divided in multiple cells. A cell is a three dimensional cubical section of the hyperspace. Accordingly in table \ref{tab:environment-control-parameters} \(ISize\) is the parameter that controls the number of cells in the environment. The size of a cell is evaluated from the entire world size. And the total number of cell is calculated as \(ISize^3 = 216\).
 
-\begin{table}[H]
+\begin{table}[h]
 \centering
-\begin{tabular}{| p{2.2cm} | >{\centering} p{3cm} | p{7.5cm} |}
+\begin{tabular}{| p{1.5cm} | >{\centering} p{1.6cm} | p{4cm} |}
 	\hline
 		\textbf{Parameter} & \textbf{Value} & \textbf{Description} \\ \hline
 		ISize & 6 & Number of cell in single dimension of the 3-D toroidal cube\\ \hline
 		World Size & 20 & Size of a single dimension of the 3-D toroidal cube\\ \hline
-		Cell Size & \( World Size / ISize \) & Size of each cell\\ \hline
+		Cell Size & \( World Size\) / \(ISize \) & Size of each cell\\ \hline
 		Total Number of Cells & \( ISize^3  = 216\) & Total number of cells in the environment\\ 
 	\hline
 \end{tabular}
@@ -440,15 +437,12 @@ The entire three dimensional toroidal environment is divided in multiple cells. 
 \label{tab:environment-control-parameters}
 \end{table}
 
-\begin{table}[H]
-\centering
-\begin{tabular}{cc}
-		\multicolumn{2}{c}{ \includegraphics[scale=0.60]{../tex/images/cells-front} } \\
-		\includegraphics[scale=0.50]{../tex/images/cells-top} & \includegraphics[scale=0.50]{../tex/images/cells-side} \\
-\end{tabular}
-\caption[Three dimensional representation of the environment]{Three dimensional representation of the environment divided in cells. Presence of different species of agents inside.}
-\label{tab:3-d-environment-images}
-\end{table}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.5\textwidth]{../tex/images/cells-front}
+	\caption[Three dimensional representation of the environment]{Three dimensional representation of the environment divided in cells. Presence of different species of agents inside.}
+	\label{tab:3-d-environment-images}
+\end{figure}
 
 \subsubsection{Mobility}
 An agent's position is calculated once during each step of update in time. The agents \(position\), \(force\), \(acceleration\) and \(velocity\) are all vector components. The \(force\) component is calculated from agent's mobility gene. And it is used to compute agent's \(acceleration\). If the \(force\) and \(velocity\) are both zero, then the agent has no effect in motion. Otherwise, Newton's law is used to obtain the \(acceleration\), which is integrated to obtain the new \(velocity\) and new \(position\).
@@ -468,7 +462,8 @@ An agent's position is calculated once during each step of update in time. The a
 
 \begin{table}[H]
 \centering
-\begin{tabular}{| p{2.2cm} | >{\centering} p{1.3cm} | p{9cm} |}
+\setlength\tabcolsep{2pt}
+\begin{tabular}{| p{1.5cm} | >{\centering} p{1cm} | p{5cm} |}
 	\hline
 		\textbf{Parameter} & \textbf{Value} & \textbf{Description} \\ \hline
 		Force Factor & 40 & A unit vector is multiplied by this amount before being added to the force vector.\\ \hline
@@ -503,7 +498,8 @@ Cellular automata are computer generated patterns applying very simple rules. Fi
 
 \begin{table}[H]
 	\centering
-	\begin{tabular}{| l | c | c | c | c | c | c | c | c |}
+	\setlength\tabcolsep{2pt}
+	\begin{tabular}{| p{2.2cm} | c | c | c | c | c | c | c | c |}
 	  \hline
 	  Current Pattern & 111 & 110 & 101 & 100 & 011 & 010 & 001 & 000 \\ \hline
 	  New state of center cell & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 0 \\
@@ -516,18 +512,19 @@ Cellular automata are computer generated patterns applying very simple rules. Fi
 In generating the pattern of figure \ref{fig:cellular-automata-rule-30}, the genetic representation would be the `New state of center cell'. As figure \ref{fig:cellular-automata-rule-30} is a rule 30 cellular automata, the eight bit binary representation of 30 would be the genetic representation for this pattern. Generation of automata pattern from this binary string can be considered analogous to the complex pathway between the genotype and the phenotype that exists in all living organism.
 
 \subsubsection{Species diversity}
-\label{subsec:species-diversity}
+\label{subsubsec:species-diversity}
 Franks and Noble have used different models to diversify species. In \cite{franks2002} they have used linear difference in number ``constrained to a 'ring' of values  from 1-20 (where 20 and 1 are neighbors)" to distinguish species diversity. Here the distance of one phenotype from another represents their level of similarity. 
 
 To use CA as prey pattern, an agent's genome is constructed as an 8 bit binary value with a decimal range between 0 to 255. Each of this 256 values have a unique CA pattern associated with it. When storing this pattern in Hopfield memory we take a linear representation of this 2-D pattern, while to consider similarity between two pattern we evaluate the hamming distance between their linear representation. 
 
-With CA based pattern representation, population of prey species with a specific CA pattern can be grouped as one single species. And by restricting inter species reproduction we can control the diversity of patterns. But there is mutation applied when similar species mate with each other, so new species do born out of generations of existing species. So that is why we have two separate mutation rate while reproducing prey species. One being the ``Pattern Mutation Rate" (default values are mentioned in table \ref{tab:prey-control-parameters}) with which we control mutation of the first 8 bits of the genome while the ``Genome Mutation Rate" is used to control mutation of rest of the 9 bit genome (table \ref{tab:prey-genome}). Similar efforts of multiple mutation rate at varying location has been used in developing Echo as mentioned in section \ref{subsec:echo} \cite{hraber1997}.
+With CA based pattern representation, population of prey species with a specific CA pattern can be grouped as one single species. And by restricting inter species reproduction we can control the diversity of patterns. But there is mutation applied when similar species mate with each other, so new species do born out of generations of existing species. So that is why we have two separate mutation rate while reproducing prey species. One being the ``Pattern Mutation Rate" (default values are mentioned in table \ref{tab:prey-control-parameters}) with which we control mutation of the first 8 bits of the genome while the ``Genome Mutation Rate" is used to control mutation of rest of the 9 bit genome (table \ref{tab:prey-genome}). Similar efforts of multiple mutation rate at varying location has been used in developing Echo as mentioned in section \ref{subsubsec:echo} \cite{hraber1997}.
 
 \subsubsection{Genome}
-The Genome of the prey species consists of 17 bits as presented in table \ref{tab:prey-genome}. The first eight bits represent the rule, which is used to generate Cellular Automata pattern. The next two bits are used to represent palatability of the organism explained detail in section \ref{sec:genetic-palatability-representation}. The next six bits is the magnitude of the force with which mobility of the organism is calculated. The 17th bit is used to evaluate reproduction capability of the organism, depending on which the prey species is either capable or not capable to participate in reproduction.
+The Genome of the prey species consists of 17 bits as presented in table \ref{tab:prey-genome}. The first eight bits represent the rule, which is used to generate Cellular Automata pattern. The next two bits are used to represent palatability of the organism explained detail in section \ref{subsubsec:genetic-palatability-representation}. The next six bits is the magnitude of the force with which mobility of the organism is calculated. The 17th bit is used to evaluate reproduction capability of the organism, depending on which the prey species is either capable or not capable to participate in reproduction.
 
 \begin{table}[H]
 \centering
+\setlength\tabcolsep{2pt}
 \begin{tabular}{|c|c|c|c|}
 	\hline
 		\textbf{Pattern(8)} & \textbf{Palatability(2)} & \textbf{Mobility(6)} & \textbf{Reproduction(1)} \\ \hline
@@ -538,14 +535,14 @@ The Genome of the prey species consists of 17 bits as presented in table \ref{ta
 \end{table}
 
 \subsubsection{Reflection of punctuated equilibrium}
-\label{subsec:reflection-of-punctuated-equilibrium}
-Punctuated equilibrium has been defined in section \ref{sec:evolutionary-dynamics-of-mimicry} as the evolutionary process that is more inclined to cladogenesis instead of gradualism. Also Turner \cite{turner1988} emphasizes on punctuated equilibrium to describe the evolution of mimicry instead of phyletic gradualism. The design of the model under discussion also follows Turner's explanation in terms of evolving mimicry. As it can be observed, new CA patterns evolve from existing ones in prey population just by a single mutation in the pattern gene. Mimics do not follow a gradual process of evolution to look close to models but rather the change happens randomly through a single step mutation. The mutations that are favored, helps the mimics to survive while the unfavored ones fail to persist. It can be observed later in table \ref{tab:diff-in-pattern} how CA patterns of prey species can have vastly different configuration for a unit change in their representative gene. 
+\label{subsubsec:reflection-of-punctuated-equilibrium}
+Punctuated equilibrium has been defined in section \ref{subsec:evolutionary-dynamics-of-mimicry} as the evolutionary process that is more inclined to cladogenesis instead of gradualism. Also Turner \cite{turner1988} emphasizes on punctuated equilibrium to describe the evolution of mimicry instead of phyletic gradualism. The design of the model under discussion also follows Turner's explanation in terms of evolving mimicry. As it can be observed, new CA patterns evolve from existing ones in prey population just by a single mutation in the pattern gene. Mimics do not follow a gradual process of evolution to look close to models but rather the change happens randomly through a single step mutation. The mutations that are favored, helps the mimics to survive while the unfavored ones fail to persist. It can be observed later in table \ref{tab:diff-in-pattern} how CA patterns of prey species can have vastly different configuration for a unit change in their representative gene. 
 
 \subsubsection{Genetic representation of palatability}
-\label{sec:genetic-palatability-representation}
+\label{subsubsec:genetic-palatability-representation}
 The palatability of each prey species is fixed and has been represented with 2 bits of the genome giving it a range of 0 to 3 with four levels of palatability. The combinations are as follows:
 
-\begin{table}[H]
+\begin{table}[h]
 	\centering
 	\begin{tabular}{|c|c|}
 		\hline
@@ -584,7 +581,7 @@ The mobility genes of the prey consist of 6 bits. These six bits are used to cal
 \paragraph{Reproduction}
 Every prey species starts reproducing when it reaches the \textsl{``Reproductive age limit"}. If it is capable of reproducing, which is decided based on its 17th bit gene, the prey will randomly select another prey species with similar pattern and palatability from the same cell and mate with it. Now the other prey also needs to be genetically capable of reproduction and needs to reach its age limit. A new genome is created from the existing genome of the two prey by applying single point crossover operation. Mutation is performed separately on the pattern gene and the rest of the genome, with two different rates to control them using the values in table \ref{tab:prey-control-parameters}. So there is two point mutation for the genome. 
 
-\begin{algorithm}[H]
+\begin{algorithm}[h]
 	\caption{Algorithm for reproduction of the Prey species}
 	\label{algo:algorithm-reproduction-prey}
 	\begin{algorithmic}
@@ -602,9 +599,10 @@ Every prey species starts reproducing when it reaches the \textsl{``Reproductive
 	\end{algorithmic}
 \end{algorithm}
 
-\begin{table}[H]
+\begin{table}[h]
 \centering
-\begin{tabular}{| p{2.2cm} | >{\centering} p{1.5cm} | p{9cm} |}
+\setlength\tabcolsep{2pt}
+\begin{tabular}{| p{2cm} | p{1cm} | p{5cm} |}
 	\hline
 		\textbf{Parameter} & \textbf{Value} & \textbf{Description} \\ \hline
 		Prey Size & 2 to 5 & Size of the prey species in the 3D FormAL  environment.\\ \hline
@@ -728,7 +726,7 @@ As soon as a predator reaches its attack age it selects random prey species arou
 
 In this way the predator memory is limited to \textsl{``Hopfield Maximum Memory Size"}. After reaching this memory predator will not store any more new pattern but will try to associate with the existing ones it has already stored. Algorithm \ref{algo:algorithm-attack-prey} and \ref{algo:algorithm-attemptToKill} explains the process in every detail.
 
-\begin{algorithm}
+\begin{algorithm}[h]
 	\caption{Algorithm for attacking Prey species}
 	\label{algo:algorithm-attack-prey}
 	\begin{algorithmic}
@@ -750,7 +748,7 @@ In this way the predator memory is limited to \textsl{``Hopfield Maximum Memory 
 	\end{algorithmic}
 \end{algorithm}
 
-\begin{algorithm}
+\begin{algorithm}[h]
 	\caption{$attemptToKill(preyToAttack)$}
 	\label{algo:algorithm-attemptToKill}
 	\begin{algorithmic}
@@ -765,7 +763,7 @@ In this way the predator memory is limited to \textsl{``Hopfield Maximum Memory 
 \subsubsection{Genome}
 Each predator has a 5 bits genome as explained in table \ref{tab:predator-genome}. The first 4 bits represent its mobility and magnitude of the force component with which it moves around the environment. The last bit controls reproduction capability of each species.
 
-\begin{table}[H]
+\begin{table}[h]
 \centering
 \begin{tabular}{|c|c|}
 	\hline
@@ -828,7 +826,8 @@ When the above two conditions are met, meaning the predator reaches its age for 
 
 \begin{table}[h!]
 \centering
-\begin{tabular}{| p{2.2cm} | >{\centering} p{2.2cm} | p{8cm} |}
+\setlength\tabcolsep{2pt}
+\begin{tabular}{| p{2cm} | >{\centering} p{1cm} | p{5cm} |}
 	\hline
 		\textbf{Parameter} & \textbf{Value} & \textbf{Description} \\ \hline
 		Minimum Memory Size & 2 to 6 & Minimum number of patterns stored in memory before predators start making intelligent decisions.\\ \hline
@@ -847,7 +846,7 @@ When the above two conditions are met, meaning the predator reaches its age for 
 \end{table}
 
 \subsection{Conclusion}
-This model has been designed from a practical point of view; to come up with efficient results and achieve the main objective, \textit{evolution of mimicry}. Creation and transformation of different mimicry ring and also the dynamics of it has been integrated to achieve interesting results. This model can also be considered as a complex adaptive system similar to Holland's work on Echo \cite{holland1996}. The seven basics of a complex adaptive system which are: Aggregation, Tagging, Nonlinearity, Flow, Diversity, Internal Models and Building blocks \cite{holland1996} are present in this model. Individual components of this model such as the different types of agents and their properties can be considered as \textit{building blocks}. Each prey species are \textit{tagged} with individual pattern and palatability with which predators recognize them. We are providing different properties, behaviors and goals to the agents but setting them free in the environment to observe their \textit{aggregate} behavior, resulting in \textit{non-linear} or unpredictable outcome. The model has its \textit{flow} as it progresses in time. Also there is \textit{diversity} of prey species in the environment (\ref{subsec:species-diversity}).
+This model has been designed from a practical point of view; to come up with efficient results and achieve the main objective, \textit{evolution of mimicry}. Creation and transformation of different mimicry ring and also the dynamics of it has been integrated to achieve interesting results. This model can also be considered as a complex adaptive system similar to Holland's work on Echo \cite{holland1996}. The seven basics of a complex adaptive system which are: Aggregation, Tagging, Nonlinearity, Flow, Diversity, Internal Models and Building blocks \cite{holland1996} are present in this model. Individual components of this model such as the different types of agents and their properties can be considered as \textit{building blocks}. Each prey species are \textit{tagged} with individual pattern and palatability with which predators recognize them. We are providing different properties, behaviors and goals to the agents but setting them free in the environment to observe their \textit{aggregate} behavior, resulting in \textit{non-linear} or unpredictable outcome. The model has its \textit{flow} as it progresses in time. Also there is \textit{diversity} of prey species in the environment (\ref{subsubsec:species-diversity}).
 
 To explain internal model for a complex adaptive system Holland has used specifically the example of evolution of mimicry \cite{holland1996}. He choose to use the term `Internal Model' to refer to the mechanism for anticipation. Predators in this model anticipate the bitter taste of prey, by making intelligent decisions for consuming them. This mechanism for anticipation can be considered as the property of \textit{internal model} for this specific study.
 
@@ -860,9 +859,10 @@ It is always a challenge to extract and analyze data from an Artificial Life sim
 \subsection{Mimicry Ring Reports}
 The mimicry ring reports consist entirely of the population of prey species categorized according to pattern and palatability. Data is stored at every instance of time of the simulation keeping an interval of 10 iterations. As the number of rings that get generated reaches as many as 50 or more, and all the population of ring do not last for the entire simulation, so while storing data we have taken the most populous of the surviving 8 rings to plot. Parameters are mentioned in table \ref{tab:ring-report-control-parameters}.
 
-\begin{table}[H]
+\begin{table}[h]
 \centering
-\begin{tabular}{| p{2cm} | >{\centering} p{2.2cm} | p{8cm} |}
+\setlength\tabcolsep{2pt}
+\begin{tabular}{| p{2cm} | >{\centering} p{1cm} | p{5cm} |}
 	\hline
 		\textbf{Parameter} & \textbf{Value} & \textbf{Description} \\ \hline
 		Mimicry Ring Hamming Distance & 10 \% of the Pattern Size & If the Hamming distance between the pattern of the model and the mimic is 10 \% the size of the pattern then they are considered within the same ring.\\ \hline
@@ -874,11 +874,12 @@ The mimicry ring reports consist entirely of the population of prey species cate
 \end{table}
 
 \subsection{Initial configuration with two prey species}
-\label{sec:init-conf-2prey}
+\label{subsec:init-conf-2prey}
 % Put the table here
-\begin{table}[H]
+\begin{table}[h]
 \centering
-\begin{tabular}{|l|l|c|c|l|c|}
+\setlength\tabcolsep{2pt}
+\begin{tabular}{| p{2cm} | p{1.5cm} | p{1cm} | p{.5cm} | p{1.5cm} | p{.5cm} |}
   \hline
    														&\multicolumn{3}{c|}{Prey configuration} 																	
    														& \multicolumn{2}{c|}{Predator configuration} \\ \hline
@@ -892,7 +893,7 @@ The mimicry ring reports consist entirely of the population of prey species cate
   						 									 & Genome    & \multicolumn{2}{c|}{0.5}  & \multicolumn{2}{c|}{} \\ \hline
   Demise Age	 									 & \multicolumn{3}{c|}{2000}							& \multicolumn{2}{c|}{2500} \\ \hline
   Minimum Attack Age						 & \multicolumn{3}{c|}{} 						    & \multicolumn{2}{c|}{500} \\ \hline
-  \multirow{2}{*}{Memory Configuration} & \multicolumn{3}{c|}{} 					& Minimum & 2 \\ \cline{5-6}
+  \multirow{2}{*}{\parbox{2cm}{Memory Configuration}} & \multicolumn{3}{c|}{} 					& Minimum & 2 \\ \cline{5-6}
    																			& \multicolumn{3}{c|}{} 					& Maximum & 10 \\ \hline  
 \end{tabular}
 \caption{Agent configuration of 2 prey species}
@@ -914,7 +915,7 @@ Now as we know the behavior of Hopfield memory, a recognition result will always
 % Put the image
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.40]{../tex/images/simTime10k-2Prey}
+	\includegraphics[width=0.5\textwidth]{../tex/images/simTime10k-2Prey}
 	\caption[Population distribution of mimicry rings (2 prey species, 10k iterations)]{Population distribution of mimicry rings, initialized with 2 prey species, 10k iterations}
 	\label{fig:plot-2-prey}
 \end{figure}
@@ -923,7 +924,7 @@ The plot in Figure \ref{fig:plot-2-prey} is simulation time verses prey populati
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.40]{../tex/images/simTime5k-2Prey}
+	\includegraphics[width=0.5\textwidth]{../tex/images/simTime5k-2Prey}
 	\caption[Population distribution of mimicry rings (2 prey species, 5k iterations)]{Population distribution of mimicry rings, initialized with 2 prey species, 5k iterations.}
 	\label{fig:plot-2-prey-5k}
 \end{figure}
@@ -935,7 +936,7 @@ We can observe from the above result that the evolution of mimicry has taken eff
 %Put the number of rings picture:
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.50]{../tex/images/ringSize10k-2Prey}
+	\includegraphics[width=0.5\textwidth]{../tex/images/ringSize10k-2Prey}
 	\caption[Number of mimicry rings (2 prey species)]{Number of mimicry rings, initialized with 2 prey species.}
 	\label{fig:ringSize10k-2Prey}
 \end{figure}
@@ -943,7 +944,7 @@ We can observe from the above result that the evolution of mimicry has taken eff
 Observing from figure \ref{fig:ringSize10k-2Prey} the number of rings in this simulation makes a slow increase from 2 at the initial configuration to 27 rings at the end of 10000 iterations. A small change in CA genetic representation can have a very large effect in terms of the phenotype of the pattern with which the prey is represented. For example if we take a look at the set of pattern genotype with very different phenotype in table \ref{tab:diff-in-pattern}.
 
 %CARule table
-\begin{table}[H]
+\begin{table}[h]
 \centering
 \begin{tabular}{|l|c|c|c|}
   \hline
@@ -961,7 +962,7 @@ All the patterns in table \ref{tab:diff-in-pattern} have a genetic bit differenc
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.40]{../tex/images/simTime10k-2Prey-generated-prey}
+	\includegraphics[width=0.5\textwidth]{../tex/images/simTime10k-2Prey-generated-prey}
 	\caption[Population distribution of generated mimicry rings (2 prey species)]{Population distribution of generated mimicry rings, initialized with 2 prey species.}
 	\label{fig:plot-2-prey-generated-prey}
 \end{figure}
@@ -971,17 +972,18 @@ Figure \ref{fig:plot-2-prey-generated-prey} is the same experimental data of fig
 The screen shot in figure \ref{fig:screenshot-simTime7600-2-prey} is for one instance of time of the simulation. The red agents are predators while the black agents with different textured patterns are the prey species. According to their behavior most of the prey species are flocking together in a group while also being chased by the predators, whose sole purpose is to consume prey species. 
 
 %Screenshot of the simulation
-\begin{figure}[H]
+\begin{figure}[h]
 	\centering
 	\label{fig:screenshot-simTime7600-2-prey}
-	\includegraphics[scale=0.55]{../tex/images/simTime7600}
+	\includegraphics[width=0.5\textwidth]{../tex/images/simTime7600}
 	\caption[Graphical representation of the model (simulation time: 7600)]{Graphical representation of the model, simulation time: 7600.}
 \end{figure}
 
 \subsection{Initial configuration with four prey species}
-\begin{table}[H]
+\begin{table}[h]
 \centering
-\begin{tabular}{|l|l|c|c|l|c|}
+\setlength\tabcolsep{2pt}
+\begin{tabular}{| p{2cm} | p{1.5cm} | p{1cm} | p{.5cm} | p{1.5cm} | p{.5cm} |}
   \hline
    														&\multicolumn{3}{c|}{Prey configuration} 																	
    														& \multicolumn{2}{c|}{Predator configuration} \\ \hline
@@ -999,32 +1001,32 @@ The screen shot in figure \ref{fig:screenshot-simTime7600-2-prey} is for one ins
   						 									 & Genome    & \multicolumn{2}{c|}{0.5}  & \multicolumn{2}{c|}{} \\ \hline
   Demise Age	 									 & \multicolumn{3}{c|}{2000}							& \multicolumn{2}{c|}{2500} \\ \hline
   Minimum Attack Age						 & \multicolumn{3}{c|}{} 						    & \multicolumn{2}{c|}{500} \\ \hline
-  \multirow{2}{*}{Memory Configuration} & \multicolumn{3}{c|}{} 					& Minimum & 4 \\ \cline{5-6}
+  \multirow{2}{*}{\parbox{2cm}{Memory Configuration}} & \multicolumn{3}{c|}{} 					& Minimum & 4 \\ \cline{5-6}
    																			& \multicolumn{3}{c|}{} 					& Maximum & 10 \\ \hline  
 \end{tabular}
 \caption{Agent configuration of 4 prey species}
 \label{tab:config-table-4-prey}
 \end{table}
 
-This run of the simulation has been initialized with four prey species with very different CA pattern configuration. The predator reproduction interval has been increased to 1400, while the minimum memory size has been increased to 4 instead of 2 as the predator is expected to memorize four different species of prey before starting to make intelligent decision about consuming them. The rest of the parameters remain the same as from the experiment in section \ref{sec:init-conf-2prey}.
+This run of the simulation has been initialized with four prey species with very different CA pattern configuration. The predator reproduction interval has been increased to 1400, while the minimum memory size has been increased to 4 instead of 2 as the predator is expected to memorize four different species of prey before starting to make intelligent decision about consuming them. The rest of the parameters remain the same as from the experiment in section \ref{subsec:init-conf-2prey}.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.40]{../tex/images/simTime10k-4Prey}
+	\includegraphics[width=0.5\textwidth]{../tex/images/simTime10k-4Prey}
 	\caption[Population distribution of mimicry rings (4 prey species)]{Population distribution of mimicry rings, initialized with 4 prey species.}
 	\label{fig:plot-4-prey}
 \end{figure}
 
 By observing the graph in figure \ref{fig:plot-4-prey} we can see the two rings of unpalatable species (CA Rule 55, 110) which was put at the initial state of the simulation has dominated after 10000 iterations. CA rule 55 has taken over all other species while CA 110 is following it (represented with dotted curve). Also the palatable prey species with similar patterns to CA rule 55 and 110 are taking full advantage of their deceiving pattern and increasing their population (represented with line curve). The two palatable set of patterns CA Rule 190 and 30 are unable to dominate the population. Different other mimicry rings are present in the simulation as we can observe from the graph of number of rings verses simulation time in figure \ref{fig:ringSize10k-4Prey}. The total number of rings reached somewhere near 37 while most of them have comparatively low representative population. Batesian mimicry is in full effect in this simulated environment.
 
-\begin{figure}[H]
+\begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.50]{../tex/images/ringSize10k-4Prey}
+	\includegraphics[width=0.5\textwidth]{../tex/images/ringSize10k-4Prey}
 	\caption[Number of mimicry rings (4 prey species)]{Number of mimicry rings, initialized with 4 prey species.}
 	\label{fig:ringSize10k-4Prey}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[h]
 	\centering
 	\label{fig:screenshot-simTime11K-4Prey}
 	\includegraphics[scale=0.55]{../tex/images/simTime11K-4Prey}
@@ -1033,9 +1035,10 @@ By observing the graph in figure \ref{fig:plot-4-prey} we can see the two rings 
 
 \subsection{Increased initial population with four prey species}
 
-\begin{table}[H]
+\begin{table}[h]
 \centering
-\begin{tabular}{|l|l|c|c|l|c|}
+\setlength\tabcolsep{2pt}
+\begin{tabular}{| p{2cm} | p{1.5cm} | p{1cm} | p{.5cm} | p{1.5cm} | p{.5cm} |}
   \hline
    														&\multicolumn{3}{c|}{Prey configuration} 																	
    														& \multicolumn{2}{c|}{Predator configuration} \\ \hline
@@ -1049,7 +1052,7 @@ By observing the graph in figure \ref{fig:plot-4-prey} we can see the two rings 
   						 									 & Genome    & \multicolumn{2}{c|}{0.5}  & \multicolumn{2}{c|}{} \\ \hline
   Demise Age	 									 & \multicolumn{3}{c|}{2000}							& \multicolumn{2}{c|}{7000} \\ \hline
   Minimum Attack Age						 & \multicolumn{3}{c|}{} 						    & \multicolumn{2}{c|}{500} \\ \hline
-  \multirow{2}{*}{Memory Configuration} & \multicolumn{3}{c|}{} 					& Minimum & 4 \\ \cline{5-6}
+  \multirow{2}{*}{\parbox{2cm}{Memory Configuration}} & \multicolumn{3}{c|}{} 					& Minimum & 4 \\ \cline{5-6}
    																			& \multicolumn{3}{c|}{} 					& Maximum & 10 \\ \hline  
 \end{tabular}
 \caption{Agent configuration of 4 prey species with increased population}
@@ -1060,7 +1063,7 @@ In this run of the simulation some significant parameters have been updated. Fir
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.45]{../tex/images/simTime10K-4MorePrey}
+	\includegraphics[width=0.5\textwidth]{../tex/images/simTime10K-4MorePrey}
 	\caption[Population distribution of mimicry rings (4 prey species, increased population)]{Population distribution of mimicry rings, initialized with 4 prey species with increased population.}
 	\label{fig:plot-4-more-prey}
 \end{figure}
@@ -1071,16 +1074,17 @@ The total number of rings have increased much in this run compared to the previo
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.40]{../tex/images/ringSize10k-4MorePrey}
+	\includegraphics[width=0.5\textwidth]{../tex/images/ringSize10k-4MorePrey}
 	\caption[Number of mimicry rings (4 prey species, increased population)]{Number of mimicry rings, initialized with 4 prey species with increased population.}
 	\label{fig:ringSize10k-4MorePrey}
 \end{figure}
 
 \subsection{Initial population with six prey species}
-\label{sec:init-conf-6-prey}
-\begin{table}[H]
+\label{subsec:init-conf-6-prey}
+\begin{table}[h]
 \centering
-\begin{tabular}{|l|l|c|c|l|c|}
+\setlength\tabcolsep{2pt}
+\begin{tabular}{| p{2cm} | p{1.5cm} | p{1cm} | p{.5cm} | p{1.5cm} | p{.5cm} |}
   \hline
    														&\multicolumn{3}{c|}{Prey configuration} 																	
    														& \multicolumn{2}{c|}{Predator configuration} \\ \hline
@@ -1101,7 +1105,7 @@ The total number of rings have increased much in this run compared to the previo
   						 									 & Genome    & \multicolumn{2}{c|}{0.5}  & \multicolumn{2}{c|}{} \\ \hline
   Demise Age	 									 & \multicolumn{3}{c|}{2000}							& \multicolumn{2}{c|}{7000} \\ \hline
   Minimum Attack Age						 & \multicolumn{3}{c|}{} 						    & \multicolumn{2}{c|}{500} \\ \hline
-  \multirow{2}{*}{Memory Configuration} & \multicolumn{3}{c|}{} 					& Minimum & 6 \\ \cline{5-6}
+  \multirow{2}{*}{\parbox{2cm}{Memory Configuration}} & \multicolumn{3}{c|}{} 					& Minimum & 6 \\ \cline{5-6}
    																			& \multicolumn{3}{c|}{} 					& Maximum & 10 \\ \hline  
 \end{tabular}
 \caption{Agent configuration of 6 prey species.}
@@ -1112,25 +1116,26 @@ To evaluate the simulation at a more complex level we increase the prey populati
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.45]{../tex/images/simTime10k-6Prey}
+	\includegraphics[width=0.5\textwidth]{../tex/images/simTime10k-6Prey}
 	\caption[Population distribution of mimicry rings (6 prey species)]{Population distribution of mimicry rings, initialized with 6 prey species.}
 	\label{fig:plot-6-prey}
 \end{figure}
 
-With the above set of parameters we receive the plot of figure \ref{fig:plot-6-prey}. An enormous diversity of species can be observed from this experiment. In addition to the six prey species with which the simulation starts, the total number of mimicry rings reach nearly 50. Observing the top 8 as presented in the plot of figure \ref{fig:plot-6-prey}, effects of Batesian mimicry is obvious. Unpalatable CA Rule 190 and 30 dominates the population. Similarly unpalatable CA Rule 105 is also dominant. But after 10000 iterations CA Rule 55 seems to have higher population than 105 even though 55 is a \textsl{palatable} set of species. This anomaly could be the reason for storing large number of patterns in the predator Hopfiled memory. As we know that the number of patterns stored in Hopfiled network is inversely proportional to its recognition rate. In this simulation memory size is controlled by the `Maximum Memory Configuration' which is set to 10 in table \ref{tab:config-table-6-prey}. In this experiment, the value of `Minimum Memory Configuration' is 6, which is rather a large number. So there could be possibility of wrong recognition by Hopfield memory. Then again this phenomenon is common if we consider behavior of predators in nature. It is definitely hard for a single predator to memorize multiple poisonous patterns and because of which Mullerian mimicry takes an effect as mentioned in section \ref{sec:mullerian-mimicry}.
+With the above set of parameters we receive the plot of figure \ref{fig:plot-6-prey}. An enormous diversity of species can be observed from this experiment. In addition to the six prey species with which the simulation starts, the total number of mimicry rings reach nearly 50. Observing the top 8 as presented in the plot of figure \ref{fig:plot-6-prey}, effects of Batesian mimicry is obvious. Unpalatable CA Rule 190 and 30 dominates the population. Similarly unpalatable CA Rule 105 is also dominant. But after 10000 iterations CA Rule 55 seems to have higher population than 105 even though 55 is a \textsl{palatable} set of species. This anomaly could be the reason for storing large number of patterns in the predator Hopfiled memory. As we know that the number of patterns stored in Hopfiled network is inversely proportional to its recognition rate. In this simulation memory size is controlled by the `Maximum Memory Configuration' which is set to 10 in table \ref{tab:config-table-6-prey}. In this experiment, the value of `Minimum Memory Configuration' is 6, which is rather a large number. So there could be possibility of wrong recognition by Hopfield memory. Then again this phenomenon is common if we consider behavior of predators in nature. It is definitely hard for a single predator to memorize multiple poisonous patterns and because of which Mullerian mimicry takes an effect as mentioned in section \ref{subsec:mullerian-mimicry}.
 
-\begin{figure}[H]
+\begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.50]{../tex/images/ringSize10k-6Prey}
+	\includegraphics[width=0.5\textwidth]{../tex/images/ringSize10k-6Prey}
 	\caption[Number of mimicry rings (6 prey species)]{Number of mimicry rings, initialized with 6 prey species.}
 	\label{fig:ringSize10k-6-Prey}
 \end{figure}
 
 \subsection{Initial configuration with only unpalatable species}
-\label{sec:init-conf-only-unp}
-\begin{table}[H]
+\label{subsec:init-conf-only-unp}
+\begin{table}[h]
 \centering
-\begin{tabular}{|l|l|c|c|l|c|}
+\setlength\tabcolsep{2pt}
+\begin{tabular}{| p{2cm} | p{1.5cm} | p{1cm} | p{.5cm} | p{1.5cm} | p{.5cm} |}
   \hline
    														&\multicolumn{3}{c|}{Prey configuration} 																	
    														& \multicolumn{2}{c|}{Predator configuration} \\ \hline
@@ -1147,18 +1152,18 @@ With the above set of parameters we receive the plot of figure \ref{fig:plot-6-p
   						 									 & Genome    & \multicolumn{2}{c|}{0.5}  & \multicolumn{2}{c|}{} \\ \hline
   Demise Age	 									 & \multicolumn{3}{c|}{2000}							& \multicolumn{2}{c|}{5000} \\ \hline
   Minimum Attack Age						 & \multicolumn{3}{c|}{} 						    & \multicolumn{2}{c|}{500} \\ \hline
-  \multirow{2}{*}{Memory Configuration} & \multicolumn{3}{c|}{} 					& Minimum & 4 \\ \cline{5-6}
+  \multirow{2}{*}{\parbox{2cm}{Memory Configuration}} & \multicolumn{3}{c|}{} 					& Minimum & 4 \\ \cline{5-6}
    																			& \multicolumn{3}{c|}{} 					& Maximum & 10 \\ \hline  
 \end{tabular}
 \caption{Agent configuration of 4 prey species all unpalatable.}
 \label{tab:config-table-4-prey-unpalatable}
 \end{table}
 
-To further observe the effects of mimicry ring we initialize the simulation with all unpalatable prey species. After finding different anomalous behavior of predator recognition capability in section \ref{sec:init-conf-6-prey} for increased number of diverse prey species; for this experiment the initial number of species have been reduced from six to four. As explained earlier the minimum memory configuration is also set to four in accordance to the initial number of prey species. Rest of the parameters remain quite unchanged.
+To further observe the effects of mimicry ring we initialize the simulation with all unpalatable prey species. After finding different anomalous behavior of predator recognition capability in section \ref{subsec:init-conf-6-prey} for increased number of diverse prey species; for this experiment the initial number of species have been reduced from six to four. As explained earlier the minimum memory configuration is also set to four in accordance to the initial number of prey species. Rest of the parameters remain quite unchanged.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.45]{../tex/images/simTime8k-4Prey-unp}
+	\includegraphics[width=0.5\textwidth]{../tex/images/simTime8k-4Prey-unp}
 	\caption[Population distribution of mimicry rings(4 prey species all unpalatable)]{Population distribution of mimicry rings, initialized with 4 prey species all unpalatable.}
 	\label{fig:plot-4-prey-unp}
 \end{figure}
@@ -1167,16 +1172,16 @@ The results according to figure \ref{fig:plot-4-prey-unp} are much expected. The
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.50]{../tex/images/ringSize8k-4Prey-unp}
+	\includegraphics[width=0.5\textwidth]{../tex/images/ringSize8k-4Prey-unp}
 	\caption[Number of mimicry rings (4 prey species all unpalatable)]{Number of mimicry rings, initialized with 4 prey species all unpalatable.}
 	\label{fig:ringSize10k-4-Prey-unp}
 \end{figure}
 
-This experiment is an ideal scenario for observing Mullerian mimicry. As mentioned in section \ref{sec:mullerian-mimicry}, Mullerian mimicry occurs between multiple species of unpalatable prey population. From the second work of Franks and Noble \cite{franks2003} mentioned in section \ref{subsec:models-by-frank-and-noble}, we note that multiple Mullerian mimicry rings are expected to converge into one large ring through the evolutionary process of punctuated equilibrium. But in this experiment as the predator's `Minimum Memory Configuration' is set to four, all predators have the capability to recognize four prey patterns before starting to make intelligent decision of consuming them. By setting `Minimum Memory Configuration' to one, also increasing `Predator Demise Age' to 7000 and decreasing predator's `Reproduction Age Interval' to 1500, we get the following plot. 
+This experiment is an ideal scenario for observing Mullerian mimicry. As mentioned in section \ref{subsec:mullerian-mimicry}, Mullerian mimicry occurs between multiple species of unpalatable prey population. From the second work of Franks and Noble \cite{franks2003} mentioned in section \ref{subsubsec:models-by-frank-and-noble}, we note that multiple Mullerian mimicry rings are expected to converge into one large ring through the evolutionary process of punctuated equilibrium. But in this experiment as the predator's `Minimum Memory Configuration' is set to four, all predators have the capability to recognize four prey patterns before starting to make intelligent decision of consuming them. By setting `Minimum Memory Configuration' to one, also increasing `Predator Demise Age' to 7000 and decreasing predator's `Reproduction Age Interval' to 1500, we get the following plot. 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.45]{../tex/images/simTime6k-4Prey-unp-1-mem}
+	\includegraphics[width=0.5\textwidth]{../tex/images/simTime6k-4Prey-unp-1-mem}
 	\caption[Population distribution of mimicry rings(4 prey, all unpalatable but reduced predator memory)]{Population distribution of mimicry rings, initialized with 4 prey species all unpalatable. Minimum Memory size reduced to one.}
 	\label{fig:plot-4-prey-unp-1-mem}
 \end{figure}
@@ -1184,11 +1189,12 @@ This experiment is an ideal scenario for observing Mullerian mimicry. As mention
 Running the simulation for 6000 iterations there was no sign for all prey population to converge into one large ring. As it can be observed in figure \ref{fig:plot-4-prey-unp-1-mem} all four unpalatable prey population have a very dominant presence in the simulation. Even though predator minimum memory has been reduced to only one pattern, different population of predators become familiar with different prey patterns, which results in the existence of multiple Mullerian mimicry ring instead of a single one.
 
 \subsection{Initial configuration with only palatable species}
-\label{sec:init-only-palatable-species}
+\label{subsec:init-only-palatable-species}
 
-\begin{table}[H]
+\begin{table}[h]
 \centering
-\begin{tabular}{|l|l|c|c|l|c|}
+\setlength\tabcolsep{2pt}
+\begin{tabular}{| p{2cm} | p{1.5cm} | p{1cm} | p{.5cm} | p{1.5cm} | p{.5cm} |}
   \hline
    														&\multicolumn{3}{c|}{Prey configuration} 																	
    														& \multicolumn{2}{c|}{Predator configuration} \\ \hline
@@ -1205,7 +1211,7 @@ Running the simulation for 6000 iterations there was no sign for all prey popula
   						 									 & Genome    & \multicolumn{2}{c|}{0.5}  & \multicolumn{2}{c|}{} \\ \hline
   Demise Age	 									 & \multicolumn{3}{c|}{2000}							& \multicolumn{2}{c|}{5000} \\ \hline
   Minimum Attack Age						 & \multicolumn{3}{c|}{} 						    & \multicolumn{2}{c|}{500} \\ \hline
-  \multirow{2}{*}{Memory Configuration} & \multicolumn{3}{c|}{} 					& Minimum & 4 \\ \cline{5-6}
+  \multirow{2}{*}{\parbox{2cm}{Memory Configuration}} & \multicolumn{3}{c|}{} 					& Minimum & 4 \\ \cline{5-6}
    																			& \multicolumn{3}{c|}{} 					& Maximum & 10 \\ \hline  
 \end{tabular}
 \caption{Agent configuration of 4 prey species all palatable.}
@@ -1218,14 +1224,14 @@ The results for the configuration in table \ref{tab:config-table-4-prey-palatabl
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.40]{../tex/images/simTime10k-4Prey-p}
+	\includegraphics[width=0.5\textwidth]{../tex/images/simTime10k-4Prey-p}
 	\caption[Population distribution of mimicry rings (4 prey species all palatable)]{Population distribution of mimicry rings, initialized with 4 prey species all palatable.}
 	\label{fig:plot-4-prey-p}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.50]{../tex/images/ringSize10k-4Prey-p}
+	\includegraphics[width=0.5\textwidth]{../tex/images/ringSize10k-4Prey-p}
 	\caption[Number of mimicry rings (4 prey species all palatable)]{Number of mimicry rings, initialized with 4 prey species all palatable.}
 	\label{fig:ringSize8k-4-Prey-p}
 \end{figure}
@@ -1236,11 +1242,12 @@ Observation of mimicry rings also tell us about the results we have seen in the 
 Until now all experiments have been initialized with multiple prey species. The following set of experiments have been initialized with only a single prey species, for both cases of unpalatable and palatable.
 
 \subsubsection{Unpalatable}
-\label{subsec:single-prey-unpalatable}
+\label{subsubsec:single-prey-unpalatable}
 
-\begin{table}[H]
+\begin{table}[h]
 \centering
-\begin{tabular}{|l|l|c|c|l|c|}
+\setlength\tabcolsep{2pt}
+\begin{tabular}{| p{2cm} | p{1.5cm} | p{1cm} | p{.5cm} | p{1.5cm} | p{.5cm} |}
   \hline
    														&\multicolumn{3}{c|}{Prey configuration} 																	
    														& \multicolumn{2}{c|}{Predator configuration} \\ \hline
@@ -1252,7 +1259,7 @@ Until now all experiments have been initialized with multiple prey species. The 
   						 									 & Genome    & \multicolumn{2}{c|}{0.5}  & \multicolumn{2}{c|}{} \\ \hline
   Demise Age	 									 & \multicolumn{3}{c|}{2000}							& \multicolumn{2}{c|}{7000} \\ \hline
   Minimum Attack Age						 & \multicolumn{3}{c|}{} 						    & \multicolumn{2}{c|}{500} \\ \hline
-  \multirow{2}{*}{Memory Configuration} & \multicolumn{3}{c|}{} 					& Minimum & 2 \\ \cline{5-6}
+  \multirow{2}{*}{\parbox{2cm}{Memory Configuration}} & \multicolumn{3}{c|}{} 					& Minimum & 2 \\ \cline{5-6}
    																			& \multicolumn{3}{c|}{} 					& Maximum & 10 \\ \hline  
 \end{tabular}
 \caption{Agent configuration of 1 prey species unpalatable.}
@@ -1263,7 +1270,7 @@ This configuration has only one unpalatable species, one in each of the 216 cell
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.40]{../tex/images/simTime8k-1Prey-unp}
+	\includegraphics[width=0.5\textwidth]{../tex/images/simTime8k-1Prey-unp}
 	\caption[Population distribution of mimicry rings (1 prey species unpalatable)]{Population distribution of mimicry rings, initialized with 1 prey species unpalatable.}
 	\label{fig:plot-1-prey-unp}
 \end{figure}
@@ -1272,15 +1279,16 @@ From figure \ref{fig:plot-1-prey-unp}, it can be observed, the initial set of un
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.50]{../tex/images/ringSize8k-1Prey-unp}
+	\includegraphics[width=0.5\textwidth]{../tex/images/ringSize8k-1Prey-unp}
 	\caption[Number of mimicry rings (1 prey species unpalatable)]{Number of mimicry rings, initialized with 1 prey species unpalatable.}
 	\label{fig:ringSize8k-1-Prey-unp}
 \end{figure}
 
 \subsubsection{Palatable}
-\begin{table}[H]
+\begin{table}[h]
 \centering
-\begin{tabular}{|l|l|c|c|l|c|}
+\setlength\tabcolsep{2pt}
+\begin{tabular}{| p{2cm} | p{1.5cm} | p{1cm} | p{.5cm} | p{1.5cm} | p{.5cm} |}
   \hline
    														&\multicolumn{3}{c|}{Prey configuration} 																	
    														& \multicolumn{2}{c|}{Predator configuration} \\ \hline
@@ -1292,42 +1300,42 @@ From figure \ref{fig:plot-1-prey-unp}, it can be observed, the initial set of un
   						 									 & Genome    & \multicolumn{2}{c|}{0.5}  & \multicolumn{2}{c|}{} \\ \hline
   Demise Age	 									 & \multicolumn{3}{c|}{2000}							& \multicolumn{2}{c|}{7000} \\ \hline
   Minimum Attack Age						 & \multicolumn{3}{c|}{} 						    & \multicolumn{2}{c|}{500} \\ \hline
-  \multirow{2}{*}{Memory Configuration} & \multicolumn{3}{c|}{} 					& Minimum & 2 \\ \cline{5-6}
+  \multirow{2}{*}{\parbox{2cm}{Memory Configuration}} & \multicolumn{3}{c|}{} 					& Minimum & 2 \\ \cline{5-6}
    																			& \multicolumn{3}{c|}{} 					& Maximum & 10 \\ \hline  
 \end{tabular}
 \caption{Agent configuration of 1 prey species palatable.}
 \label{tab:config-table-1-prey-palatable}
 \end{table}
 
-This configuration is set exactly as according to section \ref{subsec:single-prey-unpalatable} but with a single set of palatable species. The population of predators have been reduced from 10 to 8 to avoid elimination of all prey species as it happened in case of section \ref{sec:init-only-palatable-species}.
+This configuration is set exactly as according to section \ref{subsubsec:single-prey-unpalatable} but with a single set of palatable species. The population of predators have been reduced from 10 to 8 to avoid elimination of all prey species as it happened in case of section \ref{subsec:init-only-palatable-species}.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.45]{../tex/images/simTime10k-1Prey-p}
+	\includegraphics[width=0.5\textwidth]{../tex/images/simTime10k-1Prey-p}
 	\caption[Population distribution of mimicry rings (1 prey species palatable)]{Population distribution of mimicry rings, initialized with 1 prey species palatable.}
 	\label{fig:plot-1-prey-p}
 \end{figure}
 
-From the initial palatable population we see a bunch of palatable rings created. Major difference from section \ref{subsec:single-prey-unpalatable} is the total number of prey population created. For the unpalatable species in section \ref{subsec:single-prey-unpalatable}, total prey population reach above 12 thousand. But for palatable species total population reach nearly above 5000 prey species, as when the preys are palatable there is more consumption from predators. 
+From the initial palatable population we see a bunch of palatable rings created. Major difference from section \ref{subsubsec:single-prey-unpalatable} is the total number of prey population created. For the unpalatable species in section \ref{subsubsec:single-prey-unpalatable}, total prey population reach above 12 thousand. But for palatable species total population reach nearly above 5000 prey species, as when the preys are palatable there is more consumption from predators. 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.50]{../tex/images/ringSize10k-1Prey-p}
+	\includegraphics[width=0.5\textwidth]{../tex/images/ringSize10k-1Prey-p}
 	\caption[Number of mimicry rings (1 palatable prey species)]{Number of mimicry rings, initialized with 1 palatable prey species.}
 	\label{fig:ringSize8k-1-Prey-p}
 \end{figure}
 
 \subsection{Analysis of Batesian Mimicry}
-\label{sec:result-batesian-mimicry}
-For all possible initial conditions, Batesian mimicry has taken effect. It can be observed that for every ring of unpalatable species there is an existence of the palatable ring racing to reach the population count of its unpalatable counterpart. Also when the initial population starts with a set of only palatable species we can observe that the total population vanishes within very short period of time (section \ref{sec:init-only-palatable-species}). This effect can be explained with the fact that the palatable population does not have any models to mimic, and it reaches extinction. So from this analysis it can be concluded that the model under discussion have successfully simulated the evolution of Batesian mimicry.
+\label{subsec:result-batesian-mimicry}
+For all possible initial conditions, Batesian mimicry has taken effect. It can be observed that for every ring of unpalatable species there is an existence of the palatable ring racing to reach the population count of its unpalatable counterpart. Also when the initial population starts with a set of only palatable species we can observe that the total population vanishes within very short period of time (section \ref{subsec:init-only-palatable-species}). This effect can be explained with the fact that the palatable population does not have any models to mimic, and it reaches extinction. So from this analysis it can be concluded that the model under discussion have successfully simulated the evolution of Batesian mimicry.
 
 \subsection{Analysis of Mullerian Mimicry}
-\label{sec:result-mullerian-mimicry}
-Effects of Mullerian mimicry can be observed best for the experiment in section \ref{sec:init-conf-only-unp}. For that case, we initialized the model with 4 rings of unpalatable species with no palatable ones and after nearly 10K iterations, all of the initial unpalatable rings have survived with dominance. The cause of this behavior can be explained by the minimum number of patterns that each predator can store in memory, which was set to four. So this parameter was reduced to one to observe whether it is possible to converge all different unpalatable rings into one large ring, when predators are capable to memorizing only a single pattern. But as it turned out, the phenomena of ``a single large ring" does not occur because different predators recognize different patterns resulting in multiple divergent Mullerian mimicry rings. It can be concluded that our results are consistent with those of Franks and Noble (section \ref{subsec:models-by-frank-and-noble}), that multiple Mullerian mimics do not converge into one large ring.
+\label{subsec:result-mullerian-mimicry}
+Effects of Mullerian mimicry can be observed best for the experiment in section \ref{subsec:init-conf-only-unp}. For that case, we initialized the model with 4 rings of unpalatable species with no palatable ones and after nearly 10K iterations, all of the initial unpalatable rings have survived with dominance. The cause of this behavior can be explained by the minimum number of patterns that each predator can store in memory, which was set to four. So this parameter was reduced to one to observe whether it is possible to converge all different unpalatable rings into one large ring, when predators are capable to memorizing only a single pattern. But as it turned out, the phenomena of ``a single large ring" does not occur because different predators recognize different patterns resulting in multiple divergent Mullerian mimicry rings. It can be concluded that our results are consistent with those of Franks and Noble (section \ref{subsubsec:models-by-frank-and-noble}), that multiple Mullerian mimics do not converge into one large ring.
 
 \subsection{Conclusion}
-\label{sec:result-conclusion}
-Analysis of the results tell us that we have successfully been able to simulate the evolution of mimicry. In addition to that, this model provides a more accurate simulation of the fascinating natural process of mimicry rings. Not only does this model simulates mimicry with the initialized population but also it provides possibility of creating diverse new rings and their shift in population. This model also verifies the theory of Turner in explaining the evolution of mimicry with punctuated equilibrium (section \ref{subsec:reflection-of-punctuated-equilibrium}) \cite{turner1988}.
+\label{subsec:result-conclusion}
+Analysis of the results tell us that we have successfully been able to simulate the evolution of mimicry. In addition to that, this model provides a more accurate simulation of the fascinating natural process of mimicry rings. Not only does this model simulates mimicry with the initialized population but also it provides possibility of creating diverse new rings and their shift in population. This model also verifies the theory of Turner in explaining the evolution of mimicry with punctuated equilibrium (section \ref{subsubsec:reflection-of-punctuated-equilibrium}) \cite{turner1988}.
 
 \section{Future Work: Application}
 \label{section:application}
@@ -1340,17 +1348,17 @@ So the kind of problems we should be looking for applying the evolution of mimic
 
 \section{Conclusion}
 \label{section:conclusion}
-If we consider the field of Artificial Life as a tool for biological inquiry then the model presented in this thesis was successful in terms of providing good insight in terms of understanding better the evolutionary process of mimicry as it happens in nature. As mentioned in section \ref{sec:result-conclusion} this model gives us verification of the theory of Turner in explaining the evolution of mimicry with punctuated equilibrium. Also it enforces findings from the work of Franks and Noble that multiple Mullerian mimics do not converge into one large ring.
+If we consider the field of Artificial Life as a tool for biological inquiry then the model presented in this thesis was successful in terms of providing good insight in terms of understanding better the evolutionary process of mimicry as it happens in nature. As mentioned in section \ref{subsec:result-conclusion} this model gives us verification of the theory of Turner in explaining the evolution of mimicry with punctuated equilibrium. Also it enforces findings from the work of Franks and Noble that multiple Mullerian mimics do not converge into one large ring.
 
-If we consider Artificial Life as the study where we simulate natural processes to further extend capabilities in the field of computer science, then also this thesis is a success in making an appropriate emulation of the evolutionary process of mimicry. From the sections of \ref{sec:result-batesian-mimicry} and \ref{sec:result-mullerian-mimicry} we can conclude that the complex behavior of Batesian and Mullerian mimicry can be simulated with this model.
+If we consider Artificial Life as the study where we simulate natural processes to further extend capabilities in the field of computer science, then also this thesis is a success in making an appropriate emulation of the evolutionary process of mimicry. From the sections of \ref{subsec:result-batesian-mimicry} and \ref{subsec:result-mullerian-mimicry} we can conclude that the complex behavior of Batesian and Mullerian mimicry can be simulated with this model.
 
 But considering Artificial Life as a subject where we essentially learn from nature, its behaviors, and use that knowledge to find better solution to existing problems in the field of computer science then this thesis has not been completely successful. We have not been able to find the appropriate problem solving scenario for which the natural process of mimicry can be applied.
 
-Humans came to understand the concept of biological evolution and its significance when it was first proposed by Charles Darwin in 1859 in his book \textsl{On the Origin of Species} \cite{darwin1859}. Nearly 200 years later Alan Turing was the first who thought over creating machines which are capable of evolving itself (Section \ref{subsec:evo-comp-history}). Eventually in 1975 John Holland was able to make the most applicable use of the process of evolution to solve problems in computer science by his invention of Genetic Algorithms. The time for this invention was appropriate as the field of computer science was in its burgeoning state. Over the next couple of decades computers became one of most useful and important machinery in human history. Genetic Algorithms became popular as well because of increased capability of computers in term of speed and complexity.  
+Humans came to understand the concept of biological evolution and its significance when it was first proposed by Charles Darwin in 1859 in his book \textsl{On the Origin of Species} \cite{darwin1859}. Nearly 200 years later Alan Turing was the first who thought over creating machines which are capable of evolving itself (Section \ref{subsubsec:evo-comp-history}). Eventually in 1975 John Holland was able to make the most applicable use of the process of evolution to solve problems in computer science by his invention of Genetic Algorithms. The time for this invention was appropriate as the field of computer science was in its burgeoning state. Over the next couple of decades computers became one of most useful and important machinery in human history. Genetic Algorithms became popular as well because of increased capability of computers in term of speed and complexity.  
 
 Even though we do not have any problem solving application for the evolutionary process of mimicry at this point, it does not imply that this study will not be useful in the future to give us solution to an important problem in computer science or any other field for that matter. The simulation presented in this thesis, itself, consists of building blocks of knowledge such as Hopfield Network and Cellular Automata. Maybe to use mimicry to solve a problem, other diverse building blocks are necessary which has not yet been invented.
 
-The objective of any research is to look for \textsl{unexplored} territory to find new \textsl{knowledge}, \textsl{understanding} or \textsl{explanation}. From the research presented in this thesis we certainly get new \textsl{understanding} of the capability of computer science to emulate natures behavior. We also get to \textsl{explore} a new model for the evolutionary process of  mimicry. In addition to that, the model provides us with better \textsl{explanation} and \textsl{understanding} of nature, while enforcing some existing \textsl{knowledge} with greater support (section \ref{sec:result-mullerian-mimicry}). 
+The objective of any research is to look for \textsl{unexplored} territory to find new \textsl{knowledge}, \textsl{understanding} or \textsl{explanation}. From the research presented in this thesis we certainly get new \textsl{understanding} of the capability of computer science to emulate natures behavior. We also get to \textsl{explore} a new model for the evolutionary process of  mimicry. In addition to that, the model provides us with better \textsl{explanation} and \textsl{understanding} of nature, while enforcing some existing \textsl{knowledge} with greater support (section \ref{subsec:result-mullerian-mimicry}). 
 
 \bibliographystyle{apalike}
 \bibliography{references}
