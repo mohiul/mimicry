@@ -1,6 +1,5 @@
 \documentclass[letterpaper]{article}
 \usepackage{natbib,alifeconf}
-\usepackage{hyperref}
 %Graphics package
 \usepackage{graphicx}
 \DeclareGraphicsExtensions{.png,.jpg,.pdf}
@@ -17,6 +16,18 @@
 %\setcounter{secnumdepth}{3}
 \usepackage{algorithmic}
 \usepackage{algorithm}
+
+%Reformat current date and time
+\usepackage{datetime}
+
+%For hyper referencing
+\usepackage[pdfborder={text},colorlinks={true},linkcolor={black},citecolor={black},urlcolor={black}]{hyperref}
+%In case you use the package hyperref to create a PDF, the links to tables or figures will point to the caption of the table or figure, which is always below the table or figure itself. Therefore the table or figure will not be visible, if it is above the pointer and one has to scroll up in order to see it. If you want the link point to the top of the image you can use the package hypcap with:
+\usepackage[all]{hypcap}
+
+\usepackage[acronym]{glossaries}
+\makeglossaries
+\input{acronym}
 
 \title{Modeling the Evolution of Mimicry}
 \author{Mohiul Islam$^{1}$ \and Peter Grogono$^{1}$ \\
@@ -59,7 +70,7 @@ Section \ref{section:conclusion} is an effort to bring a conclusion to justify t
 \label{section:review}
 \subsection{Introduction}
 
-This chapter contains a discussion on the field of Evolutionary Computing and Artificial Life. Both of these field of computer science are inspired by the process of evolution as it happens in nature. The model presented in this thesis is also based on an evolutionary process existing in nature. This thesis is part of the field of Artificial Life, motivated by the work of Echo \cite{holland1996} and other such simulated Complex Adaptive Systems. In addition to the model discussed in chapter \ref{chapter:model}, this thesis also put some effort in finding application for the evolutionary process of mimicry (chapter \ref{chapter:application}). Similar to evolutionary computation, we intend to apply the deceptive process to solve a problem in computer science.
+This chapter contains a discussion on the field of Evolutionary Computing and Artificial Life. Both of these field of computer science are inspired by the process of evolution as it happens in nature. The model presented in this thesis is also based on an evolutionary process existing in nature. This thesis is part of the field of Artificial Life, motivated by the work of Echo \cite{holland1996} and other such simulated Complex Adaptive Systems. In addition to the model discussed in chapter \ref{section:model}, this thesis also put some effort in finding application for the evolutionary process of mimicry (chapter \ref{section:application}). Similar to evolutionary computation, we intend to apply the deceptive process to solve a problem in computer science.
 
 \subsection{Evolutionary Computation}
 The field of evolutionary computing is the collective name for a range of problem-solving techniques based on principles of biological evolution, such as natural selection and genetic inheritance. 
@@ -238,7 +249,7 @@ In general, the animal which is avoided by predator for unpalatable behavior is 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=1]{images/Batesplate_ArM}
+	\includegraphics[scale=1]{../tex/images/Batesplate_ArM}
 	\caption[Plate from Bates (1862) illustrating Batesian mimicry]{Plate from Bates (1862) illustrating Batesian mimicry between Dismorphia species (top row, third row) and various Ithomiini (Nymphalidae) (second row, bottom row). \cite{bates1862}}
 	\label{fig:batesian-butterfly}
 \end{figure}
@@ -280,7 +291,7 @@ It is worth observing the fact that Mullerian mimicry is not deception, as it is
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.75]{images/BatesMimButter}
+	\includegraphics[scale=0.75]{../tex/images/BatesMimButter}
 	\caption[A very well-known example of mimicry, the viceroy butterfly]{A very well-known example of mimicry is the viceroy butterfly (top) which has a pattern very similar to the unpalatable monarch butterfly (bottom). It was considered for a long time that this is an ideal example of Batesian mimicry. But recently Brower discovered that the viceroy is actually just as noxious as the monarch, making this a case of Mullerian mimicry. \cite{brower1991} Image source: \href{http://en.wikipedia.org/wiki/Mullerian_mimicry}{Wikipedia}}
 	\label{fig:mullerian-butterfly}
 \end{figure}
@@ -301,7 +312,7 @@ On this issue Turner states,
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.5]{images/Punctuated-equilibrium}
+	\includegraphics[scale=0.5]{../tex/images/Punctuated-equilibrium}
 	\caption[Punctuated equilibrium vs. phyletic gradualism]{Punctuated equilibrium, bottom, consists of morphological stability and rare bursts of evolutionary change, while the top explains phyletic gradualism. Image source: \href{http://en.wikipedia.org/wiki/Punctuated_equilibrium}{Wikipedia}}
 	\label{fig:punctuated-equilibrium}
 \end{figure}
@@ -432,8 +443,8 @@ The entire three dimensional toroidal environment is divided in multiple cells. 
 \begin{table}[H]
 \centering
 \begin{tabular}{cc}
-		\multicolumn{2}{c}{ \includegraphics[scale=0.60]{images/cells-front} } \\
-		\includegraphics[scale=0.50]{images/cells-top} & \includegraphics[scale=0.50]{images/cells-side} \\
+		\multicolumn{2}{c}{ \includegraphics[scale=0.60]{../tex/images/cells-front} } \\
+		\includegraphics[scale=0.50]{../tex/images/cells-top} & \includegraphics[scale=0.50]{../tex/images/cells-side} \\
 \end{tabular}
 \caption[Three dimensional representation of the environment]{Three dimensional representation of the environment divided in cells. Presence of different species of agents inside.}
 \label{tab:3-d-environment-images}
@@ -484,7 +495,7 @@ Cellular automata are computer generated patterns applying very simple rules. Fi
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=5]{images/CA_rule30s}
+	\includegraphics[scale=5]{../tex/images/CA_rule30s}
 	\caption[Cellular Automata]{Cellular Automata Rule 30.
 	Image source: \href{http://en.wikipedia.org/wiki/Cellular_automata}{Wikipedia}}
 	\label{fig:cellular-automata-rule-30}
@@ -783,7 +794,7 @@ Movement behavior of a predator is calculated from its genome. The first 4 bits 
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.60]{images/predators-40}
+	\includegraphics[scale=0.60]{../tex/images/predators-40}
 	\caption[A population of predators]{A population of 40 predators distributed over the environment.}
 	\label{fig:predators-40}
 \end{figure}
@@ -871,9 +882,9 @@ The mimicry ring reports consist entirely of the population of prey species cate
   \hline
    														&\multicolumn{3}{c|}{Prey configuration} 																	
    														& \multicolumn{2}{c|}{Predator configuration} \\ \hline
-  \multirow{2}{*}{Population} & Rule110 (Palatable) & \parbox[c]{2.1em}{\includegraphics[scale=0.50]{images/CARule110}} & 108 
+  \multirow{2}{*}{Population} & Rule110 (Palatable) & \parbox[c]{2.1em}{\includegraphics[scale=0.50]{../tex/images/CARule110}} & 108 
   														& \multicolumn{2}{c|}{\multirow{2}{*}{10}} \\ \cline{2-4}
-  					 									& Rule30 (Unpalatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{images/CARule30}}  & 108 
+  					 									& Rule30 (Unpalatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{../tex/images/CARule30}}  & 108 
   					 									& \multicolumn{2}{c|}{}\\ \hline
   \multirow{2}{*}{Reproduction} & Age Limit & \multicolumn{2}{c|}{100}  & \multicolumn{2}{c|}{500} \\ \cline{2-6}
   						 									& Interval  & \multicolumn{2}{c|}{1000} & \multicolumn{2}{c|}{1200} \\ \hline
@@ -903,7 +914,7 @@ Now as we know the behavior of Hopfield memory, a recognition result will always
 % Put the image
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.40]{images/simTime10k-2Prey}
+	\includegraphics[scale=0.40]{../tex/images/simTime10k-2Prey}
 	\caption[Population distribution of mimicry rings (2 prey species, 10k iterations)]{Population distribution of mimicry rings, initialized with 2 prey species, 10k iterations}
 	\label{fig:plot-2-prey}
 \end{figure}
@@ -912,7 +923,7 @@ The plot in Figure \ref{fig:plot-2-prey} is simulation time verses prey populati
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.40]{images/simTime5k-2Prey}
+	\includegraphics[scale=0.40]{../tex/images/simTime5k-2Prey}
 	\caption[Population distribution of mimicry rings (2 prey species, 5k iterations)]{Population distribution of mimicry rings, initialized with 2 prey species, 5k iterations.}
 	\label{fig:plot-2-prey-5k}
 \end{figure}
@@ -924,7 +935,7 @@ We can observe from the above result that the evolution of mimicry has taken eff
 %Put the number of rings picture:
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.50]{images/ringSize10k-2Prey}
+	\includegraphics[scale=0.50]{../tex/images/ringSize10k-2Prey}
 	\caption[Number of mimicry rings (2 prey species)]{Number of mimicry rings, initialized with 2 prey species.}
 	\label{fig:ringSize10k-2Prey}
 \end{figure}
@@ -937,9 +948,9 @@ Observing from figure \ref{fig:ringSize10k-2Prey} the number of rings in this si
 \begin{tabular}{|l|c|c|c|}
   \hline
   CA Rule & \(60 \equiv 00111100\) & \(61 \equiv 00111101\) & \(62 \equiv 00111110 \) \\ \hline
-  Pattern & \parbox[c]{2.1em}{\includegraphics[scale=0.50]{images/CARule60}} 
-  				& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{images/CARule61}} 
-  				& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{images/CARule62}}\\
+  Pattern & \parbox[c]{2.1em}{\includegraphics[scale=0.50]{../tex/images/CARule60}} 
+  				& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{../tex/images/CARule61}} 
+  				& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{../tex/images/CARule62}}\\
   \hline
 \end{tabular}
 \caption{Difference in prey pattern genotype and phenotype}
@@ -950,7 +961,7 @@ All the patterns in table \ref{tab:diff-in-pattern} have a genetic bit differenc
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.40]{images/simTime10k-2Prey-generated-prey}
+	\includegraphics[scale=0.40]{../tex/images/simTime10k-2Prey-generated-prey}
 	\caption[Population distribution of generated mimicry rings (2 prey species)]{Population distribution of generated mimicry rings, initialized with 2 prey species.}
 	\label{fig:plot-2-prey-generated-prey}
 \end{figure}
@@ -963,7 +974,7 @@ The screen shot in figure \ref{fig:screenshot-simTime7600-2-prey} is for one ins
 \begin{figure}[H]
 	\centering
 	\label{fig:screenshot-simTime7600-2-prey}
-	\includegraphics[scale=0.55]{images/simTime7600}
+	\includegraphics[scale=0.55]{../tex/images/simTime7600}
 	\caption[Graphical representation of the model (simulation time: 7600)]{Graphical representation of the model, simulation time: 7600.}
 \end{figure}
 
@@ -974,13 +985,13 @@ The screen shot in figure \ref{fig:screenshot-simTime7600-2-prey} is for one ins
   \hline
    														&\multicolumn{3}{c|}{Prey configuration} 																	
    														& \multicolumn{2}{c|}{Predator configuration} \\ \hline
-  \multirow{4}{*}{Population} & Rule110 (Unpalatable) & \parbox[c]{2.1em}{\includegraphics[scale=0.50]{images/CARule110}} 
+  \multirow{4}{*}{Population} & Rule110 (Unpalatable) & \parbox[c]{2.1em}{\includegraphics[scale=0.50]{../tex/images/CARule110}} 
   																										& 50 & \multicolumn{2}{c|}{\multirow{4}{*}{10}} \\ \cline{2-4}
-  					 									& Rule30 (Palatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{images/CARule30}}
+  					 									& Rule30 (Palatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{../tex/images/CARule30}}
   					 																					& 50 & \multicolumn{2}{c|}{}\\ \cline{2-4}
-  					 									& Rule55 (Unpalatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{images/CARule55}}
+  					 									& Rule55 (Unpalatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{../tex/images/CARule55}}
   					 																					& 50 & \multicolumn{2}{c|}{}\\ \cline{2-4}
-  					 									& Rule190 (Palatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{images/CARule190}}
+  					 									& Rule190 (Palatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{../tex/images/CARule190}}
   					 																					& 50 & \multicolumn{2}{c|}{}\\ \hline
   \multirow{2}{*}{Reproduction} & Age Limit & \multicolumn{2}{c|}{100}  & \multicolumn{2}{c|}{500} \\ \cline{2-6}
   						 									& Interval  & \multicolumn{2}{c|}{1000} & \multicolumn{2}{c|}{1400} \\ \hline
@@ -999,7 +1010,7 @@ This run of the simulation has been initialized with four prey species with very
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.40]{images/simTime10k-4Prey}
+	\includegraphics[scale=0.40]{../tex/images/simTime10k-4Prey}
 	\caption[Population distribution of mimicry rings (4 prey species)]{Population distribution of mimicry rings, initialized with 4 prey species.}
 	\label{fig:plot-4-prey}
 \end{figure}
@@ -1008,7 +1019,7 @@ By observing the graph in figure \ref{fig:plot-4-prey} we can see the two rings 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.50]{images/ringSize10k-4Prey}
+	\includegraphics[scale=0.50]{../tex/images/ringSize10k-4Prey}
 	\caption[Number of mimicry rings (4 prey species)]{Number of mimicry rings, initialized with 4 prey species.}
 	\label{fig:ringSize10k-4Prey}
 \end{figure}
@@ -1016,7 +1027,7 @@ By observing the graph in figure \ref{fig:plot-4-prey} we can see the two rings 
 \begin{figure}[H]
 	\centering
 	\label{fig:screenshot-simTime11K-4Prey}
-	\includegraphics[scale=0.55]{images/simTime11K-4Prey}
+	\includegraphics[scale=0.55]{../tex/images/simTime11K-4Prey}
 	\caption[Graphical representation of the model (simulation time: 11200)]{Graphical representation of the model initialized with 4 prey species, simulation time: 11200.}
 \end{figure}
 
@@ -1028,10 +1039,10 @@ By observing the graph in figure \ref{fig:plot-4-prey} we can see the two rings 
   \hline
    														&\multicolumn{3}{c|}{Prey configuration} 																	
    														& \multicolumn{2}{c|}{Predator configuration} \\ \hline
-  \multirow{4}{*}{Population} & Rule110 (Palatable) & \parbox[c]{2.1em}{\includegraphics[scale=0.50]{images/CARule110}} & 150 & \multicolumn{2}{c|}{\multirow{4}{*}{20}} \\ \cline{2-4}
-  					 									& Rule30 (Palatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{images/CARule30}}  	 & 150 & \multicolumn{2}{c|}{}\\ \cline{2-4}
-  					 									& Rule55 (Unpalatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{images/CARule55}}  & 150 & \multicolumn{2}{c|}{}\\ \cline{2-4}
-  					 									& Rule190 (Unpalatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{images/CARule190}}& 150 & \multicolumn{2}{c|}{}\\ \hline
+  \multirow{4}{*}{Population} & Rule110 (Palatable) & \parbox[c]{2.1em}{\includegraphics[scale=0.50]{../tex/images/CARule110}} & 150 & \multicolumn{2}{c|}{\multirow{4}{*}{20}} \\ \cline{2-4}
+  					 									& Rule30 (Palatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{../tex/images/CARule30}}  	 & 150 & \multicolumn{2}{c|}{}\\ \cline{2-4}
+  					 									& Rule55 (Unpalatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{../tex/images/CARule55}}  & 150 & \multicolumn{2}{c|}{}\\ \cline{2-4}
+  					 									& Rule190 (Unpalatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{../tex/images/CARule190}}& 150 & \multicolumn{2}{c|}{}\\ \hline
   \multirow{2}{*}{Reproduction} & Age Limit & \multicolumn{2}{c|}{100}  & \multicolumn{2}{c|}{500} \\ \cline{2-6}
   						 									& Interval  & \multicolumn{2}{c|}{1000} & \multicolumn{2}{c|}{2500} \\ \hline
   \multirow{2}{*}{Mutation Rate} & Pattern   & \multicolumn{2}{c|}{0.05} & \multicolumn{2}{c|}{\multirow{2}{*}{0.3}} \\ \cline{2-4}
@@ -1049,7 +1060,7 @@ In this run of the simulation some significant parameters have been updated. Fir
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.45]{images/simTime10K-4MorePrey}
+	\includegraphics[scale=0.45]{../tex/images/simTime10K-4MorePrey}
 	\caption[Population distribution of mimicry rings (4 prey species, increased population)]{Population distribution of mimicry rings, initialized with 4 prey species with increased population.}
 	\label{fig:plot-4-more-prey}
 \end{figure}
@@ -1060,7 +1071,7 @@ The total number of rings have increased much in this run compared to the previo
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.40]{images/ringSize10k-4MorePrey}
+	\includegraphics[scale=0.40]{../tex/images/ringSize10k-4MorePrey}
 	\caption[Number of mimicry rings (4 prey species, increased population)]{Number of mimicry rings, initialized with 4 prey species with increased population.}
 	\label{fig:ringSize10k-4MorePrey}
 \end{figure}
@@ -1073,17 +1084,17 @@ The total number of rings have increased much in this run compared to the previo
   \hline
    														&\multicolumn{3}{c|}{Prey configuration} 																	
    														& \multicolumn{2}{c|}{Predator configuration} \\ \hline
-  \multirow{6}{*}{Population} & Rule110 (Palatable) & \parbox[c]{2.1em}{\includegraphics[scale=0.50]{images/CARule110}} 
+  \multirow{6}{*}{Population} & Rule110 (Palatable) & \parbox[c]{2.1em}{\includegraphics[scale=0.50]{../tex/images/CARule110}} 
   																									& 150 & \multicolumn{2}{c|}{\multirow{6}{*}{30}} \\ \cline{2-4}
-  					 									& Rule30  (Unpalatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{images/CARule30}}  
+  					 									& Rule30  (Unpalatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{../tex/images/CARule30}}  
   					 																				& 150 & \multicolumn{2}{c|}{}\\ \cline{2-4}
-  					 									& Rule55  (Palatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{images/CARule55}}    
+  					 									& Rule55  (Palatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{../tex/images/CARule55}}    
   					 																				& 150 & \multicolumn{2}{c|}{}\\ \cline{2-4}
-  					 									& Rule190 (Unpalatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{images/CARule190}} 
+  					 									& Rule190 (Unpalatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{../tex/images/CARule190}} 
   					 																				& 150 & \multicolumn{2}{c|}{}\\ \cline{2-4}
-  					 									& Rule57  (Palatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{images/CARule57}}    
+  					 									& Rule57  (Palatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{../tex/images/CARule57}}    
   					 																				& 150 & \multicolumn{2}{c|}{}\\ \cline{2-4}
-  					 									& Rule105 (Unpalatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{images/CARule105}}& 150 & \multicolumn{2}{c|}{}\\ \hline
+  					 									& Rule105 (Unpalatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{../tex/images/CARule105}}& 150 & \multicolumn{2}{c|}{}\\ \hline
   \multirow{2}{*}{Reproduction} & Age Limit & \multicolumn{2}{c|}{100}  & \multicolumn{2}{c|}{500} \\ \cline{2-6}
   						 									& Interval  & \multicolumn{2}{c|}{1000} & \multicolumn{2}{c|}{2000} \\ \hline
   \multirow{2}{*}{Mutation Rate} & Pattern   & \multicolumn{2}{c|}{0.05} & \multicolumn{2}{c|}{\multirow{2}{*}{0.3}} \\ \cline{2-4}
@@ -1101,7 +1112,7 @@ To evaluate the simulation at a more complex level we increase the prey populati
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.45]{images/simTime10k-6Prey}
+	\includegraphics[scale=0.45]{../tex/images/simTime10k-6Prey}
 	\caption[Population distribution of mimicry rings (6 prey species)]{Population distribution of mimicry rings, initialized with 6 prey species.}
 	\label{fig:plot-6-prey}
 \end{figure}
@@ -1110,7 +1121,7 @@ With the above set of parameters we receive the plot of figure \ref{fig:plot-6-p
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.50]{images/ringSize10k-6Prey}
+	\includegraphics[scale=0.50]{../tex/images/ringSize10k-6Prey}
 	\caption[Number of mimicry rings (6 prey species)]{Number of mimicry rings, initialized with 6 prey species.}
 	\label{fig:ringSize10k-6-Prey}
 \end{figure}
@@ -1123,13 +1134,13 @@ With the above set of parameters we receive the plot of figure \ref{fig:plot-6-p
   \hline
    														&\multicolumn{3}{c|}{Prey configuration} 																	
    														& \multicolumn{2}{c|}{Predator configuration} \\ \hline
-  \multirow{4}{*}{Population} & Rule110 (Unpalatable) & \parbox[c]{2.1em}{\includegraphics[scale=0.50]{images/CARule110}} 
+  \multirow{4}{*}{Population} & Rule110 (Unpalatable) & \parbox[c]{2.1em}{\includegraphics[scale=0.50]{../tex/images/CARule110}} 
   																									& 150 & \multicolumn{2}{c|}{\multirow{4}{*}{20}} \\ \cline{2-4}
-  					 									& Rule30  (Unpalatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{images/CARule30}}  
+  					 									& Rule30  (Unpalatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{../tex/images/CARule30}}  
   					 																				& 150 & \multicolumn{2}{c|}{}\\ \cline{2-4}
-  					 									& Rule55  (Unpalatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{images/CARule55}}    
+  					 									& Rule55  (Unpalatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{../tex/images/CARule55}}    
   					 																				& 150 & \multicolumn{2}{c|}{}\\ \cline{2-4}
-  					 									& Rule190 (Unpalatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{images/CARule190}}& 150 & \multicolumn{2}{c|}{}\\ \hline
+  					 									& Rule190 (Unpalatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{../tex/images/CARule190}}& 150 & \multicolumn{2}{c|}{}\\ \hline
   \multirow{2}{*}{Reproduction} & Age Limit & \multicolumn{2}{c|}{100}  & \multicolumn{2}{c|}{500} \\ \cline{2-6}
   						 									& Interval  & \multicolumn{2}{c|}{1000} & \multicolumn{2}{c|}{2000} \\ \hline
   \multirow{2}{*}{Mutation Rate} & Pattern   & \multicolumn{2}{c|}{0.05} & \multicolumn{2}{c|}{\multirow{2}{*}{0.3}} \\ \cline{2-4}
@@ -1147,7 +1158,7 @@ To further observe the effects of mimicry ring we initialize the simulation with
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.45]{images/simTime8k-4Prey-unp}
+	\includegraphics[scale=0.45]{../tex/images/simTime8k-4Prey-unp}
 	\caption[Population distribution of mimicry rings(4 prey species all unpalatable)]{Population distribution of mimicry rings, initialized with 4 prey species all unpalatable.}
 	\label{fig:plot-4-prey-unp}
 \end{figure}
@@ -1156,7 +1167,7 @@ The results according to figure \ref{fig:plot-4-prey-unp} are much expected. The
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.50]{images/ringSize8k-4Prey-unp}
+	\includegraphics[scale=0.50]{../tex/images/ringSize8k-4Prey-unp}
 	\caption[Number of mimicry rings (4 prey species all unpalatable)]{Number of mimicry rings, initialized with 4 prey species all unpalatable.}
 	\label{fig:ringSize10k-4-Prey-unp}
 \end{figure}
@@ -1165,7 +1176,7 @@ This experiment is an ideal scenario for observing Mullerian mimicry. As mention
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.45]{images/simTime6k-4Prey-unp-1-mem}
+	\includegraphics[scale=0.45]{../tex/images/simTime6k-4Prey-unp-1-mem}
 	\caption[Population distribution of mimicry rings(4 prey, all unpalatable but reduced predator memory)]{Population distribution of mimicry rings, initialized with 4 prey species all unpalatable. Minimum Memory size reduced to one.}
 	\label{fig:plot-4-prey-unp-1-mem}
 \end{figure}
@@ -1181,13 +1192,13 @@ Running the simulation for 6000 iterations there was no sign for all prey popula
   \hline
    														&\multicolumn{3}{c|}{Prey configuration} 																	
    														& \multicolumn{2}{c|}{Predator configuration} \\ \hline
-  \multirow{4}{*}{Population} & Rule110 (Palatable) & \parbox[c]{2.1em}{\includegraphics[scale=0.50]{images/CARule110}} 
+  \multirow{4}{*}{Population} & Rule110 (Palatable) & \parbox[c]{2.1em}{\includegraphics[scale=0.50]{../tex/images/CARule110}} 
   																									& 150 & \multicolumn{2}{c|}{\multirow{4}{*}{20}} \\ \cline{2-4}
-  					 									& Rule30  (Palatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{images/CARule30}}  
+  					 									& Rule30  (Palatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{../tex/images/CARule30}}  
   					 																				& 150 & \multicolumn{2}{c|}{}\\ \cline{2-4}
-  					 									& Rule55  (Palatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{images/CARule55}}    
+  					 									& Rule55  (Palatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{../tex/images/CARule55}}    
   					 																				& 150 & \multicolumn{2}{c|}{}\\ \cline{2-4}
-  					 									& Rule190 (Palatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{images/CARule190}}& 150 & \multicolumn{2}{c|}{}\\ \hline
+  					 									& Rule190 (Palatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{../tex/images/CARule190}}& 150 & \multicolumn{2}{c|}{}\\ \hline
   \multirow{2}{*}{Reproduction} & Age Limit & \multicolumn{2}{c|}{100}  & \multicolumn{2}{c|}{500} \\ \cline{2-6}
   						 									& Interval  & \multicolumn{2}{c|}{1000} & \multicolumn{2}{c|}{2000} \\ \hline
   \multirow{2}{*}{Mutation Rate} & Pattern   & \multicolumn{2}{c|}{0.05} & \multicolumn{2}{c|}{\multirow{2}{*}{0.3}} \\ \cline{2-4}
@@ -1207,14 +1218,14 @@ The results for the configuration in table \ref{tab:config-table-4-prey-palatabl
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.40]{images/simTime10k-4Prey-p}
+	\includegraphics[scale=0.40]{../tex/images/simTime10k-4Prey-p}
 	\caption[Population distribution of mimicry rings (4 prey species all palatable)]{Population distribution of mimicry rings, initialized with 4 prey species all palatable.}
 	\label{fig:plot-4-prey-p}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.50]{images/ringSize10k-4Prey-p}
+	\includegraphics[scale=0.50]{../tex/images/ringSize10k-4Prey-p}
 	\caption[Number of mimicry rings (4 prey species all palatable)]{Number of mimicry rings, initialized with 4 prey species all palatable.}
 	\label{fig:ringSize8k-4-Prey-p}
 \end{figure}
@@ -1233,7 +1244,7 @@ Until now all experiments have been initialized with multiple prey species. The 
   \hline
    														&\multicolumn{3}{c|}{Prey configuration} 																	
    														& \multicolumn{2}{c|}{Predator configuration} \\ \hline
-  Population 									& Rule30 (Unpalatable) & \parbox[c]{2.1em}{\includegraphics[scale=0.50]{images/CARule30}} 
+  Population 									& Rule30 (Unpalatable) & \parbox[c]{2.1em}{\includegraphics[scale=0.50]{../tex/images/CARule30}} 
   																									& 216 & \multicolumn{2}{c|}{10} \\ \hline
   \multirow{2}{*}{Reproduction} & Age Limit & \multicolumn{2}{c|}{100}  & \multicolumn{2}{c|}{500} \\ \cline{2-6}
   						 									& Interval  & \multicolumn{2}{c|}{1000} & \multicolumn{2}{c|}{2500} \\ \hline
@@ -1252,7 +1263,7 @@ This configuration has only one unpalatable species, one in each of the 216 cell
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.40]{images/simTime8k-1Prey-unp}
+	\includegraphics[scale=0.40]{../tex/images/simTime8k-1Prey-unp}
 	\caption[Population distribution of mimicry rings (1 prey species unpalatable)]{Population distribution of mimicry rings, initialized with 1 prey species unpalatable.}
 	\label{fig:plot-1-prey-unp}
 \end{figure}
@@ -1261,7 +1272,7 @@ From figure \ref{fig:plot-1-prey-unp}, it can be observed, the initial set of un
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.50]{images/ringSize8k-1Prey-unp}
+	\includegraphics[scale=0.50]{../tex/images/ringSize8k-1Prey-unp}
 	\caption[Number of mimicry rings (1 prey species unpalatable)]{Number of mimicry rings, initialized with 1 prey species unpalatable.}
 	\label{fig:ringSize8k-1-Prey-unp}
 \end{figure}
@@ -1273,7 +1284,7 @@ From figure \ref{fig:plot-1-prey-unp}, it can be observed, the initial set of un
   \hline
    														&\multicolumn{3}{c|}{Prey configuration} 																	
    														& \multicolumn{2}{c|}{Predator configuration} \\ \hline
-  Population 									& Rule30 (Palatable) & \parbox[c]{2.1em}{\includegraphics[scale=0.50]{images/CARule30}} 
+  Population 									& Rule30 (Palatable) & \parbox[c]{2.1em}{\includegraphics[scale=0.50]{../tex/images/CARule30}} 
   																									& 216 & \multicolumn{2}{c|}{8} \\ \hline
   \multirow{2}{*}{Reproduction} & Age Limit & \multicolumn{2}{c|}{100}  & \multicolumn{2}{c|}{500} \\ \cline{2-6}
   						 									& Interval  & \multicolumn{2}{c|}{1000} & \multicolumn{2}{c|}{2500} \\ \hline
@@ -1292,7 +1303,7 @@ This configuration is set exactly as according to section \ref{subsec:single-pre
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.45]{images/simTime10k-1Prey-p}
+	\includegraphics[scale=0.45]{../tex/images/simTime10k-1Prey-p}
 	\caption[Population distribution of mimicry rings (1 prey species palatable)]{Population distribution of mimicry rings, initialized with 1 prey species palatable.}
 	\label{fig:plot-1-prey-p}
 \end{figure}
@@ -1301,7 +1312,7 @@ From the initial palatable population we see a bunch of palatable rings created.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.50]{images/ringSize10k-1Prey-p}
+	\includegraphics[scale=0.50]{../tex/images/ringSize10k-1Prey-p}
 	\caption[Number of mimicry rings (1 palatable prey species)]{Number of mimicry rings, initialized with 1 palatable prey species.}
 	\label{fig:ringSize8k-1-Prey-p}
 \end{figure}
@@ -1343,5 +1354,8 @@ The objective of any research is to look for \textsl{unexplored} territory to fi
 
 \bibliographystyle{apalike}
 \bibliography{references}
+
+\printglossaries
+\phantomsection \label{acronyms}
 
 \end{document}
