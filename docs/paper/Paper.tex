@@ -48,98 +48,6 @@ A novel agent based, artificial life model, for the evolution of mimicry is pres
 %A few paragraphs are required to bring an appropriate introduction.
 Mimicry is a process of deception. It is an evolutionary process with the help of which organisms survive by deceiving its predator. But this deception happens only if the environment contains similar appearing noxious organisms which the predators find unpalatable. Palatable organisms mimic the unpalatable ones through the process of evolution for survival of its species.
 
-Artificial Life is an interdisciplinary study of life and life-like processes that uses synthetic methodology. This thesis consists of such a work which concentrates specifically on the life-like process of the evolution of mimicry. The synthetic tools used for this simulation is a three dimensional graphical environment, Cellular Automata and Neural Network. 
-
-%Individual chapter descriptions begins from chapter 2
-Section \ref{section:review} is intended to provide background knowledge upon which this thesis is based. It reviews different fields of science where the concept of evolution has been applied to solve complex computer science problems, and achieved better result than other conventional methods. It also discusses the field of Artificial Life which is an inter disciplinary field of science where scientist take concepts from biology, economics and physics to build complex and adaptive models to emulate nature and its life like behavior.
-
-Section \ref{section:mimicry} discusses an inspiration from the field of evolutionary biology which is the primary purpose of building the model of this thesis. Mimicry is an evolutionary process, which not only provides us with insight into the process of evolution as it happens in nature but also is fascinating to study and learn how nature adapts itself in complicated situation for the survival of its species. In addition, this section discusses the different kinds of mimicry such as Batesian and Mullerian, while including how the concept of mimicry ring helps us explain each of these cases. 
-
-Section \ref{section:model} contains description of an agent based artificial life model, which is the primary purpose of this thesis. Inspired by the evolutionary mimetic process we present a model whose purpose is not only to emulate the evolution of mimicry but also to come up with complicated scenario of Batesian and Mullerian mimicry with the help of mimicry ring. This model is based on a FormAL (Formal Artificial Life) framework which is similar to Holland's Echo model but with a slightly different approach. 
-
-Section \ref{section:results} deals with the results extracted from the model and its analysis to evaluate successful emulation of mimicry. The results are extracted by applying different initial conditions to the model. As this work is with complex adaptive system, the data that we extract from such system is also expected to be convoluted. But our effort in this section is to come up with simplified analysis of the data to be able to comprehend complex activities in the model. 
-
-Section \ref{section:application} tries to provide direction for possible future work. The goal of this thesis was not only to come up with a model that emulate natures mimetic process but also to apply this method to solve problems in the field of computer science. This approach is similar to the way evolutionary algorithms and genetic programming help us in optimizing solutions of complicated problems. 
-
-Section \ref{section:conclusion} is an effort to bring a conclusion to justify the work done on this thesis. 
-
-\section{Review}
-\label{section:review}
-\subsection{Introduction}
-
-This section contains a discussion on the field of Evolutionary Computing and Artificial Life. Both of these field of computer science are inspired by the process of evolution as it happens in nature. The model presented in this thesis is also based on an evolutionary process existing in nature. This thesis is part of the field of Artificial Life, motivated by the work of Echo \cite{holland1996} and other such simulated Complex Adaptive Systems. In addition to the model discussed in section \ref{section:model}, this thesis also put some effort in finding application for the evolutionary process of mimicry (section \ref{section:application}). Similar to evolutionary computation, we intend to apply the deceptive process to solve a problem in computer science.
-
-\subsection{Evolutionary Computation}
-The field of evolutionary computing is the collective name for a range of problem-solving techniques based on principles of biological evolution, such as natural selection and genetic inheritance. 
-
-\subsubsection{History}
-\label{subsubsec:evo-comp-history}
-
-\paragraph{Turing(1948)}
-Ideas for evolutionary computation initiated from Alan Turing from his 1948 report titled \textsl{``Intelligent Machinery"} where the expression of \textsl{``genetical or evolutionary search"}  was used \cite{turing1948}. He suggested a range of ideas for systems which could be said to modify their own programs. 
-
-\paragraph{Bremermann(1962)}
-Bremermann was the first to apply the concept of biological evolution to execute computer experiments for solving optimization problems \cite{bremermann1962}. He was the first to consider the problem of minimizing a real-valued fitness function. He selected very simple functions to optimize in order to provide a more tractable analysis of the evolutionary process.
-
-\paragraph{Rechenberg(1964)}
-Rechenberg's contribution is notable mainly for providing Evolutionary Strategies. He invented a highly influential set of optimization methods which were successfully applied to challenging problems such as aerodynamic wing design. \cite{rechenberg1973}
-
-\paragraph{L. Fogel, Owens and Walsh (1965)}
-A seminal work that merged the fields of evolutionary computation and computational intelligence was by Fogel, Owens and Walsh in \textsl{``Artificial Intelligence through a simulation of evolution"} \cite{fogel1966}. In this book, evolutionary process was applied to finite state automata to predict symbol strings generated from Markov processes and non-stationary time series. Evolutionary prediction of such kind was motivated by the concept that prediction is a keystone to intelligent behavior (defined in terms of adaptive behavior, in that the intelligent organism must anticipate events in order to adapt behavior in light of a goal). 
-
-\paragraph{Holland(1975)}
-Perhaps the most significant work in terms of applications in the field of evolutionary computation comes from the inventor of genetic algorithms, John H. Holland. His ground breaking book \textsl{``Adaptation in natural and artificial systems"} \cite{holland1975} is where he developed \textit{The Schema Theorem} which is the foundation for explanation of the power of Genetic Algorithms.
-
-\paragraph{Koza(1992)}
-Koza's invention is the idea of Genetic Programming, which is an automated method for creating a working computer program from a high level statement of a problem. Starting from a high-level statement of \textsl{``what needs to be done"} it searches through all possible permutation of steps and finds the optimum solution through evolutionary methods \cite{koza1992}.
-
-Contemporary terminology denotes the fields of \textbf{\gls{es}}, \textbf{\gls{ep}}, \textbf{\gls{ga}} and \textbf{\gls{gp}} to be under one umbrella termed as \textbf{\gls{ec}} while the algorithms are called \textbf{\gls{ea}}.
-
-\subsubsection{Evolutionary Algorithms}
-Evolutionary algorithms are inspired by the strategy of \textit{survival of the fittest} from evolutionary biology, and uses different methods to optimize mathematical expressions which are used to evaluate a pool of population of solutions over generations. There are many different forms of evolutionary algorithm. All of them can be generalized to follow their pattern from natural selection. The mathematical expression, also termed as \textbf{fitness function} is used to evaluate the fitness of each individual from the set of existing solution space. An individual or a solution which provides higher output from the fitness function is considered as more fit to survive in the environment. So given a problem the algorithm initializes the environment with a random set of population or solutions. Then it uses the fitness function to select a better set of solutions from the existing ones. After that different operators of \textbf{mutation} and \textbf{recombination} are applied to the selected set of solution to come up with a new generation of solution set, born from the existing ones. Again the fitness function is applied to the current set of population to come up with a better set and this process iterates until the evaluation from the fitness function is satisfactory to give the best set of solutions.
-
-According to Eiben \cite{eiben2003} this process has two fundamental forces that form the basis of evolutionary systems:
-
-\begin{itemize}
-	\item \textsl{``Variation operators (recombination and mutation) creates the necessary diversity and thereby facilitate novelty."}
-	\item \textsl{``Selection acts as a force pushing quality."}
-\end{itemize}
-
-Important components of evolutionary algorithms are
-
-\paragraph{Representation (Individuals or Solution Space)}
-Evolutionary Algorithms(EA) are considered as robust problem solvers as it provides evenly good performance over a wide range of problems. To apply evolutionary algorithm to this wide range the most important part is representation of the solution space. In EA representation is analogous to the complex pathway that exits between \textbf{genotype} and \textbf{phenotype} of a biological organism.
-
-\paragraph{Evaluation Function (Fitness Function)}
-This is the function with which the solution is evaluated. The outcome of applying evolutionary algorithm to the problem depends on this function. It is defined to evaluate each of the solutions of the problem. In biology evaluation function is analogous to the decision of survival of any species in an environment. 
-
-\paragraph{Population}
-The population is the solution set of the problem over which EA will be applied. It is used with the same meaning as in biology. The diversity of the population is very important. If the initial random population of solutions are diverse then there is more possibility of reaching an optimal solution space very quickly, and it also avoids reaching local optimum instead of the global optimum.
-
-\paragraph{Variation operators, recombination and mutation}
-Considering arity (number of object as input) variation operators are divided into two kinds. The mutation operator accepts only one operand. The process of mutation is similar to the way it happens in biology. It is a stochastic process, meaning, its output the child depends on the outcomes of a series of random choices. The operator is responsible for causing a random unbiased change. Mutation has very different roles in different fields of EC, for example in Genetic Programming it is not used at all, while in genetic algorithms it is a very pivotal process as it provides fresh blood to the existing set of solutions. Getting a new mutated child is like stepping into a new solution space outside of the ones which already exist in the parent pool. A recombination operator is responsible for merging two parent genotypes into one or two offspring genotypes. It is also a stochastic process depending on the choice of the parts of the parent individuals. Recombination operators with high arity (using more than two parent) are mathematically possible and easy to implement but does not have any biological equivalent. According to Eiben \cite{eiben2003} \textsl{``the principle behind recombination is simple - by mating two individuals with different but desirable features, we can produce an offspring that combines both of those features."} It is important that variation operators are defined based on the representation of the problem under consideration. 
-
-\subsubsection{Genetic Algorithm}
-Genetic Algorithms(GA) have the most wide set of applications. It was first conceived by John H. Holland for studying adaptive behavior as in \textit{Adaptation in natural and artificial systems} \cite{holland1975}. They are mainly considered as function optimizers. In general GA have many diverse representation schemes considering the solution set of the problem. Depending on the problem scenario an appropriate representation could be Binary, Grey Code, Integer, Real-Valued, Floating-point or Permutation based. 
-
-Using GA for a binary representation, mutation can be single point or multiple point, where a random location is selected from the binary genome and the bit is flipped. For integer representation random resetting is used instead of bit flipping. Creep mutation is another scheme which was designed for ordinal attributes and works by adding a small (positive or negative) value to each gene with a random probability. For a real-valued or floating-point mutation none of the above strategy is applicable. As for this case mutation is applied to a random gene maintaining a certain range of value within an upper and a lower bound and using a standard for randomization, such as Uniform, Gaussian or Cauchy distribution. For permutation representation, swap mutation is a strategy used by simply swapping the location of two randomly selected genes. Insert mutation is another strategy where a random gene is selected and inserted to a random location in the genome, causing the other genes to move a single space. In scramble mutation, location of a collection of randomly selected genes are scrambled, while in inversion mutation serialized location of a set of genes are inverted. 
-
-GA also have many different recombination operators for each representation. For binary and integer representation one-point crossover and \textit{N}-point-crossover are the most frequently used. These two operators work by dividing the parent genome at one or multiple random points and combining them to create an offspring. Uniform-crossover \cite{sywerda1989} is another method which works by treating each gene independently and making a random choice to which parent it should inherit from. Recombination for floating-point representation can use the same operators like binary and integer, and when it does it is termed as discreet recombination. Another type is intermediate or arithmetic recombination where the offspring do not just receive a part of their parent genome, but instead, their genomes are derived from their parent using an arithmetic formula. Permutation representation has many interesting recombination operators, out of which partially mapped crossover was first proposed by Goldsberg and Lingle \cite{goldberg1985} for the traveling salesman problem and since then it has become one of the most widely used operators for adjacency type problems. Other useful operators for permutation representation are Edge crossover, Order crossover and Cycle crossover, where their name provides more or less an appropriate description of their operation.
-
-In regards to parent selection the most commonly used process by GA is fitness proportion selection, where the selection probability of a parent depends on the absolute fitness value of the individual compared to the absolute fitness values of the rest of the population. A fitness value is evaluated from the evaluation or the fitness function. Introduced by Holland \cite{holland1975} this procedure has a few problems. Premature convergence being one where individuals that are a lot better than the rest take over the entire population. Also when fitness values are all very close, there is almost no selection pressure in evolution of the fittest. Inspired by the observed drawbacks of fitness proportion selection a method was proposed by Baker \cite{baker1987} termed as Ranking selection. This procedure preserves a constant selection pressure by sorting the population on the basis of fitness, and then allocating selection probabilities to individuals according to their rank. Both of the above mentioned selection procedures requires knowledge of the entire population. But when the population size is very large Tournament selection is an effective process \cite{eiben2003}. In this case a randomized pre-selection is done over the large population and then they are ranked according to their fitness value and selected as parent. 
-
-Genetic Algorithms are one of the most effective strategy used in the field of evolutionary computation to solve optimization problems. Then again there are limitations. When the solution set of a problem do not have a gnomic representation, genetic algorithms cannot play any role in improving it. So the set of optimization problems to which GA can be applied is not universal.
-
-\subsubsection{Evolutionary Strategies}
-The key important property of the set of algorithms termed as ``Evolutionary Strategy" is \textbf{self-adaptation} of strategy parameters. The  parameters of Evolutionary Algorithm are included in the chromosomes and they co-evolve with the solution set while running the algorithm. To summarize these set of algorithms, they usually have real-valued vectors, their recombination process is discrete or intermediary, their mutation process uses Gaussian perturbation while parent selection is uniform random. In terms of their attribute feature they are fast and good optimizer for real-valued optimization.
-
-\subsubsection{Evolutionary Programming}
-The primary objective of evolutionary programming was to generate artificial intelligence by simulating evolution as a learning process \cite{fogel1966}. Capability of a system to adapt its behavior to meet some specified goal in the environment was considered as intelligence. Fogel used finite state machines as predictors and evolved them. Usually representation for evolutionary programming is with real-valued vectors. Its parent selection is deterministic, where each parent creates one offspring via mutation. There is no recombination operator for evolutionary programming. Mutation is applied with Gaussian perturbation. While survivor selection is probabilistic. 
-
-\subsubsection{Genetic Programming}
-Genetic programming is typically applied to machine learning tasks such as prediction and classification. Its attribute feature behaves similar to neural network and usually has huge populations of solution combination. The algorithm itself is a very slow process. These sets of algorithms use non-linear chromosomes such as trees and graphs (data structures). Mutation is mostly avoided for genetic programming. Recombination operators work by exchanging subtrees. Mutation if applied will be a random changing process in the tree. Parent selection process is usually fitness proportional while the survivor selection process is usually replacement of generations. From a technical point of view, genetic programming is simply a variant of genetic algorithm working with a different data structure: the chromosomes are trees. 
-
-\subsection{Artificial Life}
 Artificial Intelligence is the field of computer science where scientists take concepts from psychology and implement into computer science. In contrast to that, in Artificial Life scientist take concepts from biology, specially evolutionary biology and genetics and implement into computer science. 
 
 Christopher G. Langton is considered as one of the founders of the field of Artificial Life. He invented the term while organizing the first `\textsl{International Conference on the Synthesis and Simulation of Living Systems'} at the Los Alamos National Laboratory in 1987.
@@ -155,21 +63,6 @@ In defining Artificial Life Langton states the following,
 \subsubsection{Complex Adaptive System}
 \label{subsubsec:complex-adaptive-system}
 \gls{cas} are special cases of complex systems. They are complex as they are diverse and made up of multiple interconnected elements and adaptive as they have the capacity to change and learn from experience. Examples of complex adaptive systems include the stock market, social insect and ant colonies, the biosphere and the ecosystem, the brain and the immune system, the cell and the developing embryo, manufacturing businesses and any human social group-based endeavor in a cultural and social system such as political parties or communities. This includes some large-scale online systems, such as collaborative tagging or social bookmarking systems.
-
-The following definition of Complex Adaptive System is comprehensive.
-
-\begin{quote}
-\textsl{``A Complex Adaptive System (CAS) is a dynamic network of many agents (which may represent cells, species, individuals, firms, nations) acting in parallel, constantly acting and reacting to what the other agents are doing. The control of a CAS tends to be highly dispersed and decentralized. If there is to be any coherent behavior in the system, it has to arise from competition and cooperation among the agents themselves. The overall behavior of the system is the result of a huge number of decisions made every moment by many individual agents." - John H. Holland}
-\end{quote}
-
-Holland also provided some common kernel of similarities and dissimilarities between different complex adaptive systems in \textsl{Adaptation in Natural and Artificial Systems} \cite{holland1975}:
-
-\begin{enumerate}
-	\item \textsl{``All complex adaptive system involve large number of parts undergoing a kaleidoscopic array of simultaneous non linear interactions."} As the behavior of the whole system is non-linear, the usual mathematical techniques of linear approximation such as, linear regression, normal coordinates, mean field approaches, and the like make little progress in the analysis of complex adaptive systems. As because different interactions between agents are simultaneous, parallel computing is helpful in term of simulating and analyzing these systems. 
-	\item \textsl{``The impact of these systems in human affairs center on the aggregate behavior, the behavior of the whole."}
-	\item \textsl{``The interactions evolve over time, as the parts adapt in an attempt to survive in the environment provided by the other parts."}
-	\item \textsl{``Complex adaptive systems anticipate."}
-\end{enumerate}
 
 \subsubsection{Echo}
 \label{subsubsec:echo}
@@ -226,13 +119,9 @@ Now the question is, does Echo exhibit the robust ecological phenomenon of Prest
 
 Finally to answer the above question, it has been concluded that, Echo showed good quantitative agreement with naturally occurring species abundance distribution and species area scaling relation.
 
-\subsection{Conclusion}
-This section discusses evolutionary computation, the field that takes concepts from evolutionary biology to solve and optimize problems in compute science. It also discusses the interdisciplinary field Artificial life where scientist discuss diverse knowledge from biology, economics, physics and use computer science to simulate and analyze life as it is in nature. The discussion of this section is expected to provide a base upon which the following sections will begin construction of the core idea of this thesis.
-
 \section{The Inspiration: Mimicry}
 \label{section:mimicry}
 
-\subsection{History}
 Henry W. Bates first published in 1862 his findings about the similarities and dissimilarities between Heliconiinae and Ithomiinae butterflies, after 10 years of research in the Brazilian rain forest. For the next hundred years, it simulated heated discussion among all groups of people, scientists, philosophers, theologians, teachers and amateur naturalists. Bates collected ninety-four pieces of butterfly. He grouped them according to their similar appearance. He found butterflies having similar appearance, exhibiting morphological features which point to completely different species even families. Out of the ninety four species, sixty seven are now classified as Ithomiinae, while twenty seven of them are Heliconiinae.
 
 \subsection{Batesian Mimicry}
@@ -330,18 +219,12 @@ In regards to the formation of mimicry ring Turner \cite{turner1988} has given a
 
 Like Batesian mimicry, Mullerian mimicry can evolve in two stages: the mutational, one way convergence stage followed by the gradual, mutual convergence stage. It is worth mentioning that in the first stage only the less protected species can adopt the pattern of the better protected species; mutations in the other direction is not favored.
 
-\subsection{Conclusion}
 Mimicry is one of the most fascinating cases of evolutionary biology. This phenomenon has been studied extensively as infinite number of evidence exists in nature. One hundred years after Bates first clearly defined the concept, a review of literature listed 1,500 papers arguing for or against it. And this figure is more than 40 years old as it has been taken from Wilcker \cite{wickler1986}, published in 1968. It is almost impossible to survey all the known examples of Mimicry, and this would in any case be pointless. Then again many examples can be found in Cott's \textit{Adaptive Coloration in Animals} \cite{cott1957}.
 
 %Chapter describing the model
 \section{The Model: Evolution of Mimicry}
 \label{section:model}
 
-\begin{quote}
-\textsl{``Modeling, it should be clear is an art form. It depends on the experience and taste of the modeler. In this it is much like cartooning. The modeler (cartoonist) must decide which features to make salient (exaggerate), and which features to eliminate (avoid), in order to answer the questions (make the political point)" - John H. Holland \cite{holland1996}.}
-\end{quote}
-
-\subsection{Introduction}
 %Entire section until past work needs to be revised when the model has been fully described.
 The objective of this thesis is to design an agent based artificial life model for simulating the natural process of the evolution of mimicry.
 
@@ -478,9 +361,8 @@ An agent's position is calculated once during each step of update in time. The a
 
 Algorithm \ref{algo:algorithm-movement-agents} explains the calculation of mobility of each agent at each time step of the simulation, while table \ref{tab:mobility-control-parameters} contains the values of the parameters used to apply to this algorithm.
 
-\subsection{The Prey: Mimics and Models}
+\subsection{The Prey: Models and Mimics}
 
-\subsubsection{Pattern representation by Cellular Automata}
 Only the significant characteristics which are required for a successful model of mimicry is implemented. As for this simulation we are considering heliconius butterfly, the representation of their wing pattern is with the help of cellular automata. So basically every prey organism will contain a genetic representation of cellular automata with which the predator will identify the prey and store its level of palatability in memory.
 
 %More content needs to be added for cellular automata.
@@ -790,13 +672,6 @@ Movement behavior of a predator is calculated from its genome. The first 4 bits 
 	\end{algorithmic}
 \end{algorithm}
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[scale=0.60]{../tex/images/predators-40}
-	\caption[A population of predators]{A population of 40 predators distributed over the environment.}
-	\label{fig:predators-40}
-\end{figure}
-
 The screen shot in figure \ref{fig:predators-40} is from the simulation with only 40 predator species. It is presented to show the behavior of predator species in the simulation, in absence of any prey species. It can be observed the predators are distributed all over the cells with a constant mobile behavior to switch to another neighboring cell depending on the one containing the least number of predator and also most number of prey species. This behavior of predator has been designed to enforce the predatory behavior of these agents and also to have increased predator prey interaction in the simulation in terms of one agent chasing the other for survival of species. 
 
 \subsubsection{Reproduction process}
@@ -845,7 +720,6 @@ When the above two conditions are met, meaning the predator reaches its age for 
 \label{tab:predator-control-parameters}
 \end{table}
 
-\subsection{Conclusion}
 This model has been designed from a practical point of view; to come up with efficient results and achieve the main objective, \textit{evolution of mimicry}. Creation and transformation of different mimicry ring and also the dynamics of it has been integrated to achieve interesting results. This model can also be considered as a complex adaptive system similar to Holland's work on Echo \cite{holland1996}. The seven basics of a complex adaptive system which are: Aggregation, Tagging, Nonlinearity, Flow, Diversity, Internal Models and Building blocks \cite{holland1996} are present in this model. Individual components of this model such as the different types of agents and their properties can be considered as \textit{building blocks}. Each prey species are \textit{tagged} with individual pattern and palatability with which predators recognize them. We are providing different properties, behaviors and goals to the agents but setting them free in the environment to observe their \textit{aggregate} behavior, resulting in \textit{non-linear} or unpredictable outcome. The model has its \textit{flow} as it progresses in time. Also there is \textit{diversity} of prey species in the environment (\ref{subsubsec:species-diversity}).
 
 To explain internal model for a complex adaptive system Holland has used specifically the example of evolution of mimicry \cite{holland1996}. He choose to use the term `Internal Model' to refer to the mechanism for anticipation. Predators in this model anticipate the bitter taste of prey, by making intelligent decisions for consuming them. This mechanism for anticipation can be considered as the property of \textit{internal model} for this specific study.
@@ -853,7 +727,6 @@ To explain internal model for a complex adaptive system Holland has used specifi
 \section{The Results}
 \label{section:results}
 
-\subsection{Introduction}
 It is always a challenge to extract and analyze data from an Artificial Life simulation. Data and analysis in this simulation has been concentrated on evaluating whether evolution of mimicry has taken place. This evaluation can be made with the number of different rings that has been created and the size of each of those rings along with the population of palatable and unpalatable species. Also it can be established whether Batesian Mimicry and Mullerian Mimicry have taken effect by analyzing the data set of these populations.
 
 \subsection{Mimicry Ring Reports}
@@ -978,106 +851,6 @@ The screen shot in figure \ref{fig:screenshot-simTime7600-2-prey} is for one ins
 	\label{fig:screenshot-simTime7600-2-prey}
 	\includegraphics[width=0.5\textwidth]{../tex/images/simTime7600}
 	\caption[Graphical representation of the model (simulation time: 7600)]{Graphical representation of the model, simulation time: 7600.}
-\end{figure}
-
-\subsection{Initial configuration with four prey species}
-\begin{table}[h]
-\centering
-\setlength\tabcolsep{2pt}
-\begin{tabular}{| p{2cm} | p{1.5cm} | p{1cm} | p{.5cm} | p{1.5cm} | p{.5cm} |}
-  \hline
-   														&\multicolumn{3}{c|}{Prey configuration} 																	
-   														& \multicolumn{2}{c|}{\parbox{2cm}{Predator \\ configuration}} \\ \hline
-  \multirow{4}{*}{Population} & Rule110 (Unpalatable) & \parbox[c]{2.1em}{\includegraphics[scale=0.50]{../tex/images/CARule110}} 
-  																										& 50 & \multicolumn{2}{c|}{\multirow{4}{*}{10}} \\ \cline{2-4}
-  					 									& Rule30 (Palatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{../tex/images/CARule30}}
-  					 																					& 50 & \multicolumn{2}{c|}{}\\ \cline{2-4}
-  					 									& Rule55 (Unpalatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{../tex/images/CARule55}}
-  					 																					& 50 & \multicolumn{2}{c|}{}\\ \cline{2-4}
-  					 									& Rule190 (Palatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{../tex/images/CARule190}}
-  					 																					& 50 & \multicolumn{2}{c|}{}\\ \hline
-  \multirow{2}{*}{Reproduction} & Age Limit & \multicolumn{2}{c|}{100}  & \multicolumn{2}{c|}{500} \\ \cline{2-6}
-  						 									& Interval  & \multicolumn{2}{c|}{1000} & \multicolumn{2}{c|}{1400} \\ \hline
-  \multirow{2}{*}{Mutation Rate} & Pattern   & \multicolumn{2}{c|}{0.05} & \multicolumn{2}{c|}{\multirow{2}{*}{0.3}} \\ \cline{2-4}
-  						 									 & Genome    & \multicolumn{2}{c|}{0.5}  & \multicolumn{2}{c|}{} \\ \hline
-  Demise Age	 									 & \multicolumn{3}{c|}{2000}							& \multicolumn{2}{c|}{2500} \\ \hline
-  Minimum Attack Age						 & \multicolumn{3}{c|}{} 						    & \multicolumn{2}{c|}{500} \\ \hline
-  \multirow{2}{*}{\parbox{2cm}{Memory Configuration}} & \multicolumn{3}{c|}{} 					& Minimum & 4 \\ \cline{5-6}
-   																			& \multicolumn{3}{c|}{} 					& Maximum & 10 \\ \hline  
-\end{tabular}
-\caption{Agent configuration of 4 prey species}
-\label{tab:config-table-4-prey}
-\end{table}
-
-This run of the simulation has been initialized with four prey species with very different CA pattern configuration. The predator reproduction interval has been increased to 1400, while the minimum memory size has been increased to 4 instead of 2 as the predator is expected to memorize four different species of prey before starting to make intelligent decision about consuming them. The rest of the parameters remain the same as from the experiment in section \ref{subsec:init-conf-2prey}.
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.5\textwidth]{../tex/images/simTime10k-4Prey}
-	\caption[Population distribution of mimicry rings (4 prey species)]{Population distribution of mimicry rings, initialized with 4 prey species.}
-	\label{fig:plot-4-prey}
-\end{figure}
-
-By observing the graph in figure \ref{fig:plot-4-prey} we can see the two rings of unpalatable species (CA Rule 55, 110) which was put at the initial state of the simulation has dominated after 10000 iterations. CA rule 55 has taken over all other species while CA 110 is following it (represented with dotted curve). Also the palatable prey species with similar patterns to CA rule 55 and 110 are taking full advantage of their deceiving pattern and increasing their population (represented with line curve). The two palatable set of patterns CA Rule 190 and 30 are unable to dominate the population. Different other mimicry rings are present in the simulation as we can observe from the graph of number of rings verses simulation time in figure \ref{fig:ringSize10k-4Prey}. The total number of rings reached somewhere near 37 while most of them have comparatively low representative population. Batesian mimicry is in full effect in this simulated environment.
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.5\textwidth]{../tex/images/ringSize10k-4Prey}
-	\caption[Number of mimicry rings (4 prey species)]{Number of mimicry rings, initialized with 4 prey species.}
-	\label{fig:ringSize10k-4Prey}
-\end{figure}
-
-\begin{figure}[h]
-	\centering
-	\label{fig:screenshot-simTime11K-4Prey}
-	\includegraphics[scale=0.55]{../tex/images/simTime11K-4Prey}
-	\caption[Graphical representation of the model (simulation time: 11200)]{Graphical representation of the model initialized with 4 prey species, simulation time: 11200.}
-\end{figure}
-
-\subsection{Increased initial population with four prey species}
-
-\begin{table}[h]
-\centering
-\setlength\tabcolsep{2pt}
-\begin{tabular}{| p{2cm} | p{1.5cm} | p{1cm} | p{.5cm} | p{1.5cm} | p{.5cm} |}
-  \hline
-   														&\multicolumn{3}{c|}{Prey configuration} 																	
-   														& \multicolumn{2}{c|}{\parbox{2cm}{Predator \\ configuration}} \\ \hline
-  \multirow{4}{*}{Population} & Rule110 (Palatable) & \parbox[c]{2.1em}{\includegraphics[scale=0.50]{../tex/images/CARule110}} & 150 & \multicolumn{2}{c|}{\multirow{4}{*}{20}} \\ \cline{2-4}
-  					 									& Rule30 (Palatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{../tex/images/CARule30}}  	 & 150 & \multicolumn{2}{c|}{}\\ \cline{2-4}
-  					 									& Rule55 (Unpalatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{../tex/images/CARule55}}  & 150 & \multicolumn{2}{c|}{}\\ \cline{2-4}
-  					 									& Rule190 (Unpalatable)& \parbox[c]{2.1em}{\includegraphics[scale=0.50]{../tex/images/CARule190}}& 150 & \multicolumn{2}{c|}{}\\ \hline
-  \multirow{2}{*}{Reproduction} & Age Limit & \multicolumn{2}{c|}{100}  & \multicolumn{2}{c|}{500} \\ \cline{2-6}
-  						 									& Interval  & \multicolumn{2}{c|}{1000} & \multicolumn{2}{c|}{2500} \\ \hline
-  \multirow{2}{*}{Mutation Rate} & Pattern   & \multicolumn{2}{c|}{0.05} & \multicolumn{2}{c|}{\multirow{2}{*}{0.3}} \\ \cline{2-4}
-  						 									 & Genome    & \multicolumn{2}{c|}{0.5}  & \multicolumn{2}{c|}{} \\ \hline
-  Demise Age	 									 & \multicolumn{3}{c|}{2000}							& \multicolumn{2}{c|}{7000} \\ \hline
-  Minimum Attack Age						 & \multicolumn{3}{c|}{} 						    & \multicolumn{2}{c|}{500} \\ \hline
-  \multirow{2}{*}{\parbox{2cm}{Memory Configuration}} & \multicolumn{3}{c|}{} 					& Minimum & 4 \\ \cline{5-6}
-   																			& \multicolumn{3}{c|}{} 					& Maximum & 10 \\ \hline  
-\end{tabular}
-\caption{Agent configuration of 4 prey species with increased population}
-\label{tab:config-table-4-more-prey}
-\end{table}
-
-In this run of the simulation some significant parameters have been updated. First one is the initial population of prey species. It has been increased from 50 to 150 for each of the prey species, while increasing the overall population from 200 to 600. Secondly, predator population has been increased from 10 to 20. Thirdly, predator demise age has been increased from 2500 to 7000 while their reproduction interval has been increased from 1400 to 2500. Increasing predator demise age can have an interesting effect, as the longer a predator is present in a simulation, the longer it will be making intelligent decision in terms of consuming its prey and there will be increased selection pressure from the entire population of predators. 
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.5\textwidth]{../tex/images/simTime10K-4MorePrey}
-	\caption[Population distribution of mimicry rings (4 prey species, increased population)]{Population distribution of mimicry rings, initialized with 4 prey species with increased population.}
-	\label{fig:plot-4-more-prey}
-\end{figure}
-
-Some very interesting diversity of mimicry rings can be observed in the simulation for updating these parameters. The unpalatable rings and their deceptive counterparts (palatable prey with similar pattern) still have their dominance. We can observe CA Rule 55 and 190 are the highest in number of population. Interestingly enough CA Rule 30 and 110 which started as palatable prey species has also taken dominance in the simulation, following 55 and 190. The unpalatable counter part of CA Rule 30 and 110 are also following the palatable population. 
-
-The total number of rings have increased much in this run compared to the previous one. To summarize the results of this experiment, we can observe, increased diversity of prey population and much more interaction between predator and prey.
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.5\textwidth]{../tex/images/ringSize10k-4MorePrey}
-	\caption[Number of mimicry rings (4 prey species, increased population)]{Number of mimicry rings, initialized with 4 prey species with increased population.}
-	\label{fig:ringSize10k-4MorePrey}
 \end{figure}
 
 \subsection{Initial population with six prey species}
@@ -1239,93 +1012,6 @@ The results for the configuration in table \ref{tab:config-table-4-prey-palatabl
 
 Observation of mimicry rings also tell us about the results we have seen in the plot of figure \ref{fig:plot-4-prey-p}. The number of rings keep increasing but comes to a sudden drop around simulation time 7000 and goes to zero.
 
-\subsection{Initial configuration with single prey species}
-Until now all experiments have been initialized with multiple prey species. The following set of experiments have been initialized with only a single prey species, for both cases of unpalatable and palatable.
-
-\subsubsection{Unpalatable}
-\label{subsubsec:single-prey-unpalatable}
-
-\begin{table}[h]
-\centering
-\setlength\tabcolsep{2pt}
-\begin{tabular}{| p{2cm} | p{1.5cm} | p{1cm} | p{.5cm} | p{1.5cm} | p{.5cm} |}
-  \hline
-   														&\multicolumn{3}{c|}{Prey configuration} 																	
-   														& \multicolumn{2}{c|}{\parbox{2cm}{Predator \\ configuration}} \\ \hline
-  Population 									& Rule30 (Unpalatable) & \parbox[c]{2.1em}{\includegraphics[scale=0.50]{../tex/images/CARule30}} 
-  																									& 216 & \multicolumn{2}{c|}{10} \\ \hline
-  \multirow{2}{*}{Reproduction} & Age Limit & \multicolumn{2}{c|}{100}  & \multicolumn{2}{c|}{500} \\ \cline{2-6}
-  						 									& Interval  & \multicolumn{2}{c|}{1000} & \multicolumn{2}{c|}{2500} \\ \hline
-  \multirow{2}{*}{Mutation Rate} & Pattern   & \multicolumn{2}{c|}{0.05} & \multicolumn{2}{c|}{\multirow{2}{*}{0.3}} \\ \cline{2-4}
-  						 									 & Genome    & \multicolumn{2}{c|}{0.5}  & \multicolumn{2}{c|}{} \\ \hline
-  Demise Age	 									 & \multicolumn{3}{c|}{2000}							& \multicolumn{2}{c|}{7000} \\ \hline
-  Minimum Attack Age						 & \multicolumn{3}{c|}{} 						    & \multicolumn{2}{c|}{500} \\ \hline
-  \multirow{2}{*}{\parbox{2cm}{Memory Configuration}} & \multicolumn{3}{c|}{} 					& Minimum & 2 \\ \cline{5-6}
-   																			& \multicolumn{3}{c|}{} 					& Maximum & 10 \\ \hline  
-\end{tabular}
-\caption{Agent configuration of 1 prey species unpalatable.}
-\label{tab:config-table-1-prey-unpalatable}
-\end{table}
-
-This configuration has only one unpalatable species, one in each of the 216 cells, equally distributed all over the environment. Also have a set of 10 predators. Their minimum memory configuration has been set to 2 as any value below 2 will not help the Hopfield Network Memory to differentiate between two patterns.
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.5\textwidth]{../tex/images/simTime8k-1Prey-unp}
-	\caption[Population distribution of mimicry rings (1 prey species unpalatable)]{Population distribution of mimicry rings, initialized with 1 prey species unpalatable.}
-	\label{fig:plot-1-prey-unp}
-\end{figure}
-
-From figure \ref{fig:plot-1-prey-unp}, it can be observed, the initial set of unpalatable species is dominant as expected. The palatable population mimicking that set is following it. A bunch of other rings with majority of unpalatable species have been reproduced through mutation. Mainly because the initial population started with a bunch of unpalatable species, so their reproduced generation have similar behavior as well.
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.5\textwidth]{../tex/images/ringSize8k-1Prey-unp}
-	\caption[Number of mimicry rings (1 prey species unpalatable)]{Number of mimicry rings, initialized with 1 prey species unpalatable.}
-	\label{fig:ringSize8k-1-Prey-unp}
-\end{figure}
-
-\subsubsection{Palatable}
-\begin{table}[h]
-\centering
-\setlength\tabcolsep{2pt}
-\begin{tabular}{| p{2cm} | p{1.5cm} | p{1cm} | p{.5cm} | p{1.5cm} | p{.5cm} |}
-  \hline
-   														&\multicolumn{3}{c|}{Prey configuration} 																	
-   														& \multicolumn{2}{c|}{\parbox{2cm}{Predator \\ configuration}} \\ \hline
-  Population 									& Rule30 (Palatable) & \parbox[c]{2.1em}{\includegraphics[scale=0.50]{../tex/images/CARule30}} 
-  																									& 216 & \multicolumn{2}{c|}{8} \\ \hline
-  \multirow{2}{*}{Reproduction} & Age Limit & \multicolumn{2}{c|}{100}  & \multicolumn{2}{c|}{500} \\ \cline{2-6}
-  						 									& Interval  & \multicolumn{2}{c|}{1000} & \multicolumn{2}{c|}{2500} \\ \hline
-  \multirow{2}{*}{Mutation Rate} & Pattern   & \multicolumn{2}{c|}{0.05} & \multicolumn{2}{c|}{\multirow{2}{*}{0.3}} \\ \cline{2-4}
-  						 									 & Genome    & \multicolumn{2}{c|}{0.5}  & \multicolumn{2}{c|}{} \\ \hline
-  Demise Age	 									 & \multicolumn{3}{c|}{2000}							& \multicolumn{2}{c|}{7000} \\ \hline
-  Minimum Attack Age						 & \multicolumn{3}{c|}{} 						    & \multicolumn{2}{c|}{500} \\ \hline
-  \multirow{2}{*}{\parbox{2cm}{Memory Configuration}} & \multicolumn{3}{c|}{} 					& Minimum & 2 \\ \cline{5-6}
-   																			& \multicolumn{3}{c|}{} 					& Maximum & 10 \\ \hline  
-\end{tabular}
-\caption{Agent configuration of 1 prey species palatable.}
-\label{tab:config-table-1-prey-palatable}
-\end{table}
-
-This configuration is set exactly as according to section \ref{subsubsec:single-prey-unpalatable} but with a single set of palatable species. The population of predators have been reduced from 10 to 8 to avoid elimination of all prey species as it happened in case of section \ref{subsec:init-only-palatable-species}.
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.5\textwidth]{../tex/images/simTime10k-1Prey-p}
-	\caption[Population distribution of mimicry rings (1 prey species palatable)]{Population distribution of mimicry rings, initialized with 1 prey species palatable.}
-	\label{fig:plot-1-prey-p}
-\end{figure}
-
-From the initial palatable population we see a bunch of palatable rings created. Major difference from section \ref{subsubsec:single-prey-unpalatable} is the total number of prey population created. For the unpalatable species in section \ref{subsubsec:single-prey-unpalatable}, total prey population reach above 12 thousand. But for palatable species total population reach nearly above 5000 prey species, as when the preys are palatable there is more consumption from predators. 
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.5\textwidth]{../tex/images/ringSize10k-1Prey-p}
-	\caption[Number of mimicry rings (1 palatable prey species)]{Number of mimicry rings, initialized with 1 palatable prey species.}
-	\label{fig:ringSize8k-1-Prey-p}
-\end{figure}
-
 \subsection{Analysis of Batesian Mimicry}
 \label{subsec:result-batesian-mimicry}
 For all possible initial conditions, Batesian mimicry has taken effect. It can be observed that for every ring of unpalatable species there is an existence of the palatable ring racing to reach the population count of its unpalatable counterpart. Also when the initial population starts with a set of only palatable species we can observe that the total population vanishes within very short period of time (section \ref{subsec:init-only-palatable-species}). This effect can be explained with the fact that the palatable population does not have any models to mimic, and it reaches extinction. So from this analysis it can be concluded that the model under discussion have successfully simulated the evolution of Batesian mimicry.
@@ -1334,32 +1020,13 @@ For all possible initial conditions, Batesian mimicry has taken effect. It can b
 \label{subsec:result-mullerian-mimicry}
 Effects of Mullerian mimicry can be observed best for the experiment in section \ref{subsec:init-conf-only-unp}. For that case, we initialized the model with 4 rings of unpalatable species with no palatable ones and after nearly 10K iterations, all of the initial unpalatable rings have survived with dominance. The cause of this behavior can be explained by the minimum number of patterns that each predator can store in memory, which was set to four. So this parameter was reduced to one to observe whether it is possible to converge all different unpalatable rings into one large ring, when predators are capable to memorizing only a single pattern. But as it turned out, the phenomena of ``a single large ring" does not occur because different predators recognize different patterns resulting in multiple divergent Mullerian mimicry rings. It can be concluded that our results are consistent with those of Franks and Noble (section \ref{subsubsec:models-by-frank-and-noble}), that multiple Mullerian mimics do not converge into one large ring.
 
-\subsection{Conclusion}
-\label{subsec:result-conclusion}
-Analysis of the results tell us that we have successfully been able to simulate the evolution of mimicry. In addition to that, this model provides a more accurate simulation of the fascinating natural process of mimicry rings. Not only does this model simulates mimicry with the initialized population but also it provides possibility of creating diverse new rings and their shift in population. This model also verifies the theory of Turner in explaining the evolution of mimicry with punctuated equilibrium (section \ref{subsubsec:reflection-of-punctuated-equilibrium}) \cite{turner1988}.
-
-\section{Future Work: Application}
-\label{section:application}
-
-The goal of this thesis is to investigate whether the evolution of mimicry can be used in a problem solving scenario similar to evolutionary programming or genetic algorithm as it is used to optimize solutions using mathematical functions. Predator-prey co-evolution has also been used for solving interesting problems \cite{hillis1990}, giving better result than conventional methodologies. 
-
-The biggest challenge faced while searching for the appropriate problem to be optimized is the idea of associating palatability with CA pattern with which the prey species has been represented. If we consider the CA pattern to be a certain solution to a problem then the set of 2D CA pattern among which the prey species vary could be considered as the solution set of the problem. And if we consider that the predator species are responsible for selecting the appropriate pattern based on their palatability, then we can consider palatability as the criteria for selection of the pattern (or the evaluation/fitness function for the case of Evolutionary Programming/Genetic Algorithm). If the predator associates the CA pattern with palatability then it does not make any sense of having a mimic in the solution space as mimics will have the same pattern with opposite palatability. So using the evolution of mimicry to solve an optimization problem is futile if we try conventional problems which already can be solved with the help of evolutionary programming or genetic algorithm. 
-
-So the kind of problems we should be looking for applying the evolution of mimicry, are the ones which cannot be solved with conventional evolutionary methods. We should be looking for a problem where the idea of deception can be useful in term of solving it. An interesting analogy is with anti-virus and virus software. If we consider anti-virus to be predator and virus (mimic) to be prey species, then the objective of a virus would be to look like a regular virus free program (model) to get pass an anti-virus software. In this way by mimicking a regular program a virus can get pass any anti-virus software available in the market. To successfully implement this software we need to create a virus program which can evolve itself to pretend like a regular program (virus free). The environment will be the operating system itself where all the programs reside. It is worth noting the fact that this objective is malicious for the computer industry, which makes it less significant to pursue. 
-
 \section{Conclusion}
 \label{section:conclusion}
-If we consider the field of Artificial Life as a tool for biological inquiry then the model presented in this thesis was successful in terms of providing good insight in terms of understanding better the evolutionary process of mimicry as it happens in nature. As mentioned in section \ref{subsec:result-conclusion} this model gives us verification of the theory of Turner in explaining the evolution of mimicry with punctuated equilibrium. Also it enforces findings from the work of Franks and Noble that multiple Mullerian mimics do not converge into one large ring.
+Analysis of the results tell us that we have successfully been able to simulate the evolution of mimicry. In addition to that, this model provides a more accurate simulation of the fascinating natural process of mimicry rings. Not only does this model simulates mimicry with the initialized population but also it provides possibility of creating diverse new rings and their shift in population. This model also verifies the theory of Turner in explaining the evolution of mimicry with punctuated equilibrium (section \ref{subsubsec:reflection-of-punctuated-equilibrium}) \cite{turner1988}.
+
+If we consider the field of Artificial Life as a tool for biological inquiry then the model presented in this thesis was successful in terms of providing good insight in terms of understanding better the evolutionary process of mimicry as it happens in nature. As mentioned previously this model gives us verification of the theory of Turner in explaining the evolution of mimicry with punctuated equilibrium. Also it enforces findings from the work of Franks and Noble that multiple Mullerian mimics do not converge into one large ring.
 
 If we consider Artificial Life as the study where we simulate natural processes to further extend capabilities in the field of computer science, then also this thesis is a success in making an appropriate emulation of the evolutionary process of mimicry. From the sections of \ref{subsec:result-batesian-mimicry} and \ref{subsec:result-mullerian-mimicry} we can conclude that the complex behavior of Batesian and Mullerian mimicry can be simulated with this model.
-
-But considering Artificial Life as a subject where we essentially learn from nature, its behaviors, and use that knowledge to find better solution to existing problems in the field of computer science then this thesis has not been completely successful. We have not been able to find the appropriate problem solving scenario for which the natural process of mimicry can be applied.
-
-Humans came to understand the concept of biological evolution and its significance when it was first proposed by Charles Darwin in 1859 in his book \textsl{On the Origin of Species} \cite{darwin1859}. Nearly 200 years later Alan Turing was the first who thought over creating machines which are capable of evolving itself (Section \ref{subsubsec:evo-comp-history}). Eventually in 1975 John Holland was able to make the most applicable use of the process of evolution to solve problems in computer science by his invention of Genetic Algorithms. The time for this invention was appropriate as the field of computer science was in its burgeoning state. Over the next couple of decades computers became one of most useful and important machinery in human history. Genetic Algorithms became popular as well because of increased capability of computers in term of speed and complexity.  
-
-Even though we do not have any problem solving application for the evolutionary process of mimicry at this point, it does not imply that this study will not be useful in the future to give us solution to an important problem in computer science or any other field for that matter. The simulation presented in this thesis, itself, consists of building blocks of knowledge such as Hopfield Network and Cellular Automata. Maybe to use mimicry to solve a problem, other diverse building blocks are necessary which has not yet been invented.
-
-The objective of any research is to look for \textsl{unexplored} territory to find new \textsl{knowledge}, \textsl{understanding} or \textsl{explanation}. From the research presented in this thesis we certainly get new \textsl{understanding} of the capability of computer science to emulate natures behavior. We also get to \textsl{explore} a new model for the evolutionary process of  mimicry. In addition to that, the model provides us with better \textsl{explanation} and \textsl{understanding} of nature, while enforcing some existing \textsl{knowledge} with greater support (section \ref{subsec:result-mullerian-mimicry}). 
 
 \bibliographystyle{apalike}
 \bibliography{references}
