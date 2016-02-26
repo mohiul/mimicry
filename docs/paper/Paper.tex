@@ -280,28 +280,28 @@ The  fifth gene of the predator is used to represent their capability of reprodu
 
 There are two control parameters that effect the reproduction of predator species. The first is \textsl{``Reproduction Age Limit"}. This is the minimum age a predator has to reach before starting to involve itself for reproduction. This parameter has been set to 500 iterations. The second parameter is \textsl{``Reproduction Interval"} which has been varied in the simulation from 1000 to 3000 iteration depending on the population of palatable prey species. This is a very important parameter for the simulation as it determines the overall predator population and its rate of increment. Depending on this value we can control the rate of predation on prey species, which on the other hand controls the rate of mimetic behavior of the overall prey population.
 
-\begin{table}[h!]
+\begin{table}[h]
+\small
 \centering
-\setlength\tabcolsep{2pt}
-\begin{tabular}{| p{2cm} | >{\centering} p{1cm} | p{5cm} |}
+\begin{tabular}{| l | c |}
 	\hline
-		\textbf{Parameter} & \textbf{Value} & \textbf{Description} \\ \hline
-		Minimum Memory Size & 2 to 6 & Minimum number of patterns stored in memory before predators start making intelligent decisions.\\ \hline
-		Maximum Memory Size & 10 & Maximum number of patterns to be stored in memory. Limited to reduce processing time. \\ \hline 
-		Hopfield Maximum Iterations & 20 & Maximum number of iterations to recognize a pattern and to avoid infinite loop in case the network never reaches a steady state. \\ \hline
-		Attack Age & 500 & minimum age a predator needs to reach to be able to attack prey species.  \\ \hline
-		Attack Interval & 100 & Interval of time which needs to pass before a predators attacks its next prey. \\ \hline
-		Genome Mutation rate & 0.3 & Mutation rate for the 5 bit genome of the predators representing their mobility and pattern recognition capability. \\ \hline
-		Reproduction Age Limit & 500 & Minimum age a predator needs to reach before engaging in reproduction.\\ \hline
-		Reproduction Interval & 1000 to 3000 & Interval of time a predator needs to pass between two reproduction process.\\ \hline
-		Demise Age & 2000 to 7000 & Age at which a predator is considered as dead.\\
+		\textbf{Parameter} & \textbf{Value} \\ \hline
+		Minimum Memory Size & 2 to 6 \\ \hline
+		Maximum Memory Size & 10 \\ \hline 
+		Hopfield Maximum Iterations & 20 \\ \hline
+		Attack Age & 500 \\ \hline
+		Attack Interval & 100 \\ \hline
+		Genome Mutation rate & 0.3 \\ \hline
+		Reproduction Age Limit & 500 \\ \hline
+		Reproduction Interval & 1000 to 3000 \\ \hline
+		Demise Age & 2000 to 7000 \\
 	\hline
 \end{tabular}
-\caption{Parameters to control predator population and pattern recognition capability.}
-\label{tab:predator-control-parameters}
+\caption{Distribution and purpose of each gene of the 5 bit predator genome.}
+\label{tab:predator-genome}
 \end{table}
 
-This model has been designed from a practical point of view; to come up with efficient results and achieve the main objective, \textit{evolution of mimicry}. Creation and transformation of different mimicry ring and also the dynamics of it has been integrated to achieve interesting results. This model can also be considered as a complex adaptive system similar to Holland's work on Echo \citep{holland1996}. The seven basics of a complex adaptive system which are: Aggregation, Tagging, Nonlinearity, Flow, Diversity, Internal Models and Building blocks \citep{holland1996} are present in this model. Individual components of this model such as the different types of agents and their properties can be considered as \textit{building blocks}. Each prey species are \textit{tagged} with individual pattern and palatability with which predators recognize them. We are providing different properties, behaviors and goals to the agents but setting them free in the environment to observe their \textit{aggregate} behavior, resulting in \textit{non-linear} or unpredictable outcome. The model has its \textit{flow} as it progresses in time. Also there is \textit{diversity} of prey species in the environment.
+This model has been designed to come up with efficient results and achieve the main objective, \textit{evolution of mimicry}. Creation and transformation of different mimicry ring and also the dynamics of it has been integrated to achieve interesting results. This model can also be considered as a complex adaptive system similar to Holland's work on Echo \citep{holland1996}. The seven basics of a complex adaptive system which are: Aggregation, Tagging, Nonlinearity, Flow, Diversity, Internal Models and Building blocks \citep{holland1996} are present in this model. Individual components of this model such as the different types of agents and their properties can be considered as \textit{building blocks}. Each prey species are \textit{tagged} with individual pattern and palatability with which predators recognize them. We are providing different properties, behaviors and goals to the agents but setting them free in the environment to observe their \textit{aggregate} behavior, resulting in \textit{non-linear} or unpredictable outcome. The model has its \textit{flow} as it progresses in time. Also there is \textit{diversity} of prey species in the environment.
 
 \section{The Results}
 \label{section:results}
@@ -367,7 +367,7 @@ The memory configuration size for predators is a very interesting parameter. The
 % Put the image
 \begin{figure*}[t!]
 	\centering
-	\includegraphics[width=0.7\textwidth]{../tex/images/simTime10k-2Prey}
+	\includegraphics[width=0.75\textwidth]{../tex/images/simTime10k-2Prey}
 	\caption[Population distribution of mimicry rings (2 prey species, 10k iterations)]{Population distribution of mimicry rings, initialized with 2 prey species, 10k iterations}
 	\label{fig:plot-2-prey}
 \end{figure*}
@@ -415,9 +415,9 @@ To evaluate the simulation at a more complex level we increase the prey populati
 
 To further observe the effects of mimicry ring we initialize the simulation with all four unpalatable prey species. As explained earlier the minimum memory configuration is also set to four in accordance to the initial number of prey species. Rest of the parameters remain quite unchanged.
 
-\begin{figure*}[t]
+\begin{figure*}[t!]
 	\centering
-	\includegraphics[width=0.7\textwidth]{../tex/images/simTime8k-4Prey-unp}
+	\includegraphics[width=0.75\textwidth]{../tex/images/simTime8k-4Prey-unp}
 	\caption[Population distribution of mimicry rings(4 prey species all unpalatable)]{Population distribution of mimicry rings, initialized with 4 prey species all unpalatable.}
 	\label{fig:plot-4-prey-unp}
 \end{figure*}
