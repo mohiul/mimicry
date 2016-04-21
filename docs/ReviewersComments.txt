@@ -1,0 +1,50 @@
+Reviewer 2:
+1) It does not become clear, why the predators are not subjected to selection-pressure and thus could have been replaced by a static filtering mechanism. It would be so easy to require from the predators to survive only if they are able to catch a certain amount of prey per time. That would immediately resolve the problem of exploding predator populations and it would enable a co-evolution of predator and prey plus long-term evolution.
+
+--Interesting idea... need to implement to see what happens...
+
+2) The simulation time is way too short. With a replication time of prey of 1000 time-steps and a total simulation time of 10,000 only ten generations of prey can be expected during an experiment. It is not understandable, how evolution should be able to have any significant influence in that time. The outcome of the experiment is solely dependent on the initial conditions and the inner dynamics of the system.
+
+-- The objective of the simulation is to obseve prey evolution for mimicry. Predator evolution does not have much impact in the results as Hopfield memory is not being evolved from generation to generation. Predator evolution's only impact is in its mobility.
+
+3) Although not mentioned, all CAs start from a zeroed state? Or is one bit in the middle set in the beginning? Why is the case of random initial states not mentioned? What is more problematic is, that only nice pictures of the time development of the CAs are shown, but this is not what the dynamics in the system see. It would have been more helpful to get an intuition how the particular CA rules fair to each other in the sequence space, e.g. what's the Hamming-distance between rule 110 and rule 30? How many rules cluster into the same area of Hamming-distance 10 or so?
+DONE
+--CAs are always used in a developed state. Development of a CA from its initial state is not part of the eovlution in the simulation. Given a CA rule each pery is born with a developed CA pattern. As in happens in butterflies. 
+
+4) In table 4, e.g., the initial configuration is 108 preys of each rule. Why 108 and not 100, are there specific dynamics in the system which make this result a very special case with no generality at all?
+DONE
+--CA rule 110 and 30 has been used for palatable and unpalatable species. 108 is the population size of each of these species. Choice of 110 and 30 has been used as their phenotype is distinctly different from each other and Hopfield will easily distinguish them. 
+
+5) Worrisome is the experiment only reported on when starting with palatable species only, the according plot is given in Fig. 5.16 of the master-thesis. How is it possible that the unpalatable species die out? Who are the ones that consume the prey? When starting the simulation with exactly these species the system is not dying out! Something is wrong here. Because of the short simulation time, an evolutionary equilibration cannot be expected, so how many runs with different initial genomes but identical preys starting reproduce the same behavior?
+DONE
+-- The palatable species die out. Unpalatable survives. The palatable population is consumed by the predators. 
+
+6) It is claimed in the work that punctuated equilibria are characteristic for the evolutionary dynamics, but no evidence is given and cannot be expected, because evolution as such is not studied.
+DONE
+-- Evidence has been added. Table 5.
+
+7) It is unclear, why for this model a ballistic dynamic system has been chosen. Butterflies are not reigned by inertia and birds are much faster than butterflies.
+DONE
+-- The dynamics of the organisms have been designed such that they can be controlled by the genetic representation. Based on their mobility gene some butterflies are faster/slower than each other. 
+
+8) Due to the absence of evolution M"ullerian dynamics can not be expected to develop, there is simply not enough time to evolve such a feature. A claim in that direction is thus not appropriate.
+
+--I don't know what to say.
+
+Reviewer 3:
+1. The provided results are limited because little information is provided about the number of simulations performed or how those runs perform in the aggregate. The data provided is interesting, but there needs to be more correlative analysis across many more simulation runs to make substantive claims.
+
+--- Deatail results can be found in the Masters thesis.
+
+2. Also, there is the issue of the Hopfield Network that is used as a fragile predator memory. The reviewer feels that the use of this technique is a good intuition, but the memories of the predators need to be analyzed, which is quite possible given how the technique functions. The Hopfield Network has issues if there are too many "memories" introduced into the network, but also if the memories are placed too close in the energy space. A set of trained memories that are incorrectly placed in the energy space can introduce: false memories, inversions of correct memories, and memories that are combinations of multiple correct memories. This can be seen as a feature, because it can possibly introduce situations seen in biology where fortunate accidents occur. However, this can also act to skew simulation results, which is possibly made worse with the small evolutionary search spaces identified in the model. The question becomes: what do these memory spaces look like? Are there memory spaces skewing the results of the simulation, making certain mimic/model patterns more advantageous over the others, creating an attractor in the simulation for certain patterns. This can also be addressed through a more complete set of experiments with a correlative analysis performed to determine if the results in fact do reflect evolved mimicry.
+
+-- CA patterns for palatable and uppalatable species are purposefully separated from each other when initialized, to avoid false memory. 
+
+Reviewer 4:
+1. How well are you protected from inbuild model artefacts, in this case from the focus on mimicry (there are of course many other strategies for protection possible but not in the model in, so there is a tendency to find what you observe by inbuild restrictions)
+
+-- Not 
+
+2. How easy can you now put in concrete constraints (e.g. phenotypic such as fur colour or other phenotypic patterns pertaining to mimicry or, for instance, molecular features including molecular mimicry).
+
+-- This simulation can also be 
