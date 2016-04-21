@@ -111,15 +111,15 @@ The \textsl{``FormAL framework"} is a collection of concepts taken from Peter Gr
 The framework consists of a three dimensional world where agents get complete freedom of movement defined from their genetic representation. This toroidal \textbf{space} is a 3D lattice of discrete points, divided in multiple cells, which can be visualized. A \textbf{cell} is a three dimensional cubical section of the hyperspace. The purpose of the cells is to avoid expensive distance calculations. As two agents are considered \textsl{``close"} to interact when they are in the same cell and \textsl{``distant"} otherwise. \textbf{Time}, being an integer \( (t \geq 0) \), advances in discrete steps in the simulation, where at each step the agents update themselves.
 
 \subsubsection{Mobility}
-An agent's position is calculated once during each step of update in time. The agents \(position\), \(force\), \(acceleration\) and \(velocity\) are all vector components. The \(force\) component is calculated from agent's mobility gene and it is used to compute agent's \(acceleration\). If the \(force\) and \(velocity\) are both zero, then the agent has no effect in motion. Otherwise, Newton's law is used to obtain the \(acceleration\), which is integrated to obtain the new \(velocity\) and new \(position\).
+An agent's position is calculated once during each step of update in time. The agents \(position\), \(force\), \(acceleration\) and \(velocity\) are all vector components. The \(force\) component is calculated from agent's mobility gene, based on which some agents are faster/slower than others, and it is used to compute agent's \(acceleration\). If the \(force\) and \(velocity\) are both zero, then the agent has no effect in motion. Otherwise, Newton's law is used to obtain the \(acceleration\), which is integrated to obtain the new \(velocity\) and new \(position\).
 
 \subsection{The Prey: Models and Mimics}
 
-For this simulation the preys are heliconius butterfly and the representation of their wing pattern is with the help of cellular automata (CA). Every prey organism contain a binary genetic representation of CA which generates a fully developed pattern of size 16 by 16 bits from its initial state, with which the predator will identify the prey and store its level of palatability in memory. We choose CA as it can be easily represented with the help of a binary genome and evolutionary operations on the genomic representation, such as mutation and crossover can easily be applied. This 8 bit genome has a decimal range between 0 to 255, having each of this value associated to a unique CA pattern. In generating the pattern of figure \ref{fig:cellular-automata-rule-30}, the genetic representation would be the `New state of center cell'. When storing this pattern in Hopfield memory we take a linear representation of this 2-D pattern, while to consider similarity between two patterns we evaluate the hamming distance between their linear representation. 
+For this simulation the preys are heliconius butterfly and the representation of their wing pattern is with the help of cellular automata (CA). Every prey organism contain a binary genetic representation of CA which generates a fully developed pattern of size 16 by 16 bits from its initial state. With this pattern the predator will identify the prey and store its level of palatability in memory. We choose CA as it can be easily represented with the help of a binary genome and evolutionary operations on the genomic representation, such as mutation and crossover can easily be applied. This 8 bit genome has a decimal range between 0 to 255. Each of this value is associated to a unique CA pattern. In generating the pattern of figure \ref{fig:cellular-automata-rule-30}, the genetic representation would be the `New state of center cell'. To store in Hopfield memory we take a linear representation of this 2-D pattern and to find similarity between two patterns we calculate hamming distance between their linear representations. 
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[scale=1]{images/CARule30}
+	\includegraphics{images/CARule30-large}
 	\caption[Cellular Automata]{Cellular Automata Rule 30}
 	\label{fig:cellular-automata-rule-30}
 \end{figure}
@@ -140,14 +140,14 @@ For this simulation the preys are heliconius butterfly and the representation of
 
 \subsubsection{Species diversity}
 \label{subsubsec:species-diversity}
-With CA based pattern representation, population of prey species with a specific CA pattern can be grouped as one single species. And by restricting inter species reproduction we can control the diversity of patterns. But there is mutation applied when similar species mate with each other, so new species born out of generations of existing species. That is why we have two separate mutation rate while reproducing prey species. One being the ``Pattern Mutation Rate" (default values are mentioned in table \ref{tab:prey-control-parameters}) with which we control mutation of the first 8 bits of the genome while the ``Genome Mutation Rate" is used to control mutation of rest of the 9 bit genome. Similar efforts of multiple mutation rate at varying location has been used in developing Echo \citep{hraber1997}.
+Using CA based pattern representation, population of prey species with a specific pattern can be grouped as one single species. Also by restricting inter species reproduction we can control the diversity of patterns. But mutation is applied when similar species mate with each other, so new species born out of generations of existing species. That is why we have two separate mutation rate for reproduction of prey species. One being the ``Pattern Mutation Rate" (default values are mentioned in table \ref{tab:prey-control-parameters}) with which we control mutation of the first 8 bits of the genome while the ``Genome Mutation Rate" is used to control mutation of rest of the 9 bit genome. Similar efforts of multiple mutation rate at varying location has been used in developing Echo \citep{hraber1997}.
 
 \subsubsection{Genome}
-The Genome of the prey species consists of 17 bits. The first eight bits represent the rule, which is used to generate CA pattern. The next two bits are used to represent palatability of the organism. The next six bits is the magnitude of the force with which mobility of the organism is calculated. The 17th bit is used to evaluate reproduction capability of the organism.
+The Genome of prey species consists of 17 bits. The first eight bits represent the rule, which is used to generate CA pattern. Next two bits are used to represent palatability of the organism. Following six bits are the magnitude of force with which mobility of the organism is calculated. The 17th bit is used to evaluate reproduction capability of the organism.
 
 \subsubsection{Reflection of punctuated equilibrium}
 \label{subsubsec:reflection-of-punctuated-equilibrium}
-Punctuated equilibrium is more inclined to cladogenesis instead of gradualism. Also Turner \citep{turner1988} emphasizes on punctuated equilibrium to describe the evolution of mimicry instead of phyletic gradualism. The design of the model under discussion also follows Turner's explanation in terms of evolving mimicry. As it can be observed, new CA patterns evolve from existing ones in prey population just by a single mutation in the pattern gene. Mimics do not follow a gradual process of evolution to look close to models but rather the change happens randomly through a single step mutation. The mutations that are favored, helps the mimics to survive while the unfavored ones fail to persist. It can be observed later in table \ref{tab:diff-in-pattern} how CA patterns of prey species can have vastly different configuration for a unit change in their representative gene. 
+Punctuated equilibrium is more inclined to cladogenesis instead of gradualism. Also Turner \citep{turner1988} emphasizes on punctuated equilibrium to describe the evolution of mimicry instead of phyletic gradualism. The design of the model under discussion also follows Turner's explanation in terms of evolving mimicry. As it can be observed, new CA patterns evolve from existing ones in prey population just by a single mutation in the pattern gene. Mimics do not follow a gradual process of evolution to look close to models but rather the change happens randomly through a single step mutation. The mutations that are favored, helps the mimics to survive while the unfavored ones fail to persist. It can be observed later in table \ref{tab:diff-in-pattern} how CA patterns of prey species can have vastly different configuration for a unit change in their representative gene, thus following the evolutionary process of punctuated equilibrium. 
 
 \subsubsection{Palatability gene}
 \label{subsubsec:genetic-palatability-representation}
@@ -193,13 +193,13 @@ The objective of a predator's interaction with prey is always to consume it. But
 Each prey contains an evolving cellular automata which is represented by a binary genome. This two dimensional pattern is serialized to be available as a one dimensional binary array, which is taken as input for any predator organism trying to interact with the prey. This binary representation of the pattern gets converted to a bipolar representation. Each input pattern consists of \(\textit{m} \times \textit{n} = \textit{mn}\) components, each component representing one pixel of the pattern (\textit{m} and \textit{n} representing each dimension). The \textit{m} by \textit{n} pattern configuration is serialized by putting all row vectors in one single row sequentially.
 
 \paragraph{Predator attack algorithm}
-As soon as a predator reaches its attack age it selects random prey species around its vicinity and starts attacking them. This attack process also involves recognition of prey pattern. Two parameters have been defined to limit predator memorization and recognition process as both of these processes are computationally expensive. The ``Hopfield Minimum Memory Size" is the number of memory a predator needs to store before making intelligent decisions about attacking a new prey species. When a predator is born, it starts attacking prey without any caution. But after every attack the predator will store its pattern and palatability level inside its memory. As soon as it reaches the minimum memory size, it will start making intelligent decision about attacking the next species. It will try to recognize the pattern and if found palatable, prey will be consumed. Otherwise prey will be thrown back into the environment. If the pattern is not recognized predator will try to consume it and in the process will store its palatability and pattern into memory. In this way the predator memory is limited to \textsl{``Hopfield Maximum Memory Size"}. After reaching this memory predator will not store any more new pattern but will try to associate with the existing ones it has already stored.
+As soon as a predator reaches its attack age it selects random prey species around its vicinity and starts attacking them. This attack process also involves recognition of prey pattern. Two parameters have been defined to limit predator memorization and recognition process as both of these processes are computationally expensive. The ``Hopfield Minimum Memory Size" is the number of memory a predator needs to store before making intelligent decisions about attacking a new prey species. When a predator is born, it starts attacking prey without any caution. But after every attack the predator will store its pattern and palatability level inside its memory. As soon as it reaches the minimum memory size, it will start making intelligent decision about attacking the next prey species. It will try to recognize the pattern and if found palatable, the prey will be consumed. Otherwise prey will be thrown back into the environment. If the pattern is not recognized predator will try to consume it and in the process will store its palatability and pattern into memory. In this way the predator memory is limited to \textsl{``Hopfield Maximum Memory Size"}. After reaching this memory predator will not store any more new pattern but will try to associate with the existing ones it has already stored.
 
 \paragraph{Genome}
-Each predator has a 5 bits genome. The first 4 bits are for mobility, while the last bit controls reproduction capability of each species.
+Each predator has a 5 bit genome. The first 4 bits are for mobility, while the last bit controls reproduction capability of each species.
 
 \paragraph{Mobility}
-Movement behavior of a predator is calculated from its genome. The first 4 bit converted to decimal is the magnitude of force (varying from 0-15) with which it will move towards the maximum crowd of prey present within its neighborhood. Number of bit are less than prey (6 bits) to reduce their maximum speed. If no prey is present in the neighborhood then this force is active in trying to keep predators distributed all over the cells with a constant mobile behavior. This behavior of predator has been designed to increase predator prey interaction in the simulation in terms of one agent chasing the other for survival of species. 
+Movement behavior of a predator is calculated from its genome. The first 4 bit converted to decimal is the magnitude of force (varying from 0-15) with which it will move towards the maximum crowd of prey present within its neighborhood. Number of bits are less than prey (6 bits) to reduce their maximum speed. If no prey is present in the neighborhood then this force is active in trying to keep predators distributed all over the cells with a constant mobile behavior. This behavior of predator has been designed to increase predator prey interaction in the simulation in terms of one agent chasing the other for survival of species. 
 
 \paragraph{Reproduction}
 The  fifth gene of the predator is used to represent their capability of reproduction.  Depending on its binary value a predator in the simulation will or will not be able to reproduce. The reproduction process for predators is similar to prey species as the learning capability of predators do not have any genetic representation. Similar to the prey the predator also have the \textsl{``Reproduction Interval"} and the \textsl{``Reproduction Age Limit"} which is the minimum age it has to reach before starting to mate. Using these parameters we can control the population of predators and by which we also control the rate of predation on prey species.
@@ -252,17 +252,17 @@ The mimicry ring reports consist entirely of the population of prey species cate
 \begin{tabular}{| p{1.75cm} | m{1.75cm} | p{1cm} | p{.5cm} | p{1.5cm} | p{.5cm} |}
   \hline
    														&\multicolumn{3}{c|}{Prey configuration} 																	
-   														& \multicolumn{2}{c|}{\parbox{2cm}{Predator \\ configuration}} \\ \hline
-  \multirow{2}{*}{Population} & Rule110 (Palatable) & \parbox[c]{2.1em}{\includegraphics[scale=0.40]{images/CARule110}} & 108 
+   														& \multicolumn{2}{c|}{\parbox[c][2.4em][c]{2cm}{Predator \\ configuration}} \\ \hline
+  \multirow{2}{*}{Population} & Rule110 (Palatable) & \parbox[c]{2.1em}{\includegraphics{images/CARule110}} & 108 
   														& \multicolumn{2}{c|}{\multirow{2}{*}{10}} \\ \cline{2-4}
-  					 									& {\parbox{1.75cm}{Rule30\\ (Unpalatable)}}& \parbox[c]{2.1em}{\includegraphics[scale=0.35]{images/CARule30}}  & 108 
+  					 									& {\parbox{1.75cm}{Rule30\\ (Unpalatable)}}& \parbox[c][2.4em][c]{2.1em}{\includegraphics{images/CARule30}}  & 108 
   					 									& \multicolumn{2}{c|}{}\\ \hline
   \multirow{2}{*}{Reproduction} & Age Limit & \multicolumn{2}{c|}{100}  & \multicolumn{2}{c|}{500} \\ \cline{2-6}
   						 									& Interval  & \multicolumn{2}{c|}{1000} & \multicolumn{2}{c|}{1200} \\ \hline
   \multirow{2}{*}{\parbox{1.75cm}{Mutation\\ Rate}} & Pattern   & \multicolumn{2}{c|}{0.05} & \multicolumn{2}{c|}{\multirow{2}{*}{0.3}} \\ \cline{2-4}
   						 									 & Genome    & \multicolumn{2}{c|}{0.5}  & \multicolumn{2}{c|}{} \\ \hline
   Demise Age	 									 & \multicolumn{3}{c|}{2000}							& \multicolumn{2}{c|}{2500} \\ \hline
-  {\parbox{1.75cm}{Minimum\\ Attack Age}}	& \multicolumn{3}{c|}{} 						    & \multicolumn{2}{c|}{500} \\ \hline
+  {\parbox[c][2.3em][c]{1.75cm}{Minimum\\ Attack Age}}	& \multicolumn{3}{c|}{} 						    & \multicolumn{2}{c|}{500} \\ \hline
   \multirow{2}{*}{\parbox{1.75cm}{Memory\\ Configuration}} & \multicolumn{3}{c|}{} 					& Minimum & 2 \\ \cline{5-6}
    																			& \multicolumn{3}{c|}{} 					& Maximum & 10 \\ \hline  
 \end{tabular}
@@ -290,7 +290,7 @@ The plot in Figure \ref{fig:plot-2-prey} is simulation time verses prey populati
 
 We can observe from the above result that the evolution of mimicry has taken effect. A population of mimics were successfully able to exceed the population of other prey species, and the reason being, avoidance by predators of prey pattern similar to unpalatable ones. We can conclude that Batesian mimicry has taken effect in the simulation.
 
-The number of rings in this simulation makes a slow increase from 2 at the initial configuration to 27 rings at the end of 10000 iterations. A small change in CA genetic representation can have a very large effect in terms of the phenotype of the pattern with which the prey is represented. For example if we take a look at the set of pattern genotype with very different phenotype in table \ref{tab:diff-in-pattern}.
+The number of rings in this simulation makes a slow increase from 2 at the initial configuration to 27 rings at the end of 10000 iterations. A small change in CA genetic representation can have a very large effect in terms of the phenotype of the pattern with which the prey is represented. For example if we take a look at the set of almost similar pattern genotype with vastly different phenotype in table \ref{tab:diff-in-pattern}.
 
 %CARule table
 \begin{table}[h]
@@ -300,9 +300,9 @@ The number of rings in this simulation makes a slow increase from 2 at the initi
 \begin{tabular}{|l|c|c|c|}
   \hline
   CA Rule & \(60 \equiv 00111100\) & \(61 \equiv 00111101\) & \(62 \equiv 00111110 \) \\ \hline
-  Pattern & \parbox[c]{2.1em}{\includegraphics[scale=0.35]{images/CARule60}} 
-  				& \parbox[c]{2.1em}{\includegraphics[scale=0.35]{images/CARule61}} 
-  				& \parbox[c]{2.1em}{\includegraphics[scale=0.35]{images/CARule62}}\\
+  Pattern & \parbox[c][2em][c]{2.3em}{\includegraphics{images/CARule60}} 
+  				& \parbox[c][2em][c]{2.3em}{\includegraphics{images/CARule61}} 
+  				& \parbox[c][2em][c]{2.3em}{\includegraphics{images/CARule62}}\\
   \hline
 \end{tabular}
 \caption{Difference in prey pattern genotype and phenotype}
