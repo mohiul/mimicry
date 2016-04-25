@@ -8,24 +8,29 @@ Reviewer 2:
 -- The objective of the simulation is to obseve prey evolution for mimicry. Predator evolution does not have much impact in the results as Hopfield memory is not being evolved from generation to generation. Predator evolution's only impact is in its mobility.
 
 3) Although not mentioned, all CAs start from a zeroed state? Or is one bit in the middle set in the beginning? Why is the case of random initial states not mentioned? What is more problematic is, that only nice pictures of the time development of the CAs are shown, but this is not what the dynamics in the system see. It would have been more helpful to get an intuition how the particular CA rules fair to each other in the sequence space, e.g. what's the Hamming-distance between rule 110 and rule 30? How many rules cluster into the same area of Hamming-distance 10 or so?
-DONE
+
 --CAs are always used in a developed state. Development of a CA from its initial state is not part of the eovlution in the simulation. Given a CA rule each pery is born with a developed CA pattern. As in happens in butterflies. 
+DONE
 
 4) In table 4, e.g., the initial configuration is 108 preys of each rule. Why 108 and not 100, are there specific dynamics in the system which make this result a very special case with no generality at all?
-DONE
+
 --CA rule 110 and 30 has been used for palatable and unpalatable species. 108 is the population size of each of these species. Choice of 110 and 30 has been used as their phenotype is distinctly different from each other and Hopfield will easily distinguish them. 
+DONE
 
 5) Worrisome is the experiment only reported on when starting with palatable species only, the according plot is given in Fig. 5.16 of the master-thesis. How is it possible that the unpalatable species die out? Who are the ones that consume the prey? When starting the simulation with exactly these species the system is not dying out! Something is wrong here. Because of the short simulation time, an evolutionary equilibration cannot be expected, so how many runs with different initial genomes but identical preys starting reproduce the same behavior?
-DONE
+
 -- The palatable species die out. Unpalatable survives. The palatable population is consumed by the predators. 
+DONE
 
 6) It is claimed in the work that punctuated equilibria are characteristic for the evolutionary dynamics, but no evidence is given and cannot be expected, because evolution as such is not studied.
-DONE
+
 -- Evidence has been added. Table 5.
+DONE
 
 7) It is unclear, why for this model a ballistic dynamic system has been chosen. Butterflies are not reigned by inertia and birds are much faster than butterflies.
-DONE
+
 -- The dynamics of the organisms have been designed such that they can be controlled by the genetic representation. Based on their mobility gene some butterflies are faster/slower than each other. 
+DONE
 
 8) Due to the absence of evolution M"ullerian dynamics can not be expected to develop, there is simply not enough time to evolve such a feature. A claim in that direction is thus not appropriate.
 
@@ -43,8 +48,8 @@ Reviewer 3:
 Reviewer 4:
 1. How well are you protected from inbuild model artefacts, in this case from the focus on mimicry (there are of course many other strategies for protection possible but not in the model in, so there is a tendency to find what you observe by inbuild restrictions)
 
--- Not 
+-- Out of scope of this work.
 
 2. How easy can you now put in concrete constraints (e.g. phenotypic such as fur colour or other phenotypic patterns pertaining to mimicry or, for instance, molecular features including molecular mimicry).
 
--- This simulation can also be 
+-- Out of scope for this work.
