@@ -1,2 +1,10 @@
 *.texlipse
 docs/.project
+docs/abstract_1page/abstract.acn
+docs/abstract_1page/abstract.aux
+docs/abstract_1page/abstract.blg
+docs/abstract_1page/abstract.glo
+docs/abstract_1page/abstract.log
+docs/abstract_1page/abstract.bbl
+*.ist
+docs/abstract_1page/abstract.out
