@@ -8,3 +8,6 @@ docs/abstract_1page/abstract.log
 docs/abstract_1page/abstract.bbl
 *.ist
 docs/abstract_1page/abstract.out
+docs/poster/poster.aux
+*.log
+docs/poster/poster.tps
