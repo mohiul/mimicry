@@ -2,7 +2,8 @@
 %	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
 %----------------------------------------------------------------------------------------
 
-\documentclass[a0,portrait]{a0poster}
+\documentclass[a0,landscape]{a0poster}
+\usepackage[paperwidth=93in, paperheight=36in, textwidth=87in, textheight=30in, scale=2]{geometry}
 
 \usepackage{multicol} % This is so we can have multiple columns of text side-by-side
 \columnsep=100pt % This is the amount of white space between the columns in the poster
@@ -15,10 +16,17 @@
 
 \usepackage{graphicx} % Required for including images
 \graphicspath{{figures/}} % Location of the graphics files
+
+\usepackage{multirow}
+%Middle allignment in tables.
+\usepackage{array}
+
 \usepackage{booktabs} % Top and bottom rules for table
 \usepackage[font=small,labelfont=bf]{caption} % Required for specifying captions to tables and figures
 \usepackage{amsfonts, amsmath, amsthm, amssymb} % For math fonts, symbols and environments
 \usepackage{wrapfig} % Allows wrapping text around tables and figures
+\usepackage{natbib}
+\usepackage{fancytikzposter}
 
 \begin{document}
 
@@ -26,27 +34,26 @@
 %	POSTER HEADER 
 %----------------------------------------------------------------------------------------
 
-% The header is divided into two boxes:
-% The first is 75% wide and houses the title, subtitle, names, university/organization and contact information
-% The second is 25% wide and houses a logo for your university/organization or a photo of you
-% The widths of these boxes can be easily edited to accommodate your content as you see fit
-
-\begin{minipage}[b]{0.75\linewidth}
-\veryHuge \color{NavyBlue} \textbf{Modeling the Evolution of Mimicry} \color{Black}\\\\ % Title
-\huge \textbf{Mohiul Islam \& Peter Grogono}\\[0.5cm] % Author(s)
-\huge Engineering \& Computer Science, Concordia University\\[0.4cm] % University/organization
-\Large \texttt{moh\_i@encs.concordia.ca \& grogono@cse.concordia.ca}\\
+\begin{minipage}[b]{0.85\linewidth}
+\VERYHuge \color{NavyBlue} \textbf{Modeling the Evolution of Mimicry} \color{Black}\\[0.5cm] % Title
+\Huge \textbf{Mohiul Islam \& Peter Grogono}\\[0.5cm] % Author(s)
+\Huge Engineering \& Computer Science, Concordia University\\[0.5cm] % University/organization
+\huge \texttt{moh\_i@encs.concordia.ca \& grogono@cse.concordia.ca}\\
 \end{minipage}
 %
-\begin{minipage}[b]{0.25\linewidth}
-\includegraphics[width=20cm]{logo.jpg}\\
+\begin{minipage}[b]{0.19\linewidth}
+\includegraphics[width=30cm]{logo.jpg} % Logo or a photo of you, adjust its dimensions here
 \end{minipage}
 
 \vspace{1cm} % A bit of extra whitespace between the header and poster content
 
 %----------------------------------------------------------------------------------------
 
-\begin{multicols}{2} % This is how many columns your poster will be broken into, a portrait poster is generally split into 2 columns
+\begin{multicols}{5} % This is how many columns your poster will be broken into, a poster with many figures may benefit from less columns whereas a text-heavy poster benefits from more
+
+\tikz[remember picture,overlay,opacity=.1]{
+  \node at(current page.center){\includegraphics[height=\textheight]{monarch.jpg}};
+}
 
 %----------------------------------------------------------------------------------------
 %	ABSTRACT
@@ -54,23 +61,21 @@
 
 \color{Navy} % Navy color for the abstract
 
-\begin{abstract}
+\section*{Abstract}
 
-A novel agent based, artificial life model, for the evolution of mimicry is presented. This model is a predator-prey co-evolution scenario where pattern representation phenotype is simulated with Cellular Automata (CA), while behaviors of pattern recognition is configured with Hopfield Network. A visual three dimensional toroidal cube is used to construct a universe in which agents have complete freedom of mobility, genetic representation of behavior and reproduction capability to evolve new behaviors in successive generations. These agents are classified into categories of predator and prey species. Genome of prey species control their mobility and palatability, while 2D CA is used to represent a pattern, where the rule to generate the CA is also genetically represented. Through evolution, successive generations of prey species develop new patterns to represent them both visually and to the predators. Predators are agents with the primary purpose of providing selection pressure for the evolution of mimicry. They are equipped with Hopfield Network memory to recognize new CA pattern and make intelligent decisions to consume the prey based on their level of palatability. Using the above construction of ideas, successful emulation of the natural process of mimicry is achieved. Also complex behavior pattern of Batesian and Mullerian mimicry is simulated and studied.
-
-\end{abstract}
+\begin{itemize}
+	\item A novel agent based, artificial life model, for the evolution of mimicry is presented.
+	\item This model is a predator-prey co-evolution scenario where pattern representation phenotype is simulated with Cellular Automata (CA), while behaviors of pattern recognition is configured with Hopfield Network.
+	\item A visual three dimensional toroidal cube is used to construct a universe in which agents have complete freedom of mobility, genetic representation of behavior and reproduction capability to evolve new behaviors in successive generations.
+	\item Agents are classified into categories of predator and prey species. Genome of prey species control their mobility and palatability, while 2D CA is used to represent a pattern, where the rule to generate the CA is also genetically represented.
+	\item Using the above construction of ideas, successful emulation of the natural process of mimicry is achieved. Also complex behavior pattern of Batesian and Mullerian mimicry is simulated and studied.
+\end{itemize}
 
 %----------------------------------------------------------------------------------------
 %	INTRODUCTION
 %----------------------------------------------------------------------------------------
 
-\color{SaddleBrown} % SaddleBrown color for the introduction
-
-\section*{Introduction}
-
-Mimicry is a process of deception. It is an evolutionary process with the help of which organisms survive by deceiving its predator. But this deception happens only if the environment contains similar appearing noxious organisms which the predators find unpalatable. Palatable organisms mimic the unpalatable ones through the process of evolution for survival of its species. The objective of this paper is to present an agent based artificial life model for simulating this natural process of the evolution of mimicry.
-
-\color{DarkSlateGray} % DarkSlateGray color for the rest of the content
+\color{SaddleBrown} 
 
 %----------------------------------------------------------------------------------------
 %	The Inspiration: Mimicry
@@ -78,35 +83,98 @@ Mimicry is a process of deception. It is an evolutionary process with the help o
 
 \section*{The Inspiration: Mimicry}
 \subsection*{Batesian Mimicry}
-Henry W. Bates first published in 1862 his findings about the similarities and dissimilarities between Heliconiinae and Ithomiinae butterflies. He found butterflies having similar appearance, exhibiting morphological features which point to completely different species even families. Even though Heliconiids are conspicuously colored, they are extremely abundant. They are also slow in mobility. Still predators in the surrounding area, mostly insectivorous birds do not prey on them, because of their inedible and unpalatable nature. Other edible and palatable species such as ithomiinae and pieridae, pretend to be heliconiids and thus enjoy protection. In general, the animal which is avoided by predator for unpalatable behavior is called the \textbf{model} and the imitating animal is called the \textbf{mimic}.
 
 \begin{center}\vspace{1cm}
-\includegraphics[width=0.5\linewidth]{Batesplate_ArM.jpg}
+\includegraphics[width=0.5\linewidth]{Batesplate_ArM.png}
 \captionof{figure}{\color{Green} Plate from Bates (1862) illustrating Batesian mimicry between Dismorphia species (top row, third row) and various Ithomiini (Nymphalidae) (second row, bottom row)}
 \end{center}\vspace{1cm}
 
-\subsection*{Mullerian Mimicry}
-Bates was not able to explain some phenomena of mimicry. Occasionally two inedible unrelated butterfly species are amazingly similar in appearance. An explanation for this was provided by Fritz Muller in 1878. When there are multiple inedible species it is hard for predators to recognize each of them to know which one to consume and which one to avoid. Because of the predator's limited memory, all these species still lose their number even after being inedible. So to save this loss, and to prevent more sacrifice of their own kind, inedible species from different families also tend to evolve to have similar appearance. This phenomena is referred to as Mullerian Mimicry in the name of Fritz Muller. Like Batesian mimicry, Mullerian mimicry can evolve in two stages: the mutational, one way convergence stage followed by the gradual, mutual convergence stage.
+\begin{itemize}
+	\item Henry W. Bates first published in 1862 his findings about the similarities and dissimilarities between Heliconiinae and Ithomiinae butterflies.
+	\item He found butterflies having similar appearance, exhibiting morphological features which point to completely different species even families.
+	\item Even though Heliconiids are conspicuously colored, they are extremely abundant and slow in mobility. Still predators in the surrounding area, mostly insectivorous birds do not prey on them, because of their inedible and unpalatable nature.
+	\item Other edible and palatable species such as ithomiinae and pieridae, pretend to be heliconiids and thus enjoy protection.
+	\item In general, the animal which is avoided by predator for unpalatable behavior is called the \textbf{model} and the imitating animal is called the \textbf{mimic}.
+\end{itemize}
 
+\color{DarkSlateGray}
+\subsection*{Mullerian Mimicry}
+\begin{itemize}
+	\item Occasionally two inedible unrelated butterfly species are amazingly similar in appearance. An explanation for this was provided by Fritz Muller in 1878. 
+	\item When there are multiple inedible species it is hard for predators to recognize each of them to know which one to consume and which one to avoid.
+	\item Because of the predator's limited memory, all these species still lose their number even after being inedible. 
+	\item So to save this loss, and to prevent more sacrifice of their own kind, inedible species from different families also tend to evolve to have similar appearance. 
+	\item This phenomena is referred to as Mullerian Mimicry in the name of Fritz Muller. Like Batesian mimicry, Mullerian mimicry can evolve in two stages: the mutational, one way convergence stage followed by the gradual, mutual convergence stage.
+\end{itemize}
+
+\color{SaddleBrown} 
 \section*{The Model: Evolution of Mimicry}
 
-Our model initializes with three kinds of agents. These agents have properties and behavior similar to the \textbf{model}, the \textbf{mimic} and the \textbf{predator}. We represent evolution of pattern for the model and the mimic with the help of \textbf{CA}, as \textbf{CA} can be easily represented by simple rules. Each predator is equipped with a Hopfield network, which gives it pattern recognition capability. The process of evolution occurs at the genetic level. 
+\begin{itemize}
+	\item Our model initializes with three kinds of agents. These agents have properties and behavior similar to the \textbf{model}, the \textbf{mimic} and the \textbf{predator}.
+	\item We represent evolution of pattern for the model and the mimic with the help of \textbf{CA}, as \textbf{CA} can be easily represented by simple rules.
+	\item Each predator is equipped with a Hopfield network, which gives it pattern recognition capability. The process of evolution occurs at the genetic level.
+\end{itemize}
+
+\color{DarkSlateGray}
+\subsection*{The Prey: Models and Mimics}
+
+\begin{itemize}
+	\item Every prey organism contain a binary genetic representation of CA which generates a fully developed pattern of size 16 by 16 bits from its initial state.
+	\item With this pattern the predator will identify the prey and store its level of palatability in memory. 
+	\item We choose CA as it can be easily represented with the help of a binary genome and evolutionary operations on the genomic representation, such as mutation and crossover can easily be applied. 
+	\item In generating the pattern of figure \ref{fig:cellular-automata-rule-30}, the genetic representation would be the `New state of center cell'. 
+	\item To store in Hopfield memory we take a linear representation of this 2-D pattern and to find similarity between two patterns we calculate hamming distance between their linear representations.
+\end{itemize}
 
 \begin{center}\vspace{1cm}
-\includegraphics[width=0.1\linewidth]{CARule30-large.jpg}
+\includegraphics[width=0.1\linewidth]{CARule30-large.png}
 \captionof{figure}{\color{Green} Cellular Automata Rule 30}
+\label{fig:cellular-automata-rule-30}
 \end{center}\vspace{1cm}
 
-This model has been designed to come up with efficient results and achieve the main objective, \textit{evolution of mimicry}. Creation and transformation of different mimicry ring and also the dynamics of it has been integrated to achieve interesting results. This model can also be considered as a complex adaptive system similar to Holland's work on Echo.
+\color{SaddleBrown} 
+\subsubsection*{Reflection of punctuated equilibrium}
+\label{subsubsec:reflection-of-punctuated-equilibrium}
+
+\begin{itemize}
+	\item Punctuated equilibrium is more inclined to cladogenesis instead of gradualism. Also Turner \citep{turner1988} emphasizes on punctuated equilibrium to describe the evolution of mimicry instead of phyletic gradualism. 
+	\item The design of the model also follows Turner's explanation in terms of evolving mimicry. As it can be observed, new CA patterns evolve from existing ones in prey population just by a single mutation in the pattern gene. 
+\end{itemize}
+
+\color{SaddleBrown} 
+\subsection*{Predator}
+
+\begin{itemize}
+	\item Predators in the system are designed to provide selection pressure to \textit{models} and \textit{mimics} for the evolution of mimicry. 
+	\item These agents are equipped with Hopfield Network Memory to be able to learn and recognize patterns of the prey species.
+	\item Their mobility and reproduction capability are controlled at the genetic level, while their memory is not genetically controlled, as we could not find a suitable encoding for the genetic representation of Hopfield Network.
+	\item Every new predator is born with zero memory and with no inheritance from parents.
+\end{itemize}
+
+\color{DarkSlateGray}
+\subsubsection*{Learning}
+
+\begin{itemize}
+	\item The objective of a predator's interaction with prey is always to consume it. But based on the prey's pattern and palatability, the predator will either be able to consume it or throw it back to the environment. 
+	\item At this event the predator needs to learn the pattern with which the prey has been represented. The pattern represents palatability of the prey species, at least to the predator. 
+	\item Every time a new interaction is made by the predator its memory is initialized with all the existing pattern that has already been encountered and the new one.
+	\item The learning procedure used for this memory is Hebbian Learning \citep{hebb1949}, which represents a purely feed-forward, unsupervised learning. 
+\end{itemize}
 
 \begin{center}\vspace{1cm}
-\includegraphics[width=0.5\linewidth]{simTime7600.jpg}
+\includegraphics[width=0.5\linewidth]{simTime7600.png}
 \captionof{figure}{\color{Green} Graphical representation of the model, simulation time: 7600}
 \end{center}\vspace{1cm}
 
+\color{DarkSlateGray}
 \section*{The Results}
 
-Data and analysis in this simulation has been concentrated on evaluating whether evolution of mimicry has taken place. This evaluation can be made with the number of different rings that has been created and the size of each of those rings along with the population of palatable and unpalatable species. Also it can be established whether Batesian Mimicry and Mullerian Mimicry have taken effect by analyzing the data set of these populations.
+\begin{itemize}
+	\item Data and analysis in this simulation has been concentrated on evaluating whether evolution of mimicry has taken place.
+	\item This evaluation can be made with the number of different rings that has been created and the size of each of those rings along with the population of palatable and unpalatable species.
+	\item Also it can be established whether Batesian Mimicry and Mullerian Mimicry have taken effect by analyzing the data set of these populations.
+\end{itemize}
 
 \subsection*{Initial configuration with two prey species}
 
@@ -122,6 +190,7 @@ Data and analysis in this simulation has been concentrated on evaluating whether
 \captionof{figure}{\color{Green} Population distribution of mimicry rings, initialized with 4 prey species all unpalatable}
 \end{center}\vspace{1cm}
 
+\color{SaddleBrown} 
 \subsection*{Analysis}
 \begin{itemize}
 \item Batesian mimicry has taken effect as it can be observed that for every ring of unpalatable species there is an existence of the palatable ring racing to reach the population count of its unpalatable counterpart.
@@ -130,9 +199,7 @@ Data and analysis in this simulation has been concentrated on evaluating whether
 %----------------------------------------------------------------------------------------
 %	CONCLUSIONS
 %----------------------------------------------------------------------------------------
-
-\color{SaddleBrown} % SaddleBrown color for the conclusions to make them stand out
-
+\color{DarkSlateGray}
 \section*{Conclusions}
 \begin{itemize}
 \item Analysis of the results tell us that we have successfully been able to simulate the evolution of mimicry.
@@ -140,15 +207,15 @@ Data and analysis in this simulation has been concentrated on evaluating whether
 \item This model also verifies the theory of Turner in explaining the evolution of mimicry with punctuated equilibrium.
 \end{itemize}
 
-\color{DarkSlateGray} % Set the color back to DarkSlateGray for the rest of the content
+ % Set the color back to DarkSlateGray for the rest of the content
 
 %----------------------------------------------------------------------------------------
 %	REFERENCES
 %----------------------------------------------------------------------------------------
-
-\nocite{*} % Print all references regardless of whether they were cited in the poster or not
+\color{SaddleBrown} 
+%\nocite{*} % Print all references regardless of whether they were cited in the poster or not
 \bibliographystyle{plain} % Plain referencing style
-\bibliography{sample} % Use the example bibliography file sample.bib
+\bibliography{references} % Use the example bibliography file sample.bib
 
 %----------------------------------------------------------------------------------------
 

@@ -1,0 +1,136 @@
+\section{Appendix}
+
+\frame
+{
+	\begin{center}
+		\LARGE Appendix: Simulation Parameters
+	\end{center}
+}
+
+\frame
+{
+	\frametitle{FormAL Framework}
+	\framesubtitle{Environment Parameters}
+	
+	\begin{table}[H]
+	\centering
+	\begin{spacing}{1.5}
+	\begin{scriptsize}
+%	\begin{tabular}{| p{2.2cm} | >{\centering} p{3cm} | p{7.5cm} |}
+	\begin{tabular}{| p{1.5cm} | >{\centering} p{2cm} | p{4cm} |}
+		\hline
+			\textbf{Parameter} & \textbf{Value} & \textbf{Description} \\ \hline
+			ISize & 6 & Number of cell in single dimension of the 3-D toroidal cube\\ \hline
+			World Size & 20 & Size of a single dimension of the 3-D toroidal cube\\ \hline
+			Cell Size & \( World Size / ISize \) & Size of each cell\\ \hline
+			Total Number of Cells & \( ISize^3  = 216\) & Total number of cells in the environment\\ 
+		\hline
+	\end{tabular}
+	\end{scriptsize}
+	\end{spacing}
+	\caption{Parameters to control the environment.}
+	\label{tab:environment-control-parameters}
+	\end{table}
+}
+
+\frame
+{
+	\frametitle{FormAL Framework}
+	\framesubtitle{Mobility Parameters}
+
+	\begin{table}
+	\centering
+	\begin{scriptsize}
+	\begin{spacing}{1.5}
+	\begin{tabular}{| p{1.7cm} | >{\centering} p{0.6cm} | p{5cm} |}
+		\hline
+			\textbf{Parameter} & \textbf{Value} & \textbf{Description} \\ \hline
+			Force Factor & 40 & A unit vector is multiplied by this amount before being added to the force vector.\\ \hline
+			Differential Time Step (DT) & 0.01 & The time step used for first-order integration of the motion equations.\\ \hline
+			Friction & 5 & The friction constant used for motion calculations.\\ \hline
+			Work Factor & 1 & \( Work done = WF * force * distance \), where \(WF\) is this constant.\\
+		\hline
+	\end{tabular}
+	\end{spacing}
+	\end{scriptsize}
+	\caption{Parameters to control mobility of agents.}
+	\label{tab:mobility-control-parameters}
+	\end{table}
+	
+}
+
+\frame
+{
+	\frametitle{The Prey: Mimics and Models}
+	\framesubtitle{Configuration Parameters}
+	
+	\begin{table}[H]
+	\centering
+	\begin{scriptsize}
+	\begin{tabular}{| p{1.5cm} | >{\centering} p{1cm} | p{4cm} |}
+		\hline
+			\textbf{Parameter} & \textbf{Value} & \textbf{Description} \\ \hline
+			Prey Size & 2 to 5 & Size of the prey species in the 3D FormAL  environment.\\ \hline
+			Reproduction age limit & 100 & Minimum number of iterations or time steps a prey species need to be present in the simulation to get reproduction capability\\ \hline
+			Reproduction interval & 1000 & Number of iterations a prey need to wait before reproducing again.\\ \hline
+			Pattern Mutation Rate & 0.05 & Rate of Mutation of the pattern genome.\\ \hline
+			Genome Mutation Rate & 0.5 & Rate of mutation of the rest of the genome excluding the pattern gene.\\ \hline
+			Demise Age & 2000 & Age at which the prey species will be removed from the environment.\\
+		\hline
+	\end{tabular}
+	\end{scriptsize}
+	\caption{Parameters to control prey population and visibility.}
+	\label{tab:prey-control-parameters}
+	\end{table}
+}
+
+\frame
+{
+	\frametitle{The Predator}
+	\framesubtitle{Configuration Parameters}
+	
+	\begin{table}
+	\centering
+	\begin{tiny}
+	\begin{tabular}{| p{1.3cm} | >{\centering} p{0.8cm} | p{5cm} |}
+		\hline
+			\textbf{Parameter} & \textbf{Value} & \textbf{Description} \\ \hline
+			Minimum Memory Size & 2 to 6 & Minimum number of patterns stored in memory before predators start making intelligent decisions.\\ \hline
+			Maximum Memory Size & 10 & Maximum number of patterns to be stored in memory. Limited to reduce processing time. \\ \hline 
+			Hopfield Maximum Iterations & 20 & Maximum number of iterations for Hopfield Network to recognize a pattern. Usually the network reaches a steady state before that. But this restriction is to avoid infinite loop in case the network never reaches a steady state. \\ \hline
+			Attack Age & 500 & minimum age a predator needs to reach to be able to attack prey species.  \\ \hline
+			Attack Interval & 100 & Interval of time which needs to pass before a predators attacks its next prey. \\ \hline
+			Genome Mutation rate & 0.3 & Mutation rate for the 5 bit genome of the predators representing their mobility and pattern recognition capability. \\ \hline
+			Reproduction Age Limit & 500 & Minimum age a predator needs to reach before engaging in reproduction.\\ \hline
+			Reproduction Interval & 1000 to 3000 & Interval of time a predator needs to pass between two reproduction process.\\ \hline
+			Demise Age & 2000 to 7000 & Age at which a predator is considered as dead.\\
+		\hline
+	\end{tabular}
+	\end{tiny}
+	\caption{Parameters to control predator population and pattern recognition capability.}
+	\label{tab:predator-control-parameters}
+	\end{table}
+}
+
+\frame
+{
+	\frametitle{The Predator}
+	\framesubtitle{Hebbian Learning}
+
+	\begin{itemize}
+		\item Initially all weights are set to zero.
+		\item Use Hebbian rule to calculate outer product of input-output vector pair, for each pair.
+		\item The Outer vector matrix of all the patterns are summed to come up with the final weight matrix.
+	\end{itemize}
+	
+Each component of the weight matrix \(\textbf{W} = \{w_{ij}\}\) is given by:
+\begin{equation}
+w_{ij} = \sum_{p=1}^{P} s_i(p) t_j(p), i \neq j
+%\label{eq:}
+\end{equation}
+\[
+w_{ij} = 0, i = j
+\]
+where P is the number of patterns. Vectors \textbf{S} and \textbf{T} are respectively, the input and the desired output of the network.
+
+}
