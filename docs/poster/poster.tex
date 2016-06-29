@@ -51,7 +51,7 @@
 
 \begin{multicols}{5} % This is how many columns your poster will be broken into, a poster with many figures may benefit from less columns whereas a text-heavy poster benefits from more
 
-\tikz[remember picture,overlay,opacity=.3]{
+\tikz[remember picture,overlay,opacity=.2]{
   \node at(current page.center){\includegraphics[width=\textwidth]{butterflies-mobile.jpg}};
 }
 
@@ -130,7 +130,8 @@
 	\item Every prey organism contain a binary genetic representation of CA which generates a fully developed pattern of size 16 by 16 bits from its initial state.
 	\item With this pattern the predator will identify the prey and store its level of palatability in memory. 
 	\item We choose CA as its decimal rule can be easily represented with the help of a binary genome and evolutionary operations on the genomic representation, such as mutation and crossover can easily be applied. 
-	\item To store in Hopfield memory we take a linear representation of this 2-D pattern and to find similarity between two patterns we calculate hamming distance between their linear representations.
+	\item To store in Hopfield memory we take a linear representation of this 2-D pattern.
+	\item To find similarity between two patterns we calculate the hamming distance between their linear representations.
 \end{itemize}
 
 \color{SaddleBrown} 
