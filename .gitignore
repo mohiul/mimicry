@@ -11,3 +11,15 @@ docs/abstract_1page/abstract.out
 docs/poster/poster.aux
 *.log
 docs/poster/poster.tps
+docs/poster/poster.bbl
+docs/poster/poster.blg
+docs/slides_conference/thesis_slides.aux
+docs/slides_conference/thesis_slides.snm
+docs/slides_shortened/thesis_slides.toc
+docs/slides_shortened/thesis_slides.snm
+docs/slides_shortened/thesis_slides.nav
+docs/slides_conference/thesis_slides.toc
+docs/slides_shortened/thesis_slides.out
+docs/slides_conference/thesis_slides.out
+*.aux
+docs/slides_conference/thesis_slides.nav
