@@ -51,8 +51,8 @@
 
 \begin{multicols}{5} % This is how many columns your poster will be broken into, a poster with many figures may benefit from less columns whereas a text-heavy poster benefits from more
 
-\tikz[remember picture,overlay,opacity=.1]{
-  \node at(current page.center){\includegraphics[height=\textheight]{monarch.jpg}};
+\tikz[remember picture,overlay,opacity=.3]{
+  \node at(current page.center){\includegraphics[width=\textwidth]{butterflies-mobile.jpg}};
 }
 
 %----------------------------------------------------------------------------------------
@@ -65,8 +65,8 @@
 
 \begin{itemize}
 	\item A novel agent based, artificial life model, for the evolution of mimicry is presented.
-	\item This model is a predator-prey co-evolution scenario where pattern representation phenotype is simulated with Cellular Automata (CA), while behaviors of pattern recognition is configured with Hopfield Network.
-	\item A visual three dimensional toroidal cube is used to construct a universe in which agents have complete freedom of mobility, genetic representation of behavior and reproduction capability to evolve new behaviors in successive generations.
+	\item This model is a predator-prey co-evolution scenario where pattern representation phenotype is simulated with Cellular Automata (CA) \citep{Wolfram2002}, while behaviors of pattern recognition is configured with Hopfield Network.
+	\item A visual three dimensional toroidal cube is used to construct a universe in which agents have complete freedom of mobility, genetic representation of behavior and reproduction capability to evolve new behaviors in successive generations \citep{grogono2003}.
 	\item Agents are classified into categories of predator and prey species. Genome of prey species control their mobility and palatability, while 2D CA is used to represent a pattern, where the rule to generate the CA is also genetically represented.
 	\item Using the above construction of ideas, successful emulation of the natural process of mimicry is achieved. Also complex behavior pattern of Batesian and Mullerian mimicry is simulated and studied.
 \end{itemize}
@@ -104,7 +104,8 @@
 	\item When there are multiple inedible species it is hard for predators to recognize each of them to know which one to consume and which one to avoid.
 	\item Because of the predator's limited memory, all these species still lose their number even after being inedible. 
 	\item So to save this loss, and to prevent more sacrifice of their own kind, inedible species from different families also tend to evolve to have similar appearance. 
-	\item This phenomena is referred to as Mullerian Mimicry in the name of Fritz Muller. Like Batesian mimicry, Mullerian mimicry can evolve in two stages: the mutational, one way convergence stage followed by the gradual, mutual convergence stage.
+	\item This phenomena is referred to as Mullerian Mimicry in the name of Fritz Muller. 
+	\item Like Batesian mimicry, Mullerian mimicry can evolve in two stages: the mutational, one way convergence stage followed by the gradual, mutual convergence stage.
 \end{itemize}
 
 \color{SaddleBrown} 
@@ -116,22 +117,21 @@
 	\item Each predator is equipped with a Hopfield network, which gives it pattern recognition capability. The process of evolution occurs at the genetic level.
 \end{itemize}
 
+\begin{center}\vspace{1cm}
+\includegraphics[width=0.50\linewidth]{CA_rule30s.png}
+\captionof{figure}{\color{Green} Cellular Automata Rule 30 (Image Credit: Wikipedia)}
+\label{fig:cellular-automata-rule-30}
+\end{center}\vspace{1cm}
+
 \color{DarkSlateGray}
 \subsection*{The Prey: Models and Mimics}
 
 \begin{itemize}
 	\item Every prey organism contain a binary genetic representation of CA which generates a fully developed pattern of size 16 by 16 bits from its initial state.
 	\item With this pattern the predator will identify the prey and store its level of palatability in memory. 
-	\item We choose CA as it can be easily represented with the help of a binary genome and evolutionary operations on the genomic representation, such as mutation and crossover can easily be applied. 
-	\item In generating the pattern of figure \ref{fig:cellular-automata-rule-30}, the genetic representation would be the `New state of center cell'. 
+	\item We choose CA as its decimal rule can be easily represented with the help of a binary genome and evolutionary operations on the genomic representation, such as mutation and crossover can easily be applied. 
 	\item To store in Hopfield memory we take a linear representation of this 2-D pattern and to find similarity between two patterns we calculate hamming distance between their linear representations.
 \end{itemize}
-
-\begin{center}\vspace{1cm}
-\includegraphics[width=0.1\linewidth]{CARule30-large.png}
-\captionof{figure}{\color{Green} Cellular Automata Rule 30}
-\label{fig:cellular-automata-rule-30}
-\end{center}\vspace{1cm}
 
 \color{SaddleBrown} 
 \subsubsection*{Reflection of punctuated equilibrium}
@@ -139,8 +139,14 @@
 
 \begin{itemize}
 	\item Punctuated equilibrium is more inclined to cladogenesis instead of gradualism. Also Turner \citep{turner1988} emphasizes on punctuated equilibrium to describe the evolution of mimicry instead of phyletic gradualism. 
-	\item The design of the model also follows Turner's explanation in terms of evolving mimicry. As it can be observed, new CA patterns evolve from existing ones in prey population just by a single mutation in the pattern gene. 
+	\item The design of this model also follows Turner's explanation in terms of evolving mimicry.
+	\item New CA patterns evolve from existing ones in prey population just by a single mutation in the pattern gene. 
 \end{itemize}
+
+\begin{center}\vspace{1cm}
+\includegraphics[width=0.5\linewidth]{simTime7600.png}
+\captionof{figure}{\color{Green} Graphical representation of the model, simulation time: 7600}
+\end{center}\vspace{1cm}
 
 \color{SaddleBrown} 
 \subsection*{Predator}
@@ -162,11 +168,6 @@
 	\item The learning procedure used for this memory is Hebbian Learning \citep{hebb1949}, which represents a purely feed-forward, unsupervised learning. 
 \end{itemize}
 
-\begin{center}\vspace{1cm}
-\includegraphics[width=0.5\linewidth]{simTime7600.png}
-\captionof{figure}{\color{Green} Graphical representation of the model, simulation time: 7600}
-\end{center}\vspace{1cm}
-
 \color{DarkSlateGray}
 \section*{The Results}
 
@@ -176,26 +177,25 @@
 	\item Also it can be established whether Batesian Mimicry and Mullerian Mimicry have taken effect by analyzing the data set of these populations.
 \end{itemize}
 
-\subsection*{Initial configuration with two prey species}
-
 \begin{center}\vspace{1cm}
 \includegraphics[width=0.8\linewidth]{simTime10k-2Prey.png}
 \captionof{figure}{\color{Green} Population distribution of mimicry rings, initialized with 2 prey species, 10k iterations}
-\end{center}\vspace{1cm}
-
-\subsection*{Initial configuration with only unpalatable species}
-
-\begin{center}\vspace{1cm}
-\includegraphics[width=0.8\linewidth]{simTime8k-4Prey-unp.png}
-\captionof{figure}{\color{Green} Population distribution of mimicry rings, initialized with 4 prey species all unpalatable}
+\label{fig:2prey-species}
 \end{center}\vspace{1cm}
 
 \color{SaddleBrown} 
 \subsection*{Analysis}
 \begin{itemize}
-\item Batesian mimicry has taken effect as it can be observed that for every ring of unpalatable species there is an existence of the palatable ring racing to reach the population count of its unpalatable counterpart.
-\item Effects of Mullerian mimicry can also be observed best for the experiment initialized with only unpalatable prey species. We initialized the model with 4 rings of unpalatable species with no palatable ones and after nearly 10K iterations, all of the initial unpalatable rings have survived with dominance. 
+\item Batesian mimicry has taken effect as it can be observed (figure \ref{fig:2prey-species}) that for every ring of unpalatable species there is an existence of the palatable ring racing to reach the population count of its unpalatable counterpart.
+\item Effects of Mullerian mimicry can also be observed best for the experiment initialized with only unpalatable prey species (figure \ref{fig:unpalatable-species}). We initialized the model with 4 rings of unpalatable species with no palatable ones and after nearly 10K iterations, all of the initial unpalatable rings have survived with dominance. 
 \end{itemize}
+
+\begin{center}\vspace{1cm}
+\includegraphics[width=0.8\linewidth]{simTime8k-4Prey-unp.png}
+\captionof{figure}{\color{Green} Population distribution of mimicry rings, initialized with 4 prey species all unpalatable}
+\label{fig:unpalatable-species}
+\end{center}\vspace{1cm}
+
 %----------------------------------------------------------------------------------------
 %	CONCLUSIONS
 %----------------------------------------------------------------------------------------

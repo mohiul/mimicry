@@ -6,7 +6,7 @@ Version=4
 MainFile=thesis_slides.tex
 UseBibTeX=0
 UseMakeIndex=0
-ActiveProfile=LaTeX => PDF
-ProjectLanguage=
-ProjectDialect=
+ActiveProfile=LaTeX ⇨ PDF
+ProjectLanguage=en
+ProjectDialect=US
 
