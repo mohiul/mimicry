@@ -11,14 +11,14 @@ MaxPos.x=-1
 MaxPos.y=-1
 NormalPos.left=4
 NormalPos.top=26
-NormalPos.right=1154
-NormalPos.bottom=577
+NormalPos.right=1085
+NormalPos.bottom=466
 Class=LaTeXView
-Document=thesis_slides.tex
+Document=model.tex
 
 [Frame0_View0,0]
-TopLine=28
-Cursor=929
+TopLine=254
+Cursor=7679
 
 [SessionInfo]
 FrameCount=1

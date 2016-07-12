@@ -29,85 +29,6 @@
 	\end{itemize}	
 }
 
-\subsection{Past Work}
-
-\frame
-{
-	\frametitle{The Model}
-	\framesubtitle{Past Work}
-
-	\begin{itemize}
-		\item Turner (1996) and Huheey (1988):
-			\begin{itemize}
-				\item \textbf{Focus:} Selective pressure on prey, by learning ability of predator.
-				\item Predator: Simple Monte Carlo learning or mathematical approach.
-			\end{itemize}
-		\item Sherratt (2002):
-			\begin{itemize}
-				\item Co-evolving predator and prey population.
-				\item Predators:
-				\begin{itemize}
-					\item deterministic
-					\item cannot learn from experience.
-					\item attack policy is fixed, either attack or avoid.
-				\end{itemize}
-			\end{itemize}
-	\end{itemize}
-}
-
-\frame
-{
-	\frametitle{Franks and Noble}
-	\framesubtitle{Working hypothesis}
-
-	\begin{enumerate}
-		\item \textsl{All of the Mullerian mimics in a given ecosystem should eventually converge into one large ring in order to gain maximum protection.}
-		\item \textsl{If the Mullerian mimics do not converge into one large ring, then the presence of Batesian mimics could entice them to do so, by influencing the rings to converge.}
-	\end{enumerate}
-}
-
-\frame
-{
-	\frametitle{Franks and Noble}
-	\framesubtitle{Prey and Predator}
-	
-\begin{itemize}
-	\item Prey:
-		\begin{itemize}
-			\item Appearance and palatability.
-			\item Palatability is fixed, using different level from 0 to 1, where 0.5 is neutrally palatable.
-			\item Two genes representing external appearance, using values between 1 to 200.
-			\item Euclidean distance between values represents similarity.
-		\end{itemize}	
-	\item Predator:
-		\begin{itemize}
-			\item Monte Carlo reinforcement learning system.
-			\item Decision for consumption of prey:
-			\begin{itemize}
-				\item Use: set of probability formula.
-				\item Dependence on phenotype.
-			\end{itemize}
-		\end{itemize}
-\end{itemize}
-
-}
-
-\frame
-{
-	\frametitle{Franks and Noble}
-	\framesubtitle{Result}
-
-	\begin{itemize}
-		\item Hypothesis 1 of a single large ring did was not established.
-		\item Hypothesis 2 is established.
-		\item \textbf{Observation:}
-			\begin{itemize}
-				\item Batesian mimics provide pressure on mutants.
-				\item Batesian pressure on mimicry rings push one into the range of another.
-			\end{itemize}
-	\end{itemize}
-}
-
 \subsection{FormAL}
 
 \frame
@@ -136,33 +57,6 @@
 \frame
 {
 	\frametitle{FormAL Framework}
-	\framesubtitle{Environment}
-	
-	Environment is 3D, complete freedom of movement defined from genetic representation.
-	\begin{itemize}
-		\item \textbf{Space:}
-			\begin{itemize}
-				\item 3D Lattice of discreet points.
-				\item \((x,y,z) \in \Sigma^3\), where \(\Sigma\) be the set \(\{0, 1, ..., S-1\}\).
-				\item \(S\) is a universal constant, small positive number. Value is 20, \(World Size\) parameter. 
-			\end{itemize}
-		\item \textbf{Time:}
-			\begin{itemize}
-				\item Integer value, increases in discreet steps. 
-				\item Each agent updates itself in each time step.
-			\end{itemize}
-		\item \textbf{Cell:}
-			\begin{itemize}
-				\item Entire environment is divided into multiple cells.
-				\item A 3D cubical section of the hyperspace.
-				\item \(ISize\) parameter kept at 6. Total \(ISize^3 = 216\) cells.
-			\end{itemize}
-	\end{itemize}
-}
-
-\frame
-{
-	\frametitle{FormAL Framework}
 	\framesubtitle{Environment - Visual representation - Front}
 
 	\begin{figure}[H]
@@ -171,21 +65,6 @@
 		\caption{Three dimensional representation of the environment divided in cells. Presence of different species of agents inside.}
 	\label{tab:3-d-environment-images-1}
 	\end{figure}	
-}
-
-\frame
-{
-	\frametitle{FormAL Framework}
-	\framesubtitle{Agent Mobility}
-	
-	\begin{itemize}
-		\item Position is calculated in each step in time.
-		\item Vector components: \(position\), \(force\), \(acceleration\) and \(velocity\).
-		\item \(force\) is calculated from the mobility genes.
-		\item Newton's law of motion, used to calculate \(acceleration\) when \(force\) is not zero.
-		\item \(acceleration\) is integrated to obtain \(velocity\) and new \(position\).
-	\end{itemize}
-
 }
 
 \subsection{Prey}
@@ -320,50 +199,6 @@
 	\end{itemize}
 }
 
-\frame
-{
-	\frametitle{The Prey: Mimics and Models}
-	\framesubtitle{Mobility}
-	
-	\begin{itemize}
-		\item Mobility gene: 6 bits. 
-		\item Use: calculate the magnitude of force for mobility.
-		\item Direction:
-			\begin{itemize}
-				\item Towards collection of maximum prey species in a cell.
-				\item Away from concentration of predators.
-				\item Move towards the selected cell with the magnitude of force calculated.
-			\end{itemize}
-	\end{itemize}
-}
-
-\frame
-{
-	\frametitle{The Prey: Mimics and Models}
-	\framesubtitle{Reproduction}
-	
-	\begin{itemize}
-		\item Begins at ``Reproductive Age"
-		\item Capability is decided on 17th bit gene.
-		\item Mate selection is random, but within same cell.
-		\item Mate needs to be
-			\begin{itemize}
-				\item similar species
-				\item genetically capable to reproduce
-				\item reached maturity 
-			\end{itemize}
-		\item Reproduction process:
-			\begin{itemize}
-				\item Single point crossover.
-				\item Two point mutation: different rates
-					\begin{itemize}
-						\item \textit{Pattern Mutation Rate}
-						\item \textit{Genome Mutation Rate}
-					\end{itemize}
-			\end{itemize}
-	\end{itemize}
-}
-
 \subsection{Predator}
 
 \frame
@@ -434,55 +269,5 @@
 		\item New predator attacks without caution. 
 		\item Attacks everyone and in the process store pattern and palatability.
 		\item When memory reaches `Hopfield Minimum Memory Size': intelligent selection.
-	\end{itemize}
-}
-
-\frame
-{
-	\frametitle{The Predator}
-	\framesubtitle{Genome}
-
-	\begin{table}
-	\centering
-	\begin{scriptsize}
-	\begin{spacing}{1.5}
-	\begin{tabular}{|c|c|}
-		\hline
-			\textbf{Mobility(4)} & \textbf{Reproduction(1)} \\ \hline
-					 1101					   &					1						 		\\ \hline
-	\end{tabular}
-	\end{spacing}
-	\end{scriptsize}
-	\caption{Distribution and purpose of each gene of the 5 bit predator genome.}
-	\label{tab:predator-genome}
-	\end{table}
-}
-
-\frame
-{
-	\frametitle{The Predator}
-	\framesubtitle{Mobility}
-	
-	\begin{itemize}
-		\item Magnitude of force of movement: 4 bits of genome.
-		\item Direction: number of prey species present in a neighboring cell.
-		\item Move towards the cell with least number of predator and most number of prey.
-		\item Result: Predators are distributed all over the environment.
-		\item Increases agent's predatory behavior.
-	\end{itemize}
-}
-
-\frame
-{
-	\frametitle{The Predator}
-	\framesubtitle{Reproduction process}
-	
-	\begin{itemize}
-		\item Reproduction age: begins.
-		\item Reproduction age interval: which is difference in time between two reproduction activity.
-		\item Capability: 5th gene.
-		\item Selection: another predator from same cell which satisfy above conditions.
-		\item Perform genome crossover and mutation: create new predator.
-		\item New predator initialized with zero memory.
 	\end{itemize}
 }
