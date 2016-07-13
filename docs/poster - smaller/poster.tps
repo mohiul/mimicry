@@ -14,11 +14,11 @@ NormalPos.top=26
 NormalPos.right=1154
 NormalPos.bottom=577
 Class=LaTeXView
-Document=model.tex
+Document=poster.tex
 
 [Frame0_View0,0]
-TopLine=249
-Cursor=7679
+TopLine=108
+Cursor=910
 
 [SessionInfo]
 FrameCount=1
